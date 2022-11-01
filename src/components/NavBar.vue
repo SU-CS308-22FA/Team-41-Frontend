@@ -4,6 +4,7 @@
             <img src="../assets/tfpLogo.png" width=200px height=90px alt="">
         </div>
         <div class="navlinks">
+            
             <ul>
                 <li><router-link class= "navborder" to="/Home">Home</router-link></li>
                 <li><router-link class= "navborder" to="">About Us</router-link></li>
@@ -29,10 +30,15 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
+        margin: -60px -10px -50px -10px;
     }
     .logo{
         padding: 10px 20px;
         cursor: pointer;
+    }
+    img {
+    width: 200px;
+    height: 90px;
     }
 
     .navlinks{

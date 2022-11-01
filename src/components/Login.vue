@@ -15,7 +15,7 @@
                 <div><p>Forget Password?<br> Click <a href=""> here</a></p></div>
                 </div>
             <div class="acc">
-                <div><p>Don't have an account?<br>Click <a href="">here</a></p></div>
+                <div><p>Don't have an account?<br><a href="">Sign Up</a></p></div>
             </div>
         </form>
     </div>
@@ -48,8 +48,7 @@
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
         height:100%;
-        margin-top: 50px;
-        
+        margin: 50px -10px 0 -10px;
         text-align: center;
         display: flex;
         padding-left: 60%;

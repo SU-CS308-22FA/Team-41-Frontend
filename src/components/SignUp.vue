@@ -98,7 +98,7 @@
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
         height:100%;
-        margin-top: 50px;
+        margin: 50px -10px 0 -10px;
         
         text-align: center;
         display: flex;
@@ -121,7 +121,7 @@
         margin-bottom: 20px;
         border-radius: 7px;
         padding:6px;
-        margin-top: 3px;
+        margin-top: 7px;
     }
     input[type=email]{
         margin-bottom: 20px;
