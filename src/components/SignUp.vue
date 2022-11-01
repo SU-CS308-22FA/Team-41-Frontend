@@ -19,6 +19,10 @@
                 
                 <input type="radio" id="Female" value="female" v-model="gender">
                 <label for="female">Female</label>
+
+                <input type="radio" id="Other" value="other" v-model="gender">
+                <label for="other">Other</label>
+
             </div>
             
             <input class="signup" type="submit" value="register">
