@@ -33,7 +33,6 @@
     };
 </script>
 
-
 <style scoped>
     head{
         box-sizing: border-box;

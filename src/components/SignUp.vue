@@ -1,16 +1,27 @@
 <template>
     <NavBar></NavBar>
     <div class="container">
-        <form class="signup-form">
+        <form class="signup-form" @submit.prevent="signup">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
-            First Name: <input type="text" placeholder="Enter First Name">
-            Last Name: <input type="text" placeholder="Enter Last Name">
-            Email: <input type="email" placeholder="Enter email">
-            Password: <input type="password" placeholder="Enter password">
-            Re-Password: <input type="password" placeholder="Enter password Again">
-            <button class="signup">
-                <a href="">Create Account</a>
-            </button>
+            
+            <label for="name">Name</label>
+            <input name="name" v-model="name" placeholder="name" type="text">
+        
+            <label for="mail">Mail</label>
+            <input name="mail" v-model="mail" placeholder="mail" type="email">
+        
+            <label for="password">Password</label>
+            <input name="password" v-model="password" placeholder="password" type="password">
+        
+            <div>
+                <input type="radio" id="male" value="Male" v-model="gender">
+                <label for="male">Male</label>
+                
+                <input type="radio" id="Female" value="female" v-model="gender">
+                <label for="female">Female</label>
+            </div>
+            
+            <input class="signup" type="submit" value="register">
         </form>
     </div>
 </template>
@@ -24,6 +35,47 @@
         components: {
             NavBar,
         },
+        data() {
+            return {
+                mail: "",
+                name: "",
+                password: "",
+                gender: "",
+            };
+        },
+        methods: {
+            async signup() {
+                const { mail, name, password, gender } = this;
+                
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        mail,
+                        name,
+                        password,
+                        gender,
+                    })
+                };
+                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/signup", requestOptions)
+                .then(async response => {
+                    const data = await response.json();
+
+                    // check for error response
+                    if (!response.ok) {
+                        // get error message from body or default to response status
+                        const error = (data && data.message) || response.status;
+                        return Promise.reject(error);
+                    }
+                })
+                .catch(error => {
+                    this.errorMessage = error;
+                    console.error('There was an error!', error);
+                });
+                alert(response.status);
+            }
+        }
     };
 </script>
 
