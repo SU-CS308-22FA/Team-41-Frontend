@@ -3,7 +3,6 @@
     <div class="container">
         <form class="login-form">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
-            Name: <input type="text" placeholder="Enter name">
             Email: <input type="email" placeholder="Enter email">
             Password: <input type="password" placeholder="Enter password">
             <button class="login">
@@ -17,7 +16,6 @@
                 </div>
             <div class="acc">
                 <div><p>Don't have an account?<br>Click <a href="">here</a></p></div>
-
             </div>
         </form>
     </div>
