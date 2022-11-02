@@ -1,10 +1,15 @@
 <template>
     <NavBar></NavBar>
     <div class="container">
-        <form class="login-form">
+        <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
-            Email: <input type="email" placeholder="Enter email">
-            Password: <input type="password" placeholder="Enter password">
+
+            <label for="mail">Mail</label>
+            <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
+
+            <label for="password">Password</label>
+            <input name="password" v-model="password" placeholder="Enter password" type="password">
+
             <button class="login">
                 <a href="">Login</a>
             </button>
@@ -30,6 +35,45 @@
         components: {
             NavBar,
         },
+        data() {
+            return {
+                mail: "",
+                password: "",
+            };
+        },
+        methods: {
+            async login() {
+                const { mail, password } = this;
+                
+                alert("TRYING...")
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        mail,
+                        password,
+                    })
+                };
+                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions)
+                .then(async response => {
+                    const data = await response.json();
+
+                    // check for error response
+                    if (!response.ok) {
+                        // get error message from body or default to response status
+                        const error = (data && data.message) || response.status;
+                        return Promise.reject(error);
+                    }
+                    alert(response.message);
+                })
+                .catch(error => {
+                    this.errorMessage = error;
+                    alert('There was an error!', error);
+                    alert(response.status);
+                });
+                alert(response.status);
+            }
+        }
     };
 </script>
 

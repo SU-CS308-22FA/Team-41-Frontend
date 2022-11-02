@@ -74,6 +74,8 @@
                         const error = (data && data.message) || response.status;
                         return Promise.reject(error);
                     }
+                    
+                    alert("Welcome!");
                 })
                 .catch(error => {
                     this.errorMessage = error;
