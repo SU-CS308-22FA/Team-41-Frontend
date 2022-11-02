@@ -11,17 +11,14 @@
             <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password" >
 
             <button class="login">
-                <a href="">Login</a>
+                <a>Login</a>
             </button>
-            <div>
-                <p>{{ pressed && isLoged ? "success" : " "}}</p>
-                <p>{{ pressed && !isLoged ? "invalid" : " "}}</p>
-            </div>
+            
             <div class="admin">
-                <div><p><a href="">Login as admin</a></p></div>
+                <div><p><a>Login as admin</a></p></div>
             </div>
             <div class="forget">
-                <div><p>Forget Password?<br> Click <a href=""> here</a></p></div>
+                <div><p>Forget Password?<br> Click <a> here</a></p></div>
                 </div>
             <div class="acc">
                 <div><p>Don't have an account?<br><router-link class= "navborder" to="/signup">Sign Up</router-link></p></div>
@@ -43,7 +40,6 @@
             return {
                 mail: "",
                 password: "",
-                pressed: false,
                 isLoged: false,
                 userId: "",
             };

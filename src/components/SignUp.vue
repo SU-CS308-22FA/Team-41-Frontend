@@ -25,7 +25,7 @@
 
             </div>
             <button class="signup">
-                <a href="">REGISTER</a>
+                <a>REGISTER</a>
             </button>
            
         </form>
