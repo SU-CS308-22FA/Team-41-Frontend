@@ -36,7 +36,7 @@
     import NavBar from './NavBar.vue'
 
     export default {
-        path: '/SignUp',
+        path: '/signup',
         name: 'SignUp',
         components: {
             NavBar,

@@ -34,7 +34,7 @@
     import NavBar from './NavBar.vue'
 
     export default {
-        path: '/Login',
+        path: '/login',
         name: 'LogIn',
         components: {
             NavBar,
@@ -63,21 +63,9 @@
                 then((res) => res.json()).
                 then((res2) => {
                     if(res2.status === "200") {
-<<<<<<< HEAD
-                        localStorage.isLoged = true;
-                        localStorage.userId = res2.returnObject;
-                        alert("successfully loged in!");
-                    }
-                    else if(res2.status === "400: USER NOT FOUND!") {
-                        alert("User Does not exist!");
-                    }
-                    else {
-                        alert("Invalid cridentials!");
-=======
                         window.localStorage.setItem("isLogedIn", true);
                         window.localStorage.setItem("userId", res2.returnObject);
-                        //this.$router.push("/userProfile") user profile sayfasina yonlendirilecek.
->>>>>>> origin/Routing
+                        this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
                     }
                 });
             }

@@ -1,6 +1,5 @@
 <template>
     <LoggedNavBar></LoggedNavBar>
-
     <div class="container">
         <form class="user-info">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Personal Information</h2>
@@ -9,13 +8,13 @@
             <br>
             <br>
 
-            Name <b>UserName</b>
+            Name <b>{{name}}</b>
             <br>
             <br>
-            Email <b>UserEmail</b>
+            Email <b>{{mail}}</b>
             <br>
             <br>
-            Gender <b>UserGender</b>
+            Gender <b>{{gender}}</b>
 
             <div class="edit">
                 <div><p><a href="">Edit Profile</a></p></div>
@@ -26,13 +25,49 @@
 </template>
 
 <script>
-    import LoggedNavBar from './LoggedNavBar.vue'
+import LoggedNavBar from './LoggedNavBar.vue'
 
     export default {
-        path: '/ProfilePage',
+        path: '/profilepage',
         name: 'ProfilePage',
         components: {
             LoggedNavBar,
+        },
+        data() {
+            return {
+                userId: "",
+                name: "",
+                mail: "",
+                gender: "",
+            };
+        },
+        mounted() {
+            if(localStorage.userId) this.userId = localStorage.userId;
+
+            const requestOptions = {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "200") {
+                        localStorage.setItem("mail", data.returnObject.mail);
+                        localStorage.setItem("name", data.returnObject.name);
+                        localStorage.setItem("gender", data.returnObject.gender);
+
+                    }
+                    else if(data.status === "400: USER NOT FOUND!") {
+                        alert("User Does not exist!");
+                    }
+                    else {
+                        alert("Invalid cridentials!");
+                    }
+                });
+
+            if(localStorage.name) this.name = localStorage.name;
+            if(localStorage.mail) this.mail = localStorage.mail;
+            if(localStorage.gender) this.gender = localStorage.gender;
         },
     };
 </script>

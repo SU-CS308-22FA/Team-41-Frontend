@@ -1,27 +1,15 @@
 <template>
-<<<<<<< HEAD
-  <ProfilePage></ProfilePage>
-</template>
-
-<script>
-import ProfilePage from './components/ProfilePage.vue'
-=======
 
   <router-view/>
 </template>
 
 <script>
 
->>>>>>> origin/Routing
 
 export default {
   name: 'App',
   components: {
-<<<<<<< HEAD
-    ProfilePage
-=======
     
->>>>>>> origin/Routing
   }
 }
 </script>
