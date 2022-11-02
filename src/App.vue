@@ -3,19 +3,11 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import LogIn from './components/Login.vue'
-=======
-import LogIn from "./components/LogIn.vue"
->>>>>>> LoginPage
 
 export default {
   name: 'App',
   components: {
-<<<<<<< HEAD
-=======
-    //LogIn
->>>>>>> LoginPage
     LogIn
   }
 }

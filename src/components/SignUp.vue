@@ -1,7 +1,5 @@
 <template>
     <NavBar></NavBar>
-<<<<<<< HEAD
-=======
     <div class="container">
         <form class="signup-form" @submit.prevent="signup">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
@@ -32,7 +30,6 @@
            
         </form>
     </div>
->>>>>>> LoginPage
 </template>
 
 <script>
@@ -44,12 +41,6 @@
         components: {
             NavBar,
         },
-<<<<<<< HEAD
-    };
-</script>
-
-<style scoped></style>
-=======
         data() {
             return {
                 mail: "",
@@ -168,4 +159,3 @@
         font-size: medium;
     }
 </style>
->>>>>>> LoginPage

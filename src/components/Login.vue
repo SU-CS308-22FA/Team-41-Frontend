@@ -3,11 +3,6 @@
     <div class="container">
         <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
-<<<<<<< HEAD
-            Name: <input type="text" placeholder="Enter name">
-            Email: <input type="email" placeholder="Enter email">
-            Password: <input type="password" placeholder="Enter password">
-=======
 
             <label for="mail">Mail</label>
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
@@ -15,7 +10,6 @@
             <label for="password">Password</label>
             <input name="password" v-model="password" placeholder="Enter password" type="password">
 
->>>>>>> LoginPage
             <button class="login">
                 <a href="">Login</a>
             </button>
@@ -26,12 +20,7 @@
                 <div><p>Forget Password?<br> Click <a href=""> here</a></p></div>
                 </div>
             <div class="acc">
-<<<<<<< HEAD
-                <div><p>Don't have an account?<br>Click <a href="">here</a></p></div>
-
-=======
                 <div><p>Don't have an account?<br><a href="">Sign Up</a></p></div>
->>>>>>> LoginPage
             </div>
         </form>
     </div>
