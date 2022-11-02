@@ -11,8 +11,8 @@
     import NavBar from './NavBar.vue'
 
     export default {
-        path: '/Home',
-        name: 'Home',
+        path: '/HomePage',
+        name: 'HomePage',
         components: {
             NavBar,
         },
