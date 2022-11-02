@@ -5,13 +5,13 @@
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
             
             <label for="name">Name</label>
-            <input name="name" v-model="name" placeholder="name" type="text">
+            <input name="name" v-model="name" placeholder="Enter name" type="text">
         
             <label for="mail">Mail</label>
-            <input name="mail" v-model="mail" placeholder="mail" type="email">
+            <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
         
             <label for="password">Password</label>
-            <input name="password" v-model="password" placeholder="password" type="password">
+            <input name="password" v-model="password" placeholder="Enter password" type="password">
         
             <div>
                 <input type="radio" id="male" value="Male" v-model="gender">
@@ -24,8 +24,10 @@
                 <label for="other">Other</label>
 
             </div>
-            
-            <input class="signup" type="submit" value="register">
+            <button class="signup">
+                <a href="">REGISTER</a>
+            </button>
+           
         </form>
     </div>
 </template>
@@ -135,6 +137,7 @@
         padding:6px;
         margin-top: 3px;
     }
+
 
     .signup{
         background-color: rgba(17, 73, 158, 0.818);
