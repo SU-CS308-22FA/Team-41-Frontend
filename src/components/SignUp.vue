@@ -11,7 +11,7 @@
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
         
             <label for="password">Password</label>
-            <input name="password" v-model="password" placeholder="Enter password" type="password">
+            <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password" >
         
             <div>
                 <input type="radio" id="male" value="Male" v-model="gender">

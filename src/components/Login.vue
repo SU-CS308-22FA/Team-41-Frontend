@@ -8,11 +8,15 @@
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
 
             <label for="password">Password</label>
-            <input name="password" v-model="password" placeholder="Enter password" type="password">
+            <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password" >
 
             <button class="login">
                 <a href="">Login</a>
             </button>
+            <div>
+                <p>{{ pressed && isLoged ? "success" : " "}}</p>
+                <p>{{ pressed && !isLoged ? "invalid" : " "}}</p>
+            </div>
             <div class="admin">
                 <div><p><a href="">Login as admin</a></p></div>
             </div>
@@ -39,17 +43,16 @@
             return {
                 mail: "",
                 password: "",
+                pressed: false,
+                isLoged: false,
+                userId: "",
             };
         },
         methods: {
-            login2() {
-                const { mail, password } = this;
-                alert(mail);
-                alert(password);
-            },
              login() {
                 const { mail, password } = this;
                 
+                localStorage.pressed = true;
                 
                 const requestOptions = {
                     method: "POST",
@@ -61,24 +64,11 @@
                 then((res2) => {
                     alert(res2.returnObject);
                     if(res2.status === "200") {
-                        window.localStorage.setItem("isLogedIn", true);
-                        window.localStorage.setItem("userId", res2.returnObject);
+                        localStorage.isLoged = true;
+                        localStorage.userId = res2.returnObject;
                     }
                 });
-                
             }
-/*
-                const requestOptions = {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        mail,
-                        password,
-                    })
-                };
-                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions);
-                alert(response.status);
-            }*/
         }
     };
 </script>
