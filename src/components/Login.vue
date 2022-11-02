@@ -62,10 +62,13 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions).
                 then((res) => res.json()).
                 then((res2) => {
-                    alert(res2.returnObject);
                     if(res2.status === "200") {
                         localStorage.isLoged = true;
                         localStorage.userId = res2.returnObject;
+                        alert("successfully loged in!");
+                    }
+                    else {
+                        alert("Invalid cridentials!");
                     }
                 });
             }
