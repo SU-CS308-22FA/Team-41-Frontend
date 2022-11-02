@@ -1,14 +1,14 @@
 <template>
-  <ProfilePage></ProfilePage>
+  <EditProfile></EditProfile>
 </template>
 
 <script>
-import ProfilePage from './components/ProfilePage.vue'
+import EditProfile from './components/EditProfile.vue'
 
 export default {
   name: 'App',
   components: {
-    ProfilePage
+    EditProfile
   }
 }
 </script>
