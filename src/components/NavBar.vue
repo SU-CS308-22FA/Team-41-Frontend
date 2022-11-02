@@ -9,7 +9,7 @@
                 <li><router-link class= "navborder" to="/">Home</router-link></li>
                 <li><router-link class= "navborder" to="">About Us</router-link></li>
                 <li><router-link class= "navborder" to="">Contact</router-link></li>
-                <li><router-link class= "navborder" to="/Login">Login</router-link></li>
+                <li><router-link class= "navborder" to="/login">Login</router-link></li>
             </ul>
         </div>
     </div>

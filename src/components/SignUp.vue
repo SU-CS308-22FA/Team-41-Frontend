@@ -74,7 +74,7 @@
                         const error = (data && data.message) || response.status;
                         return Promise.reject(error);
                     }
-                    
+                    this.$router.push("/login")
                     alert("Welcome!");
                 })
                 .catch(error => {

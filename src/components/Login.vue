@@ -63,6 +63,7 @@
                     if(res2.status === "200") {
                         window.localStorage.setItem("isLogedIn", true);
                         window.localStorage.setItem("userId", res2.returnObject);
+                        //this.$router.push("/userProfile") user profile sayfasina yonlendirilecek.
                     }
                 });
                 
