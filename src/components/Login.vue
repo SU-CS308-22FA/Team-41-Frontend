@@ -67,6 +67,9 @@
                         localStorage.userId = res2.returnObject;
                         alert("successfully loged in!");
                     }
+                    else if(res2.status === "400: USER NOT FOUND!") {
+                        alert("User Does not exist!");
+                    }
                     else {
                         alert("Invalid cridentials!");
                     }
