@@ -58,11 +58,13 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions).
                 then((res) => res.json()).
                 then((res2) => {
-                    if(res2.status === "200") {
-                        window.localStorage.setItem("isLogedIn", true);
-                        window.localStorage.setItem("userId", res2.returnObject);
-                        this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
+                    if(res2.status !== "200") {
+                        alert("Login Failed\n"+res2.status)
+                        return;
                     }
+                    window.localStorage.setItem("isLogedIn", true);
+                    window.localStorage.setItem("userId", res2.returnObject);
+                    this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
                 });
             }
         }

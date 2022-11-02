@@ -50,7 +50,7 @@
             };
         },
         methods: {
-            async signup() {
+            signup() {
                 const { mail, name, password, gender } = this;
                 
 
@@ -64,24 +64,18 @@
                         gender,
                     })
                 };
-                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/signup", requestOptions)
-                .then(async response => {
-                    const data = await response.json();
-
-                    // check for error response
-                    if (!response.ok) {
-                        // get error message from body or default to response status
-                        const error = (data && data.message) || response.status;
-                        return Promise.reject(error);
+                fetch("https://tfb308.herokuapp.com/api/v1/user/signup", requestOptions)
+                .then((res) => res.json())
+                .then((data) => {
+                    if(data.status !== "200") {
+                        alert("Signup Failed\n"+data.returnObject);
+                        return;
                     }
-                    this.$router.push("/login")
-                    alert("Welcome!");
+                    this.$router.push("/login");
+                    alert("Signup Succeed.");
                 })
-                .catch(error => {
-                    this.errorMessage = error;
-                    console.error('There was an error!', error);
-                });
-                alert(response.status);
+                
+                
             }
         }
     };
