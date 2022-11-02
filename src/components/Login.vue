@@ -24,7 +24,7 @@
                 <div><p>Forget Password?<br> Click <a href=""> here</a></p></div>
                 </div>
             <div class="acc">
-                <div><p>Don't have an account?<br><a href="">Sign Up</a></p></div>
+                <div><p>Don't have an account?<br><router-link class= "navborder" to="/signup">Sign Up</router-link></p></div>
             </div>
         </form>
     </div>
