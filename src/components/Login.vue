@@ -1,11 +1,21 @@
 <template>
     <NavBar></NavBar>
     <div class="container">
-        <form class="login-form">
+        <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
+<<<<<<< HEAD
             Name: <input type="text" placeholder="Enter name">
             Email: <input type="email" placeholder="Enter email">
             Password: <input type="password" placeholder="Enter password">
+=======
+
+            <label for="mail">Mail</label>
+            <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
+
+            <label for="password">Password</label>
+            <input name="password" v-model="password" placeholder="Enter password" type="password">
+
+>>>>>>> LoginPage
             <button class="login">
                 <a href="">Login</a>
             </button>
@@ -16,8 +26,12 @@
                 <div><p>Forget Password?<br> Click <a href=""> here</a></p></div>
                 </div>
             <div class="acc">
+<<<<<<< HEAD
                 <div><p>Don't have an account?<br>Click <a href="">here</a></p></div>
 
+=======
+                <div><p>Don't have an account?<br><a href="">Sign Up</a></p></div>
+>>>>>>> LoginPage
             </div>
         </form>
     </div>
@@ -32,6 +46,51 @@
         components: {
             NavBar,
         },
+        data() {
+            return {
+                mail: "",
+                password: "",
+            };
+        },
+        methods: {
+            login2() {
+                const { mail, password } = this;
+                alert(mail);
+                alert(password);
+            },
+             login() {
+                const { mail, password } = this;
+                
+                
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ mail,  password})
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions).
+                then((res) => res.json()).
+                then((res2) => {
+                    alert(res2.returnObject);
+                    if(res2.status === "200") {
+                        window.localStorage.setItem("isLogedIn", true);
+                        window.localStorage.setItem("userId", res2.returnObject);
+                    }
+                });
+                
+            }
+/*
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        mail,
+                        password,
+                    })
+                };
+                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions);
+                alert(response.status);
+            }*/
+        }
     };
 </script>
 
@@ -51,8 +110,7 @@
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
         height:100%;
-        margin-top: 50px;
-        
+        margin: 50px -10px 0 -10px;
         text-align: center;
         display: flex;
         padding-left: 60%;
