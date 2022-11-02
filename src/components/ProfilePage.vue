@@ -90,7 +90,7 @@ import LoggedNavBar from './LoggedNavBar.vue'
         margin: 50px -10px 0 -10px;
         text-align: center;
         display: flex;
-        padding-left: 60%;
+        padding-left: 33%;
         align-items: center;
     }
 
