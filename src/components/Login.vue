@@ -60,6 +60,10 @@
                 then((res) => res.json()).
                 then((res2) => {
                     alert(res2.returnObject);
+                    if(res2.status === "200") {
+                        window.localStorage.setItem("isLogedIn", true);
+                        window.localStorage.setItem("userId", res2.returnObject);
+                    }
                 });
                 
             }
