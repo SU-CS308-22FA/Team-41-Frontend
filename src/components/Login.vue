@@ -42,10 +42,28 @@
             };
         },
         methods: {
-            async login() {
+            login2() {
+                const { mail, password } = this;
+                alert(mail);
+                alert(password);
+            },
+             login() {
                 const { mail, password } = this;
                 
-                alert("TRYING...")
+                
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ mail,  password})
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions).
+                then((res) => res.json()).
+                then((res2) => {
+                    alert(res2.returnObject);
+                });
+                
+            }
+/*
                 const requestOptions = {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -54,25 +72,9 @@
                         password,
                     })
                 };
-                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions)
-                .then(async response => {
-                    const data = await response.json();
-
-                    // check for error response
-                    if (!response.ok) {
-                        // get error message from body or default to response status
-                        const error = (data && data.message) || response.status;
-                        return Promise.reject(error);
-                    }
-                    alert(response.message);
-                })
-                .catch(error => {
-                    this.errorMessage = error;
-                    alert('There was an error!', error);
-                    alert(response.status);
-                });
+                const response = await fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions);
                 alert(response.status);
-            }
+            }*/
         }
     };
 </script>
