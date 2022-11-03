@@ -9,9 +9,7 @@
                 <h2 style="color: rgba(17, 73, 158, 0.818)">Edit Profile</h2>
                 <input v-model="name" type="text" name="" placeholder="Name">
                 <input v-model="mail" type="email" name="" placeholder="Email">
-                <input v-model="gender" type="password" name="" placeholder="Current password">
-                <input type="password" name="" placeholder="New password">
-                <input type="password" name="" placeholder="New password (again)">
+                <input v-model="gender" type="text" name="" placeholder="Gender">
                 <button @click="goToProfile" style="float:left;">CANCEL</button>
                 <button @click="updateUser" style="float:left; margin-left: 4%;">DONE</button>
                 
