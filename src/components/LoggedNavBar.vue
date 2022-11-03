@@ -30,7 +30,7 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
-        margin: -60px -10px -50px -10px;
+        margin: -60px -14.3px -50px -10px;
     }
     .logo{
         padding: 10px 20px;

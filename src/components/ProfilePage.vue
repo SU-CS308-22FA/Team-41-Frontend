@@ -17,7 +17,7 @@
             Gender <b>{{gender}}</b>
 
             <div class="edit">
-                <div><p><a href="">Edit Profile</a></p></div>
+                <div class="editprofile" @click="goToEdit"><p><a>Edit Profile</a></p></div>
                 <div class="deleteacc" @click="deleteAccount"><p><a>Delete Account</a></p></div>
             </div>
             
@@ -43,6 +43,9 @@ import LoggedNavBar from './LoggedNavBar.vue'
             };
         },
         methods: {
+            goToEdit() {
+                this.$router.replace("/editprofile");
+            },
             
             deleteAccount(){
                 const requestOptions = {

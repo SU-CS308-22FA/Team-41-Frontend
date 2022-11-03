@@ -3,6 +3,7 @@ import LogIn from "../components/Login.vue";
 import SignUp from "../components/SignUp.vue";
 import HomePage from "../components/Home.vue";
 import ProfilePage from "../components/ProfilePage.vue";
+import EditProfile from "../components/EditProfile.vue"
 
 
 
@@ -27,6 +28,11 @@ const routes = [
         path: "/profilepage",
         name: "ProfilePage",
         component: ProfilePage
+    },
+    {
+        path: "/editprofile",
+        name: "EditProfile",
+        component: EditProfile
     }
 
 ]
