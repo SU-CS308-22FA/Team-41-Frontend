@@ -6,10 +6,10 @@
         <div class="navlinks">
             
             <ul>
-                <li><router-link class= "navborder" to="/">Home</router-link></li>
-                <li><router-link class= "navborder" to="">About Us</router-link></li>
-                <li><router-link class= "navborder" to="">Contact</router-link></li>
-                <li><router-link class= "navborder" to="/login">Login</router-link></li>
+                <li><router-link class= "navborder" to="/">HOME</router-link></li>
+                <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
+                <li><router-link class= "navborder" to="">CONTACT</router-link></li>
+                <li><router-link class= "navborder" to="/login">LOGIN</router-link></li>
             </ul>
         </div>
     </div>
@@ -60,6 +60,12 @@
         font-size: 1.2rem;
         cursor: pointer;
         text-transform: uppercase;
+    }
+    .navborder{
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        
     }
 
     .navborder::after{
