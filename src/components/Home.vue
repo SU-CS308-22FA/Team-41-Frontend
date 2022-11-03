@@ -2,7 +2,9 @@
     <NavBar></NavBar>
     <div>
         <body>
+            <br><br><br>
             <h1>HOME PAGE</h1>
+            <img src="../assets/renovate.jpg" alt="">
         </body>
     </div>
 </template>
@@ -19,4 +21,9 @@
     };
 </script>
 
-<style scoped></style>
+<style scoped>
+img{
+    height:500px;
+    width:500px;
+}
+</style>
