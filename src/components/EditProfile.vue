@@ -11,7 +11,7 @@
                 <input v-model="mail" type="email" name="" placeholder="Email">
                 <input v-model="gender" type="text" name="" placeholder="Gender">
                 <button @click="goToProfile" style="float:left;">CANCEL</button>
-                <button @click="updateUser" style="float:left; margin-left: 4%;">DONE</button>
+                <button @click="updateUser" style="float:left; margin-left: 4%;">SAVE</button>
                 
             </div>
             <div class="photo">
@@ -228,7 +228,7 @@
         
     }
     .change{
-        margin-top: 70%;
+        margin-top: 110%;
         margin-left: 50%;
         padding: 3px 1px -3px 1px;
         height: 40px;
