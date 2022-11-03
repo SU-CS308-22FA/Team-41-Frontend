@@ -22,8 +22,8 @@
                 <div class="editphoto">
                     <input type="file" name="" id="file" accept="image/*">
                     <label for="file">Edit Photo</label>
-                    <button class="change">Change Password</button>
-                    <div><p><router-link class= "navborder" to="/ChangePassword">Change Password</router-link></p></div>
+                    <button class="change"><router-link class= "navborder" to="/ChangePassword">Change Password</router-link></button>
+   
 
                 </div>
                 
@@ -71,6 +71,11 @@
     }
     h2{
         margin-left: -70%;
+    }
+    .navborder{
+        color:white;
+        text-decoration: none;
+        font-size: 15px;
     }
     
     .container{
