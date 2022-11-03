@@ -7,13 +7,13 @@
         <div class="editp">      
             <div class="info">
                 <h2 style="color: rgba(17, 73, 158, 0.818)">Edit Profile</h2>
-                <br><br>
-                <input type="text" name="" placeholder="Name">
-                <input type="email" name="" placeholder="Email">
-                
+                <input v-model="name" type="text" name="" placeholder="Name">
+                <input v-model="mail" type="email" name="" placeholder="Email">
+                <input v-model="gender" type="password" name="" placeholder="Current password">
+                <input type="password" name="" placeholder="New password">
+                <input type="password" name="" placeholder="New password (again)">
                 <button @click="goToProfile" style="float:left;">CANCEL</button>
-                <button @click="goToProfile" style="float:left; margin-left: 4%;">DONE</button>
-               
+                <button @click="updateUser" style="float:left; margin-left: 4%;">DONE</button>
                 
             </div>
             <div class="photo">
@@ -45,9 +45,40 @@
         components: {
             LoggedNavBar,
         },
+        data(){
+            return {
+                name: "",
+                mail: "",
+                password: ""
+            };
+        },
         methods: {
             goToProfile() {
                 this.$router.replace("/profilepage");
+            },
+            updateUser(){
+                const {name, mail, gender} = this;
+
+                const requestOptions = {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        mail,
+                        name,
+                        gender,
+                    })
+                };
+
+                fetch("https://tfb308.herokuapp.com/api/v1/user/" + localStorage.userId, requestOptions)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status !== "200"){
+                        alert("Data Couldn't be Changed!\n"+data.returnObject);
+                        return;
+                    }
+                    alert("Data Updated Successfully!");
+                    this.$router.replace("/profilepage");
+                });
             }
         }
     };
