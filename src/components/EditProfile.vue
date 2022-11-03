@@ -97,6 +97,8 @@
         align-items: center;
         justify-content: center;
         background-color: rgba(47, 20, 109, 0.8);
+        position: absolute;
+        bottom:0px;
     }
     h2{
         margin-left: -70%;
@@ -111,7 +113,7 @@
         background-color: rgba(47, 20, 109, 0.8);
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
-        height:100%;
+        height:100vh;
         margin: 3.2% -1% 0 -1%;
         
         display: flex;
