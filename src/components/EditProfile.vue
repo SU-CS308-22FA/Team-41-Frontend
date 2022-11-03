@@ -19,8 +19,12 @@
             <div class="photo">
                 <img src="../assets/pp.jpg" alt="" class="center">
                 <br><br>
-                <input type="file" name="" id="file" accept="image/*">
-                <label for="file">Edit Photo</label>
+                <div class="editphoto">
+                    <input type="file" name="" id="file" accept="image/*">
+                    <label for="file">Edit Photo</label>
+
+                </div>
+       
             </div>
         </div>
             
@@ -47,10 +51,12 @@
 </script>
 
 <style scoped>
+    
     head{
         box-sizing: border-box;
         padding:0;
         margin:0;
+        background-color:rgba(47, 20, 109, 0.8);
     }
 
     body{
@@ -58,12 +64,14 @@
         height: 100%;
         align-items: center;
         justify-content: center;
+        background-color: rgba(47, 20, 109, 0.8);
     }
     h2{
         margin-left: -70%;
     }
     
     .container{
+        background-color: rgba(47, 20, 109, 0.8);
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
         height:100%;
@@ -107,6 +115,7 @@
 
     input[type="text"],
     input[type="password"],
+    input[type="file"],
     input[type="email"]{
         display:block;
         box-sizing: border-box;
@@ -130,6 +139,7 @@
 
     input[type="text"]:focus,
     input[type="password"]:focus,
+    input[type="file"]:focus,
     input[type="email"]:focus{
         border-bottom: 2px solid;
         border-bottom-right-radius: 20px;
@@ -157,7 +167,9 @@
 
     label{
         display:block;
-        box-sizing: border-box;
+        margin-left: 70%;
+        margin-right: -60%;
+        margin-top:-30%;
         font-size: 20px;
         background-color: rgba(17, 73, 158, 0.818);
         color:white;
@@ -166,11 +178,15 @@
         border-radius:5px;
         transition: all 0.3s;
     
-        margin-left: 30%;
+      
     }
     label:hover{
-        background-color: black;
+        transform: scale(1.1);
         color:white;
+    }
+    .editphoto{
+        width:140px;
+        
     }
 
 
