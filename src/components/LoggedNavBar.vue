@@ -6,7 +6,7 @@
         <div class="navlinks">
             
             <ul>
-                <li><router-link class= "navborder" to="/Home">HOME</router-link></li>
+                <li><router-link class= "navborder" to="/">HOME</router-link></li>
                 <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
                 <li><router-link class= "navborder" to="">CONTACT</router-link></li>
                 <li><router-link class= "navborder" to="/ProfilePage">PROFILE</router-link></li>
