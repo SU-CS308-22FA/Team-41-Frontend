@@ -18,6 +18,7 @@
 
             <div class="edit">
                 <div class="editprofile" @click="goToEdit"><p><a>Edit Profile</a></p></div>
+                <div class="logout" @click="logOut"><p><a>Log Out</a></p></div>
                 <div class="deleteacc" @click="deleteAccount"><p><a>Delete Account</a></p></div>
             </div>
             
@@ -45,6 +46,11 @@ import LoggedNavBar from './LoggedNavBar.vue'
         methods: {
             goToEdit() {
                 this.$router.replace("/editprofile");
+            },
+
+            logOut() {
+                localStorage.clear();
+                this.$router.replace("/login");
             },
             
             deleteAccount(){
