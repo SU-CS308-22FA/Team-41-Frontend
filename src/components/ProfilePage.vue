@@ -18,6 +18,7 @@
 
             <div class="edit">
                 <div><p><a href="">Edit Profile</a></p></div>
+                <div class="deleteacc" @click="deleteAccount"><p><a>Delete Account</a></p></div>
             </div>
             
         </form>
@@ -41,6 +42,28 @@ import LoggedNavBar from './LoggedNavBar.vue'
                 gender: "",
             };
         },
+        methods: {
+            
+            deleteAccount(){
+                const requestOptions = {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId,requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status !== "200") {
+                        alert("Account Deletion Failed!\n"+data.returnObject);
+                        return;
+                    }
+                    alert("Account Successfully Deleted");
+                    localStorage.removeItem("isLogedIn");
+                    localStorage.removeItem("userId");
+
+                    this.$router.replace("/login");
+                })
+            }
+        },
         mounted() {
             if(localStorage.userId) this.userId = localStorage.userId;
 
@@ -52,9 +75,9 @@ import LoggedNavBar from './LoggedNavBar.vue'
                 .then(response => response.json())
                 .then(data => {
                     if(data.status === "200") {
-                        localStorage.setItem("mail", data.returnObject.mail);
-                        localStorage.setItem("name", data.returnObject.name);
-                        localStorage.setItem("gender", data.returnObject.gender);
+                        this.mail = data.returnObject.mail;
+                        this.name = data.returnObject.name;
+                        this.gender = data.returnObject.gender;
 
                     }
                     else if(data.status === "400: USER NOT FOUND!") {
@@ -64,10 +87,6 @@ import LoggedNavBar from './LoggedNavBar.vue'
                         alert("Invalid cridentials!");
                     }
                 });
-
-            if(localStorage.name) this.name = localStorage.name;
-            if(localStorage.mail) this.mail = localStorage.mail;
-            if(localStorage.gender) this.gender = localStorage.gender;
         },
     };
 </script>
@@ -130,8 +149,17 @@ import LoggedNavBar from './LoggedNavBar.vue'
         justify-content: space-between;
     }
 
+    
+
     .edit a {
         color:rgba(17, 73, 158, 0.818);
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.1s ease;
+    }
+
+    .edit .deleteacc a{
+        color: red;
         text-decoration: none;
         font-weight: bold;
         transition: 0.1s ease;
