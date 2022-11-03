@@ -1,3 +1,4 @@
+
 <template>
     <LoggedNavBar></LoggedNavBar>
 
@@ -6,29 +7,16 @@
             
         <div class="editp">      
             <div class="info">
-                <h2 style="color: rgba(17, 73, 158, 0.818)">Edit Profile</h2>
+                <h2 style="color: rgba(17, 73, 158, 0.818)">Change Password</h2>
                 <br><br>
-                <input type="text" name="" placeholder="Name">
-                <input type="email" name="" placeholder="Email">
-                
+                <input type="password" name="" placeholder="Current password">
+                <input type="password" name="" placeholder="New password">
+                <input type="password" name="" placeholder="New password (again)">
                 <button @click="goToProfile" style="float:left;">CANCEL</button>
                 <button @click="goToProfile" style="float:left; margin-left: 4%;">DONE</button>
-               
                 
             </div>
-            <div class="photo">
-                <img src="../assets/pp.jpg" alt="" class="center">
-                <br><br>
-                <div class="editphoto">
-                    <input type="file" name="" id="file" accept="image/*">
-                    <label for="file">Edit Photo</label>
-                    <button class="change">Change Password</button>
-                    <div><p><router-link class= "navborder" to="/ChangePassword">Change Password</router-link></p></div>
 
-                </div>
-                
-       
-            </div>
         </div>
             
             
@@ -135,7 +123,7 @@
 
     }
     h2{
-        margin-left: -40%;
+        margin-left: -10%;
         margin-top: 5%;
         margin-bottom: 20%;
     }

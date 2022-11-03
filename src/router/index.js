@@ -3,7 +3,8 @@ import LogIn from "../components/Login.vue";
 import SignUp from "../components/SignUp.vue";
 import HomePage from "../components/Home.vue";
 import ProfilePage from "../components/ProfilePage.vue";
-import EditProfile from "../components/EditProfile.vue"
+import EditProfile from "../components/EditProfile.vue";
+import ChangePassword from "../components/ChangePassword.vue";
 
 
 
@@ -33,6 +34,11 @@ const routes = [
         path: "/editprofile",
         name: "EditProfile",
         component: EditProfile
+    },
+    {
+        path:"/ChangePassword",
+        name:"ChangePassword",
+        component: ChangePassword
     }
 
 ]
