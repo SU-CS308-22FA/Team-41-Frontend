@@ -104,12 +104,12 @@
         border-radius: 8px;
         text-align: left;
 
-        background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
+        /*background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
         -webkit-animation: 10s linear 0s normal none infinite animate;
         -moz-animation: 10s linear 0s normal none infinite animate;
         -ms-animation: 10s linear 0s normal none infinite animate;
         -o-animation: 10s linear 0s normal none infinite animate;
-        animation: 10s linear 0s normal none infinite animate;
+        animation: 10s linear 0s normal none infinite animate;*/
     }
     
     @-webkit-keyframes animate {
@@ -173,6 +173,11 @@
         text-transform: uppercase;
         font-size: medium;
     }
+    .login:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    
 
     .forget{
         display:flex;
@@ -188,6 +193,7 @@
 
     .forget a:hover{
         color:rgb(5, 5, 74);
+        cursor: pointer;
     }
 
     .acc{
@@ -221,5 +227,6 @@
 
     .admin a:hover{
         color:rgb(5, 5, 74);
+        cursor: pointer;
     }
 </style>

@@ -6,10 +6,10 @@
         <div class="navlinks">
             
             <ul>
-                <li><router-link class= "navborder" to="/Home">Home</router-link></li>
-                <li><router-link class= "navborder" to="">About Us</router-link></li>
-                <li><router-link class= "navborder" to="">Contact</router-link></li>
-                <li><router-link class= "navborder" to="/ProfilePage">Profile</router-link></li>
+                <li><router-link class= "navborder" to="/Home">HOME</router-link></li>
+                <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
+                <li><router-link class= "navborder" to="">CONTACT</router-link></li>
+                <li><router-link class= "navborder" to="/ProfilePage">PROFILE</router-link></li>
             </ul>
         </div>
     </div>
@@ -45,6 +45,8 @@
         font-size: larger;
         float:right;
         padding-right: 30px;
+        color: white;
+        text-decoration: none;
         cursor: pointer;
     }
 
@@ -52,6 +54,13 @@
         display: inline-block;
         padding-right: 30px;
         cursor: pointer;
+        color: white;
+    }
+    .navborder{
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        
     }
 
     .navlinks ul li router-link{

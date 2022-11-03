@@ -171,10 +171,12 @@ import LoggedNavBar from './LoggedNavBar.vue'
         color: red;
         text-decoration: none;
         font-weight: bold;
+        cursor: pointer;
         transition: 0.1s ease;
     }
 
     .edit a:hover{
         color:rgb(5, 5, 74);
+        cursor: pointer;
     }
 </style>
