@@ -4,8 +4,11 @@
         <form class="signup-form" @submit.prevent="signup">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
             
-            <label for="name">Name</label>
-            <input name="name" v-model="name" placeholder="Enter name" type="text">
+            <label for="name">First Name</label>
+            <input name="name" v-model="name" placeholder="Enter Fisrt Name" type="text">
+
+            <label for="name">Last Name</label>
+            <input name="name" v-model="name" placeholder="Enter Last Name" type="text">
         
             <label for="mail">Mail</label>
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
@@ -13,17 +16,48 @@
             <label for="password">Password</label>
             <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password" >
         
+            <label for="birthday">Birthdate</label>
+            <input type="date" name="birthdate" v-model="birthdate">
+
+            <a></a>
+
             <div>
                 <input type="radio" id="male" value="Male" v-model="gender">
                 <label for="male">Male</label>
-                
+                &nbsp;
                 <input type="radio" id="Female" value="female" v-model="gender">
                 <label for="female">Female</label>
-
+                &nbsp;
                 <input type="radio" id="Other" value="other" v-model="gender">
                 <label for="other">Other</label>
-
             </div>
+
+            <a></a>
+
+            <label for="team">Choose your team</label>
+            <select name="team" v-model="team" >
+                <option value="Trabzonspor">Trabzonspor</option>
+                <option value="Ankaragücü">Ankaragücü</option>
+                <option value="Fenerbahçe">Fenerbahçe</option>
+                <option value="Ümraniyespor">Ümraniyespor</option>
+                <option value="Konyaspor">Konyaspor</option>
+                <option value="İstanbul Başakşehir">İstanbul Başakşehir</option>
+                <option value="İstanbulspor">İstanbulspor</option>
+                <option value="Alanyaspor">Alanyaspor</option>
+                <option value="Beşiktaş">Beşiktaş</option>
+                <option value="Antalyaspor">Antalyaspor</option>
+                <option value="Fatih Karagümrük">Fatih Karagümrük</option>
+                <option value="Sivasspor">Sivasspor</option>
+                <option value="Kasımpaşa">Kasımpaşa</option>
+                <option value="Hatayspor">Hatayspor</option>
+                <option value="Galatasaray">Galatasaray</option>
+                <option value="Kayserispor">Kayserispor</option>
+                <option value="Gaziantep">Gaziantep</option>
+                <option value="Çaykur Rizespor">Çaykur Rizespor</option>
+                <option value="Göztepe">Göztepe</option>
+                <option value="Yeni Malatyaspor">Yeni Malatyaspor</option>
+            </select>
+            
             <button class="signup">
                 <a>REGISTER</a>
             </button>
@@ -46,7 +80,9 @@
                 mail: "",
                 name: "",
                 password: "",
+                birthdate: "",
                 gender: "",
+                team: "",
             };
         },
         methods: {
@@ -110,7 +146,7 @@
         
         background-color: ghostwhite;
         width: 450px;
-        height: 550px;
+        height: 80%;
         padding:30px;
         margin: 1.1em 1em;
         display:grid;
@@ -167,6 +203,30 @@
         border-radius: 7px;
         padding:6px;
         margin-top: 3px;
+    }
+    input[type=date]{
+        margin-bottom: 20px;
+        border-radius: 7px;
+        padding:6px;
+        margin-top: 7px;
+    }
+    input[type=radio]{
+        margin-bottom: 20px;
+        border-radius: 7px;
+        padding:6px;
+        margin-top: 7px;
+    }
+    select{
+        margin-bottom: 20px;
+        border-radius: 7px;
+        padding:6px;
+        margin-top: 7px;
+    }
+    option{
+        margin-bottom: 20px;
+        border-radius: 7px;
+        padding:6px;
+        margin-top: 7px;
     }
 
 
