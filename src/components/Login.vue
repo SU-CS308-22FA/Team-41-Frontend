@@ -5,15 +5,20 @@
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
 
             <label for="mail">Mail</label>
-            <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
+            <input name="mail" v-model="mail" placeholder="Enter mail" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required on-error="Invalid email address">
 
             <label for="password">Password</label>
-            <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password" >
+            <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password">
 
             <button class="login">
                 <a>Login</a>
             </button>
-            
+
+            <div class="error">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{errorMsg}}
+            </div>
+
             <div class="admin">
                 <div><p><a>Login as admin</a></p></div>
             </div>
@@ -42,12 +47,20 @@
                 password: "",
                 isLoged: false,
                 userId: "",
+                errorMsg: "",
             };
         },
         methods: {
-             login() {
+            login() {
                 const { mail, password } = this;
-                
+
+                var x = document.querySelector(".error");
+                x.style.display = "none";
+                this.errorMsg = "";
+
+                localStorage.userError = "";
+                localStorage.passwordError = "";
+                localStorage.otherError = "";
                 localStorage.pressed = true;
                 
                 const requestOptions = {
@@ -59,7 +72,16 @@
                 then((res) => res.json()).
                 then((res2) => {
                     if(res2.status !== "200") {
-                        alert("Login Failed\n"+res2.status)
+                        if(res2.status === "400: USER NOT FOUND!") {
+                            this.errorMsg = "Email not found!";
+                        } else if (res2.status === "400: WRONG PASSWORD!"){
+                            this.errorMsg = "Wrong Password!";
+                        } else {
+                            this.errorMsg = res2.status;
+                        }
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                        }
                         return;
                     }
                     window.localStorage.setItem("isLogedIn", true);
@@ -67,7 +89,7 @@
                     this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
                 });
             }
-        }
+        },
     };
 </script>
 
@@ -230,5 +252,30 @@
     .admin a:hover{
         color:rgb(5, 5, 74);
         cursor: pointer;
+    }
+
+    .error {
+        display: none;
+        padding: 20px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin-bottom: 15px;
+    }
+
+        /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        /* When moving the mouse over the close button */
+    .closebtn:hover {
+        color: black;
     }
 </style>
