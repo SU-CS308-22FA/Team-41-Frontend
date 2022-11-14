@@ -56,6 +56,7 @@
                 <option value="Çaykur Rizespor">Çaykur Rizespor</option>
                 <option value="Göztepe">Göztepe</option>
                 <option value="Yeni Malatyaspor">Yeni Malatyaspor</option>
+                <option value="-">I dont support</option>
             </select>
             
             <button class="signup">
