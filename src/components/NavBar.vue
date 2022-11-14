@@ -8,7 +8,7 @@
             <ul>
                 <li><router-link class= "navborder" to="/">HOME</router-link></li>
                 <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
-                <li><router-link class= "navborder" to="">CONTACT</router-link></li>
+                <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
                 <li><router-link class= "navborder" to="/login">LOGIN</router-link></li>
             </ul>
         </div>
