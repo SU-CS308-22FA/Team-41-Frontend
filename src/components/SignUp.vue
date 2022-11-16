@@ -6,9 +6,6 @@
             
             <label for="name">First Name</label>
             <input name="name" v-model="name" placeholder="Enter Fisrt Name" type="text">
-
-            <label for="name">Last Name</label>
-            <input name="name" v-model="name" placeholder="Enter Last Name" type="text">
         
             <label for="mail">Mail</label>
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">

@@ -6,10 +6,11 @@
         <div class="navlinks">
             
             <ul>
-                <li><router-link class= "navborder" to="/">HOME</router-link></li>
+                <li><router-link class= "navborder" to="/mainFeed">HOME</router-link></li>
                 <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
-                <li><router-link class= "navborder" to="/login">LOGIN</router-link></li>
+                <li v-if="!isLoggedIn()"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
+                <li v-if="isLoggedIn()"><router-link class= "navborder" to="/profilepage">PROFILE</router-link></li>
             </ul>
         </div>
     </div>
@@ -19,6 +20,13 @@
     export default {
         name: 'NavBar',
         components: {},
+        methods: {
+            isLoggedIn(){
+                if(localStorage.isLogedIn === undefined) return false;
+                return true;
+            },
+        },
+        
     };
 </script>
 
