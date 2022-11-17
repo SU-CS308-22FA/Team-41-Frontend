@@ -2,39 +2,19 @@
     <div class="whole">
         <SideBar></SideBar>
     <div class="container">
-        <div class="match">
+        <div v-for="item in items" :key="item.referee" class="match">
             <div class ="ht">
-                Fenerbahce
+                {{item.home}}
             </div>
             <div class="inf">
-                19.00
+                {{item.time}} <br>
+                {{item.referee}}
             </div>
             <div class="at">
-                Galatasaray
+                {{item.away}}
             </div>
         </div>
-        <div class="match">
-            <div class ="ht">
-                Fenerbahce
-            </div>
-            <div class="inf">
-                19.00
-            </div>
-            <div class="at">
-                Galatasaray
-            </div>
-        </div>
-        <div class="match">
-            <div class ="ht">
-                Fenerbahce
-            </div>
-            <div class="inf">
-                19.00
-            </div>
-            <div class="at">
-                Galatasaray
-            </div>
-        </div>
+        
     </div>
     </div>
 </template>
@@ -48,6 +28,24 @@ import SideBar from './SideBar.vue';
         components: {
             SideBar
         },
+        data(){
+            return {
+                items: [
+                {
+                    home: "Fenerbahce",
+                    away: "Galatasaray",
+                    time: "19.00",
+                    referee: "Zorbay Kucuk"
+                },
+                {
+                    home: "Hangi Kredi Konyaspor",
+                    away: "Besiktas",
+                    time: "21.00",
+                    referee: "Cuneyt Cakir"
+                },
+            ]
+            }
+        },
     };
 
 </script>
@@ -58,7 +56,7 @@ import SideBar from './SideBar.vue';
         display: flex;
     }
     .container{
-        width: 35%;
+        width: 39%;
         margin-left: 10%;
     }
     .match{
@@ -72,5 +70,18 @@ import SideBar from './SideBar.vue';
     .match:hover{
         border: 1px solid blue;
     }
+
+    .ht{
+        width:  33%;
+        
+    }
+    .at{
+        width: 34%;
+    }
+    .inf{
+        width:  33%;
+        
+    }
+
 
 </style>
