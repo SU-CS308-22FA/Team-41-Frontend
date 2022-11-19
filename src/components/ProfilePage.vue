@@ -1,5 +1,5 @@
 <template>
-    <LoggedNavBar></LoggedNavBar>
+    <NavBar></NavBar>
     <div class="container">
         <form class="user-info">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Personal Information</h2>
@@ -27,13 +27,13 @@
 </template>
 
 <script>
-import LoggedNavBar from './LoggedNavBar.vue'
+import NavBar from './NavBar.vue'
 
     export default {
         path: '/profilepage',
         name: 'ProfilePage',
         components: {
-            LoggedNavBar,
+            NavBar,
         },
         data() {
             return {

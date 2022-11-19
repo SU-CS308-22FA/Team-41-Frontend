@@ -6,52 +6,60 @@ import ProfilePage from "../components/ProfilePage.vue";
 import EditProfile from "../components/EditProfile.vue";
 import ChangePassword from "../components/ChangePassword.vue";
 import FeedBack from "../components/FeedBack";
-
-
-
+import MainFeed from "../components/MainFeed";
+import TodaysMatches from "../components/TodaysMatches"
 
 const routes = [
-    {
-        path: "/",
-        name: "HomePage",
-        component: HomePage
-    },
-    {
-        path: "/login",
-        name: "LogIn",
-        component: LogIn
-    },
-    {
-        path: "/signup",
-        name: "SignUp",
-        component: SignUp
-    },
-    {
-        path: "/profilepage",
-        name: "ProfilePage",
-        component: ProfilePage
-    },
-    {
-        path: "/editprofile",
-        name: "EditProfile",
-        component: EditProfile
-    },
-    {
-        path:"/ChangePassword",
-        name:"ChangePassword",
-        component: ChangePassword
-    },
-    {
-        path:"/feedBack",
-        name:"FeedBack",
-        component: FeedBack
-    }
+  {
+    path: "/",
+    name: "HomePage",
+    component: HomePage,
+  },
+  {
+    path: "/login",
+    name: "LogIn",
+    component: LogIn,
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp,
+  },
+  {
+    path: "/profilepage",
+    name: "ProfilePage",
+    component: ProfilePage,
+  },
+  {
+    path: "/editprofile",
+    name: "EditProfile",
+    component: EditProfile,
+  },
+  {
+    path: "/ChangePassword",
+    name: "ChangePassword",
+    component: ChangePassword,
+  },
+  {
+    path: "/feedBack",
+    name: "FeedBack",
+    component: FeedBack,
+  },
+  {
+    path: "/mainFeed",
+    name: "MainFeed",
+    component: MainFeed,
+  },
+  {
+    path: "/todaysMatches",
+    name: "TodaysMatches",
+    component: TodaysMatches,
+  },
+];
 
-]
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
 
-const router =createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes
-})
-
-export default router
+export default router;
