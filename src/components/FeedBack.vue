@@ -53,6 +53,7 @@
     .container{
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
+        width: 136.3vh;
         height:100vh;
         margin: 50px -10px 0 -10px;
         text-align: center;

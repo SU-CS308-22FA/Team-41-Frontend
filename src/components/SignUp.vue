@@ -133,7 +133,7 @@
         background-size: cover;
         height:100vh;
         margin: 50px -10px 0 -10px;
-        
+        width: 136.3vh;
         text-align: center;
         display: flex;
         padding-left: 60%;

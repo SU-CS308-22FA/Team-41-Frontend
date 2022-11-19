@@ -68,6 +68,7 @@
         background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
         height:100vh;
+        width: 136.3vh;
         margin: 3.2% -1% 0 -1%;
         
         display: flex;
