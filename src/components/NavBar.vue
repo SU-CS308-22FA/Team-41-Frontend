@@ -10,6 +10,7 @@
                 <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
                 <li><router-link class= "navborder" to="/login">LOGIN</router-link></li>
+                <li><router-link class= "navborder" to="/UserHome">USERHOME</router-link></li>
             </ul>
         </div>
     </div>

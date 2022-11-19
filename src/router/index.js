@@ -6,7 +6,7 @@ import ProfilePage from "../components/ProfilePage.vue";
 import EditProfile from "../components/EditProfile.vue";
 import ChangePassword from "../components/ChangePassword.vue";
 import FeedBack from "../components/FeedBack";
-
+import UserHome from "../components/UserHome";
 
 
 
@@ -45,6 +45,11 @@ const routes = [
         path:"/feedBack",
         name:"FeedBack",
         component: FeedBack
+    },
+    {
+        path:"/UserHome",
+        name:"UserHome",
+        component: UserHome
     }
 
 ]
