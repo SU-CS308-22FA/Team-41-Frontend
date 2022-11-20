@@ -7,7 +7,7 @@
             
             <ul>
                 <li><router-link class= "navborder" to="/mainFeed">HOME</router-link></li>
-                <li><router-link class= "navborder" to="">ABOUT US</router-link></li>
+                <li><router-link class= "navborder" to="/AdminHome">ABOUT US</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
                 <li v-if="!isLoggedIn()"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
                 <li v-if="isLoggedIn()"><router-link class= "navborder" to="/profilepage">PROFILE</router-link></li>
