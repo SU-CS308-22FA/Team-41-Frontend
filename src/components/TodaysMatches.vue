@@ -1,56 +1,75 @@
 <template>
     <div class="whole">
         <SideBar></SideBar>
-    <div class="container">
-        <div v-for="item in items" :key="item.referee" class="match">
-            <div class ="ht">
-                {{item.home}}
+        
+        <div class="container">
+            <div v-if="items.length === 0 && finishedLoading === true">
+                No Matches Found!
             </div>
-            <div class="inf">
-                {{item.time}} <br>
-                {{item.referee}}
+            <div v-else-if="items.length === 0 || finishedLoading === false">
+                <loadingPage></loadingPage>
             </div>
-            <div class="at">
-                {{item.away}}
+            <div v-else>
+                <div v-for="item in items" :key="item.referee" class="match">
+                    <div class ="ht">
+                        {{item.homeTeam}}
+                    </div>
+                    <div class="inf">
+                        {{item.dateAndTime.substring(11, 16)}} <br>
+                        {{item.referee}}
+                    </div>
+                    <div class="at">
+                        {{item.awayTeam}}
+                    </div>
+                </div>
             </div>
         </div>
-        
-    </div>
     </div>
 </template>
 
 
 <script>
-import SideBar from './SideBar.vue';
+    import SideBar from './SideBar.vue';
+    import loadingPage from './loadingPage';
     export default {
         name: "TodaysMatches",
         path: "todaysMatches",
         components: {
-            SideBar
+            SideBar,
+            loadingPage
         },
         data(){
             return {
-                items: [
-                {
-                    home: "Fenerbahce",
-                    away: "Galatasaray",
-                    time: "19.00",
-                    referee: "Zorbay Kucuk"
-                },
-                {
-                    home: "Hangi Kredi Konyaspor",
-                    away: "Besiktas",
-                    time: "21.00",
-                    referee: "Cuneyt Cakir"
-                },
-            ]
+                items: [],
+                finishedLoading: false,
+            }
+        },
+        mounted() {
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            };
+            var currentdate = new Date();
+            var datetime = currentdate.getFullYear() + "-" + currentdate.getMonth() + "-" + currentdate.getDay();
+            //var datetime = "2022-08-07";      //denemelik
+            for (let i = 1; i <= 342; i++) {
+                fetch("https://tfb308.herokuapp.com/api/v1/match/" + i.toString(), requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "200" && data.returnObject.dateAndTime.substring(0, 10) === datetime) {
+                        this.items.push(data.returnObject);
+                    }
+                    if(i === 342) {
+                        this.finishedLoading = true;
+                    }
+                });
             }
         },
     };
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
     .whole{
         display: flex;
@@ -59,6 +78,7 @@ import SideBar from './SideBar.vue';
         width: 39%;
         margin-left: 10%;
     }
+
     .match{
         display: flex;
         justify-content: space-between;
