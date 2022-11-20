@@ -8,6 +8,7 @@ import ChangePassword from "../components/ChangePassword.vue";
 import FeedBack from "../components/FeedBack";
 import MainFeed from "../components/MainFeed";
 import TodaysMatches from "../components/TodaysMatches"
+import TeamsList from "../components/TeamsList"
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: "/todaysMatches",
     name: "TodaysMatches",
     component: TodaysMatches,
+  },
+  {
+    path: "/teamsList",
+    name: "TeamsList",
+    component: TeamsList,
   },
 ];
 
