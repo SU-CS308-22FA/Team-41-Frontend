@@ -11,7 +11,13 @@
             </div>
             <div v-else>
                 <div v-for="item in items[0]" :key="item.id">
-                    <router-link to="" class="team">
+                    <router-link class="team" :to="{
+                            name: 'TeamPage',
+                            params: {
+                                teamId: item.id
+                            }
+                        }"
+                    >
                         <div class="logo">
                             <img :src=item.logoURL>
                         </div>

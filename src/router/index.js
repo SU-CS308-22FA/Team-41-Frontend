@@ -9,6 +9,8 @@ import FeedBack from "../components/FeedBack";
 import MainFeed from "../components/MainFeed";
 import TodaysMatches from "../components/TodaysMatches"
 import TeamsList from "../components/TeamsList"
+import TeamPage from "../components/TeamPage"
+
 
 const routes = [
   {
@@ -60,6 +62,12 @@ const routes = [
     path: "/teamsList",
     name: "TeamsList",
     component: TeamsList,
+  },
+  {
+    path: "/teamPage/:teamId",
+    name: "TeamPage",
+    component: TeamPage,
+    props: true
   },
 ];
 
