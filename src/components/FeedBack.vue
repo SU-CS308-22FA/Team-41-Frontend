@@ -12,6 +12,7 @@
             <option value="schedule">Schedule</option>
             <option value="other">Other</option>
             </select>
+            <br>
             <label for="subject">Subject</label>
             <textarea v-model="body" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
