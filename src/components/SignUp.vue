@@ -4,8 +4,8 @@
         <form class="signup-form" @submit.prevent="signup">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
             
-            <label for="name">First Name</label>
-            <input name="name" v-model="name" placeholder="Enter Fisrt Name" type="text">
+            <label for="name">Name</label>
+            <input name="name" v-model="name" placeholder="Name" type="text">
         
             <label for="mail">Mail</label>
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
@@ -33,27 +33,7 @@
 
             <label for="team">Choose your team</label>
             <select name="team" v-model="team" >
-                <option value="Trabzonspor">Trabzonspor</option>
-                <option value="Ankaragücü">Ankaragücü</option>
-                <option value="Fenerbahçe">Fenerbahçe</option>
-                <option value="Ümraniyespor">Ümraniyespor</option>
-                <option value="Konyaspor">Konyaspor</option>
-                <option value="İstanbul Başakşehir">İstanbul Başakşehir</option>
-                <option value="İstanbulspor">İstanbulspor</option>
-                <option value="Alanyaspor">Alanyaspor</option>
-                <option value="Beşiktaş">Beşiktaş</option>
-                <option value="Antalyaspor">Antalyaspor</option>
-                <option value="Fatih Karagümrük">Fatih Karagümrük</option>
-                <option value="Sivasspor">Sivasspor</option>
-                <option value="Kasımpaşa">Kasımpaşa</option>
-                <option value="Hatayspor">Hatayspor</option>
-                <option value="Galatasaray">Galatasaray</option>
-                <option value="Kayserispor">Kayserispor</option>
-                <option value="Gaziantep">Gaziantep</option>
-                <option value="Çaykur Rizespor">Çaykur Rizespor</option>
-                <option value="Göztepe">Göztepe</option>
-                <option value="Yeni Malatyaspor">Yeni Malatyaspor</option>
-                <option value="-">I dont support</option>
+                <option v-for="item in items" :key="item.id" :value="item.name"> {{ item.name }} </option>
             </select>
             
             <button class="signup">
@@ -81,12 +61,26 @@
                 birthdate: "",
                 gender: "",
                 team: "",
+                items: [],
             };
+        },
+        mounted() {
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            };
+            fetch("https://tfb308.herokuapp.com/api/v1/team/all", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.items = data.returnObject;
+                }
+            });
         },
         methods: {
             signup() {
-                const { mail, name, password, gender } = this;
-                
+                const { mail, name, password, gender, birthdate, team } = this;
+                var date = birthdate.replaceAll("/", "-");
 
                 const requestOptions = {
                     method: "POST",
@@ -96,6 +90,8 @@
                         name,
                         password,
                         gender,
+                        date,
+                        team,
                     })
                 };
                 fetch("https://tfb308.herokuapp.com/api/v1/user/signup", requestOptions)
