@@ -1,145 +1,273 @@
 
 <template>
-    <LoggedNavBar></LoggedNavBar>
+    <NavBar></NavBar>
+    <div class="side-menu">
+        <br>
+        <ul>
+            <li>Dashboard</li>
+            <li>Users</li>
+            <li>Referees</li>
+            <li>Referee Assignment</li>
+            <li>Teams</li>
+            <li>Schedule</li>
+            <li>Feedback</li>
+            <li>Settings</li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        <h1>214</h1>
+                        <h3>Users</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="../assets/user.png" width=55px height=55px alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>33</h1>
+                        <h3>Referees</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="../assets/referee.png" width=55px height=55px alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>4</h1>
+                        <h3>Matches</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="../assets/calendar.png" width=50px height=50px alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>11</h1>
+                        <h3>Feedback</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="../assets/feedback.png" width=65px height=65px alt="">
+                    </div>
+                </div>
+            
+            </div>
+            <div class="content-2">
+               <div class="week">
+                <div class="title">
+                    <h2>This Week's Matches</h2>
+                    <a href="#" class="btn">View All</a>
+                </div>
+                <table>
+                    <tr>
+                        <td>Galatasaray</td>
+                        <td>7</td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td>Fenerbahçe</td>
+                        <td>Cüneyt Çakır</td>
+                        <td>Nou Camp</td>
+                        <td>21.02.2022</td>
+                        <td><a href="#" class="btn">View</a></td>
 
-    <div class="row">
-        <div class="panel">
-            <br><br>
-            <h2>TFP Administration System</h2> 
-        </div>
+                    </tr>
+                    <tr>
+                        <td>Başakşehir</td>
+                        <td>2</td>
+                        <td>-</td>
+                        <td>3</td>
+                        <td>Trabzonspor</td>
+                        <td>Fırat Aydınus</td>
+                        <td>Allianz Arena</td>
+                        <td>01.03.2022</td>
+                        <td><a href="#" class="btn">View</a></td>
 
+                    </tr>
+                </table>
+               </div> 
+               <div class="reports">
+                <div class="title">
+                    <h2>User Reports</h2>
+                    <a href="#" class="btn">View All</a>
+                </div>
+                <table>
+                    <tr>
+                    <th>Emran1907:</th>
+                    <td>Cüney Çakır ben senin **** ****</td>
+                    <td><a href="#" class="btn">Ban</a></td>
+                    </tr>
+                    <tr>
+                    <th>cinarOguz:</th>
+                    <td>Altay çok iyi kaleci</td>
+                    <td><a href="#" class="btn">Ban</a></td>
+                    </tr>
 
-        <div class="column">
-            <button class="referee">
-                <a>Referee Assignment System</a> 
-            </button>
-        </div>
-        <div class="column">
-            <button class="schedule">
-                <a>Schedule Planning System</a>
-            </button>
-        </div>
-        <div class="column">
-            <button class="feedback">
-                <a>Show Feedback</a>
-            </button>
-        </div>
-        <div class="column">
-            <button class="report">
-                <a>Report Evaluation</a>
-            </button>
+                </table>
+
+               </div>
+            </div>
         </div>
     </div>
+
 
 
 </template>
 
 <script>
-    import LoggedNavBar from './LoggedNavBar.vue'
+    import NavBar from './NavBar.vue'
 
     export default {
         path: '/AdminHome',
         name: 'AdminHome',
         components: {
-            LoggedNavBar,
+            NavBar,
         }
     };
 </script>
 
 <style scoped>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: left;
+}
 
-    .row{
+body{
+    min-height: 100vh;
+    max-width: 10vh;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+h1,h2{
+    color:rgba(218, 38, 152, 0.978);
+}
+h3{
+    color: rgba(16, 16, 16, 0.532);
+}
 
-        background-color: rgba(25, 57, 152, 0.608);
-        margin-top: 1%;
-        height: 84vh;
-        margin-left: -1%;
-        margin-right: -1%
-    }
-    .column {
-    float: left;
-    width: 25%;
-    margin-top: 10%;
-    }
-    .panel{
-        margin-top:3.3%;
-    }
-    .referee{
-        background-color: rgba(17, 73, 158, 0.818);
-        padding:20px;
-        border:none;
-   
-        border-radius: 5px;
-        transition: 0.5s ease;
-    }
+.side-menu{
+    position: fixed;
+    background: rgba(31, 28, 101, 0.818);
+    width:31.5vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 6.5vh;
+    margin-left: -1%;
+    
+    flex-direction: column;
+}
 
-    .referee a{
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: medium;
-    }
-    .referee:hover{
-        cursor: pointer;
+.side-menu li{
+    font-size: 24px;
+    padding: 15px 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.side-menu li:hover{
+    background: white;
+    color: rgba(31, 28, 101, 0.818);
+    cursor: pointer;
+    font-weight: bold;
+}
+.container{
+    position: absolute;
+    right:-28px;
+    width: 85vw;
+    height: 85.2vh;
+    background: rgba(185, 185, 185, 0.725);
+    margin-right: 3.7vh;
+    margin-top: 6.7vh;
+    
+    
+    
+    
+}
+.container .content{
+    position:relative;
+    margin-top:5vh;
 
-    }
-    .schedule{
-        background-color: rgba(17, 73, 158, 0.818);
-        padding:20px;
-        border:none;
-   
-        border-radius: 5px;
-        transition: 0.5s ease;
-    }
+}
 
-    .schedule a{
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: medium;
-    }
-    .schedule:hover{
-        cursor: pointer;
-
-    }
-    .feedback{
-        background-color: rgba(17, 73, 158, 0.818);
-        padding:20px;
-        border:none;
-   
-        border-radius: 5px;
-        transition: 0.5s ease;
-    }
-
-    .feedback a{
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: medium;
-    }
-    .feedback:hover{
-        cursor: pointer;
-
-    }
-    .report{
-        background-color: rgba(17, 73, 158, 0.818);
-        padding:20px;
-        border:none;
-   
-        border-radius: 5px;
-        transition: 0.5s ease;
-    }
-
-    .report a{
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: medium;
-    }
-    .report:hover{
-        cursor: pointer;
-
-    }
-
+.container .content .cards{
+    padding: 20px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.container .content .cards .card{
+    width:230px;
+    height:150px;
+    background: white;
+    margin: 0px 0px;
+    padding: 10px 0 0 20px;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.18);
+}
+.container .content .content-2{
+    min-height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: 3vh;
+    margin-right: 2vh;
+    margin-top: 5vh;
+}
+.container .content .content-2 .week{
+    min-height: 40vh;
+    flex: 5;
+    background: white;
+    margin: 0 25px 25px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.18);
+    display: flex;
+    flex-direction: column;
+}
+.container .content .content-2 .reports{
+    flex: 3;
+    background: white;
+    min-height: 40vh;
+    margin: 0 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.18);
+}
+.btn{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    
+}
+.btn:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 8px;
+    border: 2px solid rgba(218, 38, 152, 0.978);
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 10px;
+    border-bottom: 2px solid #9999;
+}
+.table{
+    padding: 10px;
+}
+th, td{
+    text-align: left;
+    padding: 8px;
+}
 
 </style>
