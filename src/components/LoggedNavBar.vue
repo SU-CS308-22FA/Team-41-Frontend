@@ -26,6 +26,7 @@
     .nav{
         background-color: rgba(31, 28, 101, 0.818);
         height: 110px;
+        width: 101.2%;
         color:white;
         display:flex;
         justify-content: space-between;

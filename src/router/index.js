@@ -7,10 +7,11 @@ import EditProfile from "../components/EditProfile.vue";
 import ChangePassword from "../components/ChangePassword.vue";
 import FeedBack from "../components/FeedBack";
 import MainFeed from "../components/MainFeed";
-import TodaysMatches from "../components/TodaysMatches"
+import TodaysMatches from "../components/TodaysMatches";
+import AdminHome from "../components/AdminHome"
 import TeamsList from "../components/TeamsList"
 import TeamPage from "../components/TeamPage"
-
+import ShowFeedback from "../components/ShowFeedback"
 
 const routes = [
   {
@@ -59,6 +60,11 @@ const routes = [
     component: TodaysMatches,
   },
   {
+    path: "/AdminHome",
+    name: "AdminHome",
+    component: AdminHome,
+  },
+  {
     path: "/teamsList",
     name: "TeamsList",
     component: TeamsList,
@@ -68,6 +74,11 @@ const routes = [
     name: "TeamPage",
     component: TeamPage,
     props: true
+  }.
+  {
+    path: "/ShowFeedback",
+    name: "ShowFeedback",
+    component: ShowFeedback,
   },
 ];
 
