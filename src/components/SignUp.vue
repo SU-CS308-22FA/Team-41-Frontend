@@ -79,8 +79,9 @@
         },
         methods: {
             signup() {
-                const { mail, name, password, gender, birthdate, team } = this;
-                var date = birthdate.replaceAll("/", "-");
+                const { mail, name, password, gender } = this;
+                const fanTeam = this.team;
+                var birthdate = this.birthdate.replaceAll("/", "-");
 
                 const requestOptions = {
                     method: "POST",
@@ -90,8 +91,8 @@
                         name,
                         password,
                         gender,
-                        date,
-                        team,
+                        birthdate,
+                        fanTeam,
                     })
                 };
                 fetch("https://tfb308.herokuapp.com/api/v1/user/signup", requestOptions)

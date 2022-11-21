@@ -74,7 +74,7 @@ const routes = [
     name: "TeamPage",
     component: TeamPage,
     props: true
-  }.
+  },
   {
     path: "/ShowFeedback",
     name: "ShowFeedback",
