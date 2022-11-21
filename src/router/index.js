@@ -10,6 +10,7 @@ import MainFeed from "../components/MainFeed";
 import TodaysMatches from "../components/TodaysMatches";
 import AdminHome from "../components/AdminHome"
 import TeamsList from "../components/TeamsList"
+import TeamPage from "../components/TeamPage"
 import ShowFeedback from "../components/ShowFeedback"
 
 const routes = [
@@ -68,6 +69,12 @@ const routes = [
     name: "TeamsList",
     component: TeamsList,
   },
+  {
+    path: "/teamPage/:teamId",
+    name: "TeamPage",
+    component: TeamPage,
+    props: true
+  }.
   {
     path: "/ShowFeedback",
     name: "ShowFeedback",
