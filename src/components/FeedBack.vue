@@ -1,23 +1,22 @@
 <template>
     <NavBar></NavBar>
     <div class="container">
-        <form class="feedback-form">
+        <form class="feedback-form" @submit.prevent="sendFeedback">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Feedback Box</h2>
 
-            <label for="name">Name</label>
-            <input name="name" v-model="name" placeholder="Enter name" type="text">
+            
 
             <label for="topic">Topic</label>
-            <select id="topic" name="topic" type="topic">
+            <select id="topic" name="topic" type="topic" v-model="topic">
             <option value="referee">Referee Assignment</option>
             <option value="schedule">Schedule</option>
             <option value="other">Other</option>
             </select>
             <label for="subject">Subject</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <textarea v-model="body" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
 
-            <button class="feedback">
+            <button  class="feedback">
                 <a>SUBMIT</a>
             </button>
         </form>
@@ -33,6 +32,41 @@
         components: {
             NavBar,
         },
+        data(){
+            return {
+                userId: localStorage.userId,
+                topic: "",
+                body: ""
+            };
+        },
+        methods: {
+            sendFeedback() {
+                const { userId,topic,body } = this;
+                
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        userId,
+                        topic,
+                        body
+                    })
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/feedback", requestOptions)
+                .then((res) => res.json())
+                .then((data) => {
+                    if(data.status !== "200") {
+                        alert("Feedback Could not be Sent!\n"+data.returnObject);
+                        return;
+                    }
+                    this.$router.push("/profilepage");
+                    alert("Feedback Succesfully Sent!");
+                })
+                
+                
+            }
+        }
     };
 </script>
 
