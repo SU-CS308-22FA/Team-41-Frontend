@@ -67,6 +67,8 @@
     cursor: pointer;
     border-radius: 25px;
     padding-bottom: 35px;
+    background-color: lightblue;
+    height: fit-content;
 }
 
 .sidebar__brand {
