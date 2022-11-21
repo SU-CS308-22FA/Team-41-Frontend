@@ -4,31 +4,43 @@
             <div class="sidebar__brand">
                 <i class="fa fa-twitter"></i>
             </div>
+
             <router-link to="profilepage">
-            <a  class="sidebar__item">
-                
-                <i class="sidebar__item__icon fa fa-home"></i>
-                <span class="sidebar__item__text">Profile</span>
-            </a>
+                <a  class="sidebar__item">
+                    <i class="sidebar__item__icon fa fa-home"></i>
+                    <span class="sidebar__item__text">Profile</span>
+                </a>
             </router-link>
+
             <router-link to="todaysMatches">
-            <a  class="sidebar__item">
-                <i class="sidebar__item__icon fa fa-compass"></i>
-                <span class="sidebar__item__text">Today's Matches</span>
-            </a>
+                <a  class="sidebar__item">
+                    <i class="sidebar__item__icon fa fa-compass"></i>
+                    <span class="sidebar__item__text">Today's Matches</span>
+                </a>
             </router-link>
+
             <a href="#" class="sidebar__item">
                 <i class="sidebar__item__icon fa fa-bell"></i>
                 <span class="sidebar__item__text">Fixture</span>
             </a>
+
+            <router-link to="teamsList">
+                <a href="#" class="sidebar__item">
+                    <i class="sidebar__item__icon fa fa-envelope"></i>
+                    <span class="sidebar__item__text">Teams</span>
+                </a>
+            </router-link>
+
             <a href="#" class="sidebar__item">
                 <i class="sidebar__item__icon fa fa-envelope"></i>
                 <span class="sidebar__item__text">Referees</span>
             </a>
+
             <a href="#" class="sidebar__item">
                 <i class="sidebar__item__icon fa fa-bookmark"></i>
                 <span class="sidebar__item__text">Standings</span>
             </a>
+
             <a href="#" class="sidebar__item">
                 <i class="sidebar__item__icon fa fa-list-alt"></i>
                 <span class="sidebar__item__text">Lists</span>
@@ -49,14 +61,18 @@
 
 
 .sidebar {
+    text-decoration: none;
     max-width: 15%;
     display: block;
     cursor: pointer;
     border-radius: 25px;
     padding-bottom: 35px;
+    background-color: lightblue;
+    height: fit-content;
 }
 
 .sidebar__brand {
+    text-decoration: none;
     color: #1DA1F2;
     font-size: 38px;
     padding-left: 35px;
@@ -76,6 +92,7 @@
 }
 
 .sidebar__item:hover {
+    text-decoration: none;
     background-color: #519BDF33;
     border-radius: 100px;
     width: fit-content;
@@ -83,12 +100,14 @@
 
 .sidebar__item:hover i,
 .sidebar__item:hover span {
+    text-decoration: none;
     color: #1DA1F2 !important;
 }
 
 
 
 .sidebar__item__text {
+    text-decoration: none;
     display: flex;
     align-items: center;
     color: #5B5C5E;

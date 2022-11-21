@@ -9,6 +9,7 @@ import FeedBack from "../components/FeedBack";
 import MainFeed from "../components/MainFeed";
 import TodaysMatches from "../components/TodaysMatches";
 import AdminHome from "../components/AdminHome"
+import TeamsList from "../components/TeamsList"
 
 const routes = [
   {
@@ -60,7 +61,12 @@ const routes = [
     path: "/AdminHome",
     name: "AdminHome",
     component: AdminHome,
-  }
+  },
+  {
+    path: "/teamsList",
+    name: "TeamsList",
+    component: TeamsList,
+  },
 ];
 
 const router = createRouter({
