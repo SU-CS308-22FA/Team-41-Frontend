@@ -44,14 +44,17 @@
                         <img src="../assets/calendar.png" width=50px height=50px alt="">
                     </div>
                 </div>
-                <div class="card">
-                    <div class="box">
+                <div class="card" @click="goToFeedback">
+                    <a>
+                        <div class="box">
                         <h1>11</h1>
                         <h3>Feedback</h3>
                     </div>
                     <div class="icon-case">
                         <img src="../assets/feedback.png" width=65px height=65px alt="">
                     </div>
+                    </a>
+                    
                 </div>
             
             </div>
@@ -124,6 +127,11 @@
         name: 'AdminHome',
         components: {
             NavBar,
+        },
+        methods:{
+            goToFeedback() {
+                this.$router.replace("/ShowFeedback");
+            },
         }
     };
 </script>
@@ -215,6 +223,11 @@ h3{
     align-items: center;
     justify-content: space-around;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.18);
+}
+.container .content .cards .card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+
 }
 .container .content .content-2{
     min-height: 50vh;
