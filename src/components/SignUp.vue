@@ -32,7 +32,7 @@
             <a></a>
 
             <label for="team">Choose your team</label>
-            <select name="team" v-model="team" >
+            <select name="fanTeam" v-model="fanTeam" >
                 <option v-for="item in items" :key="item.id" :value="item.name"> {{ item.name }} </option>
             </select>
             
@@ -60,7 +60,7 @@
                 password: "",
                 birthdate: "",
                 gender: "",
-                team: "",
+                fanTeam: "",
                 items: [],
             };
         },
@@ -79,9 +79,8 @@
         },
         methods: {
             signup() {
-                const { mail, name, password, gender } = this;
-                const fanTeam = this.team;
-                var birthdate = this.birthdate.replaceAll("/", "-");
+                const { mail, name, password, gender, fanTeam } = this;
+                const birthdate = this.birthdate.replaceAll("/", "-");
 
                 const requestOptions = {
                     method: "POST",
