@@ -180,7 +180,7 @@ h3{
     font-weight: bold;
 }
 .container{
-    position: absolute;
+    position: fixed;
     right:-28px;
     width: 85vw;
     height: 85.2vh;
