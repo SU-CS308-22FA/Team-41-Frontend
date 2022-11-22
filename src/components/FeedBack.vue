@@ -17,7 +17,7 @@
             <textarea v-model="body" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
 
-            <button  class="feedback">
+            <button @click="sendFeedback" class="feedback">
                 <a>SUBMIT</a>
             </button>
         </form>
