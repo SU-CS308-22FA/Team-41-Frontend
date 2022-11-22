@@ -40,11 +40,12 @@
                 <i class="sidebar__item__icon fa fa-bookmark"></i>
                 <span class="sidebar__item__text">Standings</span>
             </a>
-
+            <router-link to="favoriteTeams">
             <a href="#" class="sidebar__item">
                 <i class="sidebar__item__icon fa fa-list-alt"></i>
-                <span class="sidebar__item__text">Lists</span>
+                <span class="sidebar__item__text">Favorite Teams</span>
             </a>
+            </router-link>
         </div>
     
 </template>
