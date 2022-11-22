@@ -146,7 +146,7 @@
                 icon: 'bx-bar-chart-alt',
               },
               {
-                link: '#',
+                link: '/favoriteTeams',
                 name: 'Favorite Teams',
                 tooltip: 'Favorite_Teams',
                 icon: 'bx-heart',
