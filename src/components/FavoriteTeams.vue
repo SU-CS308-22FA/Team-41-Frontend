@@ -24,8 +24,12 @@
                         <div class="name">
                             {{item.name}}
                         </div>
+                        
+                        <button @click.stop="deleteFavTeam(item.id)" :id="item.id" class="removeButton">X</button>
                     </router-link>
+                    
                 </div>
+                
             </div>
         </div>
     </div>
@@ -35,6 +39,7 @@
 <script>
     import SideBar from './SideBar.vue';
     import loadingPage from './loadingPage';
+
     export default {
         name: "FavoriteTeams",
         path: "/favoriteTeams",
@@ -62,6 +67,26 @@
                 this.finishedLoading = true;
             });
         },
+        methods: {
+            deleteFavTeam(id){
+                const requestOptions = {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId:localStorage.userId, teamId:id})
+            };
+            fetch("https://tfb308.herokuapp.com/api/v1/user/favTeams", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.items = this.items.filter(item => item.id !== id)
+                    window.location.reload();
+                    return;
+                }
+                alert(data.returnObject);
+                
+            });
+            }
+        }
     }
 
 
@@ -69,6 +94,14 @@
 
 
 <style>
+
+.removeButton{
+    height: 10%;
+    width: 10%;
+    background-color: red;
+    cursor: pointer;
+    z-index: 1;
+}
 
 
 
