@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <div class="logo">
-            <img src="../assets/tfpLogo.png" width=200px height=90px alt="">
+            <img src="../assets/tfpLogo.png" alt="">
         </div>
         <div class="navlinks">
             
@@ -41,13 +41,12 @@
         align-items: center;
         margin: -60px -10px -50px -10px;
     }
-    .logo{
-        padding: 10px 20px;
-        cursor: pointer;
-    }
+ 
     img {
     width: 200px;
     height: 90px;
+    padding-right:60%;
+    cursor:pointer;
     }
 
     .navlinks{
