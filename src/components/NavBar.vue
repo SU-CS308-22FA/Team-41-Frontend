@@ -9,7 +9,7 @@
                 <li><router-link class= "navborder" to="/">HOME</router-link></li>
                 <li><router-link class= "navborder" to="/AdminHome">ADMINPANEL</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
-                <li v-if="showProfile"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
+                <li v-if="showProfile === false"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
                 <li v-else><router-link class= "navborder" to="/profilepage">PROFILE</router-link></li>
             </ul>
         </div>
