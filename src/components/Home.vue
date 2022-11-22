@@ -1,21 +1,20 @@
 <template>
     <NavBar></NavBar>
-    <div>
-        <body>
-            <br><br><br>
-            <h1>HOME PAGE</h1>
-            <img src="../assets/renovate.jpg" alt="">
-        </body>
-    </div>
+    <SideBar></SideBar>
+    <MainFeed></MainFeed>>
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import NavBar from './NavBar.vue';
+    import SideBar from './SideBar.vue';
+    import MainFeed from './MainFeed.vue';
     export default {
         path: '/HomePage',
         name: 'HomePage',
         components: {
             NavBar,
+            SideBar,
+            MainFeed,
         },
     };
 </script>
@@ -24,5 +23,8 @@
 img{
     height:500px;
     width:500px;
+}
+div{
+    display: flex;
 }
 </style>

@@ -1,21 +1,22 @@
 <template>
-    <div class="feed">
-        <SideBar></SideBar>
-        
-    </div>
-        
-    
-    
+    <body class="feed">
+        <div>
+            <h1>HOME PAGE</h1>
+        </div>
+        <div>
+            <a>You are now in MainFeed page!</a>
+        </div>
+        <div>
+            <img src="../assets/renovate.jpg" alt="">
+        </div>
+    </body>
 </template>
 
 <script>
-import SideBar from './SideBar.vue';
-
-export default {
+    export default {
         name: 'MainFeed',
         path: "/mainFeed",
         components: {
-            SideBar,
             
         },
     };
@@ -24,7 +25,8 @@ export default {
 
 
 <style>
-.feed{
-    display: flex;
-}
+    .feed{
+        margin-top: 80px;
+        display: flexbox;
+    }
 </style>

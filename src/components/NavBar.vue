@@ -6,7 +6,7 @@
         <div class="navlinks">
             
             <ul>
-                <li><router-link class= "navborder" to="/mainFeed">HOME</router-link></li>
+                <li><router-link class= "navborder" to="/">HOME</router-link></li>
                 <li><router-link class= "navborder" to="/AdminHome">ADMINPANEL</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
                 <li v-if="!isLoggedIn()"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
@@ -39,7 +39,7 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
-        margin: -60px -10px -50px -10px;
+        margin: -60px -10px -50px 0px;
     }
  
     img {
