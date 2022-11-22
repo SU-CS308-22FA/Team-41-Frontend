@@ -84,8 +84,10 @@
                         }
                         return;
                     }
+                    console.log(res2.returnObject);
                     window.localStorage.setItem("isLogedIn", true);
-                    window.localStorage.setItem("userId", res2.returnObject);
+                    window.localStorage.setItem("userId", res2.returnObject.id);
+                    window.localStorage.setItem("isAdmin", res2.returnObject.admin);
                     this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
                 });
             }
