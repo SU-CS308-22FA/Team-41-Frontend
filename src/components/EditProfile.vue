@@ -1,5 +1,5 @@
 <template>
-    <LoggedNavBar></LoggedNavBar>
+    <NavBar></NavBar>
 
     <div class="container">
     
@@ -35,13 +35,13 @@
 </template>
 
 <script>
-    import LoggedNavBar from './LoggedNavBar.vue'
+    import NavBar from './NavBar.vue'
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
-            LoggedNavBar,
+            NavBar,
         },
         data(){
             return {

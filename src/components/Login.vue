@@ -1,5 +1,6 @@
 <template>
     <NavBar></NavBar>
+    <SideBar></SideBar>
     <div class="container">
         <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
@@ -34,12 +35,14 @@
 
 <script>
     import NavBar from './NavBar.vue'
+    import SideBar from './SideBar.vue'
 
     export default {
         path: '/login',
         name: 'LogIn',
         components: {
             NavBar,
+            SideBar
         },
         data() {
             return {
@@ -110,7 +113,6 @@
         bottom:0px;
     }
     .container{
-        background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
         height:100vh;
         width: 136.3vh;
@@ -122,7 +124,7 @@
     }
 
     .login-form{
-        background-color: ghostwhite;
+        background-color: rgb(138, 138, 204);
         width: 450px;
         height: 550px;
         padding:30px;

@@ -41,10 +41,10 @@
           >
   
             <span
-              v-for="(menuItem, index) in menuItems"
+              v-for="(menuItem, index) in menuItems.slice(1)"
               :key="index"
             >
-              <li>
+              <li >
                 <a :href="menuItem.link">
                   <i
                     class="bx"
@@ -155,7 +155,7 @@
         }
       },
       mounted() {
-        this.isOpened = this.isMenuOpen
+        this.isOpened = this.isMenuOpen;
       },
       watch: {
         isOpened() {

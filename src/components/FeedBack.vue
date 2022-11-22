@@ -1,5 +1,6 @@
 <template>
     <NavBar></NavBar>
+    <SideBar></SideBar>
     <div class="container">
         <form class="feedback-form" @submit.prevent="sendFeedback">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Feedback Box</h2>
@@ -26,12 +27,14 @@
 
 <script>
     import NavBar from './NavBar.vue'
+    import SideBar from './SideBar.vue'
 
     export default {
         path: '/feedback',
         name: 'FeedBack',
         components: {
             NavBar,
+            SideBar
         },
         data(){
             return {
@@ -73,24 +76,12 @@
 
 
 <style scoped>
-    head{
-        box-sizing: border-box;
-        padding:0;
-        margin:0;
-    }
-
-    body{
-        margin: 0;
-        height: 100%;
-        position: absolute;
-        bottom:0px;
-    }
     .container{
-        background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
-        background-size: cover;
+        display: flex;
+        background-color: rgb(142, 146, 185);
+        top: 110px;
         width: 136.3vh;
         height:100vh;
-        margin: 50px -10px 0 -10px;
         text-align: center;
         display: flex;
         padding-left: 33%;
