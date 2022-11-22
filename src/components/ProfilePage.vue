@@ -1,39 +1,43 @@
 <template>
     <NavBar></NavBar>
-    <div class="container">
-        <form class="user-info">
-            <h2 style="color: rgba(17, 73, 158, 0.818)">Personal Information</h2>
-            <img src="../assets/pp.jpg" alt="" class="center">
-            <br>
-            <br>
-            <br>
+    <SideBar></SideBar>
+    <body>
+        <div class="container">
+            <form class="user-info">
+                <h2 style="color: rgba(17, 73, 158, 0.818)">Personal Information</h2>
+                <br>
+                <br>
+                <br>
 
-            Name <b>{{name}}</b>
-            <br>
-            <br>
-            Email <b>{{mail}}</b>
-            <br>
-            <br>
-            Gender <b>{{gender}}</b>
+                Name <b>{{name}}</b>
+                <br>
+                <br>
+                Email <b>{{mail}}</b>
+                <br>
+                <br>
+                Gender <b>{{gender}}</b>
 
-            <div class="edit">
-                <div class="editprofile" @click="goToEdit"><p><a>Edit Profile</a></p></div>
-                <div class="logout" @click="logOut"><p><a>Log Out</a></p></div>
-                <div class="deleteacc" @click="deleteAccount"><p><a>Delete Account</a></p></div>
-            </div>
-            
-        </form>
-    </div>
+                <div class="edit">
+                    <div class="editprofile" @click="goToEdit"><p><a>Edit Profile</a></p></div>
+                    <div class="logout" @click="logOut"><p><a>Log Out</a></p></div>
+                    <div class="deleteacc" @click="deleteAccount"><p><a>Delete Account</a></p></div>
+                </div>
+                
+            </form>
+        </div>
+    </body>
 </template>
 
 <script>
-import NavBar from './NavBar.vue'
+    import NavBar from './NavBar.vue'
+    import SideBar from './SideBar.vue'
 
     export default {
         path: '/profilepage',
         name: 'ProfilePage',
         components: {
             NavBar,
+            SideBar,
         },
         data() {
             return {
@@ -134,18 +138,6 @@ import NavBar from './NavBar.vue'
         display:grid;
         border-radius: 8px;
         text-align: center;
-    }
-
-    img{
-        box-sizing: border-box;
-        width: 149px;
-        height: 149px;
-        border-radius: 50%;
-        margin:0;
-        border:5px solid rgba(31, 28, 101, 0.818);
-        padding:3px;
-        background-color: white;
-        
     }
     .center {
         display: block;
