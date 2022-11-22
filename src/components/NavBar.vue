@@ -9,8 +9,8 @@
                 <li><router-link class= "navborder" to="/">HOME</router-link></li>
                 <li><router-link class= "navborder" to="/AdminHome">ADMINPANEL</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
-                <li v-if="!isLoggedIn()"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
-                <li v-if="isLoggedIn()"><router-link class= "navborder" to="/profilepage">PROFILE</router-link></li>
+                <li v-if="showProfile"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
+                <li v-else><router-link class= "navborder" to="/profilepage">PROFILE</router-link></li>
             </ul>
         </div>
     </div>
@@ -20,11 +20,13 @@
     export default {
         name: 'NavBar',
         components: {},
-        methods: {
-            isLoggedIn(){
-                if(localStorage.isLogedIn === undefined) return false;
-                return true;
-            },
+        data() {
+            return {
+                showProfile: false,
+            }
+        },
+        mounted (){
+            if(localStorage.isLogedIn) this.showProfile = localStorage.isLogedIn;
         },
         
     };
@@ -39,14 +41,14 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
-        margin: -60px -10px -50px 0px;
+        margin-top: -4%;
     }
  
     img {
-    width: 200px;
-    height: 90px;
-    padding-right:60%;
-    cursor:pointer;
+        width: 200px;
+        height: 90px;
+        padding-right:60%;
+        cursor:pointer;
     }
 
     .navlinks{

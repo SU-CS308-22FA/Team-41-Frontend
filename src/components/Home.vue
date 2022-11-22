@@ -1,7 +1,9 @@
 <template>
     <NavBar></NavBar>
     <SideBar></SideBar>
-    <MainFeed></MainFeed>>
+    <body>
+        <MainFeed></MainFeed>
+    </body>
 </template>
 
 <script>

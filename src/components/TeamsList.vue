@@ -1,6 +1,7 @@
 <template>
+    <NavBar></NavBar>
+    <SideBar></SideBar>
     <div class="whole">
-        <SideBar></SideBar>
         
         <div class="container">
             <div v-if="items.length === 0 && finishedLoading === true">
@@ -33,12 +34,14 @@
 
 
 <script>
+    import NavBar from './NavBar.vue';
     import SideBar from './SideBar.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "TeamsList",
         path: "teamsList",
         components: {
+            NavBar,
             SideBar,
             loadingPage
         },

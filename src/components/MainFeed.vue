@@ -26,7 +26,6 @@
 
 <style>
     .feed{
-        margin-top: 80px;
         display: flexbox;
     }
 </style>
