@@ -8,7 +8,8 @@
                     {{teamName}}
                 </a>
             </span >
-
+            <button v-on:click="addToFav">Add to Favorites</button>
+            <br><br>
             <button v-on:click="hideOrUnhide('players')">Hide/Unhide Players</button>
             <div class="players">
                 <div v-for="player in players" :key="player.id">
@@ -116,6 +117,22 @@
                     x.style.display = "block";
                 }
             },
+            addToFav(){
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ teamId:this.teamId.toString(10),userId:localStorage.userId})
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/favTeams", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                if(data.status === "200") {
+                    alert("Succesfully added to your fav list.");
+                    return;
+                }
+                alert(data.returnObject);
+            });
+            }
         },
     };
 </script>
