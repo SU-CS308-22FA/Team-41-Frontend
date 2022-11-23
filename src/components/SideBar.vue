@@ -157,7 +157,7 @@
                 icon: 'bx-calendar-check',
               },
               {
-                link: '#',
+                link: '/showFeedBack',
                 name: 'Feedback',
                 tooltip: 'Feedback',
                 icon: 'bx-comment-detail',
