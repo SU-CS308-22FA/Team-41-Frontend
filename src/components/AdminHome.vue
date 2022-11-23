@@ -42,7 +42,7 @@
                     </div>
                 </a>
                 <a>
-                    <div class="icon-case">
+                    <div class="icon-cased">
                         <img src="../assets/feedback.png" width=50px height=50px alt="">
                     </div>
                 </a>
@@ -232,8 +232,12 @@ h3{
 
 }
 .container .content .cards .card .icon-case img{
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
+}
+.container .content .cards .card .icon-cased img{
+    width: 65px;
+    height: 65px;
 }
 .container .content .content-2{
     min-height: 50vh;

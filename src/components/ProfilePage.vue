@@ -1,5 +1,5 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <body>
         <div class="container">
@@ -16,6 +16,7 @@
                 <br>
                 <br>
                 Gender <b>{{gender}}</b>
+                <br><br>
 
                 <div class="edit">
                     <div class="editprofile" @click="goToEdit"><p><a>Edit Profile</a></p></div>
@@ -29,14 +30,14 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import HarunNavBar from './HarunNavBar.vue'
     import SideBar from './SideBar.vue'
 
     export default {
         path: '/profilepage',
         name: 'ProfilePage',
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
         },
         data() {
@@ -106,30 +107,30 @@
 
 <style scoped>
 
-    body{
-        display: flex;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom:0px;
-    }
+body{
+    min-height: 90vh;
+    max-width: 1000vh;
+    background:  rgba(185, 185, 185, 1);
+}
     .container{
-        background-size: cover;
+        
         height:100%;
         width: 100%;
         align-items: center;
         display: flex;
         padding-left: 33%;
-        margin-top: 2%;
-        margin-left: -7%;
+        margin-top: 0;
+        margin-left: 0;
+    
+        background: rgba(185, 185, 185, 0.725);
     }
 
     .user-info{
-        background-color: rgb(138, 138, 204);
-        width: 40%;
-        height: 65%;
+        background-color: ghostwhite;
+        width: 50%;
+        height: 75%;
         padding:30px;
-        margin: 1.1em 1em;
+        margin: 4em 1em;
         display:grid;
         border-radius: 8px;
         text-align: center;
