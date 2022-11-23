@@ -8,14 +8,14 @@ import ChangePassword from "../components/ChangePassword.vue";
 import FeedBack from "../components/FeedBack";
 import MainFeed from "../components/MainFeed";
 import TodaysMatches from "../components/TodaysMatches";
-import AdminHome from "../components/AdminHome"
-import TeamsList from "../components/TeamsList"
-import TeamPage from "../components/TeamPage"
-import ShowFeedback from "../components/ShowFeedback"
-import FavoriteTeams from "../components/FavoriteTeams"
+import AdminHome from "../components/AdminHome";
+import TeamsList from "../components/TeamsList";
+import TeamPage from "../components/TeamPage";
+import ShowFeedback from "../components/ShowFeedback";
+import FavoriteTeams from "../components/FavoriteTeams";
 import FixturePage from "../components/FixturePage";
 import Referee from "../components/Referee";
-
+import RefereePage from "../components/RefereePage";
 
 const routes = [
   {
@@ -77,7 +77,7 @@ const routes = [
     path: "/teamPage/:teamId",
     name: "TeamPage",
     component: TeamPage,
-    props: true
+    props: true,
   },
   {
     path: "/ShowFeedback",
@@ -98,6 +98,12 @@ const routes = [
     path: "/referees",
     name: "AllReferees",
     component: Referee,
+  },
+  {
+    path: "/referees/:refereeId",
+    name: "RefereePage",
+    component: RefereePage,
+    props: true,
   },
 ];
 

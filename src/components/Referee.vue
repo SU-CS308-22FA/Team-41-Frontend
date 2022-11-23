@@ -11,16 +11,26 @@
                 <loadingPage></loadingPage>
             </div>
             <div v-else>
-                <div class="referee" v-for="item in items[0]" :key="item.id">
+                <div v-for="item in items[0]" :key="item.id">
+                    <router-link class="referee"  :to="{
+                            name: 'RefereePage',
+                            params: {
+                                refereeId: item.id
+                            }
+                        }"
+                    >
+                
                     <div class="name">
                         {{item.name}}
                     </div>
+                    
                     <div class="name">
                         Rating <br> {{item.rating}}
                     </div>
                     <div class="name">
                         Total Votes <br> {{item.totalVote}}
                     </div>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -99,6 +109,7 @@
     align-items: center;
     font-weight: bold;
 }
+
 
 
 </style>
