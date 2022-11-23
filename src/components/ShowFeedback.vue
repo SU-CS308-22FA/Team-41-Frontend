@@ -1,7 +1,8 @@
 <template>
     <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
-    <div class="container">
+    <body>
+        <div class="container">
         <div class="content">
             <div class="cards">
                 <div v-for="item in items[0]" :key="item.id" class="card">
@@ -19,6 +20,8 @@
             </div>
         </div>
     </div>
+    </body>
+
 </template>
 
 <script>
@@ -62,8 +65,9 @@
 }
 
 body{
-    min-height: 100vh;
-    max-width: 10vh;
+    min-height: 90vh;
+    max-width: 1000vh;
+    background:  rgba(185, 185, 185, 1);
 }
 a{
     text-decoration: none;
