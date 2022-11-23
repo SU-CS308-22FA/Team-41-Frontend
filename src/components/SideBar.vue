@@ -122,7 +122,7 @@
                 icon: 'bx-timer',
               },
               {
-                link: '#',
+                link: '/fixturePage',
                 name: 'Fixture',
                 tooltip: 'Fixture',
                 icon: 'bx-calendar',

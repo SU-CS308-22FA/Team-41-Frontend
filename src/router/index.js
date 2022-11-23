@@ -13,6 +13,7 @@ import TeamsList from "../components/TeamsList"
 import TeamPage from "../components/TeamPage"
 import ShowFeedback from "../components/ShowFeedback"
 import FavoriteTeams from "../components/FavoriteTeams"
+import FixturePage from "../components/FixturePage";
 
 const routes = [
   {
@@ -85,6 +86,11 @@ const routes = [
     path: "/favoriteTeams",
     name: "FavoriteTeams",
     component: FavoriteTeams,
+  },
+  {
+    path: "/fixturePage",
+    name: "FixturePage",
+    component: FixturePage,
   },
 ];
 
