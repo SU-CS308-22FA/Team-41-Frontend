@@ -44,16 +44,18 @@
               v-for="(menuItem, index) in menuItems.slice(1)"
               :key="index"
             >
-              <li >
-                <a :href="menuItem.link">
-                  <i
-                    class="bx"
-                    :class="menuItem.icon || 'bx-square-rounded'"
-                  />
-                  <span class="links_name">{{ menuItem.name }}</span>
-                </a>
-                <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
-              </li>
+              <router-link to="{{menuItem.link}}">
+                <li >
+                  <a>
+                    <i
+                      class="bx"
+                      :class="menuItem.icon || 'bx-square-rounded'"
+                    />
+                    <span class="links_name">{{ menuItem.name }}</span>
+                  </a>
+                  <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
+                </li>
+              </router-link>
             </span>
             <div v-if="showAdminTools === true || true">
               <br>
@@ -66,16 +68,18 @@
               v-for="(menuItem, index) in adminTools"
                 :key="index"
               >
-                <li >
-                  <a :href="menuItem.link">
-                    <i
-                      class="bx"
-                      :class="menuItem.icon || 'bx-square-rounded'"
-                    />
-                    <span class="links_name">{{ menuItem.name }}</span>
-                  </a>
-                  <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
-                </li>
+                <router-link to="{{menuItem.link}}">
+                  <li >
+                    <a>
+                      <i
+                        class="bx"
+                        :class="menuItem.icon || 'bx-square-rounded'"
+                      />
+                      <span class="links_name">{{ menuItem.name }}</span>
+                    </a>
+                    <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
+                  </li>
+                </router-link>
               </span>
             </div>
           </ul>
