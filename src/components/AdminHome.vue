@@ -1,19 +1,7 @@
 
 <template>
     <NavBar></NavBar>
-    <div class="side-menu">
-        <br>
-        <ul>
-            <li>Dashboard</li>
-            <li>Users</li>
-            <li>Referees</li>
-            <li>Referee Assignment</li>
-            <li>Teams</li>
-            <li>Schedule</li>
-            <li>Feedback</li>
-            <li>Settings</li>
-        </ul>
-    </div>
+    <SideBar></SideBar>
     <div class="container">
         <div class="content">
             <div class="cards">
@@ -121,12 +109,14 @@
 
 <script>
     import NavBar from './NavBar.vue'
+    import SideBar from './SideBar.vue'
 
     export default {
         path: '/AdminHome',
         name: 'AdminHome',
         components: {
             NavBar,
+            SideBar,
         },
         methods:{
             goToFeedback() {
@@ -284,3 +274,20 @@ th, td{
 }
 
 </style>
+
+/*
+
+
+<div class="side-menu">
+    <br>
+    <ul>
+        <li>Dashboard</li>
+        <li>Users</li>
+        <li>Referee Assignment</li>
+        <li>Schedule</li>
+        <li>Feedback</li>
+        <li>Settings</li>
+    </ul>
+</div>
+
+*/
