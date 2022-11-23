@@ -44,18 +44,16 @@
               v-for="(menuItem, index) in menuItems.slice(1)"
               :key="index"
             >
-              <router-link to="{{menuItem.link}}">
-                <li >
-                  <a>
-                    <i
-                      class="bx"
-                      :class="menuItem.icon || 'bx-square-rounded'"
-                    />
-                    <span class="links_name">{{ menuItem.name }}</span>
-                  </a>
-                  <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
-                </li>
-              </router-link>
+              <li @click="goTo(menuItem.link)">
+                <a>
+                  <i
+                    class="bx"
+                    :class="menuItem.icon || 'bx-square-rounded'"
+                  />
+                  <span class="links_name">{{ menuItem.name }}</span>
+                </a>
+                <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
+              </li>
             </span>
             <div v-if="showAdminTools === true || true">
               <br>
@@ -68,18 +66,16 @@
               v-for="(menuItem, index) in adminTools"
                 :key="index"
               >
-                <router-link to="{{menuItem.link}}">
-                  <li >
-                    <a>
-                      <i
-                        class="bx"
-                        :class="menuItem.icon || 'bx-square-rounded'"
-                      />
-                      <span class="links_name">{{ menuItem.name }}</span>
-                    </a>
-                    <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
-                  </li>
-                </router-link>
+                <li @click="goTo(menuItem.link)">
+                  <a>
+                    <i
+                      class="bx"
+                      :class="menuItem.icon || 'bx-square-rounded'"
+                    />
+                    <span class="links_name">{{ menuItem.name }}</span>
+                  </a>
+                  <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
+                </li>
               </span>
             </div>
           </ul>
@@ -224,6 +220,11 @@
         if(localStorage.isAdmin) this.showAdminTools = localStorage.isAdmin;
         this.isOpened = this.isMenuOpen;
       },
+      methods: {
+        goTo(route) {
+          this.$router.push(route);
+        }
+      },
       watch: {
         isOpened() {
           window.document.body.style.paddingLeft = this.isOpened && this.isPaddingLeft ? this.menuOpenedPaddingLeftBody : this.menuClosedPaddingLeftBody
@@ -267,6 +268,7 @@
       /* padding: 6px 14px 0 14px; */
       z-index: 99;
       transition: all 0.5s ease;
+      text-decoration: none;
     }
     .sidebar.open {
       width: 250px;
@@ -326,6 +328,7 @@
       position: relative;
       margin: 8px 0;
       list-style: none;
+      text-decoration: none;
     }
     .sidebar li .tooltip {
       position: absolute;
@@ -399,6 +402,7 @@
     }
     .sidebar li a:hover {
       background: whitesmoke;
+      text-decoration: none;
     }
     .sidebar li a .links_name {
       color: black;
