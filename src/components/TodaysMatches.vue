@@ -52,21 +52,15 @@
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             };
-            var currentdate = new Date();
-            var datetime = currentdate.getFullYear() + "-" + currentdate.getMonth() + "-" + currentdate.getDay();
-            //var datetime = "2022-08-07";      //denemelik
-            for (let i = 1; i <= 342; i++) {
-                fetch("https://tfb308.herokuapp.com/api/v1/match/" + i.toString(), requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    if(data.status === "200" && data.returnObject.dateAndTime.substring(0, 10) === datetime) {
-                        this.items.push(data.returnObject);
-                    }
-                    if(i === 342) {
-                        this.finishedLoading = true;
-                    }
-                });
-            }
+            
+            fetch("https://tfb308.herokuapp.com/api/v1/match/today", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.items.push(data.returnObject);
+                }
+                this.finishedLoading = true;
+            });
         },
     };
 

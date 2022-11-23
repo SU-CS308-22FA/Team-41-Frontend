@@ -55,6 +55,29 @@
                 <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
               </li>
             </span>
+            <div v-if="isAdmin()">
+              <br>
+              <li>
+                <a>
+                  Admin Toools
+                </a>
+              </li>
+              <span
+              v-for="(menuItem, index) in adminTools"
+                :key="index"
+              >
+                <li >
+                  <a :href="menuItem.link">
+                    <i
+                      class="bx"
+                      :class="menuItem.icon || 'bx-square-rounded'"
+                    />
+                    <span class="links_name">{{ menuItem.name }}</span>
+                  </a>
+                  <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
+                </li>
+              </span>
+            </div>
           </ul>
         </div>
         
@@ -108,6 +131,44 @@
       data() {
         return {
           isOpened: false,
+          adminTools: [
+              {
+                link: '/AdminHome',
+                name: 'Dashboard',
+                tooltip: 'Dashboard',
+                icon: 'bxs-dashboard',
+              },
+              {
+                link: '#',
+                name: 'Users',
+                tooltip: 'Users',
+                icon: 'bx-user-check',
+              },
+              {
+                link: '#',
+                name: 'Referee Assignment',
+                tooltip: 'Referee Assignment',
+                icon: 'bx-run',
+              },
+              {
+                link: '#',
+                name: 'Schedule',
+                tooltip: 'Schedule',
+                icon: 'bx-calendar-check',
+              },
+              {
+                link: '#',
+                name: 'Feedback',
+                tooltip: 'Feedback',
+                icon: 'bx-comment-detail',
+              },
+              {
+                link: '#',
+                name: 'Settings',
+                tooltip: 'Settings',
+                icon: 'bx-cog',
+              },
+          ],
           menuItems: [
               {
                 link: '/profilepage',
@@ -156,6 +217,13 @@
       },
       mounted() {
         this.isOpened = this.isMenuOpen;
+      },
+      methods: {
+        isAdmin() {
+          if(localStorage.isAdmin) return localStorage.isAdmin;
+          return false;
+
+        }
       },
       watch: {
         isOpened() {
