@@ -8,6 +8,7 @@
                     <div class="box">                 
                         <h2>{{item.userId}} - {{item.topic}}</h2> 
                         <h3>{{item.body}}</h3>
+                        <button><img src="../assets/likee.png" width=45px height=45px alt=""></button> 
                     </div>
                     <div class="icon-case">
                         <button><img src="../assets/likee.png" width=45px height=45px alt=""></button> 
@@ -151,14 +152,19 @@ h3{
    
 
 }
+.container .content .cards .card .icon-case img{
+    width:45px;
+    height: 45px;
+}
 .container .content .cards .card .icon-case img:hover{
     cursor: pointer;
     transform: scale(1.1);
 
 }
 button{
-    background-color: white;
+    background: white;
     border: none;
+   
     
 }
 
