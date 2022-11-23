@@ -1,5 +1,5 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <div class="container">
         <div class="content">
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue';
+    import HarunNavBar from './HarunNavBar.vue';
     import SideBar from './SideBar.vue';
 
     export default {
         path: '/ShowFeedback',
         name: 'ShowFeedback',
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
         },
         data(){
@@ -110,13 +110,13 @@ h3{
     font-weight: bold;
 }
 .container{
-    position: fixed;
-    right:-28px;
-    width: 85vw;
-    height: 85.2vh;
+    position: flex;
+    height: 100%;
+    width:100%;
+    
+    margin-left:0;
     background: rgba(185, 185, 185, 0.725);
-    margin-right: 3.7vh;
-    margin-top: 6.7vh;
+
     overflow-y:auto;
     
     
@@ -148,6 +148,17 @@ h3{
 }
 .container .content .cards .card .icon-case{
    padding-top: 20px;
+   
+   
+
+}
+.container .content .cards .card .box{
+    padding-right: 80px;
+
+}
+.container .content .cards .card .icon-case img{
+   width: 50px;
+   height: 50px;
    
 
 }
