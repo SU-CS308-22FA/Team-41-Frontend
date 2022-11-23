@@ -11,17 +11,50 @@
                 <loadingPage></loadingPage>
             </div>
             <div v-else>
-                <div v-for="item in items" :key="item.referee" class="match">
-                    <div class ="ht">
-                        {{item.homeTeam}}
+                <span class="head">
+                    <div class="text">
+                        Teams
                     </div>
-                    <div class="inf">
-                        {{item.dateAndTime.substring(11, 16)}} <br>
-                        {{item.referee}}
+                    <div class="text">
+                        Referee
                     </div>
-                    <div class="at">
-                        {{item.awayTeam}}
+                    <div class="text">
+                        Stadium
                     </div>
+                    <div class="text">
+                        Date and Time
+                    </div>
+                </span>
+
+                <div v-for="item in items" :key="item.referee">
+                    <span class="match" v-if="item.status === 'Match Finished'">
+                        <div class="text">
+                            {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
+                        </div>
+                        <div class="text">
+                            {{item.referee}}
+                        </div>
+                        <div class="text">
+                            {{item.stadiumName}}
+                        </div>
+                        <div class="text">
+                            {{item.dateAndTime.toString().replace("T", " ")}}
+                        </div>
+                    </span>
+                    <span class="matchPlayed" v-else>
+                        <div class="text">
+                            {{item.homeTeamName}} vs. {{item.awayTeamName}}
+                        </div>
+                        <div class="text">
+                            {{item.referee}}
+                        </div>
+                        <div class="text">
+                            {{item.stadiumName}}
+                        </div>
+                        <div class="text">
+                            {{item.dateAndTime.toString().replace("T", " ")}}
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
@@ -57,7 +90,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.items.push(data.returnObject);
+                    this.items = data.returnObject;
                 }
                 this.finishedLoading = true;
             });
@@ -68,36 +101,59 @@
 
 <style lang="scss" scoped>
 
-    .whole{
+.whole{
         display: flex;
     }
     .container{
-        width: 39%;
-        margin-left: 10%;
+        width: 100%;
+        margin-left: 0%;
+        width: 100%;
     }
 
-    .match{
+    .head{
+        text-decoration: none;
         display: flex;
         justify-content: space-between;
         padding: 10px 16px;
         margin: 20px;
         border: 1px solid black;
         border-radius: 10px;
-    }
-    .match:hover{
-        border: 1px solid blue;
+        font-weight: bold;
+        font-size: larger;
+        background-color: navy;
+        color: white;
     }
 
-    .ht{
-        width:  33%;
-        
+    .match{
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 16px;
+        margin: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: lightblue;
+        font-size: small;
     }
-    .at{
-        width: 34%;
+    
+    .matchPlayed{
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 16px;
+        margin: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: turquoise;
+        font-size: small;
     }
-    .inf{
-        width:  33%;
-        
+
+    .text{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
     }
 
 
