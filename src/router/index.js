@@ -14,6 +14,8 @@ import TeamPage from "../components/TeamPage"
 import ShowFeedback from "../components/ShowFeedback"
 import FavoriteTeams from "../components/FavoriteTeams"
 import FixturePage from "../components/FixturePage";
+import Referee from "../components/Referee";
+
 
 const routes = [
   {
@@ -91,6 +93,11 @@ const routes = [
     path: "/fixturePage",
     name: "FixturePage",
     component: FixturePage,
+  },
+  {
+    path: "/referees",
+    name: "AllReferees",
+    component: Referee,
   },
 ];
 
