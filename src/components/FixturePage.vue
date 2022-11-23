@@ -29,7 +29,7 @@
                 <div v-for="item in items[0]" :key="item.id">
                     <div class="match" v-if="item.status === 'Match Finished'">
                         <div class="text">
-                            {{item.homeTeamName}} vs. {{item.awayTeamName}}
+                            {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
                         </div>
                         <div class="text">
                             {{item.referee}}
@@ -43,7 +43,7 @@
                     </div>
                     <div class="matchPlayed" v-else>
                         <div class="text">
-                            {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
+                            {{item.homeTeamName}} vs. {{item.awayTeamName}}
                         </div>
                         <div class="text">
                             {{item.referee}}
