@@ -11,23 +11,29 @@
             </div>
             <div v-else>
                 <div v-for="item in items[0]" :key="item.id">
-                    <router-link class="team" :to="{
+                    <diV>
+
+                        <router-link class="team" :to="{
                             name: 'TeamPage',
                             params: {
                                 teamId: item.id
                             }
                         }"
-                    >
-                        <div class="logo">
-                            <img :src=item.logoURL>
-                        </div>
-                        <div class="name">
-                            {{item.name}}
-                        </div>
+                        >
+                            <div class="logo">
+                                <img :src=item.logoURL>
+                            </div>
+                            <div class="name">
+                                {{item.name}}
+                            </div>
+                            
+                        </router-link>
                         
-                        <button @click.stop="deleteFavTeam(item.id)" :id="item.id" class="removeButton">X</button>
-                    </router-link>
-                    
+                    </diV>
+                    <diV>
+                        
+                        <button @click="deleteFavTeam(item.id)" :id="item.id" class="removeButton">X</button>
+                    </diV>
                 </div>
                 
             </div>
@@ -70,21 +76,19 @@
         methods: {
             deleteFavTeam(id){
                 const requestOptions = {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ userId:localStorage.userId, teamId:id})
-            };
-            fetch("https://tfb308.herokuapp.com/api/v1/user/favTeams", requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === "200") {
-                    this.items = this.items.filter(item => item.id !== id)
-                    window.location.reload();
-                    return;
-                }
-                alert(data.returnObject);
-                
-            });
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ userId:localStorage.userId, teamId:id})
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/favTeams", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "200") {
+                        this.items = this.items.filter(item => item.id !== id)
+                        window.location.reload();
+                        return;
+                    }
+                });
             }
         }
     }
@@ -102,7 +106,5 @@
     cursor: pointer;
     z-index: 1;
 }
-
-
 
 </style>
