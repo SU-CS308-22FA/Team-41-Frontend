@@ -54,6 +54,7 @@
                 </div>
                 <table>
                     <tr v-for="match in matches" :key="match.id">
+                        
                         <td>{{match.homeTeamName}}</td>
                         <td>{{match.goalHome}}</td>
                         <td>-</td>
@@ -143,6 +144,7 @@
 body{
     min-height: 100vh;
     max-width: 10vh;
+    
 }
 a{
     text-decoration: none;
@@ -184,13 +186,13 @@ h3{
     font-weight: bold;
 }
 .container{
-    position: fixed;
-    right:-28px;
-    width: 85vw;
+    position: flex;
+    width: 83.5vw;
     height: 85.2vh;
     background: rgba(185, 185, 185, 0.725);
-    margin-right: 3.7vh;
-    margin-top: 6.7vh;
+    margin-left: 0;
+    margin-top: -3%;
+    
     
     
     
@@ -234,6 +236,7 @@ h3{
     margin-left: 3vh;
     margin-right: 2vh;
     margin-top: 5vh;
+    overflow-y: auto;
 }
 .container .content .content-2 .week{
     min-height: 40vh;
@@ -243,6 +246,10 @@ h3{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.18);
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+}
+.container .content .content-2 .week table{
+    overflow-y: auto;
 }
 .container .content .content-2 .reports{
     flex: 3;

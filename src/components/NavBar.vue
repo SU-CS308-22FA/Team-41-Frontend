@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <div class="logo">
-            <img src="../assets/tfpLogo.png" alt="">
+            <img src="../assets/tfpLogo.png"  alt="">
         </div>
         <div class="navlinks">
             
@@ -37,17 +37,19 @@
     *{
         margin: 0;
         padding: 0;
+
         box-sizing: border-box;
         text-align: left;
     }
     .nav{
-        background-color: rgb(110, 175, 197);
+        background-color: rgba(33, 66, 114, 0.818);
         width: 100%;
+        height: 105px;
         color:white;
         display:flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: -4%;
+        margin-top: -5%;
     }
  
     img {

@@ -11,7 +11,7 @@
                 <loadingPage></loadingPage>
             </div>
             <div v-else>
-                <div v-for="item in items[0]" :key="item.id">
+                <div v-for="item in items[0]" :key="item.id" display="flex">
                     <router-link class="team" :to="{
                             name: 'TeamPage',
                             params: {
@@ -25,8 +25,11 @@
                         <div class="name">
                             {{item.name}}
                         </div>
+                        
                     </router-link>
+                    
                 </div>
+                
             </div>
         </div>
     </div>
@@ -73,24 +76,31 @@
 
     .whole{
         display: flex;
+        background: rgba(185, 185, 185, 0.725);
     }
     .container{
-        width: 39%;
+        width: 40%;
         margin-left: 10%;
+    }
+    .card{
+        
     }
 
     .team{
         text-decoration: none;
-        display: flex;
+        color: black;
         justify-content: space-between;
         padding: 10px 16px;
         margin: 20px;
         border: 1px solid black;
         border-radius: 10px;
-        background-color: lightblue;
+        background-color: white;
     }
     .team:hover{
         border: 1px solid blue;
+        background: rgba(33, 66, 114, 0.818);
+        color: white;
+        
     }
 
     .logo{
