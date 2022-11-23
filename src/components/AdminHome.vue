@@ -1,6 +1,6 @@
 
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <div class="container">
         <div class="content">
@@ -37,13 +37,18 @@
                         <div class="box">
                         <h1>11</h1>
                         <h3>Feedback</h3>
+                   
+                    
                     </div>
+                </a>
+                <a>
                     <div class="icon-case">
-                        <img src="../assets/feedback.png" width=65px height=65px alt="">
+                        <img src="../assets/feedback.png" width=50px height=50px alt="">
                     </div>
-                    </a>
+                </a>
                     
                 </div>
+                
             
             </div>
             <div class="content-2">
@@ -94,14 +99,14 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import HarunNavBar from './HarunNavBar.vue'
     import SideBar from './SideBar.vue'
 
     export default {
         path: '/AdminHome',
         name: 'AdminHome',
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
         },
         date() {
@@ -143,10 +148,7 @@
     text-align: left;
 }
 
-body{
-    min-height: 100vh;
-    max-width: 10vh;
-}
+
 a{
     text-decoration: none;
 }
@@ -187,36 +189,37 @@ h3{
     font-weight: bold;
 }
 .container{
-    position: fixed;
-    right:-28px;
-    width: 85vw;
-    height: 85.2vh;
-    background: rgba(185, 185, 185, 0.725);
-    margin-right: 3.7vh;
-    margin-top: 6.7vh;
-    
-    
-    
-    
-}
+        display: flex;
+        background: rgba(185, 185, 185, 0.725);
+        width:100%;
+        height:100%;
+        
+        padding-top: 4.7%;
+        margin-left:0;
+        
+        
+    }
 .container .content{
-    position:relative;
+    position:flex;
     margin-top:5vh;
+    margin-left: 4%;
+   
 
 }
 
 .container .content .cards{
-    padding: 20px 80px;
+    padding: 20px 25px;
     display: flex;
-    align-items: center;
+    
     justify-content: space-between;
     flex-wrap: wrap;
 }
 .container .content .cards .card{
-    width:230px;
+    width:250px;
     height:150px;
     background: white;
-    margin: 0px 0px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 10px 0 0 20px;
     display:flex;
     align-items: center;
@@ -227,6 +230,10 @@ h3{
     cursor: pointer;
     transform: scale(1.1);
 
+}
+.container .content .cards .card .icon-case img{
+    width: 50px;
+    height: 50px;
 }
 .container .content .content-2{
     min-height: 50vh;
