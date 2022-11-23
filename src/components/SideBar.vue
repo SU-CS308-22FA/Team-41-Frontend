@@ -195,7 +195,7 @@
                 icon: 'bx-group',
               },
               {
-                link: '#',
+                link: '/referees',
                 name: 'Referees',
                 tooltip: 'Referees',
                 icon: 'bx-walk',
