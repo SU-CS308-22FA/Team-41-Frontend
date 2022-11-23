@@ -33,10 +33,16 @@
 </script>
 
 <style scoped>
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-align: left;
+    }
     .nav{
         background-color: rgb(110, 175, 197);
-        height: 110px;
-        width: 101.2%;
+        width: 100%;
         color:white;
         display:flex;
         justify-content: space-between;
