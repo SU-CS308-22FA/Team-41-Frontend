@@ -16,10 +16,10 @@
     <div class="container">
         <div class="content">
             <div class="cards">
-                <div class="card">
+                <div v-for="item in items[0]" :key="item.id" class="card">
                     <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
+                        <h2>{{item.userId}} - {{item.topic}}</h2> 
+                        <h3>{{item.body}}</h3>
                     </div>
                     <div class="icon-case">
                         <button><img src="../assets/likee.png" width=45px height=45px alt=""></button> 
@@ -28,83 +28,7 @@
 
                     </div>
                 </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">                 
-                        <h2>Harun Akçay - Schedule</h2> 
-                        <h3>I think your scheduling system sucks. Plan a better schedule or riot!</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/likee.png" width=45px height=45px alt="">
-                        <br><br><br>
-                        <img src="../assets/trashh.png" width=45px height=45px alt="">
-                    </div>
-                </div>
+                
             
             </div>
             </div>
@@ -119,7 +43,26 @@
         name: 'ShowFeedback',
         components: {
             NavBar,
-        }
+        },
+        data(){
+            return {items : []};
+        },
+        mounted(){
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            };
+            fetch("https://tfb308.herokuapp.com/api/v1/feedback" , requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.items.push(data.returnObject);
+                    alert("Success");
+                    console.log(this.items);
+                }
+                
+            });
+        },
 
         
     };
