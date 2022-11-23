@@ -88,7 +88,7 @@
                 .then(data => {
                     if(data.status === "200") {
                         this.items = this.items.filter(item => item.id !== id)
-                        window.location.reload();
+                        alert("Delete Succeed!");
                         return;
                     }
                 });
