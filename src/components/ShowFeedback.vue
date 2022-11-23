@@ -1,18 +1,6 @@
 <template>
     <NavBar></NavBar>
-    <div class="side-menu">
-        <br>
-        <ul>
-            <li>Dashboard</li>
-            <li>Users</li>
-            <li>Referees</li>
-            <li>Referee Assignment</li>
-            <li>Teams</li>
-            <li>Schedule</li>
-            <li>Feedback</li>
-            <li>Settings</li>
-        </ul>
-    </div>
+    <SideBar></SideBar>
     <div class="container">
         <div class="content">
             <div class="cards">
@@ -28,21 +16,21 @@
 
                     </div>
                 </div>
-                
-            
             </div>
-            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import NavBar from './NavBar.vue';
+    import SideBar from './SideBar.vue';
 
     export default {
         path: '/ShowFeedback',
         name: 'ShowFeedback',
         components: {
             NavBar,
+            SideBar,
         },
         data(){
             return {items : []};
@@ -57,8 +45,6 @@
             .then(data => {
                 if(data.status === "200") {
                     this.items.push(data.returnObject);
-                    alert("Success");
-                    console.log(this.items);
                 }
                 
             });
