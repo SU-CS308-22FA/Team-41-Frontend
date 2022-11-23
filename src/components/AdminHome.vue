@@ -50,32 +50,18 @@
                <div class="week">
                 <div class="title">
                     <h2>This Week's Matches</h2>
-                    <a href="#" class="btn">View All</a>
+                    <a href="/fixturePage" class="btn">View All</a>
                 </div>
                 <table>
-                    <tr>
-                        <td>Galatasaray</td>
-                        <td>7</td>
+                    <tr v-for="match in matches" :key="match.id">
+                        <td>{{match.homeTeamName}}</td>
+                        <td>{{match.goalHome}}</td>
                         <td>-</td>
-                        <td>0</td>
-                        <td>Fenerbahçe</td>
-                        <td>Cüneyt Çakır</td>
-                        <td>Nou Camp</td>
-                        <td>21.02.2022</td>
+                        <td>{{match.goalAway}}</td>
+                        <td>{{match.awayTeamName}}</td>
+                        <td>{{match.referee}}</td>
+                        <td>{{match.stadiumName}}</td>
                         <td><a href="#" class="btn">View</a></td>
-
-                    </tr>
-                    <tr>
-                        <td>Başakşehir</td>
-                        <td>2</td>
-                        <td>-</td>
-                        <td>3</td>
-                        <td>Trabzonspor</td>
-                        <td>Fırat Aydınus</td>
-                        <td>Allianz Arena</td>
-                        <td>01.03.2022</td>
-                        <td><a href="#" class="btn">View</a></td>
-
                     </tr>
                 </table>
                </div> 
@@ -117,6 +103,26 @@
         components: {
             NavBar,
             SideBar,
+        },
+        date() {
+            return {
+                matches: [],
+            }
+        },
+        mounted() {
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            };
+            
+            fetch("https://tfb308.herokuapp.com/api/v1/match/all", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.matches = data.returnObject;
+                }
+            });
+            
         },
         methods:{
             goToFeedback() {
@@ -274,20 +280,3 @@ th, td{
 }
 
 </style>
-
-/*
-
-
-<div class="side-menu">
-    <br>
-    <ul>
-        <li>Dashboard</li>
-        <li>Users</li>
-        <li>Referee Assignment</li>
-        <li>Schedule</li>
-        <li>Feedback</li>
-        <li>Settings</li>
-    </ul>
-</div>
-
-*/
