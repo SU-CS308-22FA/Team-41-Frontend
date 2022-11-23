@@ -193,14 +193,14 @@
       min-height: min-content;
       /* overflow-y: auto; */
       width: 78px;
-      background: rgba(31, 28, 101, 0.818);
+      background: rgba(33, 66, 114, 0.818);
       /* padding: 6px 14px 0 14px; */
       z-index: 99;
       transition: all 0.5s ease;
     }
     .sidebar.open {
       width: 250px;
-      background-color: rgba(31, 28, 101, 0.818);
+      background-color: rgba(33, 66, 114, 0.818);
     }
     .sidebar .logo-details {
       height: 60px;

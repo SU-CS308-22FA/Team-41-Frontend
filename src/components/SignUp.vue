@@ -1,8 +1,11 @@
 <template>
     <NavBar></NavBar>
+    <SideBar></SideBar>
+    
     <div class="container">
         <form class="signup-form" @submit.prevent="signup">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
+            <br>
             
             <label for="name">Name</label>
             <input name="name" v-model="name" placeholder="Name" type="text">
@@ -45,13 +48,15 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import NavBar from './NavBar.vue';
+    import SideBar from './SideBar.vue';
 
     export default {
         path: '/signup',
         name: 'SignUp',
         components: {
             NavBar,
+            SideBar,
         },
         data() {
             return {
@@ -126,20 +131,19 @@
     }
     .container{
         background-size: cover;
-        height:100vh;
-        margin: 50px -10px 0 -10px;
-        width: 136.3vh;
+        height:100%;
+        width: 100%;
         text-align: center;
         display: flex;
-        padding-left: 60%;
+        margin-top: 2.5%;
+        padding-left: 50%;
         align-items: center;
     }
 
     .signup-form{
-        
-        background-color: ghostwhite;
-        width: 450px;
-        height: 80%;
+        background-color: rgb(138, 138, 204);
+        width: 60%;
+        height: 100%;
         padding:30px;
         margin: 1.1em 1em;
         display:grid;
@@ -239,5 +243,10 @@
         font-weight: bold;
         text-transform: uppercase;
         font-size: medium;
+    }
+
+    .signup:hover{
+        cursor: pointer;
+        transform: scale(1.1);
     }
 </style>

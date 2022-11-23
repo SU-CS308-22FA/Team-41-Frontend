@@ -4,6 +4,7 @@
     <div class="container">
         <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
+            <br>
 
             <label for="mail">Mail</label>
             <input name="mail" v-model="mail" placeholder="Enter mail" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required on-error="Invalid email address">
@@ -19,15 +20,17 @@
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 {{errorMsg}}
             </div>
-
+            <br>
             <div class="admin">
                 <div><p><a>Login as admin</a></p></div>
             </div>
+            <br>
             <div class="forget">
                 <div><p>Forget Password?<br> Click <a> here</a></p></div>
-                </div>
+            </div>
+            <br>
             <div class="acc">
-                <div><p>Don't have an account?<br><router-link class= "navborder" to="/signup">Sign Up</router-link></p></div>
+                <div><p>Don't have an account?<br> Click <router-link class= "navborder" to="/signup">here</router-link></p></div>
             </div>
         </form>
     </div>
@@ -100,33 +103,22 @@
 
 
 <style scoped>
-    head{
-        box-sizing: border-box;
-        padding:0;
-        margin:0;
-    }
-
-    body{
-        margin: 0;
-        height: 100%;
-        position: absolute;
-        bottom:0px;
-    }
     .container{
         background-size: cover;
-        height:100vh;
-        width: 136.3vh;
-        margin: 50px -10px 0 -10px;
+        height:100%;
+        width: 100%;
         text-align: center;
         display: flex;
-        padding-left: 60%;
         align-items: center;
+        padding-left: 60%;
+        margin-left: 0%;
+        margin-bottom: 0%;
     }
 
     .login-form{
         background-color: rgb(138, 138, 204);
-        width: 450px;
-        height: 550px;
+        width: 55%;
+        height: 100%;
         padding:30px;
         margin: 1.1em 1em;
         display:grid;

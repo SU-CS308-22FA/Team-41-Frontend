@@ -108,7 +108,6 @@
 
     body{
         display: flex;
-        background-color: rgb(142, 146, 185);
         top: 110px;
         height: 100%;
         position: absolute;
@@ -124,7 +123,7 @@
     }
 
     .user-info{
-        background-color: ghostwhite;
+        background-color: rgb(138, 138, 204);
         width: 450px;
         height: 550px;
         padding:30px;
