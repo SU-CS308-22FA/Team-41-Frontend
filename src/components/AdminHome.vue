@@ -14,7 +14,7 @@
                         <img src="../assets/user.png" width=55px height=55px alt="">
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" @click="goToReferee">
                     <div class="box">
                         <h1>33</h1>
                         <h3>Referees</h3>
@@ -128,6 +128,9 @@
             goToFeedback() {
                 this.$router.replace("/ShowFeedback");
             },
+            goToReferee() {
+                this.$router.replace("/Referee");
+            }
         }
     };
 </script>

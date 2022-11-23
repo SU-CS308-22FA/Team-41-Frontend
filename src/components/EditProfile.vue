@@ -1,5 +1,6 @@
 <template>
     <NavBar></NavBar>
+    <SideBar></SideBar>
 
     <div class="container">
     
@@ -35,13 +36,15 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import NavBar from './NavBar.vue';
+    import SideBar from './SideBar.vue';
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
             NavBar,
+            SideBar,
         },
         data(){
             return {
@@ -110,15 +113,14 @@
     }
     
     .container{
-        background-color: rgba(47, 20, 109, 0.8);
-        background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
-        height:100vh;
-        margin: 3.2% -1% 0 -1%;
-        width: 136.3vh;
+        height:100%;
+        width: 100%;
+        align-items: center;
         display: flex;
         padding-left: 33%;
-        
+        margin-top: 5%;
+        margin-left: -5%;
     }
 
     img{
@@ -135,10 +137,10 @@
         
     }
     .editp{
-        background-color: ghostwhite;
-        width: 450px;
-        height: 550px;
-        padding:40px;
+        background-color: rgb(138, 138, 204);
+        width: 55%;
+        height: 55%;
+        padding: 7%;
         margin: 1.1em 1em;
         display: flex;
         border-radius: 8px;

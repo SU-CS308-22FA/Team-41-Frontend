@@ -10,53 +10,53 @@
             <div v-else-if="items.length === 0 || finishedLoading === false">
                 <loadingPage></loadingPage>
             </div>
-            <div v-else>
-                <div class="head">
-                    <div class="text">
+            <table v-else>
+                <tr class="head">
+                    <td class="text">
                         Teams
-                    </div>
-                    <div class="text">
+                    </td>
+                    <td class="text">
                         Referee
-                    </div>
-                    <div class="text">
+                    </td>
+                    <td class="text">
                         Stadium
-                    </div>
-                    <div class="text">
+                    </td>
+                    <td class="text">
                         Date and Time
-                    </div>
-                </div>
+                    </td>
+                </tr>
 
                 <div v-for="item in items[0]" :key="item.id">
-                    <div class="match" v-if="item.status === 'Match Finished'">
-                        <div class="text">
+                    <tr class="match" v-if="item.status === 'Match Finished'">
+                        <td class="text">
                             {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
-                        </div>
-                        <div class="text">
+                        </td>
+                        <td class="text">
                             {{item.referee}}
-                        </div>
-                        <div class="text">
+                        </td>
+                        <td class="text">
                             {{item.stadiumName}}
-                        </div>
-                        <div class="text">
+                        </td>
+                        <td class="text">
                             {{item.dateAndTime.toString().replace("T", " ")}}
-                        </div>
-                    </div>
-                    <div class="matchPlayed" v-else>
-                        <div class="text">
+                        </td>
+                    </tr>
+                    <tr class="matchPlayed" v-else>
+                        <td class="text">
                             {{item.homeTeamName}} vs. {{item.awayTeamName}}
-                        </div>
-                        <div class="text">
+                        </td>
+                        <td class="text">
                             {{item.referee}}
-                        </div>
-                        <div class="text">
+                        </td>
+                        <td class="text">
                             {{item.stadiumName}}
-                        </div>
-                        <div class="text">
+                        </td>
+                        <td class="text">
                             {{item.dateAndTime.toString().replace("T", " ")}}
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
                 </div>
-            </div>
+            </table>
         </div>
     </div>
 </template>
@@ -132,6 +132,15 @@
         background-color: lightblue;
         font-size: small;
     }
+
+    table{
+        width: 100%;
+    }
+
+    td {
+        text-align: center;
+    }
+    
     .matchPlayed{
         text-decoration: none;
         display: flex;

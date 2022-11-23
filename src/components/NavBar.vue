@@ -4,10 +4,8 @@
             <img src="../assets/tfpLogo.png" alt="">
         </div>
         <div class="navlinks">
-            
             <ul>
                 <li><router-link class= "navborder" to="/">HOME</router-link></li>
-                <li><router-link class= "navborder" to="/AdminHome">ADMINPANEL</router-link></li>
                 <li><router-link class= "navborder" to="/feedback">CONTACT</router-link></li>
                 <li v-if="showProfile === false"><router-link class= "navborder" to="/login">LOGIN</router-link></li>
                 <li v-else><router-link class= "navborder" to="/profilepage">PROFILE</router-link></li>
@@ -47,14 +45,13 @@
         display:flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: -4%;
+        margin-top: -3.75%;
     }
  
     img {
-        width: 200px;
-        height: 90px;
+        width: 800px;
+        height: 105px;
         padding-right:60%;
-        cursor:pointer;
     }
 
     .navlinks{

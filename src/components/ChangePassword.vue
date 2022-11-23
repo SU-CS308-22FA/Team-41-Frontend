@@ -1,6 +1,7 @@
 
 <template>
     <NavBar></NavBar>
+    <SideBar></SideBar>
 
     <div class="container">
     
@@ -25,13 +26,15 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import NavBar from './NavBar.vue';
+    import SideBar from './SideBar.vue'
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
             NavBar,
+            SideBar,
         },
         methods: {
             goToProfile() {
@@ -47,7 +50,6 @@
         box-sizing: border-box;
         padding:0;
         margin:0;
-        background-color:rgba(47, 20, 109, 0.8);
     }
 
     body{
@@ -55,45 +57,26 @@
         height: 100%;
         align-items: center;
         justify-content: center;
-        background-color: rgba(47, 20, 109, 0.8);
         position: absolute;
         bottom:0px;
     }
-    h2{
-        margin-left: -70%;
-    }
     
     .container{
-        background-color: rgba(47, 20, 109, 0.8);
-        background-image: linear-gradient(to bottom, rgba(145,146,122,0.62),rgba(47, 20, 109, 0.8)),url(../assets/ball.jpg);
         background-size: cover;
-        height:100vh;
-        width: 136.3vh;
-        margin: 3.2% -1% 0 -1%;
-        
+        height:100%;
+        width: 100%;
+        align-items: center;
         display: flex;
         padding-left: 33%;
-        
+        margin-top: 5%;
+        margin-left: 5%;
     }
 
-    img{
-        box-sizing: border-box;
-
-        width: 149px;
-        height: 149px;
-        border-radius: 50%;
-        margin-bottom: -50%;
-
-        border:5px solid rgba(31, 28, 101, 0.818);
-        padding:3px;
-        background-color: white;
-        
-    }
     .editp{
-        background-color: ghostwhite;
-        width: 450px;
-        height: 550px;
-        padding:40px;
+        background-color: rgb(138, 138, 204);
+        width: 35%;
+        height: 55%;
+        padding: 7%;
         margin: 1.1em 1em;
         display: flex;
         border-radius: 8px;

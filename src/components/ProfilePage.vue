@@ -108,24 +108,26 @@
 
     body{
         display: flex;
-        top: 110px;
+        width: 100%;
         height: 100%;
         position: absolute;
         bottom:0px;
     }
     .container{
-        height:100vh;
-        width: 136.3vh;
-        text-align: center;
+        background-size: cover;
+        height:100%;
+        width: 100%;
+        align-items: center;
         display: flex;
         padding-left: 33%;
-        align-items: center;
+        margin-top: 2%;
+        margin-left: -7%;
     }
 
     .user-info{
         background-color: rgb(138, 138, 204);
-        width: 450px;
-        height: 550px;
+        width: 40%;
+        height: 65%;
         padding:30px;
         margin: 1.1em 1em;
         display:grid;
