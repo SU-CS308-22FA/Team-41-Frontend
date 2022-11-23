@@ -82,10 +82,9 @@
         width:100%;
         height:100%;
         text-align: center;
-        display: flex;
+        
         padding-left: 33%;
         padding-top: 4.7%;
-        
         margin-left:0;
         align-items: center;
     }
