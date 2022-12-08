@@ -134,7 +134,7 @@
                 this.$router.replace("/ShowFeedback");
             },
             goToReferee() {
-                this.$router.replace("/Referee");
+                this.$router.replace("/referees");
             }
         }
     };

@@ -1,5 +1,5 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     
     <div class="container">
@@ -48,14 +48,14 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue';
+    import HarunNavBar from './HarunNavBar.vue';
     import SideBar from './SideBar.vue';
 
     export default {
         path: '/signup',
         name: 'SignUp',
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
         },
         data() {

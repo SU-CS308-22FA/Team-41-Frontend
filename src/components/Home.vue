@@ -1,5 +1,5 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <body>
         <MainFeed></MainFeed>
@@ -7,14 +7,14 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue';
+    import HarunNavBar from './HarunNavBar.vue';
     import SideBar from './SideBar.vue';
     import MainFeed from './MainFeed.vue';
     export default {
         path: '/HomePage',
         name: 'HomePage',
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
             MainFeed,
         },

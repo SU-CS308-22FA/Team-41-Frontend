@@ -1,5 +1,5 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <div class="whole">
         
@@ -34,14 +34,14 @@
 
 
 <script>
-    import NavBar from './NavBar.vue';
+    import HarunNavBar from './HarunNavBar.vue';
     import SideBar from './SideBar.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "TeamsList",
         path: "teamsList",
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
             loadingPage
         },
