@@ -4,6 +4,7 @@
     <body>
         <div class="container">
         <div class="content">
+           
             <div class="cards">
                 <div v-for="item in items[0]" :key="item.id" class="card">
                     <div class="box">                 

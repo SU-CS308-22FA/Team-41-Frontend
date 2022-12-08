@@ -4,13 +4,20 @@
         <div class="container">
             <span  class="team">
                 <img :src=logo class="logo">
-                <a class="name">
+                <div class="column">
+                    <button v-on:click="addToFav" class="favbut">
+                        <img src="../assets/addedToFav.png" alt="" class= "fav">
+                    </button>
+                    <a class="name">
                     {{teamName}}
                 </a>
+
+                </div>
+
             </span >
-            <button v-on:click="addToFav">Add to Favorites</button>
+            
             <br><br>
-            <button v-on:click="hideOrUnhide('players')">Hide/Unhide Players</button>
+            <button v-on:click="hideOrUnhide('players')" class="but">Hide/Unhide Players</button>
             <div class="players">
                 <div v-for="player in players" :key="player.id">
                     <div class="team">
@@ -33,9 +40,9 @@
                 </div>
             </div>
 
-            <br><br>
+        
             
-            <button v-on:click="hideOrUnhide('matches')">Hide/Unhide Matches</button>
+            <button v-on:click="hideOrUnhide('matches')" class="but">Hide/Unhide Matches</button>
             <div class="matches">
                 <div v-for="match in matches" :key="match.id">
                     <span  class="team">
@@ -152,13 +159,12 @@
         justify-content: space-between;
         padding: 10px 16px;
         margin: 20px;
-        border: 1px solid black;
+        border: 1px solid rgba(218, 38, 152, 0.978);
         border-radius: 10px;
-        background-color: lightblue;
+        background-color: rgba(33, 66, 114, 0.818);
+        color: white;
     }
-    .team:hover{
-        border: 1px solid blue;
-    }
+  
 
     .logo{
         width:  50%;
@@ -179,5 +185,36 @@
     }
     .matches{
         display:none;
+    }
+    .column{
+        padding-top: 8%;
+        padding-right: 10%;
+       
+    }
+    .column .name{
+        padding-top: 30%;
+        
+    }
+    .favbut{
+        width:45px;
+        height: 45px;
+    }
+    .fav{
+        
+        background-color: rgba(33, 66, 114, 0.818);
+        margin-left:-5%;
+        margin-top:-5%;
+    
+        width: 45px;
+        height: 45px;
+    }
+
+    .but{
+        
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 5px 5px 5px 5px;
+        color: white;
+        background: rgba(33, 66, 114, 0.818);
     }
 </style>

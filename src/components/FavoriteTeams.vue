@@ -13,7 +13,7 @@
             <div v-else>
                 <div v-for="item in items[0]" :key="item.id">
                     <diV>
-
+                        
                         <router-link class="team" :to="{
                             name: 'TeamPage',
                             params: {
@@ -21,19 +21,24 @@
                             }
                         }"
                         >
+                            
                             <div class="logo">
                                 <img :src=item.logoURL>
                             </div>
-                            <div class="name">
+                            <div class="col">
+                                <button @click="deleteFavTeam(item.id)" :id="item.id" class="removeButton">X</button>
+                                <div class="name">
                                 {{item.name}}
                             </div>
+                            </div>
+
                             
                         </router-link>
                         
                     </diV>
                     <diV>
                         
-                        <button @click="deleteFavTeam(item.id)" :id="item.id" class="removeButton">X</button>
+                        
                     </diV>
                 </div>
                 
@@ -102,12 +107,33 @@
 
 <style>
 
-.removeButton{
-    height: 10%;
-    width: 10%;
+body{
+    background: rgba(185, 185, 185, 0.725);
+}
+
+
+
+.team{
+    padding-top: 0;
+    margin-bottom: 10%;
+}
+
+.col .removeButton{
+    height: 30px;
+    width: 50px;
     background-color: red;
     cursor: pointer;
-    z-index: 1;
+    margin-right: -80%;
+    margin-top: 1%;
+   
+}
+.col{
+    
+    
+}
+.col .name{
+    padding-top: 45%;
+    margin-right: 30px;
 }
 
 </style>

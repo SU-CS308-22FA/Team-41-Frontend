@@ -5,7 +5,8 @@
         
         <div class="container">
             <div v-if="items.length === 0 && finishedLoading === true">
-                No Matches Found!
+                <h3>No Matches Found!</h3>
+                
             </div>
             <div v-else-if="items.length === 0 || finishedLoading === false">
                 <loadingPage></loadingPage>
@@ -154,6 +155,11 @@
         justify-content: center;
         align-items: center;
         font-weight: bold;
+    }
+
+    h3{
+        margin-top: 5%;
+        font-size: 25px;
     }
 
 
