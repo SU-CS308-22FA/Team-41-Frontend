@@ -1,5 +1,5 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <div class="container">
         <form class="login-form" @submit.prevent="login">
@@ -37,14 +37,14 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue'
+    import HarunNavBar from './HarunNavBar.vue'
     import SideBar from './SideBar.vue'
 
     export default {
         path: '/login',
         name: 'LogIn',
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar
         },
         data() {

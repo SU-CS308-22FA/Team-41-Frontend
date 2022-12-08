@@ -1,11 +1,12 @@
 <template>
-    <NavBar></NavBar>
+    <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
     <div class="whole">
         
         <div class="container">
             <div v-if="items.length === 0 && finishedLoading === true">
-                No Matches Found!
+                <h3>No Matches Found!</h3>
+                
             </div>
             <div v-else-if="items.length === 0 || finishedLoading === false">
                 <loadingPage></loadingPage>
@@ -63,14 +64,14 @@
 
 
 <script>
-    import NavBar from './NavBar.vue';
+    import HarunNavBar from './HarunNavBar.vue';
     import SideBar from './SideBar.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "TodaysMatches",
         path: "todaysMatches",
         components: {
-            NavBar,
+            HarunNavBar,
             SideBar,
             loadingPage
         },
@@ -154,6 +155,11 @@
         justify-content: center;
         align-items: center;
         font-weight: bold;
+    }
+
+    h3{
+        margin-top: 5%;
+        font-size: 25px;
     }
 
 
