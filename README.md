@@ -16,6 +16,7 @@ Features for the users:
 - Report the comments if they find it offensive/toxic.
 - Send feedback about the application.
 
+
 Features for admins:
 - All the view features mentioned above.
 - View the feedback sent by users.
