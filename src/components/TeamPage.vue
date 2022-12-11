@@ -1,4 +1,5 @@
 <template>
+    <HarunNavBar></HarunNavBar>
     <div class="whole">
         <SideBar></SideBar>
         <div class="container">
@@ -67,6 +68,7 @@
 
 <script>
     import SideBar from './SideBar.vue';
+    import HarunNavBar from './HarunNavBar.vue';
     //import loadingPage from './loadingPage';
     export default {
         props: ["teamId"],
@@ -74,6 +76,7 @@
         name: 'TeamPage',
         components: {
             SideBar,
+            HarunNavBar
             //loadingPage
         },
         data(){
@@ -179,12 +182,16 @@
         justify-content: center;
         align-items: center;
         font-weight: bold;
+        
     }
     .players{
         display:none;
+        width: 140%;
     }
     .matches{
         display:none;
+        width: 140%;
+        padding: 15px 0 5px;
     }
     .column{
         padding-top: 8%;
@@ -216,5 +223,14 @@
         padding: 5px 5px 5px 5px;
         color: white;
         background: rgba(33, 66, 114, 0.818);
+    }
+    .column .name{
+        color: white;
+    }
+    .players .team .name{
+        color: white;
+    }
+    .matches .team .name{
+        color: white;
     }
 </style>

@@ -1,9 +1,13 @@
 <template>
+    <HarunNavBar></HarunNavBar>
+    <SideBar></SideBar>
     <div class="whole">
-        <SideBar></SideBar>
+
         
         <div class="container">
+            <br>
             <h1>Referee Info</h1>
+            <br>
             <div class="referee2">
                 <div class="name">
                         {{this.name}}
@@ -16,14 +20,19 @@
                         Total Votes <br> {{this.totalVote}}
                     </div>
             </div>
+            <br>
             <h1>Matches</h1>
+            
             <div  v-for="match in matches" :key="match.id">
                 <span  class="match">
                         <div class="name">
                             {{match.homeTeamName}} vs. {{match.awayTeamName}}
                         </div>
                         <div class="name" v-if="match.finished === true">
-                            {{match.goalHome}} vs. {{match.goalAway}}
+                            {{match.goalHome}} - {{match.goalAway}}
+                        </div>
+                        <div class="name" v-if="(match.finished === false)">
+                            {{match.dateAndTime.toString().replace("T", " ")}}
                         </div>
                         <div class="name">
                             {{match.referee}}
@@ -45,12 +54,14 @@
 
 <script>
 import SideBar from './SideBar.vue';
+import HarunNavBar from './HarunNavBar.vue';
     export default {
         props: ["refereeId"],
         path: "referees/:refereeId",
         name: "RefereePage",
         components: {
-            SideBar
+            SideBar,
+            HarunNavBar
         },
         data(){
             return {
@@ -99,32 +110,41 @@ import SideBar from './SideBar.vue';
         text-decoration: none;
         display: flex;
         justify-content: space-between;
-        padding: 10px 16px;
+        padding: 20px 16px 20px;
         margin: 20px;
         border: 1px solid black;
         border-radius: 10px;
         background-color: lightblue;
         font-size: small;
+        width: 200%;
+        
     }
 
     .referee2{
     text-decoration: none;
+   
     display: flex;
     justify-content: space-between;
-    padding: 10px 16px;
-    margin: 20px;
+    padding: 10px 16px 10px;
+    width: 130%;
+    margin-left: 38%;
     border: 1px solid black;
     border-radius: 10px;
-    background-color: lightseagreen;
+    background-color: rgba(33, 66, 114, 0.818);
 }
 
-.name{
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-
+    .referee2 .name{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+    }
+    h1{
+        margin:auto;
+        width: 200%;
+    }
+  
 
 </style>
