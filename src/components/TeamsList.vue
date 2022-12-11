@@ -95,7 +95,7 @@
         border: 3px solid rgba(218, 38, 152, 0.978);
         background-color: rgba(33, 66, 114, 0.818);
         color: white;
-        transform: scale(1.15);
+        transform: scale(1.1);
     }
 
     .logo{

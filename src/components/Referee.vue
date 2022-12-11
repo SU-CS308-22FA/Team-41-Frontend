@@ -95,19 +95,28 @@
     margin: 20px;
     border: 1px solid black;
     border-radius: 10px;
-    background-color: lightblue;
+    background-color: white;
 }
+
+
 .referee:hover{
-    border: 1px solid blue;
+    border: 3px solid rgba(218, 38, 152, 0.978);
+    background-color: rgba(33, 66, 114, 0.818);
+    color: white;
+    transform: scale(1.1);
+
 }
 
 
 .name{
-    
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+}
+.referee .name:hover{
+    color: white;
 }
 
 

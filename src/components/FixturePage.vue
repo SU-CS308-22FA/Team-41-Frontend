@@ -131,6 +131,7 @@
         border-radius: 10px;
         background-color: lightblue;
         font-size: small;
+        width: 95%;
     }
 
     table{
