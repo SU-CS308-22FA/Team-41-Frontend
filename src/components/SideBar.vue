@@ -403,6 +403,7 @@
     .sidebar li a:hover {
       background: whitesmoke;
       text-decoration: none;
+      cursor: pointer;
     }
     .sidebar li a .links_name {
       color: black;
