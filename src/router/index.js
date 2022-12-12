@@ -101,9 +101,10 @@ const routes = [
     component: Referee,
   },
   {
-    path: "/matchPage",
+    path: "/matchPage/:matchId",
     name: "MatchPage",
     component: MatchPage,
+    props: true,
   },
   {
     path: "/referees/:refereeId",

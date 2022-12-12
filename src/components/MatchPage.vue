@@ -5,30 +5,30 @@
         <div class="column1">
             <div class="matchbox">
                 <div class="results">
-                    <img src="../assets/likee.png"  alt="" class="logo1">
+                    
                 
                 <div class="team1">
-                    Galatasaray
+                    {{this.returnObject.homeTeamName}}
                 </div>
                 <div class="score">
-                    5 - 3
+                    {{this.returnObject.goalHome}} - {{this.returnObject.goalAway}}
                 </div>
                 <div class="team2">
-                    Fenerbahçe
+                    {{this.returnObject.awayTeamName}}
                 </div>
                 
-                <img src="../assets/trash.png" alt="" class="logo2">
+                
 
                 </div>
                 <div class="matchinfo">
                     <div class="stad">
-                    StadiumName
+                        {{this.returnObject.stadiumName}}
                 </div>
                 <div class="ref">
-                    Cüneyt Çakır
+                    {{this.returnObject.referee}}
                 </div>
                     <div class="date">
-                    12.12.2022
+                        {{this.returnObject.dateAndTime}}
                     </div>
                 </div>
 
@@ -68,15 +68,15 @@
             <div class="container5">
                 <div class="feedback5">
                     <div class="rating">
-                    <input type="radio" name="rating" id="rating-5">
+                    <input type="radio" name="rating" value=5 id="rating-5" v-model="rating">
                     <label for="rating-5"></label>
-                    <input type="radio" name="rating" id="rating-4">
+                    <input type="radio" name="rating" value=4 id="rating-4" v-model="rating">
                     <label for="rating-4"></label>
-                    <input type="radio" name="rating" id="rating-3">
+                    <input type="radio" name="rating" value=3 id="rating-3" v-model="rating">
                     <label for="rating-3"></label>
-                    <input type="radio" name="rating" id="rating-2">
+                    <input type="radio" name="rating" value=2 id="rating-2" v-model="rating">
                     <label for="rating-2"></label>
-                    <input type="radio" name="rating" id="rating-1">
+                    <input type="radio" name="rating" value=1 id="rating-1" v-model="rating">
                     <label for="rating-1"></label>
                     <div class="emoji-wrapper">
                         <div class="emoji">
@@ -171,7 +171,7 @@
                 </div>
                 <br><br>
                 
-                <button class="submit-but"><h1>Submit</h1> </button> 
+                <button @click="refereeVote" class="submit-but"><h1>Submit</h1> </button> 
                 
                         </div>
                     </div>
@@ -182,11 +182,57 @@
     import SideBar from './SideBar.vue';
     export default {
         name: "MatchPage",
-        path: "matchPage",
+        path: "matchPage/:matchId",
+        props: ["matchId"],
         components: {
             HarunNavBar,
             SideBar,
         },
+        data(){
+            return {
+                returnObject : {},
+                rating : 0,
+            }
+        },
+        mounted(){
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            };
+            fetch("https://tfb308.herokuapp.com/api/v1/match/" + this.matchId, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.returnObject = data.returnObject;
+                    console.log(this.returnObject);
+                    return;
+                }
+                console.log("Fetch Failed!: " + data.status);
+            });
+        },
+        methods: {
+            refereeVote(){
+                if (this.rating == 0){
+                    console.log("Please select a rating first!");
+                    return;
+                }
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name: this.returnObject.referee , rate:this.rating})
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/referee/vote", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                if(data.status === "200") {
+                    alert("Your rating successfully recorded.");
+                    return;
+                }
+                alert(data.returnObject);
+            });
+
+            }
+        }
 
     };
 
