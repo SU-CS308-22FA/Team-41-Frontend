@@ -26,7 +26,7 @@
                     </td>
                 </tr>
 
-                <div v-for="item in items[0]" :key="item.id">
+                <div  v-for="item in items[0]" v-on:click="navToMp(item.id)" :key="item.id">
                     <tr class="match" v-if="item.status === 'Match Finished'">
                         <td class="text">
                             {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
@@ -94,6 +94,12 @@
                 this.finishedLoading = true;
             });
         },
+        methods: {
+            navToMp(id){
+                
+                this.$router.push({ name: "MatchPage", params: {matchId: id}});
+            }
+        }
     };
 
 </script>
