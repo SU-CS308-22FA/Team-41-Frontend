@@ -16,6 +16,7 @@ import FavoriteTeams from "../components/FavoriteTeams";
 import FixturePage from "../components/FixturePage";
 import Referee from "../components/Referee";
 import RefereePage from "../components/RefereePage";
+import MatchPage from "../components/MatchPage.vue";
 
 const routes = [
   {
@@ -98,6 +99,11 @@ const routes = [
     path: "/referees",
     name: "AllReferees",
     component: Referee,
+  },
+  {
+    path: "/matchPage",
+    name: "MatchPage",
+    component: MatchPage,
   },
   {
     path: "/referees/:refereeId",

@@ -164,7 +164,7 @@
                 icon: 'bx-comment-detail',
               },
               {
-                link: '#',
+                link: '/matchPage',
                 name: 'Settings',
                 tooltip: 'Settings',
                 icon: 'bx-cog',
