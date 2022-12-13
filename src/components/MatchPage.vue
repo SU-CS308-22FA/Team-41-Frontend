@@ -53,9 +53,10 @@
                 </table>
             </div>
             <div class="add-comment">
-            <label for="subject">Add Comment</label>
-            <textarea v-model="body" id="subject" name="subject" placeholder="Write something.." style="height:50px; width: 95%"></textarea>
-            </div>
+            <label for="subject"></label> 
+            <textarea class= "add-c" v-model="body" id="subject" name="subject" placeholder=" Add Comment" style="height:50px; width: 85%"></textarea>
+            <button class="submit-comment"><h1>POST</h1> </button>
+        </div>
 
 
             
@@ -264,6 +265,7 @@
         margin-right: 2%;
         
     }
+
     .column1 .matchbox{
         background: white;
         padding-left: 3%;
@@ -333,13 +335,13 @@
         margin-left: 25%;
     }
     .container5 {
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png");
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 1%;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png");
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
 }
 
 .rating {
@@ -444,9 +446,10 @@
   flex-wrap: wrap;
   align-items: center;
   box-shadow: 0 4px 30px rgba(0,0,0,.05);
+  
 }
 .submit-but{
-    margin-bottom: 10%;
+    margin-bottom: 20%;
     background: pink;
     width: 50%;
     
@@ -470,10 +473,40 @@
     margin-bottom: 2%;
     background: white;
     text-align: left;
+    width: 130%;
+    display: flex;
 }
-.add-comment textarea{
-    margin-left: 1%;
+.submit-comment{ 
+    background: pink;
+    width: 20%;
+    margin-right:5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: -5%;
 }
+.submit-comment h1{
+    padding: 0 0 0 0;
+    margin-left: -50%;
+}
+.add-c {
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 29%;
+    padding: 12px 20px;
+    resize: none;
+    font-size: 16px;
+}
+
+/*textarea {
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  
+}*/
 .comment-title{
    
     margin-top: -2%;
