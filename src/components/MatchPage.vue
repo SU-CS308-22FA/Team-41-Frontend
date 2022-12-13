@@ -38,18 +38,16 @@
             <div class="comments">
                 <table class="com_table">
                     <tr> <th><div class="comment-title">User Comments on this Match <br></div></th> </tr>
-                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çöp maç</td>  <td class="rbut">Report</td> </tr> 
-                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay olmasa 10 yerdik</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Emran Delican</td> <td class= "ucom">Kafama sıkmaya gidiyomKafama sıkmaya gidiyomKafama sıkmaya gidiyomKafama sıkmaya gidiyomKafama sıkmaya gidiyomKafama sıkmaya gidiyomKafama sıkmaya gidiyomKafama sıkmaya gidiyomvKafama sıkmaya gidiyom</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çöp gibi maç</td>  <td class="rbut">Report</td> </tr> 
-                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay olmasa 10 yerdik</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Emran Delican</td> <td class= "ucom">Kafama sıkmaya gidiyom</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çöp gibi maç</td>  <td class="rbut">Report</td> </tr> 
-                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay olmasa 10 yerdik</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Emran Delican</td> <td class= "ucom">Kafama sıkmaya gidiyom</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çöp gibi maç</td>  <td class="rbut">Report</td> </tr> 
-                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay olmasa 10 yerdik</td> <td class="rbut">Report</td> </tr>
-                    <tr class="line"> <td class="uname">Emran Delican</td> <td class= "ucom">Kafama sıkmaya gidiyom</td> <td class="rbut">Report</td> </tr>
+                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çok kötü bir maç</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay dünyanın en iyi kalecisi</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Emirhan Delican</td> <td class= "ucom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget rutrum metus. Aenean id sapien in eros porta interdum vestibulum sit amet mauris. Duis venenatis, nunc ac luctus congue, mauris ex consequat arcu, at mattis arcu enim id arcu.</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çok kötü bir maç</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay dünyanın en iyi kalecisi</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Emirhan Delican</td> <td class= "ucom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget rutrum metus. Aenean id sapien in eros porta interdum vestibulum sit amet mauris. Duis venenatis, nunc ac luctus congue, mauris ex consequat arcu, at mattis arcu enim id arcu.</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Harun Akçay</td> <td class= "ucom">Çok kötü bir maç</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Oğuz Çınar</td> <td class= "ucom">Altay dünyanın en iyi kalecisi</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+                    <tr class="line"> <td class="uname">Emirhan Delican</td> <td class= "ucom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget rutrum metus. Aenean id sapien in eros porta interdum vestibulum sit amet mauris. Duis venenatis, nunc ac luctus congue, mauris ex consequat arcu, at mattis arcu enim id arcu.</td>  <td class="rbut"><button>Report</button> </td> </tr> 
+
                 </table>
             </div>
             <div class="add-comment">
@@ -63,8 +61,8 @@
         </div>
         <div class="column2">
             <br>
-            Rate the Referee!
-            <br>
+            <p>Rate the Referee!</p> 
+            
             <br>
             <div class="container5">
                 <div class="feedback5">
@@ -171,8 +169,10 @@
                 
                 </div>
                 <br><br>
+                <div class="s-b">
+                    <button @click="refereeVote" class="submit-but"><h1>SUBMIT</h1> </button> 
+                </div>
                 
-                <button @click="refereeVote" class="submit-but"><h1>Submit</h1> </button> 
                 
                         </div>
                     </div>
@@ -265,6 +265,10 @@
         margin-right: 2%;
         
     }
+   .column2 p{
+    font-weight: bold;
+    font-size:larger;
+   }
 
     .column1 .matchbox{
         background: white;
@@ -448,6 +452,7 @@
   box-shadow: 0 4px 30px rgba(0,0,0,.05);
   
 }
+
 .submit-but{
     margin-bottom: 20%;
     background: pink;
@@ -455,9 +460,41 @@
     
     
 }
+.s-b button{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 3px 8px;
+    text-align: center;
+    border: 5px solid white;
+    
+}
+.s-b button:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 8px;
+    border: 5px solid rgba(218, 38, 152, 0.978);
+    cursor: pointer;
+}
+
 .submit-but h1{
     padding: 0 0 0 0;
     
+}
+
+.add-comment button{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 3px 8px;
+    text-align: center;
+    border: 5px solid white;
+    
+}
+.add-comment button:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 8px;
+    border: 5px solid rgba(218, 38, 152, 0.978);
+    cursor: pointer;
 }
 
 .comments{
@@ -492,7 +529,7 @@
     margin-left: 2%;
     margin-top: 1%;
     margin-bottom: 1%;
-    margin-right: 29%;
+    margin-right: 13%;
     padding: 12px 20px;
     resize: none;
     font-size: 16px;
@@ -516,6 +553,7 @@
 
 .com_table  { 
     margin-top:  4%; 
+    margin-bottom:  4%;
     display: inline-block; 
     overflow: auto; 
     
@@ -524,26 +562,43 @@
     margin-left: 2%;
 }
 .com_table tr{
-    line-height: 30px;
+    line-height: 40px;
     
     
 }
 .line{
     
     margin-top: 3%;
+    margin-bottom: 3%;
 }
 .uname{
     width:20%;
     font-weight: bold;
 }
 .ucom{
-    width:74%;
+    width:70%;
     text-align: left;
 }
 .rbut{
     width:12%;
     color: rgba(218, 38, 152, 0.978);
     margin-right:1%;
+    
+}
+
+.rbut button{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 3px 8px 3px 8px;
+    text-align: center;
+    
+    
+}
+.rbut button:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 8px;
+    border: 2px solid rgba(218, 38, 152, 0.978);
 }
 th div {  position: absolute; }
 
