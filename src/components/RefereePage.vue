@@ -141,7 +141,7 @@ import HarunNavBar from './HarunNavBar.vue';
         font-weight: bold;
         color: white;
     }
-    h1{
+    .container h1{
         margin:auto;
         width: 200%;
     }

@@ -457,7 +457,7 @@
 }
 .submit-but h1{
     padding: 0 0 0 0;
-    margin-left: -50%;
+    
 }
 
 .comments{
@@ -486,7 +486,7 @@
 }
 .submit-comment h1{
     padding: 0 0 0 0;
-    margin-left: -50%;
+    
 }
 .add-c {
     margin-left: 2%;
