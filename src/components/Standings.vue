@@ -8,8 +8,9 @@
                 <loadingPage></loadingPage>
             </div>
             <div >
-                <table >
-                    <tr>
+                <div class="headings">
+                    <table >
+                    <tr class="col">
                         <th>Position</th>
                         <th>Club Name</th>
                         <th>Played</th>
@@ -21,7 +22,46 @@
                         <th>Goal Difference</th>
                         <th>Points</th>
                     </tr>
-                    <tr v-for="item in standings" :key="item.teamId">
+                    <tr class= "cl" v-for="item in standings.slice(0,1)" :key="item.teamId">
+                        <td>{{item.rank}}</td>
+                        <td>{{item.teamName}}</td>
+                        <td>{{item.winCount + item.drawnCount + item.loseCount}}</td>
+                        <td>{{item.winCount}}</td>
+                        <td>{{item.drawnCount}}</td>
+                        <td>{{item.loseCount}}</td>
+                        <td>{{item.goalsFor}}</td>
+                        <td>{{item.goalsAgainst}}</td>
+                        <td>{{item.average}}</td>
+                        <td>{{item.points}}</td>
+
+                    </tr>
+                    <tr class= "uefa" v-for="item in standings.slice(1,3)" :key="item.teamId">
+                        <td>{{item.rank}}</td>
+                        <td>{{item.teamName}}</td>
+                        <td>{{item.winCount + item.drawnCount + item.loseCount}}</td>
+                        <td>{{item.winCount}}</td>
+                        <td>{{item.drawnCount}}</td>
+                        <td>{{item.loseCount}}</td>
+                        <td>{{item.goalsFor}}</td>
+                        <td>{{item.goalsAgainst}}</td>
+                        <td>{{item.average}}</td>
+                        <td>{{item.points}}</td>
+
+                    </tr>
+                    <tr class= "pos" v-for="item in standings.slice(3,-4)" :key="item.teamId">
+                        <td>{{item.rank}}</td>
+                        <td>{{item.teamName}}</td>
+                        <td>{{item.winCount + item.drawnCount + item.loseCount}}</td>
+                        <td>{{item.winCount}}</td>
+                        <td>{{item.drawnCount}}</td>
+                        <td>{{item.loseCount}}</td>
+                        <td>{{item.goalsFor}}</td>
+                        <td>{{item.goalsAgainst}}</td>
+                        <td>{{item.average}}</td>
+                        <td>{{item.points}}</td>
+
+                    </tr>
+                    <tr class= "down" v-for="item in standings.slice(-4)" :key="item.teamId">
                         <td>{{item.rank}}</td>
                         <td>{{item.teamName}}</td>
                         <td>{{item.winCount + item.drawnCount + item.loseCount}}</td>
@@ -35,6 +75,8 @@
 
                     </tr>
                 </table>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -87,9 +129,59 @@
     margin: auto;
 }
 
-th{
+
+.standings th{
     
+    padding: 10px;
+    
+}
+.standings td{
     padding: 30px;
+    background-color: ghostwhite;
+    
+}
+.headings{
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	margin: 30px;
+	display: block;
+}
+
+.cl td{
+    color:rgb(7, 84, 7);
+}
+.uefa td{
+    color: lightblue;
+}
+.pos td{
+    color: black;
+}
+.down td{
+    color: red;
+}
+
+.cl:hover{
+	background-color: #77ff21;
+}
+
+.cl:hover td{
+	color: #000000;
+}
+
+.down:hover{
+	background-color: #ff7b21;
+}
+.uefa:hover{
+	background-color: #77ff21;
+}
+
+.uefa:hover td{
+	color: #000000;
+}
+
+.down:hover td{
+	color: #000000;
 }
 
 </style>
