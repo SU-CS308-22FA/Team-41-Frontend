@@ -17,6 +17,7 @@ import FixturePage from "../components/FixturePage";
 import Referee from "../components/Referee";
 import RefereePage from "../components/RefereePage";
 import MatchPage from "../components/MatchPage.vue";
+import Standings from "../components/Standings.vue";
 
 const routes = [
   {
@@ -111,6 +112,11 @@ const routes = [
     name: "RefereePage",
     component: RefereePage,
     props: true,
+  },
+  {
+    path: "/standings",
+    name: "AllStandings",
+    component: Standings,
   },
 ];
 
