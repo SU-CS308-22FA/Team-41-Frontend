@@ -33,7 +33,7 @@ Features for admins:
 - Delete reported comments if found inappropriate.
 
 # User Documentation
-- The application does not require any installation to run. User can visit https://su-cs308-22fa.github.io/Team-41-Frontend/ and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
+- The application does not require any installation to run. Users can visit https://su-cs308-22fa.github.io/Team-41-Frontend/ and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
 - We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the "Issues" tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in the given link: https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html. Moreover, you can report your issues or give feedback about the application on "CONTACT" TAB in the navigation bar of the application.
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
   - There is no "Settings" yet.
