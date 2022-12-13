@@ -76,9 +76,18 @@
                     </tr>
                 </table>
                 </div>
-                
+                <div class="grid-container">
+                    <div class="grid-item-cl"></div>
+                    <div class="grid-item">Champions League Qualifiers</div>
+                    <div class="grid-item-uefa"></div>  
+                    <div class="grid-item">UEFA League Qualifiers</div>
+                    <div class="grid-item-down"></div>
+                    <div class="grid-item">Relegation</div>   
+                    </div>
             </div>
+            
         </div>
+        
     </div>
 
 </template>
@@ -133,11 +142,11 @@
 .standings th{
     
     padding: 10px;
-    
+    font-weight: bold;
 }
 .standings td{
     padding: 30px;
-    background-color: ghostwhite;
+    font-weight: bold;
     
 }
 .headings{
@@ -146,42 +155,105 @@
 	color: black;
 	margin: 30px;
 	display: block;
+    background: ghostwhite;
 }
 
-.cl td{
-    color:rgb(7, 84, 7);
+
+
+.pos {
+    color: rgb(57, 55, 55);
+    background: ghostwhite;
+   
 }
-.uefa td{
-    color: lightblue;
+.pos:hover{
+	background-color: grey;
 }
-.pos td{
-    color: black;
+
+.pos:hover td{
+	color: #000000;
+    font-size: larger;
 }
-.down td{
+
+.down {
     color: red;
+    background: ghostwhite;
 }
-
+.cl{
+    color: #58d708;
+}
 .cl:hover{
-	background-color: #77ff21;
+	background-color: #58d708;
 }
 
 .cl:hover td{
 	color: #000000;
+    font-size: larger;
 }
 
 .down:hover{
-	background-color: #ff7b21;
+	background-color: red;
+}
+
+.uefa {
+    color: rgb(32, 144, 123);
+    background: ghostwhite;
+    
 }
 .uefa:hover{
-	background-color: #77ff21;
+	background-color: rgb(32, 144, 123);
 }
 
 .uefa:hover td{
 	color: #000000;
+    font-size: larger;
 }
 
 .down:hover td{
 	color: #000000;
+    font-size: larger;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 5% 95%;
+  width: 50%;
+  padding: 10px 10px 10px 10px;
+  
+}
+.grid-item {
+  color: black;
+  
+  padding-left: 5%;
+  font-size: 20px;
+  text-align: left;
+
+}
+.grid-item-cl {
+  background-color: #58d708;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  margin-bottom: 10%;
+  margin-right: 5%;
+  margin-top: 10%;
+  font-size: 30px;
+  text-align: center;
+}
+.grid-item-uefa {
+  
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  background-color: rgb(32, 144, 123);
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10%;
+  margin-right: 5%;
+  margin-top: 10%;
+}
+.grid-item-down {
+  background-color: red;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  margin-bottom: 10%;
+  margin-right: 5%;
+  font-size: 30px;
+  margin-top: 10%;
+  text-align: center;
 }
 
 </style>
