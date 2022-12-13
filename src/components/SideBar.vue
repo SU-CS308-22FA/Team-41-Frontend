@@ -202,7 +202,7 @@
                 icon: 'bx-walk',
               },
               {
-                link: '#',
+                link: '/standings',
                 name: 'Standings',
                 tooltip: 'Standings',
                 icon: 'bx-bar-chart-alt',
