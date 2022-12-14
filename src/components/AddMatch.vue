@@ -120,7 +120,7 @@
                 };
 
                 //endpoint to be determined
-                fetch("http://localhost:8081/api/v1/match/add_match", requestOptions)
+                fetch("https://tfb308.herokuapp.com/api/v1/match/add_match", requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     if (data.status !== "200"){
