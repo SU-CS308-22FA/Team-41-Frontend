@@ -5,9 +5,9 @@
   * [Contributors](#contributors)
   * [Features](#features)
 * [User Documentation](#user-documentation)
+* [Developer Documentation](#developer-documentation)
   * [Back-end](#back-end)
   * [Front-end](#front-end)
-* [Developer Documentation](#developer-documentation)
 
 
 # General Info
