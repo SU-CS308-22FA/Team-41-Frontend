@@ -1,25 +1,25 @@
 # Turkish Football Platform (TFP) 
 ![alt text](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/assets/tfpLogo.png "Logo Title Text 1") 
 # Table of contents
-* [General info](#general-info)
+- [General info](#general-info)
   * [Description](#description)
   * [Contributors](#contributors)
   * [Features](#features)
-* [User Documentation](#user-documentation)
+- [User Documentation](#user-documentation)
   * [Installation](#installation)
   * [Report Bug](#report-bug)
   * [Known Bugs](#known-bugs)
-* [Developer Documentation](#developer-documentation)
+- [Developer Documentation](#developer-documentation)
   * [Back-end](#back-end)
-   + [Setup](#setup) 
-   + [Folder Structure](#folder-structure)
-   + [Deployment](#deployment)
+    + [Setup](#setup)
+    + [Folder Structure](#folder-structure)
+    + [Deployment](#deployment)
   * [Front-end](#front-end)
-   + [Setup](#setup) 
-   + [Folder Structure](#folder-structure)
-   + [Deployment](#deployment)
-
-
+    + [Setup](#setup)
+    + [Folder Structure](#folder-structure)
+    + [Deployment](#deployment)
+    
+    
 # General Info
 
 ## Description
