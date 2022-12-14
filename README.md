@@ -2,11 +2,13 @@
 # Table of contents
 * [General info](#general-info)
 * [User Documentation](#user-documentation)
-* [Setup](#setup)
+* [Developer Documentation](#developer-documentation)
+
 
 # General Info
 
 ## Description
+
 https://su-cs308-22fa.github.io/Team-41-Frontend/
 Turkish Football Platform is a web application created for football fans and TFF officials. This application provides various features for the users, whereas it has features for the admins that will help them to do their duties in an easier and fairer way. Our primary aim for creating this application is to provide a fair assignment system and an equitable schedule for the teams competing in Turkish Super League. In addition, we are also aiming to make football fans keep track of the league easily, and involve them in the referee assignment process.
 
@@ -41,10 +43,10 @@ Features for admins:
 - Delete reported comments if found inappropriate.
 
 # User Documentation
-- The application does not require any installation to run. Users can visit
-'''
+- The application does not require any installation to run. Users can visit:
+```
 https://su-cs308-22fa.github.io/Team-41-Frontend/ 
-'''
+```
 and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
 - We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the "Issues" tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in the given link: https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html. Moreover, you can report your issues or give feedback about the application on "CONTACT" TAB in the navigation bar of the application.
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
@@ -64,5 +66,17 @@ In this kind of medium sized projects, it is crucial to keep everything maintain
 
 - Deployment
 The deployment of the backend application is done through Heroku. Heroku provides a very easy user experience for deployment, most of the complicated stuff are automatically handled within the Heroku environment. You do not even need create a jar file yourself, you attach your github repository and simply click deploy. Heroku detects the requirements and creates an environment to run your code. It even handles the database connection automatically. That is simply how we deployed our backend application to a remote server.
+
 ## Front-end
-  
+- Setup
+As a developer, if you would like to work on the front-end part of this project, the first thing you should do is to clone this repository into your local machine. In that way, you will have access to the codebase, and you can modify it as you wish. However, before you proceed to development phase, make sure that you have the required dependencies. The required dependencies as follows.
+  -	Node.js
+  -	Vue3
+  -	VueRouter
+After you installed these dependencies, you also need to get the project dependencies. In order to do that, you need to open a terminal in your project folder and type command “npm install”. After this, you are ready to build and run the project. To do that, again using the terminal type the command “npm run serve”, this will automatically build and run the project on port 8080 default. 
+
+- Folder Structure
+
+
+- Deployment 
+
