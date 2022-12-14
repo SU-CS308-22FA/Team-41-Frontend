@@ -10,7 +10,7 @@
                         <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === awayId"> {{ team.name }} </option>
                     </select>
 
-                    <label for="homeGoals">Home Goals</label>
+                    <label for="homeGoals">Enter Home Goals:</label>
                     <input id="homeGoals" type="number" v-model.number="homeGoals" min="0" />
                 </div>
                 
@@ -20,7 +20,7 @@
                         <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === homeId"> {{ team.name }} </option>
                     </select>
 
-                    <label for="awayGoals">Away Goals</label>
+                    <label for="awayGoals">Enter Away Goals:</label>
                     <input id="awayGoals" type="number" v-model.number="awayGoals" min="0" />
                 </div>
                 
@@ -31,6 +31,11 @@
                     </select>
                 </div>
                 
+                <div>
+                    <label for="date">Enter Match Date & Time:</label>
+                    <input id="date" type="datetime-local" v-model="date" />
+                </div>
+
                 <button class="addMatch" :disabled="userId === ''">
                     <a>Add Match</a>
                 </button>
@@ -64,6 +69,7 @@
                 refereeId: "",
                 homeGoals: 0,
                 awayGoals: 0,
+                date: "",
                 isLoaded: 0,
                 teams: [],
                 referees: [],
@@ -97,9 +103,10 @@
         methods: {
             addMatch() {
                 const {userId, homeId, awayId, refereeId, homeGoals, awayGoals} = this;
+                const date = this.date + ":00";
 
                 const requestOptions = {
-                    method: "PUT",
+                    method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         userId, 
@@ -107,12 +114,13 @@
                         awayId, 
                         refereeId, 
                         homeGoals, 
-                        awayGoals
+                        awayGoals,
+                        date
                     })
                 };
 
                 //endpoint to be determined
-                fetch("https://tfb308.herokuapp.com/api/v1/" + localStorage.userId, requestOptions)
+                fetch("http://localhost:8081/api/v1/match/add_match", requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     if (data.status !== "200"){
