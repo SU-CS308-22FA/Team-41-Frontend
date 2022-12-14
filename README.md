@@ -63,6 +63,9 @@ Moreover, you can report your issues or give feedback about the application on [
   - Admin and user interfaces are not distinct.
  
 # Developer Documentation
+For this project, we implemented our front-end and back-end tasks in different repositories.
+- [Back-end Repository](https://github.com/SU-CS308-22FA/Team-41-Backend)
+- [Front-end Repository](https://github.com/SU-CS308-22FA/Team-41-Frontend)
 ## Back-end
 ### Setup
 - If you would like to work on the backend part of the project, you need to clone this … repository into your local machine. Before proceeding to development phase, please be make sure that you have the following dependencies installed in your machine.
@@ -85,7 +88,7 @@ Moreover, you can report your issues or give feedback about the application on [
 - After you installed these dependencies, you also need to get the project dependencies. In order to do that, you need to open a terminal in your project folder and type command “npm install”. After this, you are ready to build and run the project. To do that, again using the terminal type the command “npm run serve”, this will automatically build and run the project on port 8080 default. 
 
 ### Folder Structure
-
+Since this project is small to medium sized projects, it was not crucial to keep all files in a certain structure. All of the source codes are in [src](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src), and inside to keep some order and structure, there is [App.vue](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/App.vue) and [main.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/main.js). These 2 file run the project and keep all routes under 1 file.[assets](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/assets) folder for images of project. [components](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/components) folder keeps components and each page of projec. [router](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/router) folder contains the file that configures the routing among all pages in project.
 
 ### Deployment 
 
