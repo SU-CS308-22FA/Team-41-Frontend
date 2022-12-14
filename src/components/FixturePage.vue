@@ -117,27 +117,35 @@
         text-decoration: none;
         display: flex;
         justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
+        padding: 10px 16px 10px 16px;
+        margin: 20px 20px 20px 20px;
+        margin-left: 10%;
         border: 1px solid black;
         border-radius: 10px;
         font-weight: bold;
         font-size: larger;
-        background-color: navy;
+        background-color: rgb(156, 35, 128);
         color: white;
+        width: 80%;
     }
 
     .match{
         text-decoration: none;
         display: flex;
         justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
+        padding: 20px 16px 20px 16px;
+        margin-left: 10%;
         border: 1px solid black;
         border-radius: 10px;
-        background-color: lightblue;
+        background-color: white;
         font-size: small;
-        width: 95%;
+        width: 80%;
+    }
+    .match:hover{
+        cursor:pointer;
+        transform: scale(1.1);
+        background-color: rgba(33, 66, 114, 0.818);
+        color: white;
     }
 
     table{
