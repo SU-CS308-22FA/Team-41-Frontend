@@ -19,7 +19,8 @@ import Referee from "../components/Referee";
 import RefereePage from "../components/RefereePage";
 import MatchPage from "../components/MatchPage.vue";
 import Standings from "../components/Standings.vue";
-import UsersList from "../components/usersList";
+import UsersList from "../components/usersList.vue";
+import AddMatch from "../components/AddMatch.vue";
 
 const routes = [
   {
@@ -129,6 +130,11 @@ const routes = [
     path: "/usersList",
     name: "UsersList",
     component: UsersList,
+  },
+  {
+    path: "/addMatch",
+    name: "AddMatch",
+    component: AddMatch,
   },
 ];
 
