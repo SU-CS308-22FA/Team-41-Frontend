@@ -6,6 +6,9 @@
   * [Contributors](#contributors)
   * [Features](#features)
 * [User Documentation](#user-documentation)
+  * [Install - Run](#install-run)
+  * [Report Bug](#report-bug)
+  * [Known Bugs](#known-bugs)
 * [Developer Documentation](#developer-documentation)
   * [Back-end](#back-end)
   * [Front-end](#front-end)
@@ -46,10 +49,12 @@ Features for admins:
 - Delete reported comments if found inappropriate.
 
 # User Documentation
+## Install - Run
 - The application does not require any installation to run. Users can visit: [here]( https://su-cs308-22fa.github.io/Team-41-Frontend/ ) and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
 - If users want to install and run the software on their device, detalied information on how to do it is given in the [Developer Documentation](#developer-documentation). 
-- We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the [Issues](https://github.com/SU-CS308-22FA/Team-41-Frontend/issues) tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
-
+## Report Bug
+We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the [Issues](https://github.com/SU-CS308-22FA/Team-41-Frontend/issues) tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
+## Known Bugs
 Moreover, you can report your issues or give feedback about the application on [CONTACT](https://su-cs308-22fa.github.io/Team-41-Frontend/feedback) TAB in the navigation bar of the application.
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
   - There is no "Settings" yet.
