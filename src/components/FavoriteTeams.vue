@@ -127,10 +127,7 @@ body{
     margin-top: 1%;
    
 }
-.col{
-    
-    
-}
+
 .col .name{
     padding-top: 45%;
     margin-right: 30px;
