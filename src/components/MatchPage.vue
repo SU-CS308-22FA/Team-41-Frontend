@@ -43,7 +43,9 @@
           >
             <td class="uname">{{ comment.username }}</td>
             <td class="ucom">{{ comment.body }}</td>
-            <td class="rbut">Report</td>
+            <td class="rbut">
+              <button @click="handleReport(comment)">Report</button>
+            </td>
           </tr>
         </table>
       </div>
@@ -491,6 +493,27 @@ export default {
         .then((data) => {
           if (data.status === "200") {
             alert("Comment received.");
+            return;
+          }
+          alert(data.returnObject);
+        });
+    },
+    handleReport(comment) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reportedUserId: comment.userId,
+          commentId: comment.id,
+          type: "toxic",
+          reporterId: localStorage.userId,
+        }),
+      };
+      fetch("https://tfb308.herokuapp.com/api/v1/report", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === "200") {
+            alert("We have received your report!");
             return;
           }
           alert(data.returnObject);
