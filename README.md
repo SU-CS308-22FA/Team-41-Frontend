@@ -14,9 +14,7 @@
 
 ## Description
 
-Turkish Football Platform is a web application created for football fans and TFF officials. This application provides various features for the users, whereas it has features for the admins that will help them to do their duties in an easier and fairer way. Our primary aim for creating this application is to provide a fair assignment system and an equitable schedule for the teams competing in Turkish Super League. In addition, we are also aiming to make football fans keep track of the league easily, and involve them in the referee assignment process. The application can be reached with the following link:
-
-[TFP Application]( https://su-cs308-22fa.github.io/Team-41-Frontend/ )
+Turkish Football Platform is a web application created for football fans and TFF officials. This application provides various features for the users, whereas it has features for the admins that will help them to do their duties in an easier and fairer way. Our primary aim for creating this application is to provide a fair assignment system and an equitable schedule for the teams competing in Turkish Super League. In addition, we are also aiming to make football fans keep track of the league easily, and involve them in the referee assignment process. The application can be reached with the following link: [TFP Application]( https://su-cs308-22fa.github.io/Team-41-Frontend/ )
 
 ## Contributors
 - Ataollah Hosseinzadeh Fard
@@ -47,11 +45,7 @@ Features for admins:
 - Delete reported comments if found inappropriate.
 
 # User Documentation
-- The application does not require any installation to run. Users can visit:
- 
-[TFP Application]( https://su-cs308-22fa.github.io/Team-41-Frontend/ )
-
-and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
+- The application does not require any installation to run. Users can visit: [here]( https://su-cs308-22fa.github.io/Team-41-Frontend/ ) and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
 - If users want to install and run the software on their device, detalied information on how to do it is given in the [Developer Documentation](#developer-documentation). 
 - We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the [Issues](https://github.com/SU-CS308-22FA/Team-41-Frontend/issues) tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
 
