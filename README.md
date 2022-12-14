@@ -1,19 +1,25 @@
 # Turkish Football Platform (TFP) 
 ![alt text](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/assets/tfpLogo.png "Logo Title Text 1") 
 # Table of contents
-* [General info](#general-info)
+- [General info](#general-info)
   * [Description](#description)
   * [Contributors](#contributors)
   * [Features](#features)
-* [User Documentation](#user-documentation)
+- [User Documentation](#user-documentation)
   * [Installation](#installation)
   * [Report Bug](#report-bug)
   * [Known Bugs](#known-bugs)
-* [Developer Documentation](#developer-documentation)
+- [Developer Documentation](#developer-documentation)
   * [Back-end](#back-end)
+    + [Setup](#setup)
+    + [Folder Structure](#folder-structure)
+    + [Deployment](#deployment)
   * [Front-end](#front-end)
-
-
+    + [Setup](#setup)
+    + [Folder Structure](#folder-structure)
+    + [Deployment](#deployment)
+    
+    
 # General Info
 
 ## Description
@@ -55,7 +61,7 @@ Features for admins:
 ## Report Bug
 We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the [Issues](https://github.com/SU-CS308-22FA/Team-41-Frontend/issues) tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
 ## Known Bugs
-Moreover, you can report your issues or give feedback about the application on [CONTACT](https://su-cs308-22fa.github.io/Team-41-Frontend/feedback) TAB in the navigation bar of the application.
+Moreover, you can report your issues or give feedback about the application on [CONTACT](https://su-cs308-22fa.github.io/Team-41-Frontend/feedback) tab in the navigation bar of the application.
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
   - There is no "Settings" yet.
   - The application does not work well with relatively smaller screens i.e phones, tablets.
@@ -63,6 +69,9 @@ Moreover, you can report your issues or give feedback about the application on [
   - Admin and user interfaces are not distinct.
  
 # Developer Documentation
+For this project, we implemented our front-end and back-end tasks in different repositories.
+- [Back-end Repository](https://github.com/SU-CS308-22FA/Team-41-Backend)
+- [Front-end Repository](https://github.com/SU-CS308-22FA/Team-41-Frontend)
 ## Back-end
 ### Setup
 - If you would like to work on the backend part of the project, you need to clone this … repository into your local machine. Before proceeding to development phase, please be make sure that you have the following dependencies installed in your machine.
@@ -71,7 +80,7 @@ Moreover, you can report your issues or give feedback about the application on [
   -	IntelliJ
 - Although, IntelliJ is not a must it is highly recommended to use IntelliJ as an IDE, since the core development team uses it, and there might be some incompatibilities with other ides. After you set the development environment, you also need to get the project dependencies, which is inside the “pom.xml” file. Note that you need a web container to run the project on your local machine, if you are using IntelliJ, you do not need to do anything, it provides default tomcat server to run your project inside. However, if you are using other editors or ides you need to setup your environment accordingly. This project uses PostgreSQL as the database, you can either download it from web, or you may create a docker container that runs a PostgreSQL server inside. You can configure the database connection from the “application.properties” file. From this point, you can start development.
 ### Folder Structure
-- In this kind of medium sized projects, it is crucial to keep everything maintainable, so that the development process can continue forever. Therefore, it is important to write a clean code with efficient file structure. We have used three layered structure while developing the project. The names and duties of these layers are listed below. Controller Layer: Controller layer is where we created the endpoints that receives the http requests. For instance, the controller class of the User Microservice has an endpoint “…/api/v1/users/login” attached to a method, so that whenever a post request comes to this endpoint, the attached method runs. However, the only job of this method is to forward the necessary information, such as path parameters, path variables, headers, to the service layer. Service Layer: Service layer is where the business logic is handled. It communicates with other services, interacts with the database through the singleton data access object, throws an appropriate error if necessary. Data Access Layer: Data access layer is where the interaction with the database is handled. Since the “Spring Data JPA” was used in the project, The only thing to do in this part was to create an interface and add the necessary methods inside it. For instance, when you want to find a user with its id, you create the prototype of the function inside the interface as “ User findUserById(Long id)”, the implementation of this method automatically created by Spring Data JPA. Besides these three layers, there are also two more side concepts, which are data transfer objects (DTO) and entity classes. Entity classes are where the database entities were designed with the help of annotations. For instance, if you would like a class to mapped into an entity in the database you need to put “@Entity” annotation above the class. It is also possible to manage primary keys, foreign keys, nullability and many more with the annotations. Moreover, the DTO’s are necessary to prevent a security breach, when 21 responding back to outside world. For instance, if an entity class has an attribute that should not be seen by anyone, then the response cannot be an instance of that entity class. There should be another class without that attribute, and the object to be returned should be an instance of this class. This was the general structure of our backend application developed in this project.
+- In this kind of medium sized projects, it is crucial to keep everything maintainable, so that the development process can continue forever. Therefore, it is important to write a clean code with efficient file structure. We have used three layered structure while developing the project. The names and duties of these layers are listed below. Controller Layer: Controller layer is where we created the endpoints that receives the http requests. For instance, the controller class of the User entity has an endpoint “…/api/v1/users/login” attached to a method, so that whenever a post request comes to this endpoint, the attached method runs. However, the only job of this method is to forward the necessary information, such as path parameters, path variables, headers, to the service layer. Service Layer: Service layer is where the business logic is handled. It communicates with other services, interacts with the database through the singleton data access object, throws an appropriate error if necessary. Data Access Layer: Data access layer is where the interaction with the database is handled. Since the “Spring Data JPA” was used in the project, The only thing to do in this part was to create an interface and add the necessary methods inside it. For instance, when you want to find a user with its id, you create the prototype of the function inside the interface as “ User findUserById(Long id)”, the implementation of this method automatically created by Spring Data JPA. Besides these three layers, there are also two more side concepts, which are data transfer objects (DTO) and entity classes. Entity classes are where the database entities were designed with the help of annotations. For instance, if you would like a class to mapped into an entity in the database you need to put “@Entity” annotation above the class. It is also possible to manage primary keys, foreign keys, nullability and many more with the annotations. Moreover, the DTO’s are necessary to prevent a security breach, when 21 responding back to outside world. For instance, if an entity class has an attribute that should not be seen by anyone, then the response cannot be an instance of that entity class. There should be another class without that attribute, and the object to be returned should be an instance of this class. This was the general structure of our backend application developed in this project.
 
 ### Deployment
 - The deployment of the backend application is done through Heroku. Heroku provides a very easy user experience for deployment, most of the complicated stuff are automatically handled within the Heroku environment. You do not even need create a jar file yourself, you attach your github repository and simply click deploy. Heroku detects the requirements and creates an environment to run your code. It even handles the database connection automatically. That is simply how we deployed our backend application to a remote server.
@@ -85,7 +94,28 @@ Moreover, you can report your issues or give feedback about the application on [
 - After you installed these dependencies, you also need to get the project dependencies. In order to do that, you need to open a terminal in your project folder and type command “npm install”. After this, you are ready to build and run the project. To do that, again using the terminal type the command “npm run serve”, this will automatically build and run the project on port 8080 default. 
 
 ### Folder Structure
-
+Since this project is small to medium sized projects, it was not crucial to keep all files in a certain structure. All of the source codes are in [src](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src), and inside to keep some order and structure, there is [App.vue](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/App.vue) and [main.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/main.js). These 2 file run the project and keep all routes under 1 file. [assets](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/assets) folder for images of project. [components](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/components) folder keeps components and each page of project. [router](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/router) folder contains the file that configures the routing among all pages in project.
 
 ### Deployment 
+The deployment of the backend application is done through Github pages. Github pages is a platform that is very easy to deploy. In order to deploy this project in github pages, you need to follow some steps.
 
+1. You need to build the project first, hence run following:
+```
+npm run build
+```
+2. After build, you should prepare built project for github pages, hence run following:
+ - If you are in windows:
+  ```
+  npm run deployWin
+  ```
+ - Otherwise:
+ ```
+ npm run deployOther
+ ```
+ Then in [vue.config.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/vue.config.js), instead of "Team-41-Frontend", your target repo name should be replaced.
+
+3. At last to deploy the bult project to github pages, following must be run:
+ ```
+git add dist && git commit -m 'adding dist subtree'
+git subtree push --prefix dist origin gh-pages
+ ```
