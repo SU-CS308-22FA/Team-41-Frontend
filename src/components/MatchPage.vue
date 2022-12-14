@@ -6,7 +6,7 @@
       <div class="matchbox">
         <div class="results">
           <div class="team1">
-            {{ this.returnObject.homeTeamName }}
+            {{ this.returnObject.homeTeamName }} 
           </div>
           <div class="score">
             {{ this.returnObject.goalHome }} - {{ this.returnObject.goalAway }}
