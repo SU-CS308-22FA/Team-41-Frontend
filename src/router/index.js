@@ -12,6 +12,7 @@ import AdminHome from "../components/AdminHome";
 import TeamsList from "../components/TeamsList";
 import TeamPage from "../components/TeamPage";
 import ShowFeedback from "../components/ShowFeedback";
+import ShowComments from "../components/ShowComments";
 import FavoriteTeams from "../components/FavoriteTeams";
 import FixturePage from "../components/FixturePage";
 import Referee from "../components/Referee";
@@ -85,6 +86,11 @@ const routes = [
     path: "/ShowFeedback",
     name: "ShowFeedback",
     component: ShowFeedback,
+  },
+  {
+    path: "/ShowComments",
+    name: "ShowComments",
+    component: ShowComments,
   },
   {
     path: "/favoriteTeams",
