@@ -50,15 +50,15 @@
         </table>
       </div>
       <div class="add-comment">
-        <label for="subject">Add Comment</label>
+        
         <textarea
           v-model="commentBody"
           id="subject"
           name="subject"
           placeholder="Write something.."
-          style="height: 50px; width: 95%"
+          style=" width: 70%"
         ></textarea>
-        <button @click="comment">Submit</button>
+        <button class="submit-comment" @click="comment"><h1>POST</h1></button>
       </div>
     </div>
     <div class="column2">
@@ -412,7 +412,9 @@
       </div>
       <br /><br />
 
-      <button @click="refereeVote" class="submit-but"><h1>Submit</h1></button>
+      <div class="s-b">
+                    <button @click="refereeVote" class="submit-but"><h1>SUBMIT</h1> </button> 
+                </div>
     </div>
   </div>
 </template>
@@ -719,7 +721,21 @@ export default {
 #rating-5:checked ~ .emoji-wrapper > .emoji {
   transform: translateY(-500px);
 }
-
+.s-b button{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 3px 0px;
+    text-align: center;
+    border: 5px solid white;
+    
+}
+.s-b button:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 0;
+    border: 5px solid rgba(218, 38, 152, 0.978);
+    cursor: pointer;
+}
 .feedback5 {
   max-width: 360px;
   background-color: #fff;
@@ -732,6 +748,54 @@ export default {
   align-items: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
+.rbut button{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 3px 8px 3px 8px;
+    text-align: center;
+    
+    
+}
+.rbut button:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 8px;
+    cursor:pointer;
+    border: 2px solid rgba(218, 38, 152, 0.978);
+}
+.add-comment{
+    margin-top: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 2%;
+    background: white;
+    text-align: left;
+    width: 130%;
+    display: flex;
+}
+.submit-comment{ 
+    background: pink;
+    width: 20%;
+    margin-right:5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 5%;
+  }
+.add-comment button{
+    background: rgba(218, 38, 152, 0.978);
+    color: white;
+    padding: 3px 8px;
+    text-align: center;
+    border: 5px solid white;
+    
+}
+.add-comment button:hover{
+    color: rgba(218, 38, 152, 0.978);
+    background: white;
+    padding: 3px 8px;
+    border: 5px solid rgba(218, 38, 152, 0.978);
+    cursor: pointer;
+}
 .submit-but {
   margin-bottom: 10%;
   background: pink;
@@ -739,7 +803,7 @@ export default {
 }
 .submit-but h1 {
   padding: 0 0 0 0;
-  margin-left: -50%;
+  
 }
 
 .comments {
