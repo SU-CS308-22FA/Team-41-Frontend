@@ -1,4 +1,10 @@
 # Turkish Football Platform (TFP)
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+
+## General Info
 https://su-cs308-22fa.github.io/Team-41-Frontend/
 Turkish Football Platform is a web application created for football fans and TFF officials. This application provides various features for the users, whereas it has features for the admins that will help them to do their duties in an easier and fairer way. Our primary aim for creating this application is to provide a fair assignment system and an equitable schedule for the teams competing in Turkish Super League. In addition, we are also aiming to make football fans keep track of the league easily, and involve them in the referee assignment process.
 
@@ -38,4 +44,7 @@ Features for admins:
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
   - There is no "Settings" yet.
   - The application does not work well with relatively smaller screens i.e phones, tablets.
+  
+# Documentation
+- 
   
