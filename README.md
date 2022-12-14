@@ -11,13 +11,13 @@
   * [Known Bugs](#known-bugs)
 * [Developer Documentation](#developer-documentation)
   * [Back-end](#back-end)
-   * [Setup](#setup) 
-   * [Folder Structure](#folder-structure)
-   * [Deployment](#deployment)
+        * [Setup](#setup) 
+        * [Folder Structure](#folder-structure)
+        * [Deployment](#deployment)
   * [Front-end](#front-end)
-   * [Setup](#setup) 
-   * [Folder Structure](#folder-structure)
-   * [Deployment](#deployment)
+        * [Setup](#setup) 
+        * [Folder Structure](#folder-structure)
+        * [Deployment](#deployment)
 
 
 # General Info
@@ -112,7 +112,7 @@ npm run build
  ```
  npm run deployOther
  ```
-  Then in [vue.config.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/vue.config.js), instead of "Team-41-Frontend", your target repo name should be replaced.
+ Then in [vue.config.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/vue.config.js), instead of "Team-41-Frontend", your target repo name should be replaced.
 
 3. At last to deploy the bult project to github pages, following must be run:
  ```
