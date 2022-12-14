@@ -55,7 +55,7 @@ Features for admins:
 ## Report Bug
 We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the [Issues](https://github.com/SU-CS308-22FA/Team-41-Frontend/issues) tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
 ## Known Bugs
-Moreover, you can report your issues or give feedback about the application on [CONTACT](https://su-cs308-22fa.github.io/Team-41-Frontend/feedback) TAB in the navigation bar of the application.
+Moreover, you can report your issues or give feedback about the application on [CONTACT](https://su-cs308-22fa.github.io/Team-41-Frontend/feedback) tab in the navigation bar of the application.
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
   - There is no "Settings" yet.
   - The application does not work well with relatively smaller screens i.e phones, tablets.
@@ -88,7 +88,7 @@ For this project, we implemented our front-end and back-end tasks in different r
 - After you installed these dependencies, you also need to get the project dependencies. In order to do that, you need to open a terminal in your project folder and type command “npm install”. After this, you are ready to build and run the project. To do that, again using the terminal type the command “npm run serve”, this will automatically build and run the project on port 8080 default. 
 
 ### Folder Structure
-Since this project is small to medium sized projects, it was not crucial to keep all files in a certain structure. All of the source codes are in [src](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src), and inside to keep some order and structure, there is [App.vue](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/App.vue) and [main.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/main.js). These 2 file run the project and keep all routes under 1 file.[assets](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/assets) folder for images of project. [components](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/components) folder keeps components and each page of projec. [router](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/router) folder contains the file that configures the routing among all pages in project.
+Since this project is small to medium sized projects, it was not crucial to keep all files in a certain structure. All of the source codes are in [src](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src), and inside to keep some order and structure, there is [App.vue](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/App.vue) and [main.js](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/main.js). These 2 file run the project and keep all routes under 1 file. [assets](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/assets) folder for images of project. [components](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/components) folder keeps components and each page of project. [router](https://github.com/SU-CS308-22FA/Team-41-Frontend/tree/main/src/router) folder contains the file that configures the routing among all pages in project.
 
 ### Deployment 
 
