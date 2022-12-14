@@ -15,9 +15,9 @@
     + [Folder Structure](#folder-structure)
     + [Deployment](#deployment)
   * [Front-end](#front-end)
-    + [Setup](#setup)
-    + [Folder Structure](#folder-structure)
-    + [Deployment](#deployment)
+    + [Setup ](#setup )
+    + [Folder Structure ](#folder-structure )
+    + [Deployment ](#deployment )
     
     
 # General Info
