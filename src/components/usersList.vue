@@ -12,6 +12,7 @@
                 <div class="headings">
                     <table >
                         <tr class="col">
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Mail</th>
                             <th>Gender</th>
