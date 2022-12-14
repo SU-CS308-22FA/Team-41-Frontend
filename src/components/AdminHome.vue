@@ -73,7 +73,7 @@
                <div class="reports">
                 <div class="title">
                     <h2>User Reports</h2>
-                    <a href="#" class="btn">View All</a>
+                    <a href="#" class="btn" @click="goToComments">View All</a>
                 </div>
                 <table>
                     <tr>
@@ -135,6 +135,9 @@
             },
             goToReferee() {
                 this.$router.replace("/referees");
+            },
+            goToComments(){
+                this.$router.replace("/ShowComments");
             }
         }
     };
