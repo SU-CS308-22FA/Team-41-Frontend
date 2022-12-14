@@ -19,6 +19,7 @@ import Referee from "../components/Referee";
 import RefereePage from "../components/RefereePage";
 import MatchPage from "../components/MatchPage.vue";
 import Standings from "../components/Standings.vue";
+import UsersList from "../components/usersList";
 
 const routes = [
   {
@@ -123,6 +124,11 @@ const routes = [
     path: "/standings",
     name: "AllStandings",
     component: Standings,
+  },
+  {
+    path: "/usersList",
+    name: "UsersList",
+    component: UsersList,
   },
 ];
 
