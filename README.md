@@ -6,7 +6,7 @@
   * [Contributors](#contributors)
   * [Features](#features)
 * [User Documentation](#user-documentation)
-  * [Install](#install)
+  * [Installation](#installation)
   * [Report Bug](#report-bug)
   * [Known Bugs](#known-bugs)
 * [Developer Documentation](#developer-documentation)
@@ -49,7 +49,7 @@ Features for admins:
 - Delete reported comments if found inappropriate.
 
 # User Documentation
-## Install
+## Installation
 - The application does not require any installation to run. Users can visit: [here]( https://su-cs308-22fa.github.io/Team-41-Frontend/ ) and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
 - If users want to install and run the software on their device, detalied information on how to do it is given in the [Developer Documentation](#developer-documentation). 
 ## Report Bug
