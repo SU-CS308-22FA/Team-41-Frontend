@@ -6,7 +6,7 @@
   * [Contributors](#contributors)
   * [Features](#features)
 * [User Documentation](#user-documentation)
-  * [Install/Run](#install/run)
+  * [Install/Run](#install-/-run)
   * [Report Bug](#report-bug)
   * [Known Bugs](#known-bugs)
 * [Developer Documentation](#developer-documentation)
