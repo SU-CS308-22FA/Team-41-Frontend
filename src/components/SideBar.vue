@@ -158,6 +158,12 @@
                 icon: 'bx-calendar-check',
               },
               {
+                link: '/addMatch',
+                name: 'Add Match',
+                tooltip: 'Add Match',
+                icon: 'bx-bookmark-plus',
+              },
+              {
                 link: '/showFeedBack',
                 name: 'Feedback',
                 tooltip: 'Feedback',
