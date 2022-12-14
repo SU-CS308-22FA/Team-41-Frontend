@@ -52,8 +52,8 @@ Features for admins:
 [TFP Application]( https://su-cs308-22fa.github.io/Team-41-Frontend/ )
 
 and start their journey on the site. They firstly need to create an account, then log in with their credentials after they confirmed their account from their email accounts. At that point, users are free to benefit the various features of the app.
-- If users want to install and run the software on their device, detalied information on how to do it is given in the Developer Documentation. * [Developer Documentation](#developer-documentation)
-- We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the "Issues" tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
+- If users want to install and run the software on their device, detalied information on how to do it is given in the Developer Documentation. [Developer Documentation](#developer-documentation) 
+- We would be grateful if users report bugs/issues they found on our application. Issues can be reported on the [Issues](https://github.com/SU-CS308-22FA/Team-41-Frontend/issues) tab on the left corner of the repository navigation bar. It would be a good idea to give the details about the issue while reporting so that we can truly understand the issue and help you accordingly. A good guide about how to report issues can be found in [here]( https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html).
 
 Moreover, you can report your issues or give feedback about the application on "CONTACT" TAB in the navigation bar of the application.
 - Since the project is not finished, unfortunately we have some bugs. Here are some known bugs/issues for now:
@@ -62,7 +62,6 @@ Moreover, you can report your issues or give feedback about the application on "
   - A user can give multiple ratings to a referee for the same match.
   - Admin and user interfaces are not distinct.
  
-  
 # Developer Documentation
 ## Back-end
 ### Setup
