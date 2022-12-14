@@ -1,4 +1,4 @@
-# Turkish Football Platform (TFP)
+# Turkish Football Platform (TFP) ![alt text](https://github.com/SU-CS308-22FA/Team-41-Frontend/blob/main/src/assets/tfpLogo.png "Logo Title Text 1") 
 # Table of contents
 * [General info](#general-info)
   * [Description](#description)
