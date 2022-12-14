@@ -140,7 +140,7 @@
                 icon: 'bxs-dashboard',
               },
               {
-                link: '#',
+                link: '/usersList',
                 name: 'Users',
                 tooltip: 'Users',
                 icon: 'bx-user-check',
