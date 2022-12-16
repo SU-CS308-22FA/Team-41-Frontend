@@ -55,7 +55,7 @@
                 <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
               </li>
             </span>
-            <div v-if="showAdminTools === true || true">
+            <div v-if="showAdminTools">
               <br>
               <li>
                 <a>
@@ -223,7 +223,7 @@
         }
       },
       mounted() {
-        if(localStorage.isAdmin) this.showAdminTools = localStorage.isAdmin;
+        if(localStorage.isAdmin) this.showAdminTools = localStorage.isAdmin === "true";
         this.isOpened = this.isMenuOpen;
       },
       methods: {
@@ -235,9 +235,6 @@
         isOpened() {
           window.document.body.style.paddingLeft = this.isOpened && this.isPaddingLeft ? this.menuOpenedPaddingLeftBody : this.menuClosedPaddingLeftBody
         },
-        showAdminTools() {
-          if(localStorage.isAdmin) this.showAdminTools = localStorage.isAdmin;
-        }
       }
     }
   </script>
