@@ -70,8 +70,11 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/ban/" + user2banId, requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                    alert(data.returnObject);
+                    if(data.returnObject === "USER INFORMATION UPDATED SUCCESSFULLY!") {
+                        this.map.set(user2banId, true);
+                    }
                     this.finishedLoading = true;
+                    location.reload();
                 });
             },
 
@@ -83,8 +86,11 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/unban/" + user2banId, requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                    alert(data.returnObject);
+                    if(data.returnObject === "USER INFORMATION UPDATED SUCCESSFULLY!") {
+                        this.map.set(user2banId, false);
+                    }
                     this.finishedLoading = true;
+                    location.reload();
                 });
             }
         },
