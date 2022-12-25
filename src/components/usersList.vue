@@ -26,8 +26,11 @@
                             <td>{{user.gender}}</td>
                             <td>{{user.birthdate}}</td>
                             <td>{{user.fanTeam}}</td>
-                            <td>
+                            <td v-if="map.get(user.userId)">
                                 <button class="ban-btn" @click="banUser(user.userId)">BAN</button>
+                            </td>
+                            <td v-else>
+                                <button class="ban-btn" @click="unbanUser(user.userId)">UNBAN</button>
                             </td>
                         </tr>
                     </table>
@@ -54,6 +57,7 @@
         data(){
             return {
                 users: [],
+                map: new Map(),
                 userId: ""
             }
         },
@@ -64,6 +68,19 @@
                     headers: { "Content-Type": "application/json" },
                 };
                 fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/ban/" + user2banId, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.returnObject);
+                    this.finishedLoading = true;
+                });
+            },
+
+            unbanUser(user2banId) {
+                const requestOptions = {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/unban/" + user2banId, requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     alert(data.returnObject);
@@ -83,6 +100,14 @@
             .then(data => {
                 if(data.status === "200") {
                     this.users = data.returnObject;
+                }
+
+                for(let i = 0; i < this.users.length; i++) {
+                    fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.users.at(i).userId + "/ban_status", requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.map.set(this.users.at(i).userId, data.returnObject !== "banned");
+                    })
                 }
                 this.finishedLoading = true;
             });
