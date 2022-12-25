@@ -21,6 +21,7 @@ import MatchPage from "../components/MatchPage.vue";
 import Standings from "../components/Standings.vue";
 import UsersList from "../components/usersList.vue";
 import AddMatch from "../components/AddMatch.vue";
+import BootStrap from "../components/Bootstrap.vue";
 
 const routes = [
   {
@@ -135,6 +136,11 @@ const routes = [
     path: "/addMatch",
     name: "AddMatch",
     component: AddMatch,
+  },
+  {
+    path: "/bootstrap",
+    name: "BootStrap",
+    component: BootStrap,
   },
 ];
 
