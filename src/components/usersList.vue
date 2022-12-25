@@ -5,16 +5,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Error!</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              @click="closeModal()"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title">Error</h5>
           </div>
           <div class="modal-body">
             <p>{{ errorMsg }}</p>
@@ -61,12 +52,12 @@
               <td>{{ user.birthdate }}</td>
               <td>{{ user.fanTeam }}</td>
               <td v-if="map.get(user.userId)">
-                <button class="ban-btn" @click="banUser(user.userId)">
+                <button class="btn btn-primary" @click="banUser(user.userId)">
                   BAN
                 </button>
               </td>
               <td v-else>
-                <button class="ban-btn" @click="unbanUser(user.userId)">
+                <button class="btn btn-secondary" @click="unbanUser(user.userId)">
                   UNBAN
                 </button>
               </td>
@@ -119,11 +110,11 @@ export default {
           this.finishedLoading = true;
           if (data.status === "200") {
             this.map.set(user2banId, true);
-
-            this.myModal.show();
+            location.reload();
           } else {
             this.errorMsg = data.returnObject;
             this.error = true;
+            this.myModal.show();
           }
         });
     },
@@ -152,6 +143,7 @@ export default {
           } else {
             this.errorMsg = data.returnObject;
             this.error = true;
+            this.myModal.show();
           }
         });
     },
