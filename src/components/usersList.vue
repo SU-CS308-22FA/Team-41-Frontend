@@ -1,4 +1,27 @@
 <template>
+    <!-- Modal -->
+    <div>
+        <div v-if="error" ref="modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>{{errorMsg}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <HarunNavBar></HarunNavBar>
     <SideBar></SideBar>
@@ -58,7 +81,9 @@
             return {
                 users: [],
                 map: new Map(),
-                userId: ""
+                userId: "",
+                errorMsg: "",
+                error: false,
             }
         },
         methods: {
@@ -70,11 +95,15 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/ban/" + user2banId, requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                    if(data.returnObject === "USER INFORMATION UPDATED SUCCESSFULLY!") {
-                        this.map.set(user2banId, true);
-                    }
                     this.finishedLoading = true;
-                    location.reload();
+                    if(data.status === "200") {
+                        this.map.set(user2banId, true);
+                        location.reload();
+                    }
+                    else {
+                        this.errorMsg = data.returnObject;
+                        this.error = true;
+                    }
                 });
             },
 
@@ -86,11 +115,15 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/unban/" + user2banId, requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                    if(data.returnObject === "USER INFORMATION UPDATED SUCCESSFULLY!") {
-                        this.map.set(user2banId, false);
-                    }
                     this.finishedLoading = true;
-                    location.reload();
+                    if(data.status === "200") {
+                        this.map.set(user2banId, false);
+                        location.reload();
+                    }
+                    else {
+                        this.errorMsg = data.returnObject;
+                        this.error = true;
+                    }
                 });
             }
         },
@@ -106,14 +139,17 @@
             .then(data => {
                 if(data.status === "200") {
                     this.users = data.returnObject;
-                }
 
-                for(let i = 0; i < this.users.length; i++) {
-                    fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.users.at(i).userId + "/ban_status", requestOptions)
-                    .then(response => response.json())
-                    .then(data => {
-                        this.map.set(this.users.at(i).userId, data.returnObject !== "banned");
-                    })
+                    for(let i = 0; i < this.users.length; i++) {
+                        fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.users.at(i).userId + "/ban_status", requestOptions)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.map.set(this.users.at(i).userId, data.returnObject !== "banned");
+                        })
+                    }
+                }
+                else {
+                    this.errorMsg = data.returnObject;
                 }
                 this.finishedLoading = true;
             });
