@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <body>
         <div class="container">
         <div class="content">
@@ -25,13 +25,13 @@
 </template>
 
 <script>
-    import NewNav from './newNav.vue';
+    import NavBar from './navbar.vue';
 
     export default {
         path: '/ShowFeedback',
         name: 'ShowFeedback',
         components: {
-            NewNav,
+            NavBar,
         },
         data(){
             return {items : []};

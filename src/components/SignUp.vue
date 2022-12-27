@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     
     <div class="container">
         <form class="signup-form" @submit.prevent="signup">
@@ -47,13 +47,13 @@
 </template>
 
 <script>
-    import NewNav from './newNav.vue';
+    import NavBar from './navbar.vue';
 
     export default {
         path: '/signup',
         name: 'SignUp',
         components: {
-            NewNav,
+            NavBar,
         },
         data() {
             return {

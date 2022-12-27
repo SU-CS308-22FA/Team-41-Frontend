@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <div class="container">
         <div class="card">
             <div class="row">
@@ -69,13 +69,13 @@
 </template>
 
 <script scoped>
-    import NewNav from './newNav.vue'
+    import NavBar from './navbar.vue'
     export default {
         props: ["teamId"],
         path: '/teamPage/:teamId',
         name: 'TeamPage',
         components: {
-            NewNav
+            NavBar
         },
         data(){
             return {

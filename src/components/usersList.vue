@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <NewNav></NewNav>
+  <NavBar></NavBar>
 
   <div class="whole">
     <div class="users">
@@ -69,15 +69,14 @@
 </template>
 
 <script>
-import NewNav from "./newNav.vue";
+import NavBar from "./navbar.vue";
 import { Modal } from "bootstrap";
-//import loadingPage from './loadingPage';
 
 export default {
   path: "/usersList",
   name: "UsersList",
   components: {
-    NewNav,
+    NavBar,
   },
   data() {
     return {

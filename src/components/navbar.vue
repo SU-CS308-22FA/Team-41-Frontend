@@ -76,7 +76,7 @@
 
 <script scoped>
     export default {
-        name: 'newNav',
+        name: 'NavBar',
         components: {},
         data() {
             return{

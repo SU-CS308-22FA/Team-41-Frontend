@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <body>
         <div class="container">
             <form class="user-info">
@@ -29,13 +29,13 @@
 </template>
 
 <script>
-    import NewNav from './newNav.vue'
+    import NavBar from './navbar.vue'
 
     export default {
         path: '/profilepage',
         name: 'ProfilePage',
         components: {
-            NewNav,
+            NavBar,
         },
         data() {
             return {

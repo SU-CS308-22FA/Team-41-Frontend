@@ -1,5 +1,5 @@
 <template>
-  <NewNav></NewNav>
+  <NavBar></NavBar>
   <div class="containerx">
     <div class="column1">
       <div class="matchbox">
@@ -419,13 +419,13 @@
 </template>
 
 <script>
-import NewNav from "./newNav.vue";
+import NavBar from "./navbar.vue";
 export default {
   name: "MatchPage",
   path: "matchPage/:matchId",
   props: ["matchId"],
   components: {
-    NewNav,
+    NavBar,
   },
   data() {
     return {

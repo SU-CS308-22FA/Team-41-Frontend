@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <div class="whole">
 
         
@@ -52,13 +52,13 @@
 
 
 <script>
-import NewNav from './newNav.vue';
+    import NavBar from './navbar.vue';
     export default {
         props: ["refereeId"],
         path: "referees/:refereeId",
         name: "RefereePage",
         components: {
-            NewNav,
+            NavBar,
         },
         data(){
             return {

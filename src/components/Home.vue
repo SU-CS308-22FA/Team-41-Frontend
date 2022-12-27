@@ -1,18 +1,18 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <body>
         <MainFeed></MainFeed>
     </body>
 </template>
 
 <script>
-    import NewNav from './newNav.vue'
+    import NavBar from './navbar.vue'
     import MainFeed from './MainFeed.vue';
     export default {
         path: '/HomePage',
         name: 'HomePage',
         components: {
-            NewNav,
+            NavBar,
             MainFeed
         },
     };

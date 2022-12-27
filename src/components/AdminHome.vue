@@ -1,5 +1,5 @@
 <template>
-  <NewNav></NewNav>
+  <NavBar></NavBar>
   <div class="container">
     <div class="content">
       <div class="cards">
@@ -96,13 +96,13 @@
 </template>
 
 <script>
-import NewNav from "./newNav.vue";
+import NavBar from "./navbar.vue";
 
 export default {
   path: "/AdminHome",
   name: "AdminHome",
   components: {
-    NewNav,
+    NavBar,
   },
   date() {
     return {

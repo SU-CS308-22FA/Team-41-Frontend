@@ -1,6 +1,6 @@
 <template>
     
-    <NewNav></NewNav>
+    <NavBar></NavBar>
 
         <div class="container" v-if="isLoaded === 2">
             <form class="newMatch-form" @submit.prevent="addMatch">
@@ -49,13 +49,13 @@
 </template>
 
 <script>
-    import NewNav from './newNav.vue'
+    import NavBar from './navbar.vue'
     import Loading from './loadingPage.vue';
     export default {
         path: '/addMatch',
         name: 'AddMatch',
         components: {
-            NewNav,
+            NavBar,
             Loading,
         },
         

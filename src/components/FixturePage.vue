@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <div class="whole">
         
         <div class="container">
@@ -62,13 +62,13 @@
 
 
 <script>
-    import NewNav from './newNav.vue';
+    import NavBar from './navbar.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "FixturePage",
         path: "fixturePage",
         components: {
-            NewNav,
+            NavBar,
             loadingPage
         },
         data(){

@@ -1,5 +1,5 @@
 <template>
-  <NewNav></NewNav>
+  <NavBar></NavBar>
   <div class="whole">
     <div class="standings">
       <div v-if="standings.length === 0 || finishedLoading === false">
@@ -104,13 +104,13 @@
 </template>
 
 <script>
-import NewNav from "./newNav.vue";
+import NavBar from "./navbar.vue";
 
 export default {
   path: "/standings",
   name: "AllStandings",
   components: {
-    NewNav,
+    NavBar,
   },
   data() {
     return {

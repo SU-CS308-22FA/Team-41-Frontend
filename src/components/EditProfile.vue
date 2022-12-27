@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
 
     <div class="container">
     
@@ -35,13 +35,13 @@
 </template>
 
 <script>
-    import NewNav from './newNav.vue';
+    import NavBar from './navbar.vue';
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
-            NewNav,
+            NavBar,
         },
         data(){
             return {

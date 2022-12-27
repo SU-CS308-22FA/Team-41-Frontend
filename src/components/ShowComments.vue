@@ -1,5 +1,5 @@
 <template>
-  <NewNav></NewNav>
+  <NavBar></NavBar>
   <body>
     <div class="container">
       <div class="content">
@@ -37,32 +37,33 @@
 </template>
 
 <script>
-import NewNav from "./newNav.vue";
+  import NavBar from "./navbar.vue";
 
-export default {
-  path: "/ShowComments",
-  name: "ShowComments",
-  components: {
-    NewNav,
-  },
-  data() {
-    return { items: [] };
-  },
-  mounted() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    };
-    fetch("https://tfb308.herokuapp.com/api/v1/report/all", requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "200") {
-          this.items = data.returnObject;
-        }
-      });
-  },
-};
+  export default {
+    path: "/ShowComments",
+    name: "ShowComments",
+    components: {
+      NavBar,
+    },
+    data() {
+      return { items: [] };
+    },
+    mounted() {
+      const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      };
+      fetch("https://tfb308.herokuapp.com/api/v1/report/all", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === "200") {
+            this.items = data.returnObject;
+          }
+        });
+    },
+  };
 </script>
+
 <style scoped>
 * {
   margin: 0;

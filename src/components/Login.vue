@@ -1,5 +1,5 @@
 <template>
-    <NewNav></NewNav>
+    <NavBar></NavBar>
     <div class="container">
         <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
@@ -36,13 +36,13 @@
 </template>
 
 <script>
-    import NewNav from './newNav.vue'
+    import NavBar from './navbar.vue'
 
     export default {
         path: '/login',
         name: 'LogIn',
         components: {
-            NewNav,
+            NavBar,
         },
         data() {
             return {
