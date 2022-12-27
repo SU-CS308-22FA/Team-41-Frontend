@@ -8,43 +8,43 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active" aria-current="page" href="/">
+                    <a class="nav-link active" aria-current="page" @click="this.$router.replace('/')">
                         Home
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link" href="/todaysMatches">
+                    <a class="nav-link" @click="this.$router.replace('/todaysMatches')">
                         Todays's Matches
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link" href="/fixturePage">
+                    <a class="nav-link" @click="this.$router.replace('/fixturePage')">
                         Fixture
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link" href="/teamsList">
+                    <a class="nav-link" @click="this.$router.replace('/teamsList')">
                         Teams
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link" href="/referees">
+                    <a class="nav-link" @click="this.$router.replace('/referees')">
                         Referees
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link" href="/standings">
+                    <a class="nav-link" @click="this.$router.replace('/standings')">
                         Standings
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active" v-if="isLoggedIn()">
-                    <a class="nav-link" href="/favoriteTeams">
+                    <a class="nav-link" @click="this.$router.replace('/favoriteTeams')">
                         Favorites
                     </a>
                 </li>
@@ -59,14 +59,14 @@
                 </li>
             </ul>
 
-            <a class="nav-link" href="/profilePage" v-if="isLoggedIn()">
+            <a class="nav-link" v-if="isLoggedIn()" @click="this.$router.replace('/profilePage')">
                 Profile
             </a>
             &nbsp;&nbsp;&nbsp;
-            <a class="nav-link" @click="logOut()" v-if="isLoggedIn()">
+            <a class="nav-link" v-if="isLoggedIn()" @click="logOut()">
                 Log Out
             </a>
-            <a class="nav-link" href="/login" v-else>
+            <a class="nav-link" v-else @click="this.$router.replace('/login')">
                 Log In
             </a>
             &nbsp;&nbsp;&nbsp;
