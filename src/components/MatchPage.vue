@@ -1,6 +1,5 @@
 <template>
-  <HarunNavBar></HarunNavBar>
-  <SideBar></SideBar>
+  <NewNav></NewNav>
   <div class="containerx">
     <div class="column1">
       <div class="matchbox">
@@ -420,15 +419,13 @@
 </template>
 
 <script>
-import HarunNavBar from "./HarunNavBar.vue";
-import SideBar from "./SideBar.vue";
+import NewNav from "./newNav.vue";
 export default {
   name: "MatchPage",
   path: "matchPage/:matchId",
   props: ["matchId"],
   components: {
-    HarunNavBar,
-    SideBar,
+    NewNav,
   },
   data() {
     return {

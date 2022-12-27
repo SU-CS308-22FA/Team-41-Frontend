@@ -1,6 +1,5 @@
 <template>
-  <HarunNavBar></HarunNavBar>
-  <SideBar></SideBar>
+  <NewNav></NewNav>
   <div class="container">
     <div class="content">
       <div class="cards">
@@ -97,15 +96,13 @@
 </template>
 
 <script>
-import HarunNavBar from "./HarunNavBar.vue";
-import SideBar from "./SideBar.vue";
+import NewNav from "./newNav.vue";
 
 export default {
   path: "/AdminHome",
   name: "AdminHome",
   components: {
-    HarunNavBar,
-    SideBar,
+    NewNav,
   },
   date() {
     return {

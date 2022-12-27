@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <div class="whole">
 
         
@@ -53,15 +52,13 @@
 
 
 <script>
-import SideBar from './SideBar.vue';
-import HarunNavBar from './HarunNavBar.vue';
+import NewNav from './newNav.vue';
     export default {
         props: ["refereeId"],
         path: "referees/:refereeId",
         name: "RefereePage",
         components: {
-            SideBar,
-            HarunNavBar
+            NewNav,
         },
         data(){
             return {

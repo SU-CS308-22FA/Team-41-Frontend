@@ -1,6 +1,6 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    
+    <NewNav></NewNav>
 
         <div class="container" v-if="isLoaded === 2">
             <form class="newMatch-form" @submit.prevent="addMatch">
@@ -49,15 +49,13 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NewNav from './newNav.vue'
     import Loading from './loadingPage.vue';
     export default {
         path: '/addMatch',
         name: 'AddMatch',
         components: {
-            HarunNavBar,
-            SideBar,
+            NewNav,
             Loading,
         },
         

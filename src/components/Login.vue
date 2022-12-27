@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <div class="container">
         <form class="login-form" @submit.prevent="login">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Login</h2>
@@ -37,15 +36,13 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue'
-    import SideBar from './SideBar.vue'
+    import NewNav from './newNav.vue'
 
     export default {
         path: '/login',
         name: 'LogIn',
         components: {
-            HarunNavBar,
-            SideBar
+            NewNav,
         },
         data() {
             return {

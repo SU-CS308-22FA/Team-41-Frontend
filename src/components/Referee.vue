@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <div class="whole">
         
         <div class="container">
@@ -40,17 +39,15 @@
 
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NewNav from './newNav.vue';
     import loadingPage from './loadingPage';
 
     export default{
         path: "/referees",
         name: "AllReferees",
         components: {
-            HarunNavBar,
-            SideBar,
-            loadingPage
+            NewNav,
+            loadingPage,
         },
         data(){
             return {

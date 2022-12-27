@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     
     <div class="container">
         <form class="signup-form" @submit.prevent="signup">
@@ -48,15 +47,13 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NewNav from './newNav.vue';
 
     export default {
         path: '/signup',
         name: 'SignUp',
         components: {
-            HarunNavBar,
-            SideBar,
+            NewNav,
         },
         data() {
             return {

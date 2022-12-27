@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <body>
         <div class="container">
         <div class="content">
@@ -26,15 +25,13 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NewNav from './newNav.vue';
 
     export default {
         path: '/ShowFeedback',
         name: 'ShowFeedback',
         components: {
-            HarunNavBar,
-            SideBar,
+            NewNav,
         },
         data(){
             return {items : []};

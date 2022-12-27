@@ -1,6 +1,5 @@
 <template>
-  <HarunNavBar></HarunNavBar>
-  <SideBar></SideBar>
+  <NewNav></NewNav>
   <div class="whole">
     <div class="standings">
       <div v-if="standings.length === 0 || finishedLoading === false">
@@ -105,16 +104,13 @@
 </template>
 
 <script>
-import HarunNavBar from "./HarunNavBar.vue";
-import SideBar from "./SideBar.vue";
-//import loadingPage from './loadingPage';
+import NewNav from "./newNav.vue";
 
 export default {
   path: "/standings",
   name: "AllStandings",
   components: {
-    HarunNavBar,
-    SideBar,
+    NewNav,
   },
   data() {
     return {

@@ -25,8 +25,7 @@
     </div>
   </div>
 
-  <HarunNavBar></HarunNavBar>
-  <SideBar></SideBar>
+  <NewNav></NewNav>
 
   <div class="whole">
     <div class="users">
@@ -70,8 +69,7 @@
 </template>
 
 <script>
-import HarunNavBar from "./HarunNavBar.vue";
-import SideBar from "./SideBar.vue";
+import NewNav from "./newNav.vue";
 import { Modal } from "bootstrap";
 //import loadingPage from './loadingPage';
 
@@ -79,8 +77,7 @@ export default {
   path: "/usersList",
   name: "UsersList",
   components: {
-    HarunNavBar,
-    SideBar,
+    NewNav,
   },
   data() {
     return {
@@ -163,7 +160,8 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "200") {
-          this.users = data.returnObject;
+          let sortedData = data.returnObject.sort((i1, i2) => (i1.userId < i2.userId) ? -1 : (i1.userId > i2.userId) ? 1 : 0);
+          this.users = sortedData;
 
           for (let i = 0; i < this.users.length; i++) {
             fetch(

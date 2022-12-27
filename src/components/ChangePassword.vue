@@ -1,7 +1,6 @@
 
 <template>
-    <NavBar></NavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
 
     <div class="container">
     
@@ -26,15 +25,13 @@
 </template>
 
 <script>
-    import NavBar from './NavBar.vue';
-    import SideBar from './SideBar.vue'
+    import NewNav from './newNav.vue';
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
-            NavBar,
-            SideBar,
+            NewNav,
         },
         methods: {
             goToProfile() {

@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <body>
         <div class="container">
             <form class="user-info">
@@ -30,15 +29,13 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue'
-    import SideBar from './SideBar.vue'
+    import NewNav from './newNav.vue'
 
     export default {
         path: '/profilepage',
         name: 'ProfilePage',
         components: {
-            HarunNavBar,
-            SideBar,
+            NewNav,
         },
         data() {
             return {

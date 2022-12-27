@@ -1,47 +1,38 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <div class="whole">
         
         <div class="container">
             <div v-if="items.length === 0 && finishedLoading === true">
-                No Matches Found!
+                No Teams Found!
             </div>
             <div v-else-if="items.length === 0 || finishedLoading === false">
                 <loadingPage></loadingPage>
             </div>
             <div v-else>
-                <div v-for="item in items[0]" :key="item.id">
-                    <diV>
-                        
-                        <router-link class="team" :to="{
-                            name: 'TeamPage',
-                            params: {
-                                teamId: item.id
-                            }
-                        }"
-                        >
-                            
-                            <div class="logo">
-                                <img :src=item.logoURL>
-                            </div>
-                            <div class="col">
-                                <button @click="deleteFavTeam(item.id)" :id="item.id" class="removeButton">X</button>
-                                <div class="name">
-                                {{item.name}}
-                            </div>
-                            </div>
-
-                            
-                        </router-link>
-                        
-                    </diV>
-                    <diV>
-                        
-                        
-                    </diV>
+                <div class="row row-cols-2 g-3">
+                    <div class="col" v-for="item in items" :key="item.id">
+                        <div id="{{ item.id }}" class="card">
+                            <button @click="deleteFavTeam(item.id)" class="card-button">
+                                <i
+                                    class="bx"
+                                    :class="'bx-message-square-x'"
+                                />
+                            </button>
+                            <router-link :to="{
+                                name: 'TeamPage',
+                                params: {
+                                    teamId: item.id
+                                }
+                            }">
+                                <img :src=item.logoURL class="img-thumbnail">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a>{{item.name}}</a></h5>
+                                </div>
+                            </router-link>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -49,16 +40,14 @@
 
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NewNav from './newNav.vue';
     import loadingPage from './loadingPage';
 
     export default {
         name: "FavoriteTeams",
         path: "/favoriteTeams",
         components: {
-            HarunNavBar,
-            SideBar,
+            NewNav,
             loadingPage
         },
         data(){
@@ -76,7 +65,8 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.items.push(data.returnObject);
+                    let sortedData = data.returnObject.sort((i1, i2) => (i1.name < i2.name) ? -1 : (i1.name > i2.name) ? 1 : 0);
+                    this.items = sortedData;
                 }
                 this.finishedLoading = true;
             });
@@ -105,32 +95,56 @@
 </script>
 
 
-<style>
+<style scoped>
 
-body{
-    background: rgba(185, 185, 185, 0.725);
-}
+    .whole{
+        padding-top: 2.5%;
+        display: flex;
+    }
 
+    .card{
+        justify-content: space-between;
+        padding: 10px 16px;
+        margin: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: white;
+        color: black;
+        text-decoration: none;
+    }
 
+    .card:hover{
+        border: 3px solid rgba(33, 66, 114, 0.818);
+        color: white;
+        transform: scale(1.1);
+        text-decoration: none;
+    }
 
-.team{
-    padding-top: 0;
-    margin-bottom: 10%;
-}
+    a{
+        text-decoration: none;
+        color: black;
+    }
 
-.col .removeButton{
-    height: 30px;
-    width: 50px;
-    background-color: red;
-    cursor: pointer;
-    margin-right: -80%;
-    margin-top: 1%;
-   
-}
+    a:hover{
+        text-decoration: none;
+    }
 
-.col .name{
-    padding-top: 45%;
-    margin-right: 30px;
-}
+    .img-thumbnail{
+        border-width: 0px;
+    }
+
+    .card-button{
+        align-items: right;
+        position: absolute;
+        top: 3px;
+        right: 5px;
+        border-width: 0px;
+        background-color: white;
+        font-size: 30px;
+    }
+
+    .card-button:hover{
+        color: red;
+    }
 
 </style>

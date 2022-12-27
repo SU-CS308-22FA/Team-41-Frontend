@@ -1,31 +1,31 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NewNav></NewNav>
     <div class="whole">
         
         <div class="container">
             <div v-if="items.length === 0 && finishedLoading === true">
-                No Matches Found!
+                No Teams Found!
             </div>
             <div v-else-if="items.length === 0 || finishedLoading === false">
                 <loadingPage></loadingPage>
             </div>
             <div v-else>
-                <div v-for="item in items[0]" :key="item.id">
-                    <router-link class="team" :to="{
-                            name: 'TeamPage',
-                            params: {
-                                teamId: item.id
-                            }
-                        }"
-                    >
-                        <div class="logo">
-                            <img :src=item.logoURL>
+                <div class="row row-cols-2 g-3">
+                    <div class="col" v-for="item in items" :key="item.id">
+                        <div id="{{ item.id }}" class="card">
+                            <router-link :to="{
+                                name: 'TeamPage',
+                                params: {
+                                    teamId: item.id
+                                }
+                            }">
+                                <img :src=item.logoURL class="img-thumbnail">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a>{{item.name}}</a></h5>
+                                </div>
+                            </router-link>
                         </div>
-                        <div class="name">
-                            {{item.name}}
-                        </div>
-                    </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,15 +34,13 @@
 
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NewNav from './newNav.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "TeamsList",
         path: "teamsList",
         components: {
-            HarunNavBar,
-            SideBar,
+            NewNav,
             loadingPage
         },
         data(){
@@ -60,7 +58,8 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.items.push(data.returnObject);
+                    let sortedData = data.returnObject.sort((i1, i2) => (i1.name < i2.name) ? -1 : (i1.name > i2.name) ? 1 : 0);
+                    this.items = sortedData;
                 }
                 this.finishedLoading = true;
             });
@@ -69,20 +68,15 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
     .whole{
+        padding-top: 2.5%;
         display: flex;
         background: rgba(185, 185, 185, 0.725);
     }
-    .container{
-        width: 39%;
-        margin-left: 10%;
-    }
 
-    .team{
-        text-decoration: none;
-        display: flex;
+    .card{
         justify-content: space-between;
         padding: 10px 16px;
         margin: 20px;
@@ -90,28 +84,29 @@
         border-radius: 10px;
         background-color: white;
         color: black;
+        text-decoration: none;
     }
-    .team:hover{
+
+    .card:hover{
         border: 3px solid rgba(218, 38, 152, 0.978);
         background-color: rgba(33, 66, 114, 0.818);
         color: white;
         transform: scale(1.1);
+        text-decoration: none;
     }
 
-    .logo{
-        width:  50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .name{
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
+    a{
+        text-decoration: none;
+        color: black;
     }
 
+    a:hover{
+        text-decoration: none;
+        color: white;
+    }
+
+    .img-thumbnail{
+        border-width: 0px;
+    }
 
 </style>
