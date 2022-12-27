@@ -49,13 +49,10 @@
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
-                <li class="nav-item dropdown" v-if="showAdminTools">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item active" v-if="showAdminTools">
+                    <a class="nav-link active right-buts" style="font-weight: bolder; color: rgb(150, 175, 200);" @click="this.$router.replace('#')">
                         Admin Tools
                     </a>
-                    <ul class="dropdown-menu active">
-                        <!-- TODO -->
-                    </ul>
                 </li>
             </ul>
 
@@ -81,6 +78,7 @@
         data() {
             return{
                 showAdminTools: false,
+                dropdown: null,
             }
         },
         mounted() {
