@@ -13,7 +13,7 @@
             <br>
             Gender <b>{{gender}}</b>
             <br>
-            Fan Team <a class="fan-team-but"><b>{{fanTeam}}</b></a>
+            Fan Team <a class="fan-team-but" @click="goToFanTeam()"><b>{{fanTeam}}</b></a>
             <br><br>
 
             <div class="row-mb-3">
@@ -42,16 +42,16 @@
                 gender: "",
                 birthdate: "",
                 fanTeam: "",
+                fanTeamId: "",
             };
         },
         methods: {
-            goToEdit() {
-                this.$router.replace("/editprofile");
+            goToFanTeam() {
+                this.$router.replace("/teamPage/" + this.fanTeamId);
             },
 
-            logOut() {
-                localStorage.clear();
-                this.$router.replace("/login");
+            goToEdit() {
+                this.$router.replace("/editprofile");
             },
             
             deleteAccount(){
@@ -90,6 +90,20 @@
                         this.birthdate = data.returnObject.birthdate.replace('T', ' ');
                         this.gender = data.returnObject.gender;
                         this.fanTeam = data.returnObject.fanTeam;
+
+                        fetch("https://tfb308.herokuapp.com/api/v1/team/all", requestOptions)
+                        .then(responseT => responseT.json())
+                        .then(dataT => {
+                            if(data.status === "200") {
+                                let teams = dataT.returnObject;
+                                for(let i = 0; i < teams.length; i++) {
+                                    if(teams.at(i).name === this.fanTeam) {
+                                        this.fanTeamId = teams.at(i).id;
+                                        break;
+                                    }
+                                }
+                            }
+                        });
                     }
                     else if(data.status === "400: USER NOT FOUND!") {
                         alert("User Does not exist!");
@@ -138,7 +152,7 @@
         color: black;
         width: fit-content;
         margin: auto;
-        padding: 3.5px;
+        padding: 6px;
     }
 
     .fan-team-but:hover{
