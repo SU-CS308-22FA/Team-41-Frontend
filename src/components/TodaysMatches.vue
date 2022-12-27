@@ -2,7 +2,7 @@
     <NavBar></NavBar>
     <div class="fixture-page">
         <div v-if="items.length === 0 && finishedLoading === true" class="not-found-today">
-            No Matches Found!
+            There are no matches scheduled for today!
         </div>
         <div v-else-if="items.length === 0 || finishedLoading === false">
             <loadingPage></loadingPage>
@@ -100,7 +100,7 @@
     }
 
     .not-found-today{
-        margin-top: 100px;
+        margin-top: 300px;
         font-weight: bold;
         font-style: italic;
         font-size: 35px;

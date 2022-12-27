@@ -79,7 +79,7 @@
     }
 
     .not-found-today{
-        margin-top: 100px;
+        margin-top: 300px;
         font-weight: bold;
         font-style: italic;
         font-size: 35px;
