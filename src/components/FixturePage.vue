@@ -24,7 +24,7 @@
             </tr>
 
             <div  v-for="item in items[0]" v-on:click="navToMp(item.id)" :key="item.id">
-                <tr class="fixture-match" v-if="item.status === 'Match Finished'">
+                <tr class="fixture-match not-played" v-if="item.status === 'Match Finished'">
                     <td class="table-body-text">
                         {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
                     </td>
@@ -153,6 +153,10 @@
     td, tr {
         text-align: center;
         width: fit-content;
+    }
+
+    .not-played{
+        background-color: blanchedalmond;
     }
     
     .played{

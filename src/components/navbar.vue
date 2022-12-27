@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar fixed-top navbar-expand-lg bg-secondary" data-bs-theme="dark" style="height: 70px;">
+    <nav class="navbar fixed-top navbar-expand-lg" data-bs-theme="dark" style="height: 70px; background-color: rgba(33, 66, 114, 0.818);">
         <div class="container-fluid">
             &nbsp;&nbsp;&nbsp;
             <a class="navbar-brand" style="font-weight: bold;">
