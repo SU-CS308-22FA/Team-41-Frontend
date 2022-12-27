@@ -1,55 +1,45 @@
 <template>
     <NavBar></NavBar>
-    <div class="whole">
-
+    <div class="container">
+        <div class="card referee-info-box">
+            <div class="row">
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title ref-name">{{this.name}}</h5>
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-text ref-stats">Rating: {{this.rating}}</p>
+                            </div>
+                            <div class="col">
+                                <p class="card-text ref-stats">Total Votes: {{this.totalVote}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <div class="container">
-            <br>
-            <h1>Referee Info</h1>
-            <br>
-            <div class="referee2">
-                <div class="name">
-                        {{this.name}}
-                    </div>
-                    
-                    <div class="name">
-                        Rating <br> {{this.rating}}
-                    </div>
-                    <div class="name">
-                        Total Votes <br> {{this.totalVote}}
-                    </div>
-            </div>
-            <br>
-            <h1>Matches</h1>
-            
-            <div  v-for="match in matches" :key="match.id">
-                <span  class="match">
-                        <div class="name">
-                            {{match.homeTeamName}} vs. {{match.awayTeamName}}
-                        </div>
-                        <div class="name" v-if="match.finished === true">
-                            {{match.goalHome}} - {{match.goalAway}}
-                        </div>
-                        <div class="name" v-if="(match.finished === false)">
-                            {{match.dateAndTime.toString().replace("T", " ")}}
-                        </div>
-                        <div class="name">
-                            {{match.referee}}
-                        </div>
-                        <div class="name">
-                            {{match.stadiumName}}
-                        </div>
-                    </span >
-            </div>
-            
-        </div>    
-    </div>   
+        <br><br>
 
-    
+        <table class="referee-match-table">
+            <tr class="col">
+                <th>Sides</th>
+                <th>Status</th>
+                <th>Stadium</th>
+                <th>Date</th>
+            </tr>
+            <tr v-for="match in matches" :key="match.id" class="referee-match" @click="goToMatch(match.id)">
+                <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
+                <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
+                <td v-else>Not Played</td>
+                <td>{{match.stadiumName}}</td>
+                <td>{{match.dateAndTime.replace('T', ' ')}}</td>
+            </tr>
+        </table>
+
+        <br><br>
+    </div>      
 </template>
-
-
-
 
 <script>
     import NavBar from './navbar.vue';
@@ -81,67 +71,70 @@
                     this.totalVote = data.returnObject.totalVote;
                     this.rating = data.returnObject.rating;
                     this.matches = data.returnObject.matchesList;
-                    
-                    console.log(this.matches)
                 }
             });
+        },
+        methods: {
+            goToMatch(id) {
+                this.$router.push({ name: "MatchPage", params: {matchId: id}});
+            },
         }
-
     }
-
 
 </script>
 
+<style scoped>
 
-
-<style>
-    .whole{
+    .referee-info-box{
+        margin-top: 100px;
+        padding: 25px 25px 25px 25px;
         display: flex;
-    }
-    .container{
-        width: 39%;
-        margin-left: 10%;
-    }
-
-    .match{
-        text-decoration: none;
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 16px 20px;
-        margin: 20px;
-        border: 1px solid black;
+        overflow: hidden;
         border-radius: 10px;
-        background-color: lightblue;
-        font-size: small;
-        width: 200%;
-        
+        background: rgba(185, 185, 185, 0.725);
     }
 
-    .referee2{
-    text-decoration: none;
-   
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 16px 10px;
-    width: 130%;
-    margin-left: 38%;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: rgba(33, 66, 114, 0.818);
-}
+    .ref-name{
+        text-align: left;
+        padding-bottom: 7%;
+        font-size: 40px;
+        font-weight: bolder;
+        text-align: center;
+    }
 
-    .referee2 .name{
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        color: white;
+    .ref-stats{
+        text-align: left;
+        font-size: 25px;
+        font-style: italic;
+        text-align: center;
     }
-    .container h1{
-        margin:auto;
-        width: 200%;
+
+    .referee-match-table{
+        border: 1px solid black;
+        width: fit-content;
+        height: 400px;
+        margin: auto;
     }
-  
+
+    td {
+        padding: 15px;
+        max-width: max-content;
+        height: 80px;
+        border:1px solid black;
+    }
+    
+    .not-played{
+        background-color: blanchedalmond;
+    }
+    
+    .played{
+        background-color: turquoise;
+    }
+
+    .referee-match:hover{
+        color: rgba(33, 66, 114, 0.818);
+        background: rgb(208, 202, 202);
+        font-style: italic;
+    }
 
 </style>
