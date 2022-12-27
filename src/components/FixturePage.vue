@@ -23,7 +23,7 @@
                 </td>
             </tr>
 
-            <div  v-for="item in items[0]" v-on:click="navToMp(item.id)" :key="item.id">
+            <div  v-for="item in items" v-on:click="navToMp(item.id)" :key="item.id">
                 <tr class="fixture-match not-played" v-if="item.status === 'Match Finished'">
                     <td class="table-body-text">
                         {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
@@ -83,7 +83,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.items.push(data.returnObject);
+                    this.items = data.returnObject;
                 }
                 this.finishedLoading = true;
             });
@@ -98,7 +98,7 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
     .fixture-page{
         display: flex;
