@@ -26,6 +26,7 @@
     </div>
 
     <NavBar></NavBar>
+
     <div class="login-page">
         <form class="login-form" @submit.prevent="login">
             <h2 class="title-login card-title" style="color: rgba(17, 73, 158, 0.818)"><b>Login</b></h2>
@@ -141,6 +142,7 @@
         display:grid;
         border-radius: 8px;
         text-align: center;
+        height: fit-content;
     }
 
     .but{
