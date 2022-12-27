@@ -1,7 +1,7 @@
 <template>
     <NavBar></NavBar>
     <div class="referees-list">
-        <div v-if="items.length === 0 && finishedLoading === true">
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-today">
             No Referees Found!
         </div>
         <div v-else-if="items.length === 0 || finishedLoading === false">
@@ -79,8 +79,15 @@
         padding: 25px 25px 25px 25px;
         display: flex;
         overflow: hidden;
-        
+        display: flexbox;
         background: rgba(185, 185, 185, 0.725);
+    }
+
+    .not-found-today{
+        margin-top: 100px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
     }
 
     .referee{

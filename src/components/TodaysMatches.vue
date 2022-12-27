@@ -1,7 +1,7 @@
 <template>
     <NavBar></NavBar>
     <div class="fixture-page">
-        <div v-if="items.length === 0 && finishedLoading === true">
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-today">
             No Matches Found!
         </div>
         <div v-else-if="items.length === 0 || finishedLoading === false">
@@ -96,12 +96,14 @@
 <style scoped>
 
     .fixture-page{
-        display: flex;
+        display: flexbox;
     }
 
-    .container{
-        width: 100%;
-        margin-left: 0%;
+    .not-found-today{
+        margin-top: 100px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
     }
 
     .table-head{
