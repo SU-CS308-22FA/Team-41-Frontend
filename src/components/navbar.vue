@@ -50,7 +50,7 @@
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active" v-if="showAdminTools">
-                    <a class="nav-link active right-buts" style="font-weight: bolder; color: rgb(150, 175, 200);" @click="this.$router.replace('#')">
+                    <a class="nav-link active right-buts" style="font-weight: bolder; color: rgb(150, 175, 200);" @click="this.$router.replace('/AdminHome')">
                         Admin Tools
                     </a>
                 </li>

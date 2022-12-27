@@ -1,8 +1,8 @@
 <template>
     
-    <NavBar></NavBar>
+    <AdminNavBar></AdminNavBar>
 
-        <div class="container" v-if="isLoaded === 2">
+        <div v-if="isLoaded === 2">
             <form class="newMatch-form" @submit.prevent="addMatch">
                 <div>
                     <label for="homeId">Choose Home Team</label>
@@ -49,13 +49,13 @@
 </template>
 
 <script>
-    import NavBar from './navbar.vue'
+    import AdminNavBar from './adminNavbar.vue'
     import Loading from './loadingPage.vue';
     export default {
         path: '/addMatch',
         name: 'AddMatch',
         components: {
-            NavBar,
+            AdminNavBar,
             Loading,
         },
         
