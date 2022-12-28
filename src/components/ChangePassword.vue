@@ -3,8 +3,8 @@
     <div class="edit-pass-page">
         <div class="col d-flex justify-content-center">
             <form class="edit-pass-form">
-                <div class="row col-sm-3" style="margin: auto; width: 250px;">
-                    <h2 class="edit-pass-form-title">Edit Profile</h2>
+                <div class="row col-sm-3" style="margin: auto; width: 300px;">
+                    <h2 class="edit-pass-form-title">Change Password</h2>
                     <input class="form-pass-elem" v-model="password" type="password" name="" placeholder="new password" minlength="8">
                     <input class="form-pass-elem" v-model="repassword" type="password" name="" placeholder="new re-password"  minlength="8">
                 </div>
@@ -73,7 +73,7 @@
 
     .edit-pass-form-title{
         color: rgba(17, 73, 158, 0.818);
-        margin-bottom: 30px;
+        margin-bottom: 100px;
         text-align: center;
     }
 
@@ -83,7 +83,10 @@
     }
 
     .but-pass{
-        margin: 20px 20px 20px 20px;
+        margin-top: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 25px;
         width: 210px;
     }
 
