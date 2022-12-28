@@ -38,6 +38,12 @@
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
+                    <a class="nav-link active right-buts" @click="this.$router.replace('/ShowComments')">
+                        Reports
+                    </a>
+                </li>
+                &nbsp;&nbsp;&nbsp;
+                <li class="nav-item active">
                     <a class="nav-link active right-buts" @click="this.$router.replace('/showFeedBack')">
                         Feedbacks
                     </a>

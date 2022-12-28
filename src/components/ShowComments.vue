@@ -1,5 +1,5 @@
 <template>
-  <NavBar></NavBar>
+  <AdminNavBar></AdminNavBar>
   <body>
     <div class="container">
       <div class="content">
@@ -37,13 +37,13 @@
 </template>
 
 <script>
-  import NavBar from "./navbar.vue";
+  import AdminNavBar from "./adminNavbar.vue";
 
   export default {
     path: "/ShowComments",
     name: "ShowComments",
     components: {
-      NavBar,
+      AdminNavBar,
     },
     data() {
       return { items: [] };
