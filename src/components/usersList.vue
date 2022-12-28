@@ -114,6 +114,7 @@ export default {
           }
         });
     },
+    
     closeModal() {
       this.myModal.hide();
     },

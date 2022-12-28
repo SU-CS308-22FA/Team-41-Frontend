@@ -1,35 +1,33 @@
 <template>
     <NavBar></NavBar>
-    <div class="whole">
-        
-        <div class="container">
-            <div v-if="items.length === 0 && finishedLoading === true">
-                No Teams Found!
-            </div>
-            <div v-else-if="items.length === 0 || finishedLoading === false">
-                <loadingPage></loadingPage>
-            </div>
-            <div v-else>
-                <div class="row row-cols-2 g-3">
-                    <div class="col" v-for="item in items" :key="item.id">
-                        <div id="{{ item.id }}" class="card">
-                            <button @click="deleteFavTeam(item.id)" class="card-button">
-                                <i
-                                    class="bx"
-                                    :class="'bx-message-square-x'"
-                                />
-                            </button>
-                            <router-link :to="{
-                                name: 'TeamPage',
-                                params: {
-                                    teamId: item.id
-                                }
-                            }">
-                                <img :src=item.logoURL class="img-thumbnail">
-                                <div class="card-body">
-                                    <h5 class="card-title"><a>{{item.name}}</a></h5>
-                                </div>
-                            </router-link>
+    <div>
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-fav-team">
+            No Teams Found!
+        </div>
+        <div v-else-if="items.length === 0 || finishedLoading === false">
+            <loadingPage></loadingPage>
+        </div>
+        <div v-else class="teams-list-fav">
+            <div class="row">
+                <div class="col" v-for="item in items" :key="item.id">
+                    <div id="{{ item.id }}" class="card fav-team">
+                        <router-link :to="{
+                            name: 'TeamPage',
+                            params: {
+                                teamId: item.id
+                            }
+                        }">
+                            <img :src=item.logoURL class="img-thumbnail fav-team-logo">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="fav-team-name">{{item.name}}</a>
+                                </h5>
+                            </div>
+                        </router-link>
+                        <div class="card-body del-but" @click="deleteFavTeam(item.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heartbreak-fill" viewBox="0 0 16 16">
+                                <path d="M8.931.586 7 3l1.5 4-2 3L8 15C22.534 5.396 13.757-2.21 8.931.586ZM7.358.77 5.5 3 7 7l-1.5 3 1.815 4.537C-6.533 4.96 2.685-2.467 7.358.77Z"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -82,9 +80,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if(data.status === "200") {
-                        this.items = this.items.filter(item => item.id !== id)
-                        alert("Delete Succeed!");
-                        return;
+                        this.items = this.items.filter(item => item.id !== id);
                     }
                 });
             }
@@ -97,54 +93,67 @@
 
 <style scoped>
 
-    .whole{
-        padding-top: 2.5%;
+    .teams-list-fav{
+        margin-top: 10px;
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        margin-bottom: 0px;
+        padding: 25px 25px 25px 25px;
         display: flex;
+        background: rgba(185, 185, 185, 0.725);
     }
 
-    .card{
+    .not-found-fav-team{
+        margin-top: 300px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .fav-team{
         justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
+        padding: 15px 15px 15px 15px;
+        margin: 25px 25px 25px 25px;
         border: 1px solid black;
         border-radius: 10px;
         background-color: white;
-        color: black;
-        text-decoration: none;
+        width: 250px;
+        height: fit-content;
     }
 
-    .card:hover{
-        border: 3px solid rgba(33, 66, 114, 0.818);
-        color: white;
+    .fav-team:hover{
+        border: 3px solid rgba(218, 38, 152, 0.978);
+        background-color: rgba(33, 66, 114, 0.818);
         transform: scale(1.1);
-        text-decoration: none;
+    }
+
+    .fav-team-name{
+        color: black;
+    }
+
+    .fav-team-name:hover{
+        color: white;
+    }
+
+    .fav-team-logo{
+        border-width: 0px;
     }
 
     a{
         text-decoration: none;
-        color: black;
     }
 
-    a:hover{
-        text-decoration: none;
-    }
-
-    .img-thumbnail{
-        border-width: 0px;
-    }
-
-    .card-button{
-        align-items: right;
+    .del-but{
+        top: 0px;
+        right: 0px;
         position: absolute;
-        top: 3px;
-        right: 5px;
-        border-width: 0px;
-        background-color: white;
-        font-size: 30px;
+        color: red;
     }
 
-    .card-button:hover{
-        color: red;
+    .del-but:hover{
+        transform: scale(1.3);
     }
 
 </style>

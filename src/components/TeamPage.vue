@@ -1,4 +1,30 @@
 <template>
+    <!-- Modal -->
+    <div>
+        <div id="myModal" ref="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+            </div>
+            <div class="modal-body">
+                <p>{{ errorMsg }}</p>
+            </div>
+            <div class="modal-footer">
+                <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                @click="closeModal()"
+                >
+                Close
+                </button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
     <NavBar></NavBar>
     <div class="container">
         <div class="card team-info-box">
@@ -9,7 +35,7 @@
                 <div class="col-md-6">
                     <div class="card-body">
                         <svg @click="addToFav" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart fav-button" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            <path id="favv" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                         </svg>
                         <h5 class="card-title">{{team.name}}</h5>
                         <br>
@@ -63,54 +89,10 @@
     </div>      
 </template>
 
-
-<!--
-        <button v-on:click="hideOrUnhide('players')" class="btn btn-primary team-info-but">{{ showP }} Players</button>
-        <button v-on:click="hideOrUnhide('matches')" class="btn btn-info team-info-but">{{ showM }} Matches</button>
-        
-        <br><br>
-
-        <table class="players">
-            <tr class="col">
-                <th>Picture</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Kit Number</th>
-            </tr>
-            <tr v-for="player in players" :key="player.id">
-                <td><img :src=player.pictureURL class="card-img"></td>
-                <td>{{player.name}}</td>
-                <td>{{player.position}}</td>
-                <td v-if="player.number !== -1">{{player.number}}</td>
-                <td v-else>does not have a kit number</td>
-            </tr>
-        </table>
-
-        <br><br>
-
-        <table class="matches">
-            <tr class="col">
-                <th>Sides</th>
-                <th>Status</th>
-                <th>Referee</th>
-                <th>Stadium</th>
-                <th>Date</th>
-            </tr>
-            <tr v-for="match in matches" :key="match.id" class="matchx" @click="goToMatch(match.id)">
-                <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
-                <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
-                <td v-else>Not Played</td>
-                <td>{{match.referee}}</td>
-                <td>{{match.stadiumName}}</td>
-                <td>{{match.dateAndTime.replace('T', ' ')}}</td>
-            </tr>
-        </table>
-
-        <br><br>
--->
-
 <script scoped>
     import NavBar from './navbar.vue'
+    import { Modal } from "bootstrap";
+
     export default {
         props: ["teamId"],
         path: '/teamPage/:teamId',
@@ -126,9 +108,13 @@
                 matches: [],
                 showP: "Show",
                 showM: "Show",
+                errorMsg: "",
+                myModal: null,
             }
         },
         mounted() {
+            this.myModal = new Modal(document.getElementById("myModal"));
+
             const requestOptions = {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -161,35 +147,12 @@
             goToMatch(id) {
                 this.$router.push({ name: "MatchPage", params: {matchId: id}});
             },
-            change(block) {
-                if(block === "players") {
-                    if(this.showP === "Show") {
-                        this.showP = "Hide";
-                    }
-                    else {
-                        this.showP = "Show";
-                    }
-                }
-                else {
-                    if(this.showM === "Show") {
-                        this.showM = "Hide";
-                    }
-                    else {
-                        this.showM = "Show";
-                    }
-                }
+
+            
+            closeModal() {
+                this.myModal.hide();
             },
-            hideOrUnhide(block){
-                var x = document.querySelector("." + block);
-                if (x.style.display === "block") {
-                    x.style.display = "none";
-                    this.change(block);
-                }
-                else {
-                    x.style.display = "block";
-                    this.change(block);
-                }
-            },
+
             addToFav(){
                 const requestOptions = {
                     method: "POST",
@@ -199,11 +162,14 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/favTeams", requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                if(data.status === "200") {
-                    alert("Succesfully added to your fav list.");
-                    return;
+                if(data.status !== "200") {
+                    this.errorMsg = data.returnObject;
+                    this.myModal.show();
                 }
-                alert(data.returnObject);
+                else {
+                    document.getElementById("favv").setAttribute("d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z");
+                    document.getElementById("favv").setAttribute("fill-rule", "evenodd");
+                }
             });
             }
         },

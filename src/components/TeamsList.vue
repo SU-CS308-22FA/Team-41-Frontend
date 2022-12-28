@@ -1,7 +1,7 @@
 <template>
     <NavBar></NavBar>
     <div class="teams-list">
-        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-today">
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-team">
             No Teams Found!
         </div>
         <div v-else-if="items.length === 0 || finishedLoading === false">
@@ -78,7 +78,7 @@
         background: rgba(185, 185, 185, 0.725);
     }
 
-    .not-found-today{
+    .not-found-team{
         margin-top: 300px;
         font-weight: bold;
         font-style: italic;
