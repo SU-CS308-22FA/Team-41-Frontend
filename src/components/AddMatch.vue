@@ -12,7 +12,7 @@
                             <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === awayId"> {{ team.name }} </option>
                         </select>
                         <label for="homeGoals">Enter Home Goals:</label>
-                        <input class="add-match-elem" id="homeGoals" type="number" v-model.number="homeGoals" min="0" />
+                        <input class="add-match-elem" id="homeGoals" type="number" v-model.number="homeGoals" min="0" :disabled="without_result"/>
 
                         <label for="awayId">Choose Away Team</label>
                         <select class="add-match-elem" name="awayId" v-model="awayId" >
@@ -20,7 +20,7 @@
                         </select>
                         
                         <label for="awayGoals">Enter Away Goals:</label>
-                        <input class="add-match-elem" id="awayGoals" type="number" v-model.number="awayGoals" min="0" />
+                        <input class="add-match-elem" id="awayGoals" type="number" v-model.number="awayGoals" min="0" :disabled="without_result"/>
 
                         <label for="refereeId">Choose Referee</label>
                         <select class="add-match-elem" name="refereeId" v-model="refereeId" >
@@ -29,6 +29,11 @@
 
                         <label for="date">Enter Match Date & Time:</label>
                         <input class="add-match-elem" id="date" type="datetime-local" v-model="date" />
+
+                        <a>
+                            <input type="checkbox" id="without_result" name="without_result" v-model="without_result">&nbsp;
+                            <label for="vehicle1">I will add without results</label>
+                        </a>
                     </div>
                     <div class="row row-sm-3" style="margin: auto; width: fit-content;">
                         <button class="btn btn-primary but-add" @click="addMatch()">Add</button>
@@ -63,6 +68,7 @@
                 awayGoals: 0,
                 date: "",
                 isLoaded: 0,
+                without_result: false,
                 teams: [],
                 referees: [],
             };
@@ -101,8 +107,16 @@
         },
         methods: {
             addMatch() {
-                const {userId, homeId, awayId, refereeId, homeGoals, awayGoals} = this;
+                const {userId, homeId, awayId, refereeId, without_result} = this;
                 const date = this.date + ":00";
+
+                let homeGoals = this.datehomeGoals;
+                let awayGoals = this.dateawayGoals;
+
+                if(without_result === true) {
+                    homeGoals = -1;
+                    awayGoals = -1;
+                }
 
                 const requestOptions = {
                     method: "POST",
