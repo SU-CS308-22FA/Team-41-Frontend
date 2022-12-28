@@ -56,6 +56,10 @@
                 </li>
             </ul>
 
+            <a class="nav-link active left-buts" @click="this.$router.replace('/feedback')">
+                Contact
+            </a>
+            &nbsp;&nbsp;&nbsp;
             <a class="nav-link active left-buts" v-if="isLoggedIn()" @click="this.$router.replace('/profilePage')">
                 Profile
             </a>
