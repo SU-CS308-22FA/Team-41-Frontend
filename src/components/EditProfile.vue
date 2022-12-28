@@ -33,7 +33,6 @@
                 name: "",
                 mail: "",
                 gender: "",
-                password: "",
                 myUser: {},
             };
         },
@@ -73,7 +72,7 @@
                 }
                 return i !== 3;
             },
-            updateUserF(){
+            updateInfo(){
                 const {name, mail, gender} = this;
 
                 const requestOptions = {
@@ -96,7 +95,7 @@
                 });
             },
             updateUser() {
-                this.updateUserF();
+                this.updateInfo();
                 this.goToProfile();
             }
         }
@@ -143,19 +142,5 @@
 
     .but:hover{
         transform: scale(1.1);
-    }
-
-    .fan-team-but{
-        text-decoration: none;
-        color: black;
-        width: fit-content;
-        margin: auto;
-        padding: 6px;
-    }
-
-    .fan-team-but:hover{
-        background-color: rgba(33, 66, 114, 0.818);
-        color: white;
-        border-radius: 10px;
     }
 </style>
