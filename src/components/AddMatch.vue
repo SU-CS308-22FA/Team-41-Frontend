@@ -1,51 +1,45 @@
 <template>
-    
     <AdminNavBar></AdminNavBar>
+    <div v-if="isLoaded === 2 || true">
+        <div class="add-match-page">
+            <div class="col d-flex justify-content-center">
+                <form class="add-match-form">
+                    <div class="row col-sm-3" style="margin: auto; width: 400px;">
+                        <h2 class="add-match-form-title">Add Match</h2>
 
-        <div v-if="isLoaded === 2">
-            <form class="newMatch-form" @submit.prevent="addMatch">
-                <div>
-                    <label for="homeId">Choose Home Team</label>
-                    <select name="homeId" v-model="homeId" >
-                        <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === awayId"> {{ team.name }} </option>
-                    </select>
+                        <label for="homeId">Choose Home Team</label>
+                        <select class="add-match-elem" name="homeId" v-model="homeId" >
+                            <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === awayId"> {{ team.name }} </option>
+                        </select>
+                        <label for="homeGoals">Enter Home Goals:</label>
+                        <input class="add-match-elem" id="homeGoals" type="number" v-model.number="homeGoals" min="0" />
 
-                    <label for="homeGoals">Enter Home Goals:</label>
-                    <input id="homeGoals" type="number" v-model.number="homeGoals" min="0" />
-                </div>
-                
-                <div>
-                    <label for="awayId">Choose Away Team</label>
-                    <select name="awayId" v-model="awayId" >
-                        <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === homeId"> {{ team.name }} </option>
-                    </select>
+                        <label for="awayId">Choose Away Team</label>
+                        <select class="add-match-elem" name="awayId" v-model="awayId" >
+                            <option v-for="team in teams" :key="team.id" :value="team.id" :disabled="team.id === homeId"> {{ team.name }} </option>
+                        </select>
+                        
+                        <label for="awayGoals">Enter Away Goals:</label>
+                        <input class="add-match-elem" id="awayGoals" type="number" v-model.number="awayGoals" min="0" />
 
-                    <label for="awayGoals">Enter Away Goals:</label>
-                    <input id="awayGoals" type="number" v-model.number="awayGoals" min="0" />
-                </div>
-                
-                <div>
-                    <label for="refereeId">Choose Referee</label>
-                    <select name="refereeId" v-model="refereeId" >
-                        <option v-for="ref in referees" :key="ref.id" :value="ref.id"> {{ ref.name }} </option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label for="date">Enter Match Date & Time:</label>
-                    <input id="date" type="datetime-local" v-model="date" />
-                </div>
+                        <label for="refereeId">Choose Referee</label>
+                        <select class="add-match-elem" name="refereeId" v-model="refereeId" >
+                            <option v-for="ref in referees" :key="ref.id" :value="ref.id"> {{ ref.name }} </option>
+                        </select>
 
-                <button class="addMatch" :disabled="userId === ''">
-                    <a>Add Match</a>
-                </button>
-            
-            </form>
+                        <label for="date">Enter Match Date & Time:</label>
+                        <input class="add-match-elem" id="date" type="datetime-local" v-model="date" />
+                    </div>
+                    <div class="row row-sm-3" style="margin: auto; width: fit-content;">
+                        <button class="btn btn-primary but-add" @click="addMatch()">Add</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div v-else>
-            <Loading></Loading>
-        </div>
-
+    </div>
+    <div v-else>
+        <Loading></Loading>
+    </div>
 </template>
 
 <script>
@@ -74,29 +68,36 @@
             };
         },
         mounted() {
-            if(localStorage.userId) this.userId = localStorage.userId;
-            this.isLoaded = 0;
-            const requestOptions = {
-                method: "GET",
-                headers: { "Content-Type": "application/json" },
-            };
-            fetch("https://tfb308.herokuapp.com/api/v1/team/all", requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === "200") {
-                    this.teams = data.returnObject;
-                    this.isLoaded += 1;
-                }
-            });
+            let admin = false;
+            if(localStorage.isAdmin) admin = localStorage.isAdmin === "true";
+            if(!admin) {
+                this.$router.replace("/");
+            }
+            else {
+                if(localStorage.userId) this.userId = localStorage.userId;
+                this.isLoaded = 0;
+                const requestOptions = {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/team/all", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "200") {
+                        this.teams = data.returnObject;
+                        this.isLoaded += 1;
+                    }
+                });
 
-            fetch("https://tfb308.herokuapp.com/api/v1/referee/all", requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === "200") {
-                    this.referees = data.returnObject;
-                    this.isLoaded += 1;
-                }
-            });
+                fetch("https://tfb308.herokuapp.com/api/v1/referee/all", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === "200") {
+                        this.referees = data.returnObject;
+                        this.isLoaded += 1;
+                    }
+                });
+            }
         },
         methods: {
             addMatch() {
@@ -133,4 +134,48 @@
     };
 </script>
 
-<style></style>
+<style scoped>
+    .add-match-page{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
+        display: flex;
+        overflow: hidden;
+        display: flexbox;
+        min-height: calc(100vh - 70px);
+        background: rgba(185, 185, 185, 0.725);
+    }
+
+    .add-match-form{
+        background-color: ghostwhite;
+        width: fit-content;
+        height: fit-content;
+        padding:30px;
+        margin: auto;
+        display:grid;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .add-match-form-title{
+        color: rgba(17, 73, 158, 0.818);
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .add-match-elem{
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .but-add{
+        margin-top: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 25px;
+        width: 210px;
+    }
+
+    .but-add:hover{
+        transform: scale(1.1);
+    }
+</style>
