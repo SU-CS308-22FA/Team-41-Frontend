@@ -5,6 +5,7 @@
             <form class="edit-pass-form">
                 <div class="row col-sm-3" style="margin: auto; width: 300px;">
                     <h2 class="edit-pass-form-title">Change Password</h2>
+                    <input class="form-pass-elem" v-model="oldPassword" type="password" name="" placeholder="current password" minlength="8">
                     <input class="form-pass-elem" v-model="password" type="password" name="" placeholder="new password" minlength="8">
                     <input class="form-pass-elem" v-model="repassword" type="password" name="" placeholder="new re-password"  minlength="8">
                 </div>
@@ -28,22 +29,26 @@
         },
         data() {
             return{
+                oldPassword: "",
                 password: "",
                 repassword: "",
             }
         },
         methods: {
             fine() {
-                return this.same() && this.password.length >= 8;
+                return this.diffPass() && this.sameNewPass() && this.password.length >= 8;
             },
-            same() {
+            diffPass() {
+                return this.password !== this.oldPassword && this.oldPassword.length >= 8;
+            },
+            sameNewPass() {
                 return this.password === this.repassword;
             },
             goToProfile() {
                 this.$router.replace("/profilepage");
             },
             updatePassword() {
-                
+                //TODO
             }
         }
     };
