@@ -19,30 +19,6 @@
     </div>
 </template>
 
-<!-- 
-    <div class="container">
-        <div class="editp">      
-            <div class="info">
-                <h2 style="color: rgba(17, 73, 158, 0.818)">Edit Profile</h2>
-                <input v-model="name" type="text" name="" placeholder="Name">
-                <input v-model="mail" type="email" name="" placeholder="Email">
-                <input v-model="gender" type="text" name="" placeholder="Gender">
-                <button @click="goToProfile" style="float:left;">CANCEL</button>
-                <button @click="updateUser" style="float:left; margin-left: 4%;">SAVE</button>
-            </div>
-            <div class="photo">
-                <img src="../assets/pp.jpg" alt="" class="center">
-                <br><br>
-                <div class="editphoto">
-                    <input type="file" name="" id="file" accept="image/*">
-                    <label for="file">Edit Photo</label>
-                    <button class="change"><router-link class= "navborder" to="/ChangePassword">Change Password</router-link></button>
-                </div>
-            </div>
-        </div>
-    </div>
--->
-
 <script>
     import NavBar from './navbar.vue';
 
