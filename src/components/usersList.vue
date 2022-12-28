@@ -25,11 +25,10 @@
     </div>
   </div>
 
-  <HarunNavBar></HarunNavBar>
-  <SideBar></SideBar>
+  <AdminNavBar></AdminNavBar>
 
-  <div class="whole">
-    <div class="users">
+  <div class="users-list-page d-flex justify-content-center">
+    <div class="users-list">
       <div v-if="users.length === 0 || finishedLoading === false">
         <loadingPage></loadingPage>
       </div>
@@ -44,7 +43,7 @@
               <th>Birthdate</th>
               <th>Fanteam</th>
             </tr>
-            <tr class="userx" v-for="user in users" :key="user.userId">
+            <tr class="user-userslist" v-for="user in users" :key="user.userId">
               <td>{{ user.userId }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.mail }}</td>
@@ -70,17 +69,14 @@
 </template>
 
 <script>
-import HarunNavBar from "./HarunNavBar.vue";
-import SideBar from "./SideBar.vue";
+import AdminNavBar from "./adminNavbar.vue";
 import { Modal } from "bootstrap";
-//import loadingPage from './loadingPage';
 
 export default {
   path: "/usersList",
   name: "UsersList",
   components: {
-    HarunNavBar,
-    SideBar,
+    AdminNavBar,
   },
   data() {
     return {
@@ -118,6 +114,7 @@ export default {
           }
         });
     },
+    
     closeModal() {
       this.myModal.hide();
     },
@@ -149,21 +146,28 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.userId) this.userId = localStorage.userId;
-    this.myModal = new Modal(document.getElementById("myModal"));
+    let admin = false;
+    if(localStorage.isAdmin) admin = localStorage.isAdmin === "true";
+    if(!admin) {
+      this.$router.replace("/");
+    }
+    else{
+      if (localStorage.userId) this.userId = localStorage.userId;
+      this.myModal = new Modal(document.getElementById("myModal"));
 
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    };
-    fetch(
-      "https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/users",
-      requestOptions
-    )
+      const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      };
+      fetch(
+        "https://tfb308.herokuapp.com/api/v1/user/" + this.userId + "/users",
+        requestOptions
+      )
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "200") {
-          this.users = data.returnObject;
+          let sortedData = data.returnObject.sort((i1, i2) => (i1.userId < i2.userId) ? -1 : (i1.userId > i2.userId) ? 1 : 0);
+          this.users = sortedData;
 
           for (let i = 0; i < this.users.length; i++) {
             fetch(
@@ -185,64 +189,75 @@ export default {
         }
         this.finishedLoading = true;
       });
+    }
   },
 };
 </script>
 
-<style>
-.users {
-  display: flex;
-  margin: auto;
-}
+<style scoped>
+  .users-list-page{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
+        display: flex;
+        overflow: hidden;
+        display: flexbox;
+        min-height: calc(100vh - 70px);
+        background: rgba(185, 185, 185, 0.725);
+    }
 
-.users th {
-  padding: 10px;
-  font-weight: bold;
-}
-.users td {
-  padding: 20px;
-  font-weight: bold;
-}
-.headingss {
-  text-align: center;
-  text-decoration: none;
-  color: black;
-  margin: 30px;
+  .users-list {
+    display: flex;
+    margin: auto;
+  }
 
-  display: block;
-  background: ghostwhite;
-}
+  .users-list th {
+    padding: 10px;
+    font-weight: bold;
+  }
+  .users-list td {
+    padding: 20px;
+    font-weight: bold;
+  }
+  .headingss {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin: 30px;
 
-.userx {
-  color: black;
-  background: ghostwhite;
-  border-bottom: 2px solid black;
-}
-.userx .uefarank {
-  background-color: rgb(32, 178, 170);
-  color: black;
-}
+    display: block;
+    background: ghostwhite;
+  }
 
-.userx:hover td {
-  color: red;
-  background: rgb(208, 202, 202);
-}
+  .user-userslist {
+    color: black;
+    background: ghostwhite;
+    border-bottom: 2px solid black;
+  }
+  .user-userslist .uefarank {
+    background-color: rgb(32, 178, 170);
+    color: black;
+  }
 
-.col th {
-  padding-top: 1%;
-  padding-bottom: 2%;
-  padding-left: 1%;
-  padding-right: 1%;
-}
+  .user-userslist:hover td {
+    color: red;
+    background: rgb(208, 202, 202);
+  }
 
-.ban-btn {
-  background: red;
-  color: white;
-  width: 80px;
-  height: 40px;
-}
-.ban-btn:hover {
-  cursor: pointer;
-  transform: scale(1.2);
-}
+  .col th {
+    padding-top: 1%;
+    padding-bottom: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+
+  .ban-btn {
+    background: red;
+    color: white;
+    width: 80px;
+    height: 40px;
+  }
+  .ban-btn:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
 </style>

@@ -1,43 +1,49 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
-    <body>
-        <div class="container">
-        <div class="content">
-           
-            <div class="cards">
-                <div v-for="item in items[0]" :key="item.id" class="card">
-                    <div class="box">                 
-                        <h2>{{item.userId}} - {{item.topic}}</h2> 
-                        <h3>{{item.body}}</h3>
-                    </div>
-                    <div class="icon-case">
-                        <button><img src="../assets/likee.png" width=45px height=45px alt=""></button> 
-                        <br><br><br>
-                        <button><img src="../assets/trashh.png" width=45px height=45px alt=""></button>
-
-                    </div>
-                </div>
-            </div>
+    <AdminNavBar></AdminNavBar>
+    <div class="feedback-list d-flex justify-content-center">
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-feedback">
+            No Feedbacks Found!
+        </div>
+        <div v-else-if="items.length === 0 || finishedLoading === false">
+            <loadingPage></loadingPage>
+        </div>
+        <div v-else>
+            <table class="feedback-table">
+                <tr>
+                    <th>User Id</th>
+                    <th>Topic</th>
+                    <th>Feedback</th>
+                    <th></th>
+                </tr>
+                <tr v-for="item in items" :key="item.id" class="feedback-table-row">
+                    <td class="card-title">{{ item.userId }}</td>
+                    <td class="card-text">{{ item.topic }}</td>
+                    <td class="card-text">{{ item.body }}</td>
+                    <td>
+                        <button class="btn btn-danger but" @click="removeFeedback()">remove</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
-    </body>
-
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import AdminNavBar from './adminNavbar.vue';
+    import loadingPage from './loadingPage.vue';
 
     export default {
         path: '/ShowFeedback',
         name: 'ShowFeedback',
         components: {
-            HarunNavBar,
-            SideBar,
+            AdminNavBar,
+            loadingPage,
         },
         data(){
-            return {items : []};
+            return {
+                items : [],
+                finishedLoading: false,
+            };
         },
         mounted(){
             const requestOptions = {
@@ -48,134 +54,70 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.items.push(data.returnObject);
+                    this.items = data.returnObject;
                 }
-                
+                this.finishedLoading = true;
             });
         },
-
-        
+        methods: {
+            removeFeedback() {
+                //TODO
+            },
+        }
     };
 </script>
+
 <style scoped>
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-align: left;
-}
 
-body{
-    min-height: 90vh;
-    max-width: 1000vh;
-    background:  rgba(185, 185, 185, 1);
-}
-a{
-    text-decoration: none;
-}
-li{
-    list-style: none;
-}
-h2{
-    color:rgba(218, 38, 152, 0.978);
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+    .feedback-list{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
+        display: flex;
+        overflow: hidden;
+        display: flexbox;
+        height: 100vh;
+        background: rgba(185, 185, 185, 0.725);
+    }
 
-h3{
-    color: black(16, 16, 16, 0.532);
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+    .not-found-feedback{
+        margin-top: 300px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
+    }
 
-.side-menu{
-    position: fixed;
-    background: rgba(31, 28, 101, 0.818);
-    width:31.5vh;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin-top: 6.5vh;
-    margin-left: -1%;
-    
-    flex-direction: column;
-}
+    .feedback-box{
+        justify-content: space-between;
+        padding: 10px 16px;
+        margin: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+        height: auto;
+        background-color: white;
+    }
 
-.side-menu li{
-    font-size: 24px;
-    padding: 15px 40px;
-    color: white;
-    display: flex;
-    align-items: center;
-}
-.side-menu li:hover{
-    background: white;
-    color: rgba(31, 28, 101, 0.818);
-    cursor: pointer;
-    font-weight: bold;
-}
-.container{
-    position: flex;
-    height: 100%;
-    width:100%;
-    
-    margin-left:0;
-    background: rgba(185, 185, 185, 0.725);
+    .feedback-table{
+        border: 1px solid black;
+    }
 
-    overflow-y:auto;
-    
-    
-    
-}
-.container .content{
-    position:relative;
-    margin-top:5vh;
+    .feedback-table-row{
+        border: 1px solid black;
+    }
 
-}
+    th {
+        margin: auto;
+        padding: 25px 25px 25px 25px;
+        background-color: cadetblue;
+    }
 
-.container .content .cards{
-    padding: 20px 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.container .content .cards .card{
-    width:530px;
-    height:200px;
-    background: white;
-    margin: 30px 10px;
-    padding: 10px 20px;
-    display:flex;
-    
-    justify-content: space-around;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.18);
-}
-.container .content .cards .card .icon-case{
-   padding-top: 20px;
-   
-   
+    .feedback-table-row td {
+        border: 1px solid black;
+        margin: auto;
+        padding: 25px 25px 25px 25px;
+        background-color: antiquewhite;
+    }
 
-}
-.container .content .cards .card .box{
-    padding-right: 80px;
-
-}
-.container .content .cards .card .icon-case img{
-   width: 50px;
-   height: 50px;
-   
-
-}
-.container .content .cards .card .icon-case img:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-
-}
-button{
-    background-color: white;
-    border: none;
-    
-}
-
+    .but:hover{
+        transform: scale(1.1);
+    }
 </style>

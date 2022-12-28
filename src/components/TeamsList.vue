@@ -1,31 +1,30 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
-    <div class="whole">
-        
-        <div class="container">
-            <div v-if="items.length === 0 && finishedLoading === true">
-                No Matches Found!
-            </div>
-            <div v-else-if="items.length === 0 || finishedLoading === false">
-                <loadingPage></loadingPage>
-            </div>
-            <div v-else>
-                <div v-for="item in items[0]" :key="item.id">
-                    <router-link class="team" :to="{
+    <NavBar></NavBar>
+    <div class="teams-list">
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-team">
+            No Teams Found!
+        </div>
+        <div v-else-if="items.length === 0 || finishedLoading === false">
+            <loadingPage></loadingPage>
+        </div>
+        <div v-else>
+            <div class="row row-cols-3 g-3">
+                <div class="col" v-for="item in items" :key="item.id">
+                    <div id="{{ item.id }}" class="card team">
+                        <router-link :to="{
                             name: 'TeamPage',
                             params: {
                                 teamId: item.id
                             }
-                        }"
-                    >
-                        <div class="logo">
-                            <img :src=item.logoURL>
-                        </div>
-                        <div class="name">
-                            {{item.name}}
-                        </div>
-                    </router-link>
+                        }">
+                            <img :src=item.logoURL class="img-thumbnail team-logo">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="team-name">{{item.name}}</a>
+                                </h5>
+                            </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,15 +33,13 @@
 
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NavBar from './navbar.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "TeamsList",
         path: "teamsList",
         components: {
-            HarunNavBar,
-            SideBar,
+            NavBar,
             loadingPage
         },
         data(){
@@ -60,7 +57,8 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.items.push(data.returnObject);
+                    let sortedData = data.returnObject.sort((i1, i2) => (i1.name < i2.name) ? -1 : (i1.name > i2.name) ? 1 : 0);
+                    this.items = sortedData;
                 }
                 this.finishedLoading = true;
             });
@@ -69,49 +67,53 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
-    .whole{
+    .teams-list{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
         display: flex;
+        overflow: hidden;
+        display: flexbox;
         background: rgba(185, 185, 185, 0.725);
     }
-    .container{
-        width: 39%;
-        margin-left: 10%;
+
+    .not-found-team{
+        margin-top: 300px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
     }
 
     .team{
-        text-decoration: none;
-        display: flex;
         justify-content: space-between;
         padding: 10px 16px;
         margin: 20px;
         border: 1px solid black;
         border-radius: 10px;
         background-color: white;
-        color: black;
     }
+
     .team:hover{
         border: 3px solid rgba(218, 38, 152, 0.978);
         background-color: rgba(33, 66, 114, 0.818);
-        color: white;
         transform: scale(1.1);
     }
 
-    .logo{
-        width:  50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .name{
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
+    .team-name{
+        color: black;
     }
 
+    .team-name:hover{
+        color: white;
+    }
+
+    .team-logo{
+        border-width: 0px;
+    }
+
+    a{
+        text-decoration: none;
+    }
 
 </style>

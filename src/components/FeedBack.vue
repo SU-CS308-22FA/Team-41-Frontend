@@ -1,6 +1,5 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NavBar></NavBar>
     <div class="container">
         <form class="feedback-form" @submit.prevent="sendFeedback">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Feedback Box</h2>
@@ -26,15 +25,13 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue'
-    import SideBar from './SideBar.vue'
+    import NavBar from './navbar.vue'
 
     export default {
         path: '/feedback',
         name: 'FeedBack',
         components: {
-            HarunNavBar,
-            SideBar
+            NavBar,
         },
         data(){
             return {

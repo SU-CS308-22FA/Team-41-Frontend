@@ -1,93 +1,122 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <div class="whole">
-        <SideBar></SideBar>
-        <div class="container">
-            <span  class="team">
-                <img :src=logo class="logo">
-                <div class="column">
-                    <button v-on:click="addToFav" class="favbut">
-                        <img src="../assets/addedToFav.png" alt="" class= "fav">
-                    </button>
-                    <a class="name">
-                    {{teamName}}
-                </a>
+    <!-- Modal -->
+    <div>
+        <div id="myModal" ref="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+            </div>
+            <div class="modal-body">
+                <p>{{ errorMsg }}</p>
+            </div>
+            <div class="modal-footer">
+                <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                @click="closeModal()"
+                >
+                Close
+                </button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
 
+    <NavBar></NavBar>
+    <div class="container">
+        <div class="card team-info-box">
+            <div class="row">
+                <div class="col-md-4">
+                    <img :src=team.logoURL class="card-img team-info-box-logo">
                 </div>
-
-            </span >
-            
-            <br><br>
-            <button v-on:click="hideOrUnhide('players')" class="but">Hide/Unhide Players</button>
-            <div class="players">
-                <div v-for="player in players" :key="player.id">
-                    <div class="team">
-                        <div class="logo">
-                            <img :src=player.pictureURL>
-                        </div>
-                        <div class="name">
-                            {{player.name}}
-                        </div>
-                        <div class="name">
-                            {{player.position}}
-                        </div>
-                        <div class="name" v-if="player.number !== -1">
-                            {{player.number}}
-                        </div>
-                        <div class="name" v-else>
-                            does not have a kit number
-                        </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <svg v-if="showFavBut" @click="addToFav" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart fav-button" viewBox="0 0 16 16">
+                            <path id="favv" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg>
+                        <h5 class="card-title">{{team.name}}</h5>
+                        <br>
+                        <p class="card-text">City: {{team.city}}</p>
+                        <p class="card-text">Stadium: {{team.stadiumName}}</p>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <br><br>
         
-            
-            <button v-on:click="hideOrUnhide('matches')" class="but">Hide/Unhide Matches</button>
-            <div class="matches">
-                <div v-for="match in matches" :key="match.id">
-                    <span  class="team">
-                        <div class="name">
-                            {{match.homeTeamName}} vs. {{match.awayTeamName}}
-                        </div>
-                        <div class="name" v-if="match.finished === true">
-                            {{match.goalHome}} vs. {{match.goalAway}}
-                        </div>
-                        <div class="name">
-                            {{match.referee}}
-                        </div>
-                        <div class="name">
-                            {{match.stadiumName}}
-                        </div>
-                    </span >
-                </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <table class="player-box">
+                    <tr>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Kit Number</th>
+                    </tr>
+                    <tr v-for="player in players" :key="player.id">
+                        <td><img :src=player.pictureURL class="card-img"></td>
+                        <td>{{player.name}}</td>
+                        <td>{{player.position}}</td>
+                        <td v-if="player.number !== -1">{{player.number}}</td>
+                        <td v-else>does not have a kit number</td>
+                    </tr>
+                </table>
             </div>
-        </div>    
-    </div>        
+            <div class="col-sm-8">
+                <table class="match-box">
+                    <tr>
+                        <th>Sides</th>
+                        <th>Status</th>
+                        <th>Referee</th>
+                        <th>Stadium</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr v-for="match in matches" :key="match.id" class="matchx" @click="goToMatch(match.id)">
+                        <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
+                        <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
+                        <td v-else>Not Played</td>
+                        <td>{{match.referee}}</td>
+                        <td>{{match.stadiumName}}</td>
+                        <td>{{match.dateAndTime.replace('T', ' ')}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>      
 </template>
 
-<script>
-    import SideBar from './SideBar.vue';
-    import HarunNavBar from './HarunNavBar.vue';
-    //import loadingPage from './loadingPage';
+<script scoped>
+    import NavBar from './navbar.vue'
+    import { Modal } from "bootstrap";
+
     export default {
         props: ["teamId"],
         path: '/teamPage/:teamId',
         name: 'TeamPage',
         components: {
-            SideBar,
-            HarunNavBar
-            //loadingPage
+            NavBar
         },
         data(){
             return {
-                teamName: "",
+                team: "",
                 logo: "",
                 players: [],
                 matches: [],
+                showP: "Show",
+                showM: "Show",
+                errorMsg: "",
+                myModal: null,
+                showFavBut: false,
             }
         },
         mounted() {
+            this.myModal = new Modal(document.getElementById("myModal"));
+            this.showFavBut = this.isLoggedIn();
+
             const requestOptions = {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -96,8 +125,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "200") {
-                    this.teamName = data.returnObject.name;
-                    this.logo = data.returnObject.logoURL;
+                    this.team = data.returnObject;
                 }
             });
 
@@ -118,15 +146,20 @@
             });
         },
         methods: {
-            hideOrUnhide(block){
-                var x = document.querySelector("." + block);
-                if (x.style.display === "block") {
-                    x.style.display = "none";
-                }
-                else {
-                    x.style.display = "block";
-                }
+            isLoggedIn(){
+                if(localStorage.isLogedIn === undefined) return false;
+                return true;
             },
+
+            goToMatch(id) {
+                this.$router.push({ name: "MatchPage", params: {matchId: id}});
+            },
+
+            
+            closeModal() {
+                this.myModal.hide();
+            },
+
             addToFav(){
                 const requestOptions = {
                     method: "POST",
@@ -136,101 +169,100 @@
                 fetch("https://tfb308.herokuapp.com/api/v1/user/favTeams", requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                if(data.status === "200") {
-                    alert("Succesfully added to your fav list.");
-                    return;
+                if(data.status !== "200") {
+                    this.errorMsg = data.returnObject;
+                    this.myModal.show();
                 }
-                alert(data.returnObject);
+                else {
+                    document.getElementById("favv").setAttribute("d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z");
+                    document.getElementById("favv").setAttribute("fill-rule", "evenodd");
+                }
             });
             }
         },
     };
 </script>
 
-<style>
-.whole{
-        display: flex;
-    }
-    .container{
-        width: 39%;
-        margin-left: 10%;
-    }
+<style scoped>
 
-    .team{
-        text-decoration: none;
+    .team-info-box{
+        margin-top: 100px;
+        padding: 25px 25px 25px 25px;
         display: flex;
-        justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
-        border: 1px solid rgba(218, 38, 152, 0.978);
+        overflow: hidden;
         border-radius: 10px;
-        background-color: rgba(33, 66, 114, 0.818);
-        color: white;
-    }
-  
-
-    .logo{
-        width:  50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .name{
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        
-    }
-    .players{
-        display:none;
-        width: 140%;
-    }
-    .matches{
-        display:none;
-        width: 140%;
-        padding: 15px 0 5px;
-    }
-    .column{
-        padding-top: 8%;
-        padding-right: 10%;
-       
-    }
-    .column .name{
-        padding-top: 30%;
-        
-    }
-    .favbut{
-        width:45px;
-        height: 45px;
-    }
-    .fav{
-        
-        background-color: rgba(33, 66, 114, 0.818);
-        margin-left:-5%;
-        margin-top:-5%;
-    
-        width: 45px;
-        height: 45px;
+        background: rgba(185, 185, 185, 0.725);
     }
 
-    .but{
+    .card-title{
+        text-align: left;
+        padding-bottom: 7%;
+        font-size: 40px;
+    }
+
+    .card-text{
+        text-align: left;
+        font-size: 15px;
+        font-style: italic;
+    }
+
+    .fav-button{
+        align-items: right;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        border-width: 0px;
+        font-size: 50px;
+        height: 30px;
+    }
+
+    .fav-button:hover{
+        transform: scale(1.5);
+        color: red;
+    }
+
+    .team-info-box-logo{
+        border-width: 0px;
+        max-height: 200px;
+        max-width: 200px;
+        display: inline;
         
-        margin-left: 10px;
-        margin-right: 10px;
-        padding: 5px 5px 5px 5px;
-        color: white;
-        background: rgba(33, 66, 114, 0.818);
     }
-    .column .name{
-        color: white;
+
+    td {
+        border: 1px solid black;
+        padding: 15px;
+        max-width: 400px;
+        height: 80px;
     }
-    .players .team .name{
-        color: white;
+
+    .team-info-but{
+        margin: 5px;
     }
-    .matches .team .name{
-        color: white;
+
+    .team-info-but:hover{
+        transform: scale(1.1);
     }
+
+    .player-box{
+        border: 1px solid black;
+        overflow-y:scroll;
+        height:450px;
+        width: fit-content;
+        display:block;
+    }
+
+    .match-box{
+        border: 1px solid black;
+        overflow-y:scroll;
+        height: 450px;
+        width: fit-content;
+        display:block;
+    }
+
+    .matchx:hover{
+        color: red;
+        background: rgb(208, 202, 202);
+    }
+
 </style>

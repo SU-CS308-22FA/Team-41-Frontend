@@ -1,63 +1,78 @@
 <template>
     <NavBar></NavBar>
-    <SideBar></SideBar>
-
-    <div class="container">
-    
-            
-        <div class="editp">      
-            <div class="info">
-                <h2 style="color: rgba(17, 73, 158, 0.818)">Edit Profile</h2>
-                <input v-model="name" type="text" name="" placeholder="Name">
-                <input v-model="mail" type="email" name="" placeholder="Email">
-                <input v-model="gender" type="text" name="" placeholder="Gender">
-                <button @click="goToProfile" style="float:left;">CANCEL</button>
-                <button @click="updateUser" style="float:left; margin-left: 4%;">SAVE</button>
-                
-            </div>
-            <div class="photo">
-                <img src="../assets/pp.jpg" alt="" class="center">
-                <br><br>
-                <div class="editphoto">
-                    <input type="file" name="" id="file" accept="image/*">
-                    <label for="file">Edit Photo</label>
-                    <button class="change"><router-link class= "navborder" to="/ChangePassword">Change Password</router-link></button>
-   
-
+    <div class="edit-profile-page">
+        <div class="col d-flex justify-content-center">
+            <form class="edit-form">
+                <div class="row col-sm-3" style="margin: auto; width: 250px;">
+                    <h2 class="edit-form-title">Edit Profile</h2>
+                    <input class="form-elem" v-model="name" type="text" name="" placeholder="Name">
+                    <input class="form-elem" v-model="mail" type="email" name="" placeholder="Email">
+                    <input class="form-elem" v-model="gender" type="text" name="" placeholder="Gender">
+                    <button class="btn btn-info but" @click="this.$router.replace('ChangePassword')">Change Password</button>
                 </div>
-                
-       
-            </div>
+                <div class="row row-sm-3" style="margin: auto; width: fit-content;">
+                    <button class="btn btn-secondary but" @click="goToProfile()">CANCEL</button>
+                    <button class="btn btn-danger but" :disabled="!isChanged()" @click="updateUser()">SAVE</button>
+                </div>
+            </form>
         </div>
-            
-            
-
     </div>
 </template>
 
 <script>
-    import NavBar from './NavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NavBar from './navbar.vue';
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
             NavBar,
-            SideBar,
         },
         data(){
             return {
                 name: "",
                 mail: "",
-                password: ""
+                gender: "",
+                myUser: {},
             };
+        },
+        mounted() {
+            if(localStorage.userId) this.userId = localStorage.userId;
+
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            };
+            fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "200") {
+                    this.name = data.returnObject.name;
+                    this.mail = data.returnObject.mail;
+                    this.gender = data.returnObject.gender;
+                    this.myUser = data.returnObject;
+                }
+            })
+
         },
         methods: {
             goToProfile() {
                 this.$router.replace("/profilepage");
             },
-            updateUser(){
+            isChanged() {
+                let i = 0;
+                if(this.name === this.myUser.name) {
+                    i = i + 1;
+                }
+                if(this.mail === this.myUser.mail) {
+                    i = i + 1;
+                }
+                if(this.gender === this.myUser.gender) {
+                    i = i + 1;
+                }
+                return i !== 3;
+            },
+            updateInfo(){
                 const {name, mail, gender} = this;
 
                 const requestOptions = {
@@ -75,170 +90,57 @@
                 .then(data => {
                     if (data.status !== "200"){
                         alert("Data Couldn't be Changed!\n"+data.returnObject);
-                        return;
                     }
-                    alert("Data Updated Successfully!");
-                    this.$router.replace("/profilepage");
+                    location.reload();
                 });
+            },
+            updateUser() {
+                this.updateInfo();
+                this.goToProfile();
             }
         }
     };
 </script>
 
 <style scoped>
-    
-    head{
-        box-sizing: border-box;
-        padding:0;
-        margin:0;
-        background-color:rgba(47, 20, 109, 0.8);
-    }
-
-    body{
-        margin: 0;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(47, 20, 109, 0.8);
-        position: absolute;
-        bottom:0px;
-    }
-    h2{
-        margin-left: -70%;
-    }
-    .navborder{
-        color:white;
-        text-decoration: none;
-        font-size: 15px;
-    }
-    
-    .container{
-        background-size: cover;
-        height:100%;
-        width: 100%;
-        align-items: center;
+    .edit-profile-page{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
         display: flex;
-        padding-left: 33%;
-        margin-top: 5%;
-        margin-left: -5%;
+        overflow: hidden;
+        display: flexbox;
+        min-height: calc(100vh - 70px);
+        background: rgba(185, 185, 185, 0.725);
     }
 
-    img{
-        box-sizing: border-box;
-
-        width: 149px;
-        height: 149px;
-        border-radius: 50%;
-        margin-bottom: -50%;
-
-        border:5px solid rgba(31, 28, 101, 0.818);
-        padding:3px;
-        background-color: white;
-        
-    }
-    .editp{
-        background-color: rgb(138, 138, 204);
-        width: 55%;
-        height: 55%;
-        padding: 7%;
-        margin: 1.1em 1em;
-        display: flex;
+    .edit-form{
+        background-color: ghostwhite;
+        width: fit-content;
+        height: fit-content;
+        padding:30px;
+        margin: auto;
+        display:grid;
         border-radius: 8px;
         text-align: center;
     }
-    .center {
-       
-        margin-left: 60%;
-        margin-top: 5%;
-        margin-bottom: 20%;
-        width: 100%;
+
+    .edit-form-title{
+        color: rgba(17, 73, 158, 0.818);
+        margin-bottom: 30px;
+        text-align: center;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="file"],
-    input[type="email"]{
-        display:block;
-        box-sizing: border-box;
-        background: none;
-        margin-bottom: 60px;
-        padding:4px;
-        width:220px;
-        height:32px;
-        border:none;
-        border-bottom: 1px solid;
-        font-weight: 400;
-        font-size: 15px;
-        transition: 0.2;
-
-    }
-    h2{
-        margin-left: -40%;
-        margin-top: 5%;
-        margin-bottom: 20%;
+    .form-elem{
+        margin-bottom: 20px;
+        text-align: center;
     }
 
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="file"]:focus,
-    input[type="email"]:focus{
-        border-bottom: 2px solid;
-        border-bottom-right-radius: 20px;
-        transition: 0.2 ease;
+    .but{
+        margin: 20px 20px 20px 20px;
+        width: 210px;
     }
 
-    button{
-        border:1px solid;
-        background-color: rgba(17, 73, 158, 0.818);
-        color:white;
-        height: 30px;
-        width: 105px;
-        border-radius: 5px;
-        margin:0px;
-        transition:all 0.3s;
-    }
-
-    button:hover{
+    .but:hover{
         transform: scale(1.1);
-        cursor:pointer;
     }
-
-    input[type="file"]{
-        display:none;
-    }
-
-    label{
-        display:block;
-        margin-left: 70%;
-        margin-right: -60%;
-        margin-top:-30%;
-        font-size: 20px;
-        background-color: rgba(17, 73, 158, 0.818);
-        color:white;
-        border:1px ;
-        padding: 3px 0px;
-        border-radius:5px;
-        transition: all 0.3s;
-    
-      
-    }
-    label:hover{
-        transform: scale(1.1);
-        color:white;
-        cursor:pointer;
-    }
-    .editphoto{
-        width:140px;
-        
-    }
-    .change{
-        margin-top: 110%;
-        margin-left: 50%;
-        padding: 3px 1px -3px 1px;
-        height: 40px;
-        width: 180px;
-    }
-
-
-
 </style>

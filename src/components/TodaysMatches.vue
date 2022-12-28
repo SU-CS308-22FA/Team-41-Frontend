@@ -1,78 +1,71 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
-    <div class="whole">
-        
-        <div class="container">
-            <div v-if="items.length === 0 && finishedLoading === true">
-                <h3>No Matches Found!</h3>
-                
-            </div>
-            <div v-else-if="items.length === 0 || finishedLoading === false">
-                <loadingPage></loadingPage>
-            </div>
-            <div v-else>
-                <span class="head">
-                    <div class="text">
-                        Teams
-                    </div>
-                    <div class="text">
-                        Referee
-                    </div>
-                    <div class="text">
-                        Stadium
-                    </div>
-                    <div class="text">
-                        Date and Time
-                    </div>
-                </span>
-
-                <div v-for="item in items" :key="item.referee">
-                    <span class="match" v-if="item.status === 'Match Finished'">
-                        <div class="text">
-                            {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
-                        </div>
-                        <div class="text">
-                            {{item.referee}}
-                        </div>
-                        <div class="text">
-                            {{item.stadiumName}}
-                        </div>
-                        <div class="text">
-                            {{item.dateAndTime.toString().replace("T", " ")}}
-                        </div>
-                    </span>
-                    <span class="matchPlayed" v-else>
-                        <div class="text">
-                            {{item.homeTeamName}} vs. {{item.awayTeamName}}
-                        </div>
-                        <div class="text">
-                            {{item.referee}}
-                        </div>
-                        <div class="text">
-                            {{item.stadiumName}}
-                        </div>
-                        <div class="text">
-                            {{item.dateAndTime.toString().replace("T", " ")}}
-                        </div>
-                    </span>
-                </div>
-            </div>
+    <NavBar></NavBar>
+    <div class="fixture-page">
+        <div v-if="items.length === 0 && finishedLoading === true" class="not-found-today">
+            There are no matches scheduled for today!
         </div>
+        <div v-else-if="items.length === 0 || finishedLoading === false">
+            <loadingPage></loadingPage>
+        </div>
+        <table v-else>
+            <tr class="table-head">
+                <td class="table-head-text">
+                    Teams
+                </td>
+                <td class="table-head-text">
+                    Referee
+                </td>
+                <td class="table-head-text">
+                    Stadium
+                </td>
+                <td class="table-head-text">
+                    Date and Time
+                </td>
+            </tr>
+
+            <div  v-for="item in items" v-on:click="navToMp(item.id)" :key="item.id">
+                <tr class="fixture-match not-played" v-if="item.status === 'Match Finished'">
+                    <td class="table-body-text">
+                        {{item.homeTeamName}} <h3>&nbsp; {{item.goalHome}} - {{item.goalAway}} &nbsp;</h3> {{item.awayTeamName}}
+                    </td>
+                    <td class="table-body-text">
+                        {{item.referee}}
+                    </td>
+                    <td class="table-body-text">
+                        {{item.stadiumName}}
+                    </td>
+                    <td class="table-body-text">
+                        {{item.dateAndTime.toString().replace("T", " ")}}
+                    </td>
+                </tr>
+                <tr class="fixture-match played" v-else>
+                    <td class="table-body-text">
+                        {{item.homeTeamName}} vs. {{item.awayTeamName}}
+                    </td>
+                    <td class="table-body-text">
+                        {{item.referee}}
+                    </td>
+                    <td class="table-body-text">
+                        {{item.stadiumName}}
+                    </td>
+                    <td class="table-body-text">
+                        {{item.dateAndTime.toString().replace("T", " ")}}
+                    </td>
+                </tr>
+            </div>
+        </table>
     </div>
 </template>
 
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NavBar from './navbar.vue';
     import loadingPage from './loadingPage';
     export default {
         name: "TodaysMatches",
         path: "todaysMatches",
         components: {
-            HarunNavBar,
-            SideBar,
+            NavBar,
             loadingPage
         },
         data(){
@@ -100,67 +93,79 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
-.whole{
-        display: flex;
-    }
-    .container{
-        width: 100%;
-        margin-left: 0%;
-        width: 100%;
+    .fixture-page{
+        display: flexbox;
     }
 
-    .head{
+    .not-found-today{
+        margin-top: 300px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
+    }
+
+    .table-head{
         text-decoration: none;
         display: flex;
         justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
+        padding: 10px 16px 10px 16px;
+        margin: 20px 20px 10px 20px;
+        margin-left: 10%;
         border: 1px solid black;
         border-radius: 10px;
         font-weight: bold;
         font-size: larger;
-        background-color: navy;
+        background-color: rgb(156, 35, 128);
+        color: white;
+        width: 80%;
+    }
+
+    .fixture-match{
+        margin-bottom: 5px;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 16px 20px 16px;
+        margin-left: 10%;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: white;
+        font-size: small;
+        width: 80%;
+        height: fit-content;
+    }
+    .fixture-match:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        background-color: rgba(33, 66, 114, 0.818);
         color: white;
     }
 
-    .match{
-        text-decoration: none;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
-        border: 1px solid black;
-        border-radius: 10px;
-        background-color: lightblue;
-        font-size: small;
-    }
-    
-    .matchPlayed{
-        text-decoration: none;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
-        border: 1px solid black;
-        border-radius: 10px;
-        background-color: turquoise;
-        font-size: small;
+    table{
+        width: 100%;
     }
 
-    .text{
+    td, tr {
+        text-align: center;
+        width: fit-content;
+    }
+
+    .not-played{
+        background-color: blanchedalmond;
+    }
+    
+    .played{
+        background-color: turquoise;
+    }
+
+    .table-body-text, .table-head-text{
         width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-weight: bold;
     }
-
-    h3{
-        margin-top: 5%;
-        font-size: 25px;
-    }
-
 
 </style>

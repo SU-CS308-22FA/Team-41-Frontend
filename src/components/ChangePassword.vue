@@ -1,180 +1,101 @@
-
 <template>
     <NavBar></NavBar>
-    <SideBar></SideBar>
-
-    <div class="container">
-    
-            
-        <div class="editp">      
-            <div class="info">
-                <h2 style="color: rgba(17, 73, 158, 0.818)">Change Password</h2>
-                <br><br>
-                <input type="password" name="" placeholder="Current password">
-                <input type="password" name="" placeholder="New password">
-                <input type="password" name="" placeholder="New password (again)">
-                <button @click="goToProfile" style="float:left;">CANCEL</button>
-                <button @click="goToProfile" style="float:left; margin-left: 4%;">DONE</button>
-                
-            </div>
-
+    <div class="edit-pass-page">
+        <div class="col d-flex justify-content-center">
+            <form class="edit-pass-form">
+                <div class="row col-sm-3" style="margin: auto; width: 300px;">
+                    <h2 class="edit-pass-form-title">Change Password</h2>
+                    <input class="form-pass-elem" v-model="oldPassword" type="password" name="" placeholder="current password" minlength="8">
+                    <input class="form-pass-elem" v-model="password" type="password" name="" placeholder="new password" minlength="8">
+                    <input class="form-pass-elem" v-model="repassword" type="password" name="" placeholder="new re-password"  minlength="8">
+                </div>
+                <div class="row row-sm-3" style="margin: auto; width: fit-content;">
+                    <button class="btn btn-secondary but-pass" @click="goToProfile()">CANCEL</button>
+                    <button class="btn btn-danger but-pass" :disabled="!fine()" @click="updatePassword()">SAVE</button>
+                </div>
+            </form>
         </div>
-            
-            
-
     </div>
 </template>
 
 <script>
-    import NavBar from './NavBar.vue';
-    import SideBar from './SideBar.vue'
+    import NavBar from './navbar.vue';
 
     export default {
         path: '/EditProfile',
         name: 'EditProfile',
         components: {
             NavBar,
-            SideBar,
+        },
+        data() {
+            return{
+                oldPassword: "",
+                password: "",
+                repassword: "",
+            }
         },
         methods: {
+            fine() {
+                return this.diffPass() && this.sameNewPass() && this.password.length >= 8;
+            },
+            diffPass() {
+                return this.password !== this.oldPassword && this.oldPassword.length >= 8;
+            },
+            sameNewPass() {
+                return this.password === this.repassword;
+            },
             goToProfile() {
                 this.$router.replace("/profilepage");
+            },
+            updatePassword() {
+                //TODO
             }
         }
     };
 </script>
 
 <style scoped>
-    
-    head{
-        box-sizing: border-box;
-        padding:0;
-        margin:0;
+    .edit-pass-page{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
+        display: flex;
+        overflow: hidden;
+        display: flexbox;
+        min-height: calc(100vh - 70px);
+        background: rgba(185, 185, 185, 0.725);
     }
 
-    body{
-        margin: 0;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        bottom:0px;
-    }
-    
-    .container{
-        background-size: cover;
-        height:100%;
-        width: 100%;
-        align-items: center;
-        display: flex;
-        padding-left: 33%;
-        margin-top: 5%;
-        margin-left: 5%;
-    }
-
-    .editp{
-        background-color: rgb(138, 138, 204);
-        width: 35%;
-        height: 55%;
-        padding: 7%;
-        margin: 1.1em 1em;
-        display: flex;
+    .edit-pass-form{
+        background-color: ghostwhite;
+        width: fit-content;
+        height: fit-content;
+        padding:30px;
+        margin: auto;
+        display:grid;
         border-radius: 8px;
         text-align: center;
     }
-    .center {
-       
-        margin-left: 60%;
-        margin-top: 5%;
-        margin-bottom: 20%;
-        width: 100%;
+
+    .edit-pass-form-title{
+        color: rgba(17, 73, 158, 0.818);
+        margin-bottom: 100px;
+        text-align: center;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="file"],
-    input[type="email"]{
-        display:block;
-        box-sizing: border-box;
-        background: none;
-        margin-bottom: 60px;
-        padding:4px;
-        width:220px;
-        height:32px;
-        border:none;
-        border-bottom: 1px solid;
-        font-weight: 400;
-        font-size: 15px;
-        transition: 0.2;
-
-    }
-    h2{
-        margin-left: -10%;
-        margin-top: 5%;
-        margin-bottom: 20%;
+    .form-pass-elem{
+        margin-bottom: 20px;
+        text-align: center;
     }
 
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="file"]:focus,
-    input[type="email"]:focus{
-        border-bottom: 2px solid;
-        border-bottom-right-radius: 20px;
-        transition: 0.2 ease;
+    .but-pass{
+        margin-top: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 25px;
+        width: 210px;
     }
 
-    button{
-        border:1px solid;
-        background-color: rgba(17, 73, 158, 0.818);
-        color:white;
-        height: 30px;
-        width: 105px;
-        border-radius: 5px;
-        margin:0px;
-        transition:all 0.3s;
-    }
-
-    button:hover{
+    .but-pass:hover{
         transform: scale(1.1);
-        cursor:pointer;
     }
-
-    input[type="file"]{
-        display:none;
-    }
-
-    label{
-        display:block;
-        margin-left: 70%;
-        margin-right: -60%;
-        margin-top:-30%;
-        font-size: 20px;
-        background-color: rgba(17, 73, 158, 0.818);
-        color:white;
-        border:1px ;
-        padding: 3px 0px;
-        border-radius:5px;
-        transition: all 0.3s;
-    
-      
-    }
-    label:hover{
-        transform: scale(1.1);
-        color:white;
-        cursor:pointer;
-    }
-    .editphoto{
-        width:140px;
-        
-    }
-    .change{
-        margin-top: 70%;
-        margin-left: 50%;
-        padding: 3px 1px -3px 1px;
-        height: 40px;
-        width: 180px;
-    }
-
-
-
 </style>

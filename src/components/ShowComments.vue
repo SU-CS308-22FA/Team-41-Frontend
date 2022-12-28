@@ -1,6 +1,5 @@
 <template>
-  <HarunNavBar></HarunNavBar>
-  <SideBar></SideBar>
+  <AdminNavBar></AdminNavBar>
   <body>
     <div class="container">
       <div class="content">
@@ -38,34 +37,33 @@
 </template>
 
 <script>
-import HarunNavBar from "./HarunNavBar.vue";
-import SideBar from "./SideBar.vue";
+  import AdminNavBar from "./adminNavbar.vue";
 
-export default {
-  path: "/ShowComments",
-  name: "ShowComments",
-  components: {
-    HarunNavBar,
-    SideBar,
-  },
-  data() {
-    return { items: [] };
-  },
-  mounted() {
-    const requestOptions = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    };
-    fetch("https://tfb308.herokuapp.com/api/v1/report/all", requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "200") {
-          this.items = data.returnObject;
-        }
-      });
-  },
-};
+  export default {
+    path: "/ShowComments",
+    name: "ShowComments",
+    components: {
+      AdminNavBar,
+    },
+    data() {
+      return { items: [] };
+    },
+    mounted() {
+      const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      };
+      fetch("https://tfb308.herokuapp.com/api/v1/report/all", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === "200") {
+            this.items = data.returnObject;
+          }
+        });
+    },
+  };
 </script>
+
 <style scoped>
 * {
   margin: 0;

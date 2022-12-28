@@ -1,45 +1,68 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <!-- Modal -->
+    <div>
+        <div id="myModal" ref="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+            </div>
+            <div class="modal-body">
+                <p>{{ errorMsg }}</p>
+            </div>
+            <div class="modal-footer">
+                <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                @click="closeModal()"
+                >
+                Close
+                </button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <NavBar></NavBar>
     
-    <div class="container">
+    <div class="signup-page">
         <form class="signup-form" @submit.prevent="signup">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Sign Up</h2>
             <br>
-            
+            <br>
             <label for="name">Name</label>
             <input name="name" v-model="name" placeholder="Name" type="text">
-        
+            <br>
             <label for="mail">Mail</label>
             <input name="mail" v-model="mail" placeholder="Enter mail" type="email">
-        
+            <br>
             <label for="password">Password</label>
             <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password" >
-        
+            <br>
             <label for="birthday">Birthdate</label>
-            <input type="date" name="birthdate" v-model="birthdate">
-
-            <a></a>
-
+            <input type="date" name="birthdate" v-model="birthdate" required>
+            <br>
             <div>
-                <input type="radio" id="male" value="Male" v-model="gender">
-                <label for="male">Male</label>
-                &nbsp;
-                <input type="radio" id="Female" value="female" v-model="gender">
-                <label for="female">Female</label>
-                &nbsp;
-                <input type="radio" id="Other" value="other" v-model="gender">
-                <label for="other">Other</label>
+                <input type="radio" id="male" value="Male" name="gender" v-model="gender" required>
+                <label for="male">&nbsp;Male</label>
+                &nbsp;&nbsp;
+                <input type="radio" id="Female" value="female" name="gender" v-model="gender" required>
+                <label for="female">&nbsp;Female</label>
+                &nbsp;&nbsp;
+                <input type="radio" id="Other" value="other" name="gender" v-model="gender" required>
+                <label for="other">&nbsp;Other</label>
             </div>
-
-            <a></a>
-
+            <br>
             <label for="team">Choose your team</label>
-            <select name="fanTeam" v-model="fanTeam" >
+            <select name="fanTeam" v-model="fanTeam" title="Choose a team that you are fan of it!" required>
                 <option v-for="item in items" :key="item.id" :value="item.name"> {{ item.name }} </option>
             </select>
-            
-            <button class="signup">
+            <br>
+            <br>
+            <button class="but">
                 <a>REGISTER</a>
             </button>
            
@@ -48,15 +71,14 @@
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import { Modal } from "bootstrap";
+    import NavBar from './navbar.vue';
 
     export default {
         path: '/signup',
         name: 'SignUp',
         components: {
-            HarunNavBar,
-            SideBar,
+            NavBar,
         },
         data() {
             return {
@@ -67,9 +89,13 @@
                 gender: "",
                 fanTeam: "",
                 items: [],
+                errorMsg: "",
+                myModal: null,
             };
         },
         mounted() {
+            this.myModal = new Modal(document.getElementById("myModal"));
+
             const requestOptions = {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -83,6 +109,10 @@
             });
         },
         methods: {
+            closeModal() {
+                this.myModal.hide();
+            },
+
             signup() {
                 const { mail, name, password, gender, fanTeam } = this;
                 const birthdate = this.birthdate.replaceAll("/", "-");
@@ -103,11 +133,12 @@
                 .then((res) => res.json())
                 .then((data) => {
                     if(data.status !== "200") {
-                        alert("Signup Failed\n"+data.returnObject);
-                        return;
+                        this.errorMsg = data.returnObject;
+                        this.myModal.show();
                     }
-                    this.$router.push("/login");
-                    alert("Signup Succeed.");
+                    else {
+                        this.$router.push("/login");
+                    }
                 })
                 
                 
@@ -117,136 +148,43 @@
 </script>
 
 <style scoped>
-    head{
-        box-sizing: border-box;
-        padding:0;
-        margin:0;
+    .title-login{
+        color: rgba(33, 66, 114, 0.818);
     }
 
-    body{
-        margin: 0;
-        height: 100%;
-        position: absolute;
-        bottom:0px;
-    }
-    .container{
-        background-size: cover;
-        height:100%;
-        width: 100%;
-        text-align: center;
+    .signup-page{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
         display: flex;
-        margin-top: 2.5%;
-        padding-left: 50%;
-        align-items: center;
+        overflow: hidden;
+        display: flexbox;
+        min-height: calc(100vh - 70px);
+        background: rgba(185, 185, 185, 0.725);
     }
 
     .signup-form{
-        background-color: rgb(138, 138, 204);
-        width: 60%;
-        height: 100%;
+        background-color: ghostwhite;
+        width: auto;
+        height: fit-content;
         padding:30px;
-        margin: 1.1em 1em;
+        margin: auto;
         display:grid;
         border-radius: 8px;
-        text-align: left;
-
-        /*background: rgb(137, 200, 148) url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
-        -webkit-animation: 10s linear 0s normal none infinite animate;
-        -moz-animation: 10s linear 0s normal none infinite animate;
-        -ms-animation: 10s linear 0s normal none infinite animate;
-        -o-animation: 10s linear 0s normal none infinite animate;
-        animation: 10s linear 0s normal none infinite animate;*/
-    }
-    
-    @-webkit-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @-moz-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @-ms-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @-o-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
+        text-align: center;
+        height: fit-content;
     }
 
-    input[type=text]{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 7px;
-    }
-    input[type=email]{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 3px;
-    }
-    input[type=password]{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 3px;
-    }
-    input[type=date]{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 7px;
-    }
-    input[type=radio]{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 7px;
-    }
-    select{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 7px;
-    }
-    option{
-        margin-bottom: 20px;
-        border-radius: 7px;
-        padding:6px;
-        margin-top: 7px;
-    }
-
-
-    .signup{
-        background-color: rgba(17, 73, 158, 0.818);
-        padding:10px;
-        border:none;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        border-radius: 5px;
-        transition: 0.5s ease;
-    }
-
-    .signup a{
+    .but{
+        margin: 20px 20px 20px 20px;
+        width: 210px;
+        border-radius: 8px;
+        background-color: rgba(33, 66, 114, 0.818);
+        border: 2px solid rgba(33, 66, 114, 0.818);
         color: white;
-        text-decoration: none;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: medium;
+        font-size: large;
     }
 
-    .signup:hover{
-        cursor: pointer;
+    .but:hover{
         transform: scale(1.1);
     }
 </style>

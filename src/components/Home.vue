@@ -1,22 +1,19 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
+    <NavBar></NavBar>
     <body>
         <MainFeed></MainFeed>
     </body>
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue';
-    import SideBar from './SideBar.vue';
+    import NavBar from './navbar.vue'
     import MainFeed from './MainFeed.vue';
     export default {
         path: '/HomePage',
         name: 'HomePage',
         components: {
-            HarunNavBar,
-            SideBar,
-            MainFeed,
+            NavBar,
+            MainFeed
         },
     };
 </script>

@@ -1,44 +1,38 @@
 <template>
-    <HarunNavBar></HarunNavBar>
-    <SideBar></SideBar>
-    <body>
-        <div class="container">
-            <form class="user-info">
-                <h2 style="color: rgba(17, 73, 158, 0.818)">Personal Information</h2>
-                <br>
-                <br>
-                <br>
+    <NavBar></NavBar>
+    <div class="profile-page">
+        <form class="user-info">
+            <h2 style="color: rgba(17, 73, 158, 0.818)">Personal Information</h2>
+            <br>
+            <br>
+            Name<b>{{name}}</b>
+            <br>
+            Email<b>{{mail}}</b>
+            <br>
+            Birthdate <b>{{birthdate}}</b>
+            <br>
+            Gender <b>{{gender}}</b>
+            <br>
+            Fan Team <a class="fan-team-but" @click="goToFanTeam()"><b>{{fanTeam}}</b></a>
+            <br><br>
 
-                Name <b>{{name}}</b>
-                <br>
-                <br>
-                Email <b>{{mail}}</b>
-                <br>
-                <br>
-                Gender <b>{{gender}}</b>
-                <br><br>
-
-                <div class="edit">
-                    <div class="editprofile" @click="goToEdit"><p><a>Edit Profile</a></p></div>
-                    <div class="logout" @click="logOut"><p><a>Log Out</a></p></div>
-                    <div class="deleteacc" @click="deleteAccount"><p><a>Delete Account</a></p></div>
-                </div>
-                
-            </form>
-        </div>
-    </body>
+            <div class="row-mb-3">
+                <button class="col btn btn-secondary but" @click="goToEdit">Edit Profile</button>
+                <button class="col btn btn-danger but" @click="deleteAccount">Delete Account</button>
+            </div>
+            
+        </form>
+    </div>
 </template>
 
 <script>
-    import HarunNavBar from './HarunNavBar.vue'
-    import SideBar from './SideBar.vue'
+    import NavBar from './navbar.vue'
 
     export default {
         path: '/profilepage',
         name: 'ProfilePage',
         components: {
-            HarunNavBar,
-            SideBar,
+            NavBar,
         },
         data() {
             return {
@@ -46,16 +40,18 @@
                 name: "",
                 mail: "",
                 gender: "",
+                birthdate: "",
+                fanTeam: "",
+                fanTeamId: "",
             };
         },
         methods: {
-            goToEdit() {
-                this.$router.replace("/editprofile");
+            goToFanTeam() {
+                this.$router.replace("/teamPage/" + this.fanTeamId);
             },
 
-            logOut() {
-                localStorage.clear();
-                this.$router.replace("/login");
+            goToEdit() {
+                this.$router.replace("/editprofile");
             },
             
             deleteAccount(){
@@ -91,8 +87,23 @@
                     if(data.status === "200") {
                         this.mail = data.returnObject.mail;
                         this.name = data.returnObject.name;
+                        this.birthdate = data.returnObject.birthdate.replace('T', ' ');
                         this.gender = data.returnObject.gender;
+                        this.fanTeam = data.returnObject.fanTeam;
 
+                        fetch("https://tfb308.herokuapp.com/api/v1/team/all", requestOptions)
+                        .then(responseT => responseT.json())
+                        .then(dataT => {
+                            if(data.status === "200") {
+                                let teams = dataT.returnObject;
+                                for(let i = 0; i < teams.length; i++) {
+                                    if(teams.at(i).name === this.fanTeam) {
+                                        this.fanTeamId = teams.at(i).id;
+                                        break;
+                                    }
+                                }
+                            }
+                        });
                     }
                     else if(data.status === "400: USER NOT FOUND!") {
                         alert("User Does not exist!");
@@ -106,68 +117,47 @@
 </script>
 
 <style scoped>
-
-body{
-    min-height: 90vh;
-    max-width: 1000vh;
-    background:  rgba(185, 185, 185, 1);
-}
-    .container{
-        
-        height:100%;
-        width: 100%;
-        align-items: center;
+    .profile-page{
+        margin-top: 70px;
+        padding: 25px 25px 25px 25px;
         display: flex;
-        padding-left: 33%;
-        margin-top: 0;
-        margin-left: 0;
-    
+        overflow: hidden;
+        display: flexbox;
+        min-height: calc(100vh - 70px);
         background: rgba(185, 185, 185, 0.725);
     }
 
     .user-info{
         background-color: ghostwhite;
-        width: 50%;
-        height: 75%;
+        width: auto;
+        height: fit-content;
         padding:30px;
-        margin: 4em 1em;
+        margin: auto;
         display:grid;
         border-radius: 8px;
         text-align: center;
     }
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 37%;
-    }
-    
 
-    .edit{
-        display:flex;
-        align-items: center;
-        justify-content: space-between;
+    .but{
+        margin: 20px 20px 20px 20px;
+        width: 210px;
     }
 
-    
+    .but:hover{
+        transform: scale(1.1);
+    }
 
-    .edit a {
-        color:rgba(17, 73, 158, 0.818);
+    .fan-team-but{
         text-decoration: none;
-        font-weight: bold;
-        transition: 0.1s ease;
+        color: black;
+        width: fit-content;
+        margin: auto;
+        padding: 6px;
     }
 
-    .edit .deleteacc a{
-        color: red;
-        text-decoration: none;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.1s ease;
-    }
-
-    .edit a:hover{
-        color:rgb(5, 5, 74);
-        cursor: pointer;
+    .fan-team-but:hover{
+        background-color: rgba(33, 66, 114, 0.818);
+        color: white;
+        border-radius: 10px;
     }
 </style>
