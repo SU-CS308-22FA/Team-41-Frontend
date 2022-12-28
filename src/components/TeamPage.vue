@@ -1,7 +1,7 @@
 <template>
     <NavBar></NavBar>
     <div class="container">
-        <div class="card">
+        <div class="card team-info-box">
             <div class="row">
                 <div class="col-md-4">
                     <img :src=team.logoURL class="card-img">
@@ -22,9 +22,54 @@
                 </div>
             </div>
         </div>
+
+        <br><br>
         
-        <button v-on:click="hideOrUnhide('players')" class="btn btn-primary">{{ showP }} Players</button>
-        <button v-on:click="hideOrUnhide('matches')" class="btn btn-info">{{ showM }} Matches</button>
+        <div class="row">
+            <div class="col-sm-4">
+                <table class="player-box">
+                    <tr>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Kit Number</th>
+                    </tr>
+                    <tr v-for="player in players" :key="player.id">
+                        <td><img :src=player.pictureURL class="card-img"></td>
+                        <td>{{player.name}}</td>
+                        <td>{{player.position}}</td>
+                        <td v-if="player.number !== -1">{{player.number}}</td>
+                        <td v-else>does not have a kit number</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-8">
+                <table class="match-box">
+                    <tr>
+                        <th>Sides</th>
+                        <th>Status</th>
+                        <th>Referee</th>
+                        <th>Stadium</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr v-for="match in matches" :key="match.id" class="matchx" @click="goToMatch(match.id)">
+                        <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
+                        <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
+                        <td v-else>Not Played</td>
+                        <td>{{match.referee}}</td>
+                        <td>{{match.stadiumName}}</td>
+                        <td>{{match.dateAndTime.replace('T', ' ')}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>      
+</template>
+
+
+<!--
+        <button v-on:click="hideOrUnhide('players')" class="btn btn-primary team-info-but">{{ showP }} Players</button>
+        <button v-on:click="hideOrUnhide('matches')" class="btn btn-info team-info-but">{{ showM }} Matches</button>
         
         <br><br>
 
@@ -65,8 +110,7 @@
         </table>
 
         <br><br>
-    </div>      
-</template>
+-->
 
 <script scoped>
     import NavBar from './navbar.vue'
@@ -171,14 +215,13 @@
 
 <style scoped>
 
-    .card{
-        text-decoration: none;
+    .team-info-box{
+        margin-top: 100px;
+        padding: 25px 25px 25px 25px;
         display: flex;
-        justify-content: space-between;
-        padding: 10px 16px;
-        margin: 20px;
+        overflow: hidden;
         border-radius: 10px;
-        color: black;
+        background: rgba(185, 185, 185, 0.725);
     }
 
     .card-title{
@@ -211,26 +254,35 @@
         
     }
 
-    table{
+    td {
         border: 1px solid black;
-        width: fit-content;
-        height: 400px;
-        margin: auto;
-        overflow: auto; /* make the div scrollable */
-    }
-
-    td, th {
         padding: 15px;
         max-width: 400px;
         height: 80px;
     }
 
-    .players{
-        display:none;
+    .team-info-but{
+        margin: 5px;
     }
 
-    .matches{
-        display:none;
+    .team-info-but:hover{
+        transform: scale(1.1);
+    }
+
+    .player-box{
+        border: 1px solid black;
+        overflow-y:scroll;
+        height:450px;
+        width: fit-content;
+        display:block;
+    }
+
+    .match-box{
+        border: 1px solid black;
+        overflow-y:scroll;
+        height: 450px;
+        width: fit-content;
+        display:block;
     }
 
     .matchx:hover{
