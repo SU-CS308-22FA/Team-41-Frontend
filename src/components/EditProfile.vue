@@ -1,22 +1,21 @@
 <template>
     <NavBar></NavBar>
     <div class="edit-profile-page">
-        <form class="edit-form">
-            <h2 style="color: rgba(17, 73, 158, 0.818)">Edit Profile</h2>
-            <br>
-            <br>
-            <input ref="name" v-model="name" type="text" name="" placeholder="Name" :value="name">
-            <br>
-            <input v-model="mail" type="email" name="" placeholder="Email">
-            <br>
-            <input v-model="gender" type="text" name="" placeholder="Gender">
-            <br>
-            <br>
-            <div class="row-mb-3">
-                <button class="col btn btn-secondary but" @click="goToProfile">CANCEL</button>
-                <button class="col btn btn-danger but" @click="updateUser">SAVE</button>
-            </div>
-        </form>
+        <div class="col d-flex justify-content-center">
+            <form class="edit-form">
+                <div class="row col-sm-3" style="margin: auto; width: 250px;">
+                    <h2 class="edit-form-title">Edit Profile</h2>
+                    <input class="form-elem" v-model="name" type="text" name="" placeholder="Name">
+                    <input class="form-elem" v-model="mail" type="email" name="" placeholder="Email">
+                    <input class="form-elem" v-model="gender" type="text" name="" placeholder="Gender">
+                    <button class="btn btn-info but" @click="this.$router.replace('ChangePassword')">Change Password</button>
+                </div>
+                <div class="row row-sm-3" style="margin: auto; width: fit-content;">
+                    <button class="btn btn-secondary but" @click="goToProfile()">CANCEL</button>
+                    <button class="btn btn-danger but" :disabled="!isChanged()" @click="updateUser()">SAVE</button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -57,11 +56,10 @@
             return {
                 name: "",
                 mail: "",
+                gender: "",
                 password: "",
+                myUser: {},
             };
-        },
-        beforeMount: function() {
-            this.name = this.$el.querySelector('[ref="name"]').value;
         },
         mounted() {
             if(localStorage.userId) this.userId = localStorage.userId;
@@ -75,6 +73,9 @@
             .then(data => {
                 if(data.status === "200") {
                     this.name = data.returnObject.name;
+                    this.mail = data.returnObject.mail;
+                    this.gender = data.returnObject.gender;
+                    this.myUser = data.returnObject;
                 }
             })
 
@@ -83,7 +84,20 @@
             goToProfile() {
                 this.$router.replace("/profilepage");
             },
-            updateUser(){
+            isChanged() {
+                let i = 0;
+                if(this.name === this.myUser.name) {
+                    i = i + 1;
+                }
+                if(this.mail === this.myUser.mail) {
+                    i = i + 1;
+                }
+                if(this.gender === this.myUser.gender) {
+                    i = i + 1;
+                }
+                return i !== 3;
+            },
+            updateUserF(){
                 const {name, mail, gender} = this;
 
                 const requestOptions = {
@@ -101,11 +115,13 @@
                 .then(data => {
                     if (data.status !== "200"){
                         alert("Data Couldn't be Changed!\n"+data.returnObject);
-                        return;
                     }
-                    alert("Data Updated Successfully!");
-                    this.$router.replace("/profilepage");
+                    location.reload();
                 });
+            },
+            updateUser() {
+                this.updateUserF();
+                this.goToProfile();
             }
         }
     };
@@ -124,12 +140,23 @@
 
     .edit-form{
         background-color: ghostwhite;
-        width: auto;
+        width: fit-content;
         height: fit-content;
         padding:30px;
         margin: auto;
         display:grid;
         border-radius: 8px;
+        text-align: center;
+    }
+
+    .edit-form-title{
+        color: rgba(17, 73, 158, 0.818);
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .form-elem{
+        margin-bottom: 20px;
         text-align: center;
     }
 
