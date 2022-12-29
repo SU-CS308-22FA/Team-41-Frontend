@@ -41,7 +41,7 @@
                     <div class="card panel-box">
                         <div class="card-body" style="text-align: center;">
                             <h4 class="card-title">Today's Matches</h4>
-                            <table class="todays-match-box">
+                            <table class="todays-match-box" v-if="matches.length > 0">
                                 <tr>
                                     <th>Sides</th>
                                     <th>Status</th>
@@ -49,7 +49,7 @@
                                     <th>Stadium</th>
                                     <th>Date</th>
                                 </tr>
-                                <tr v-for="match in matches" :key="match.id" class="" @click="goToMatch(match.id)">
+                                <tr v-for="match in matches" :key="match.id" class="match-row" @click="goToMatch(match.id)">
                                     <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
                                     <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
                                     <td v-else>Not Played</td>
@@ -58,6 +58,9 @@
                                     <td>{{match.dateAndTime.replace('T', ' ')}}</td>
                                 </tr>
                             </table>
+                            <div class="empty-box" v-else>
+                                No matches for Today!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,14 +68,14 @@
                     <div class="card panel-box">
                         <div class="card-body">
                             <h4 class="card-title">Some Reports</h4>
-                            <table class="todays-match-box">
+                            <table class="todays-match-box" v-if="reports.length > 0">
                                 <tr>
                                     <th>Username</th>
                                     <th>Comment</th>
                                     <th>Reason</th>
                                     <th>Action</th>
                                 </tr>
-                                <tr v-for="report in reports" :key="report.id" class="">
+                                <tr v-for="report in reports" :key="report.id">
                                     <td>{{report.comment.username}}</td>
                                     <td>{{report.comment.body}}</td>
                                     <td>{{report.type}}</td>
@@ -82,6 +85,9 @@
                                     </td>
                                 </tr>
                             </table>
+                            <div class="empty-box" v-else>
+                                No Reports Found!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,7 +169,9 @@
             });
         },
         methods: {
-
+            goToMatch(matchId) {
+                this.$router.push({ name: "MatchPage", params: {matchId: matchId}});
+            },
         },
     };
 </script>
@@ -196,6 +204,12 @@
         margin: auto;
     }
 
+    .match-row:hover{
+        color: red;
+        font-weight: bold;
+        font-style: italic;
+    }
+
     th{
         background-color: aquamarine;
         border: 1px solid aquamarine;
@@ -225,5 +239,19 @@
 
     .act-but:hover{
         transform: scale(1.1);
+    }
+
+    .empty-box{
+        background-color: aquamarine;
+        height: 450px;
+        width: auto;
+        display:block;
+        margin: auto;
+        padding: auto;
+        text-align: center;
+        line-height: 450px;
+        font-size: large;
+        font-weight: bold;
+        font-style: italic;
     }
 </style>
