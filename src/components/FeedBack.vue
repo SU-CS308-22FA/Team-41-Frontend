@@ -1,11 +1,8 @@
 <template>
     <NavBar></NavBar>
-    <div class="container">
+    <div class="feedback-page  d-flex justify-content-center">
         <form class="feedback-form" @submit.prevent="sendFeedback">
             <h2 style="color: rgba(17, 73, 158, 0.818)">Feedback Box</h2>
-
-            
-
             <label for="topic">Topic</label>
             <select id="topic" name="topic" type="topic" v-model="topic">
             <option value="referee">Referee Assignment</option>
@@ -15,8 +12,6 @@
             <br>
             <label for="subject">Subject</label>
             <textarea v-model="body" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-
             <button class="feedback">
                 <a>SUBMIT</a>
             </button>
@@ -73,16 +68,14 @@
 
 
 <style scoped>
-    .container{
+
+    .feedback-page{
         display: flex;
         background: rgba(185, 185, 185, 0.725);
-        width:100%;
-        height:100%;
+        min-height: calc(100vh - 70px);
         text-align: center;
-        
-        padding-left: 33%;
-        padding-top: 4.7%;
-        margin-left:0;
+        margin-top: 70px;
+        padding: 25px;
         align-items: center;
     }
 
@@ -95,40 +88,8 @@
         display:grid;
         border-radius: 8px;
         text-align: left;
-
-        /*background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
-        -webkit-animation: 10s linear 0s normal none infinite animate;
-        -moz-animation: 10s linear 0s normal none infinite animate;
-        -ms-animation: 10s linear 0s normal none infinite animate;
-        -o-animation: 10s linear 0s normal none infinite animate;
-        animation: 10s linear 0s normal none infinite animate;*/
     }
     
-    @-webkit-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @-moz-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @-ms-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @-o-keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-    
-    @keyframes animate {
-        from {background-position:0 0;}
-        to {background-position: 500px 0;}
-    }
-
     input[type=text]{
         margin-bottom: 20px;
         border-radius: 7px;
@@ -170,8 +131,5 @@
         cursor: pointer;
         transform: scale(1.1);
     }
-    
-
-
 
 </style>
