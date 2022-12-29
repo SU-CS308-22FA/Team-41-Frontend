@@ -49,7 +49,7 @@
                                     <th>Stadium</th>
                                     <th>Date</th>
                                 </tr>
-                                <tr v-for="match in matches" :key="match.id" class="" @click="goToMatch(match.id)">
+                                <tr v-for="match in matches" :key="match.id" class="match-row" @click="goToMatch(match.id)">
                                     <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
                                     <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
                                     <td v-else>Not Played</td>
@@ -75,7 +75,7 @@
                                     <th>Reason</th>
                                     <th>Action</th>
                                 </tr>
-                                <tr v-for="report in reports" :key="report.id" class="">
+                                <tr v-for="report in reports" :key="report.id">
                                     <td>{{report.comment.username}}</td>
                                     <td>{{report.comment.body}}</td>
                                     <td>{{report.type}}</td>
@@ -169,7 +169,9 @@
             });
         },
         methods: {
-
+            goToMatch(matchId) {
+                this.$router.push({ name: "MatchPage", params: {matchId: matchId}});
+            },
         },
     };
 </script>
@@ -200,6 +202,12 @@
         width: auto;
         display:block;
         margin: auto;
+    }
+
+    .match-row:hover{
+        color: red;
+        font-weight: bold;
+        font-style: italic;
     }
 
     th{
