@@ -5,9 +5,10 @@
             <form class="edit-pass-form">
                 <div class="row col-sm-3" style="margin: auto; width: 300px;">
                     <h2 class="edit-pass-form-title">Change Password</h2>
-                    <input class="form-pass-elem" v-model="oldPassword" type="password" name="" placeholder="current password" minlength="8">
-                    <input class="form-pass-elem" v-model="password" type="password" name="" placeholder="new password" minlength="8">
-                    <input class="form-pass-elem" v-model="repassword" type="password" name="" placeholder="new re-password"  minlength="8">
+                    <input type="text" name="email" value="" autocomplete="email" style="display: none;">
+                    <input class="form-pass-elem" v-model="oldPassword" type="password" name="" placeholder="current password" minlength="8" autocomplete="current-password">
+                    <input class="form-pass-elem" v-model="password" type="password" name="" placeholder="new password" minlength="8" autocomplete="new-password">
+                    <input class="form-pass-elem" v-model="repassword" type="password" name="" placeholder="new re-password"  minlength="8" autocomplete="new-password">
                 </div>
                 <div class="row row-sm-3" style="margin: auto; width: fit-content;">
                     <button class="btn btn-secondary but-pass" @click="goToProfile()">CANCEL</button>
@@ -32,7 +33,11 @@
                 oldPassword: "",
                 password: "",
                 repassword: "",
+                id: "",
             }
+        },
+        mounted() {
+            if(localStorage.userId) this.id = localStorage.userId;
         },
         methods: {
             fine() {
@@ -48,8 +53,28 @@
                 this.$router.replace("/profilepage");
             },
             updatePassword() {
-                //TODO
-            }
+                const {oldPassword, password, id} = this;
+
+                const requestOptions = {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id,
+                        password,
+                        oldPassword
+                    })
+                };
+
+                fetch("https://tfb308.herokuapp.com/api/v1/user/changePassword", requestOptions)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data.status + '');
+                    if (data.status !== "200"){
+                        alert("Error!\n" + data.returnObject);
+                        console.log(data.status + '');
+                    }
+                });
+            },
         }
     };
 </script>
