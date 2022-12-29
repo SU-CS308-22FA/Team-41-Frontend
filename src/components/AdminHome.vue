@@ -41,7 +41,7 @@
                     <div class="card panel-box">
                         <div class="card-body" style="text-align: center;">
                             <h4 class="card-title">Today's Matches</h4>
-                            <table class="todays-match-box">
+                            <table class="todays-match-box" v-if="matches.length > 0">
                                 <tr>
                                     <th>Sides</th>
                                     <th>Status</th>
@@ -58,6 +58,9 @@
                                     <td>{{match.dateAndTime.replace('T', ' ')}}</td>
                                 </tr>
                             </table>
+                            <div class="empty-box" v-else>
+                                No matches for Today!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +68,7 @@
                     <div class="card panel-box">
                         <div class="card-body">
                             <h4 class="card-title">Some Reports</h4>
-                            <table class="todays-match-box">
+                            <table class="todays-match-box" v-if="reports.length > 0">
                                 <tr>
                                     <th>Username</th>
                                     <th>Comment</th>
@@ -82,6 +85,9 @@
                                     </td>
                                 </tr>
                             </table>
+                            <div class="empty-box" v-else>
+                                No Reports Found!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,5 +231,19 @@
 
     .act-but:hover{
         transform: scale(1.1);
+    }
+
+    .empty-box{
+        background-color: aquamarine;
+        height: 450px;
+        width: auto;
+        display:block;
+        margin: auto;
+        padding: auto;
+        text-align: center;
+        line-height: 450px;
+        font-size: large;
+        font-weight: bold;
+        font-style: italic;
     }
 </style>
