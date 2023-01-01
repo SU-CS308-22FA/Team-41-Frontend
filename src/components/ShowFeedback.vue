@@ -69,13 +69,13 @@
 
 <style scoped>
 
+  
     .feedback-list{
         margin-top: 70px;
         padding: 25px 25px 25px 25px;
         display: flex;
-        overflow: hidden;
-        display: flexbox;
-        height: 100vh;
+      
+        height: 100%;
         background: rgba(185, 185, 185, 0.725);
     }
 
@@ -94,6 +94,7 @@
         border-radius: 10px;
         height: auto;
         background-color: white;
+        overflow-y: auto;
     }
 
     .feedback-table{

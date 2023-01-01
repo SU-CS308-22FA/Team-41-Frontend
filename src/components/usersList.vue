@@ -51,7 +51,7 @@
               <td>{{ user.birthdate }}</td>
               <td>{{ user.fanTeam }}</td>
               <td v-if="map.get(user.userId)">
-                <button class="btn btn-primary" @click="banUser(user.userId)">
+                <button class="btn btn-danger" @click="banUser(user.userId)">
                   BAN
                 </button>
               </td>
@@ -260,4 +260,5 @@ export default {
     cursor: pointer;
     transform: scale(1.2);
   }
+  
 </style>
