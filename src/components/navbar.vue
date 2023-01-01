@@ -122,5 +122,6 @@
         transform: scale(1.1);
         border-radius: 10px;
         padding: 8px;
+        cursor: pointer;
     }
 </style>

@@ -141,8 +141,9 @@ export default {
 
 <style>
 .standings {
-  display: flex;
-  margin: auto;
+  padding-left: 15%;
+  
+ 
 }
 
 .standings th {

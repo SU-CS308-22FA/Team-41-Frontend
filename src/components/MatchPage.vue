@@ -25,6 +25,7 @@
             {{ this.returnObject.dateAndTime }}
           </div>
         </div>
+        <br>
       </div>
       <div class="comments">
         <table class="com_table">
@@ -35,6 +36,7 @@
               </div>
             </th>
           </tr>
+
           <tr
             v-for="comment in returnObject.comments"
             :key="comment.id"
@@ -533,6 +535,7 @@ export default {
   margin-left: 0;
 }
 
+
 .column1 {
   width: 75%;
   align-content: center;
@@ -547,10 +550,17 @@ export default {
   background: white;
   padding-left: 3%;
   padding-right: 3%;
-  margin: 0 4% 0 4%;
+  padding-top: 0;
+  margin: 0 4% 2% 4%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 .column1 .matchbox .results {
   display: flex;
+  justify-content: center;
+}
+
+.column1 .matchbox .results .score{
+  padding-top:3%;
 }
 
 .logo1 {
@@ -574,12 +584,14 @@ export default {
   color: black;
   margin-top: 8%;
   margin-right: 6%;
+  font-size: 30px;
 }
 .column1 .matchbox .team2 {
   background: white;
   border: none;
   color: black;
   margin-top: 8%;
+  font-size: 30px;
 }
 .score {
   margin-top: 3%;
@@ -606,9 +618,11 @@ export default {
   margin-right: 1%;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 20px 20px;
 }
-
+.nocomment{
+  margin-top: 5%;
+}
 .rating {
   display: flex;
   width: 100%;
@@ -807,6 +821,7 @@ export default {
   margin-top: 5%;
   margin-left: 4%;
   margin-right: 4%;
+  margin-bottom: -5%;
   background: white;
 }
 .add-comment {
