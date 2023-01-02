@@ -8,49 +8,49 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" aria-current="page" @click="this.$router.replace('/AdminHome')">
+                    <a id="dashboard" class="nav-link active right-buts" aria-current="page" @click="this.$router.replace('/AdminHome')">
                         Dashboard
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/usersList')">
+                    <a id="users" class="nav-link active right-buts" @click="this.$router.replace('/usersList')">
                         Users
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('refereeAssignment')">
+                    <a id="refereeAssignment" class="nav-link active right-buts" @click="this.$router.replace('refereeAssignment')">
                         Referee Assignment
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/schedulePlan')">
+                    <a id="fixturePlanning" class="nav-link active right-buts" @click="this.$router.replace('/schedulePlan')">
                         Fixture Planning
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/addMatch')">
+                    <a id="addMatch" class="nav-link active right-buts" @click="this.$router.replace('/addMatch')">
                         Add Match
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/ShowComments')">
+                    <a id="reports" class="nav-link active right-buts" @click="this.$router.replace('/ShowComments')">
                         Reports
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/showFeedBack')">
+                    <a id="feedbacks" class="nav-link active right-buts" @click="this.$router.replace('/showFeedBack')">
                         Feedbacks
                     </a>
                 </li>
             </ul>
 
-            <a class="nav-link active right-buts" @click="this.$router.replace('/')">
+            <a id="backHome" class="nav-link active right-buts" @click="this.$router.replace('/')">
                 Go back Home
             </a>
             &nbsp;&nbsp;&nbsp;

@@ -8,66 +8,66 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" aria-current="page" @click="this.$router.replace('/')">
+                    <a id="home" class="nav-link active right-buts" aria-current="page" @click="this.$router.replace('/')">
                         Home
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/todaysMatches')">
+                    <a id="today" class="nav-link active right-buts" @click="this.$router.replace('/todaysMatches')">
                         Todays's Matches
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/fixturePage')">
+                    <a id="fixture" class="nav-link active right-buts" @click="this.$router.replace('/fixturePage')">
                         Fixture
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/teamsList')">
+                    <a id="teams" class="nav-link active right-buts" @click="this.$router.replace('/teamsList')">
                         Teams
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/referees')">
+                    <a id="referees" class="nav-link active right-buts" @click="this.$router.replace('/referees')">
                         Referees
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/standings')">
+                    <a id="standings" class="nav-link active right-buts" @click="this.$router.replace('/standings')">
                         Standings
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active" v-if="isLoggedIn()">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('/favoriteTeams')">
+                    <a id="favorites" class="nav-link active right-buts" @click="this.$router.replace('/favoriteTeams')">
                         Favorites
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active" v-if="showAdminTools">
-                    <a class="nav-link active right-buts" style="font-weight: bolder; color: rgb(150, 175, 200);" @click="this.$router.replace('/AdminHome')">
+                    <a id="adminTools" class="nav-link active right-buts" style="font-weight: bolder; color: rgb(150, 175, 200);" @click="this.$router.replace('/AdminHome')">
                         Admin Tools
                     </a>
                 </li>
             </ul>
 
-            <a class="nav-link active left-buts" @click="this.$router.replace('/feedback')">
+            <a id="contact" class="nav-link active left-buts" @click="this.$router.replace('/feedback')">
                 Contact
             </a>
             &nbsp;&nbsp;&nbsp;
-            <a class="nav-link active left-buts" v-if="isLoggedIn()" @click="this.$router.replace('/profilePage')">
+            <a id="profile" class="nav-link active left-buts" v-if="isLoggedIn()" @click="this.$router.replace('/profilePage')">
                 Profile
             </a>
             &nbsp;&nbsp;&nbsp;
-            <a class="nav-link active left-buts" v-if="isLoggedIn()" @click="logOut()">
+            <a id="logOut" class="nav-link active left-buts" v-if="isLoggedIn()" @click="logOut()">
                 Log Out
             </a>
-            <a class="nav-link active left-buts" v-else @click="this.$router.replace('/login')">
+            <a id="logIn" class="nav-link active left-buts" v-else @click="this.$router.replace('/login')">
                 Log In
             </a>
             &nbsp;&nbsp;&nbsp;
