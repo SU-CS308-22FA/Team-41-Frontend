@@ -17,7 +17,7 @@
                 
                 <select style="margin-left: 5px;" name="wantedWeek" v-model="wantedWeek" @click="getWeek(wantedWeek)">
                     <option value="All">All Weeks</option>
-                    <option v-for="i in 36" :key="i" :value="i">{{ i }}. Week</option>
+                    <option v-for="i in 38" :key="i" :value="i">{{ i }}. Week</option>
                 </select>
             </div>
 
@@ -104,7 +104,7 @@
                     this.items = data.returnObject;
                     
                     let idx = 0;
-                    for(let i = 1; idx < this.items.length && i <= 36; i++) {
+                    for(let i = 1; i <= 38; i++) {
                         let week = [];
 
                         let startOfWeek = new Date(this.items[idx].dateAndTime)
@@ -116,13 +116,14 @@
                         endOfWeek.setMinutes(59);
                         endOfWeek.setSeconds(59);
                         endOfWeek.setDate(endOfWeek.getDate() + 6)
-                        let c = 0;
-                        while(c < 9 && idx < this.items.length && new Date(this.items[idx].dateAndTime) >= startOfWeek && new Date(this.items[idx].dateAndTime) <= endOfWeek) {
+                        
+                        for(let j = 0; j < 9; j++) {
                             week.push(this.items[idx]);
                             idx++;
-                            c++;
                         }
+
                         this.filteredItems.set(i, week);
+
                         let today = new Date();
                         if(today.getTime() >= startOfWeek.getTime() && today.getTime() <= endOfWeek.getTime()) {
                             this.wantedWeek = i;
