@@ -125,5 +125,8 @@
     a{
         text-decoration: none;
     }
+    .card-body{
+        height: 165px;
+    }
 
 </style>
