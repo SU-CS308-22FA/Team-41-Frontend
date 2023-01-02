@@ -26,8 +26,8 @@
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('#')">
-                        Schedule
+                    <a class="nav-link active right-buts" @click="this.$router.replace('/schedulePlan')">
+                        Fixture Planning
                     </a>
                 </li>
                 &nbsp;&nbsp;&nbsp;
@@ -75,6 +75,7 @@
         font-weight: 500;
         border-radius: 10px;
         padding: 8px;
+        
     }
 
     .left-buts:hover, .right-buts:hover{
@@ -84,5 +85,6 @@
         transform: scale(1.1);
         border-radius: 10px;
         padding: 8px;
+        cursor: pointer;
     }
 </style>

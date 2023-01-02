@@ -22,6 +22,7 @@ import Standings from "../components/Standings.vue";
 import UsersList from "../components/usersList.vue";
 import AddMatch from "../components/AddMatch.vue";
 import BootStrap from "../components/Bootstrap.vue";
+import SchedulePlan from "../components/SchedulePlan.vue";
 
 const routes = [
   {
@@ -141,6 +142,11 @@ const routes = [
     path: "/bootstrap",
     name: "BootStrap",
     component: BootStrap,
+  },
+  {
+    path: "/schedulePlan",
+    name: "SchedulePlan",
+    component: SchedulePlan,
   },
 ];
 

@@ -69,13 +69,13 @@
                         <div class="card-body">
                             <h4 class="card-title">Some Reports</h4>
                             <table class="todays-match-box" v-if="reports.length > 0">
-                                <tr>
+                                <tr class="report-row">
                                     <th>Username</th>
                                     <th>Comment</th>
                                     <th>Reason</th>
                                     <th>Action</th>
                                 </tr>
-                                <tr v-for="report in reports" :key="report.id">
+                                <tr v-for="report in reports" :key="report.id" class="report-row">
                                     <td>{{report.comment.username}}</td>
                                     <td>{{report.comment.body}}</td>
                                     <td>{{report.type}}</td>
@@ -214,7 +214,7 @@
         background-color: aquamarine;
         border: 1px solid aquamarine;
         width: fit-content;
-        padding: 10px 15px 10px 15px;
+        padding: 10px 25px 10px 25px;
         margin: 5px 20px 5px 20px;
     }
 
@@ -254,4 +254,5 @@
         font-weight: bold;
         font-style: italic;
     }
+  
 </style>

@@ -1,6 +1,6 @@
 <template>
   <NavBar></NavBar>
-  <div class="whole">
+  <div class="wholes">
     <div class="standings">
       <div v-if="standings.length === 0 || finishedLoading === false">
         <loadingPage></loadingPage>
@@ -144,6 +144,9 @@ export default {
   padding-left: 15%;
   
  
+}
+.wholes {
+  background: ghostwhite;
 }
 
 .standings th {
