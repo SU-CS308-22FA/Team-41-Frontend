@@ -23,6 +23,7 @@ import UsersList from "../components/usersList.vue";
 import AddMatch from "../components/AddMatch.vue";
 import BootStrap from "../components/Bootstrap.vue";
 import SchedulePlan from "../components/SchedulePlan.vue";
+import RefereeAssignment from "../components/RefereeAssignment"
 
 const routes = [
   {
@@ -147,6 +148,11 @@ const routes = [
     path: "/schedulePlan",
     name: "SchedulePlan",
     component: SchedulePlan,
+  },
+  {
+    path: "/refereeAssignment",
+    name: "RefereeAssignment",
+    component: RefereeAssignment,
   },
 ];
 

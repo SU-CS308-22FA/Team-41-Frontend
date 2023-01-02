@@ -20,7 +20,7 @@
                 </li>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item active">
-                    <a class="nav-link active right-buts" @click="this.$router.replace('#')">
+                    <a class="nav-link active right-buts" @click="this.$router.replace('refereeAssignment')">
                         Referee Assignment
                     </a>
                 </li>
