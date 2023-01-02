@@ -89,6 +89,11 @@
                 this.finishedLoading = true;
             });
         },
+        methods: {
+            navToMp(id){
+                this.$router.push({ name: "MatchPage", params: {matchId: id}});
+            }
+        }
     };
 
 </script>
