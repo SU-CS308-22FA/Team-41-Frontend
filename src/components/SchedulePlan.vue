@@ -7,7 +7,7 @@
         <h2>Fixture Generator</h2>
         <br>
         <div class="fix-gen-button">
-            <button @click="genFixture()"><h5> Generate Fixture</h5> </button>
+            <button @click="genFixture()" :disabled="genFix.length !== 0"><h5> Generate Fixture</h5> </button>
         </div>
         <br>
         <h5>Rules</h5>
@@ -18,10 +18,10 @@
         <p>5. First 10 teams are "High" teams, rest are "Low" teams. Each team plays only 2 consequtive matches against High teams.</p>
     </div>
     <div class="column-fixture rightt">
-        <div v-if="teams.length === 0 && finishedLoading === true">
+        <div v-if="genFix.length === 0 && finishedLoading === true">
             No Matches Found!
         </div>
-        <div v-else-if="teams.length === 0 || finishedLoading === false">
+        <div v-else-if="genFix.length === 0 || finishedLoading === false">
             <loadingPage></loadingPage>
         </div>
 
@@ -33,7 +33,7 @@
                 <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
             </svg>
 
-            <select style="margin-left: 5px;" name="wantedWeek" v-model="wantedWeek" @click="getWeek(wantedWeek)">
+            <select style="margin-left: 5px;" name="wantedWeek" v-model="weekNum" @click="getWeek(weekNum)">
                 <option value="All">All Weeks</option>
                 <option v-for="i in 38" :key="i" :value="i">{{ i }}. Week</option>
             </select>
@@ -51,7 +51,7 @@
                     Date and Time
                 </td>
             </tr>
-            <div v-for="week in genFix" :key="week">
+            <div v-for="week in displayedFix" :key="week">
                 <tr class="fixture-match" v-for="match in week" :key="match">
                     <td>{{ match.homeTeamName }} vs. {{ match.awayTeamName }}</td>
                     <td>{{ match.stadiumName }}</td>
@@ -80,11 +80,13 @@
         },
         data() {
             return{
-                standings: new Map(),
-                teams: new Map(),
+                standings: null,
+                teams: null,
                 genFix: [],
                 ranks: [0, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19, 10],
                 start: new Date(2023, 7, 1),
+                weekNum: "All",
+                displayedFix: [],
             }
         },
         mounted() {
@@ -93,13 +95,15 @@
         methods: {
             getWeek(option) {
                 if(option === "All") {
-                    this.displayedItems = this.items;
+                    this.displayedFix = this.genFix;
                 }
                 else {
-                    this.displayedItems = this.filteredItems.get(parseInt(option));
+                    this.displayedFix = [this.genFix[option]];
                 }
             },
             genFixture() {
+                this.standings = new Map();
+                this.teams = new Map();
                 let fix = this.createFixture(this.ranks);
                 let seasonStart = new Date(this.start);
 
@@ -139,6 +143,7 @@
                             fixture.push(week);
                         }
                         this.genFix = fixture;
+                        this.displayedFix = fixture;
                     });
                 });
             },
