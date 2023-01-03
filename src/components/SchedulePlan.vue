@@ -18,15 +18,45 @@
         <p>5. First 10 teams are "High" teams, rest are "Low" teams. Each team plays only 2 consequtive matches against High teams.</p>
     </div>
     <div class="column-fixture rightt">
-        <br>
-        <h2>Fixture here</h2>
-        <p>Some text..</p>
-        <table>
+        <div v-if="teams.length === 0 && finishedLoading === true">
+            No Matches Found!
+        </div>
+        <div v-else-if="teams.length === 0 || finishedLoading === false">
+            <loadingPage></loadingPage>
+        </div>
+
+        <table v-else>
+            <br>
+            <div class="filter">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+            </svg>
+
+            <select style="margin-left: 5px;" name="wantedWeek" v-model="wantedWeek" @click="getWeek(wantedWeek)">
+                <option value="All">All Weeks</option>
+                <option v-for="i in 38" :key="i" :value="i">{{ i }}. Week</option>
+            </select>
+            </div>
+
+        
+            <tr class="table-head">
+                <td >
+                    Teams
+                </td>
+                <td >
+                    Stadium
+                </td>
+                <td>
+                    Date and Time
+                </td>
+            </tr>
             <div v-for="week in genFix" :key="week">
-                <tr v-for="match in week" :key="match">
+                <tr class="fixture-match" v-for="match in week" :key="match">
                     <td>{{ match.homeTeamName }} vs. {{ match.awayTeamName }}</td>
-                    <td>{{ match.dateAndTime }}</td>
                     <td>{{ match.stadiumName }}</td>
+                    <td>{{ match.dateAndTime }}</td>
+                   
                 </tr>
             </div>
         </table>
@@ -61,6 +91,14 @@
             
         },
         methods: {
+            getWeek(option) {
+                if(option === "All") {
+                    this.displayedItems = this.items;
+                }
+                else {
+                    this.displayedItems = this.filteredItems.get(parseInt(option));
+                }
+            },
             genFixture() {
                 let fix = this.createFixture(this.ranks);
                 let seasonStart = new Date(this.start);
@@ -180,17 +218,69 @@
 
 .rightt {
   width: 75%;
+  overflow-y:auto;
 }
 .row-fixture{
     height:100%;
+    overflow-y:auto;
     
 }
 .fix-gen-button button{
     height: 70px;
     width: 200px;
 }
+.table-head{
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 16px 10px 16px;
+        margin: 20px 20px 10px 20px;
+        margin-left: 12%;
+        border: 1px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: larger;
+        background-color: rgb(156, 35, 128);
+        color: white;
+        width: 100%;
+        overflow-y:auto;
+    }
+.fixture-match{
+    margin-bottom: 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 16px 20px 16px;
+    margin-left: 12%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    font-size: small;
+    width: 100%;
+    height: fit-content;
+    overflow-y:auto;
+}
 
+.fixture-match:hover{
+        cursor: pointer;
+        
+        background-color: rgba(33, 66, 114, 0.818);
+        color: white;
+    }
 
+table{
+    width: 80%;
+    overflow-y:auto;
+}
+
+td, tr {
+    text-align: center;
+    width: fit-content;
+    overflow-y:auto;
+}
+.filter{
+    margin-left:12%;
+}
 
 
 </style>
