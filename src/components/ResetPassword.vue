@@ -97,7 +97,7 @@
                 then((data) => {
                     if(data.status === "200") {
                         this.done = true;
-                        this.modalTitle = "Reset Password Confirmation";
+                        this.modalTitle = "Confirmation";
                         this.modalText = "Please check your inbox for instructions!";
                     }
                     else {
