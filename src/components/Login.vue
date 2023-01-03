@@ -109,6 +109,7 @@
                         window.localStorage.setItem("isLogedIn", true);
                         window.localStorage.setItem("userId", res2.returnObject.id);
                         window.localStorage.setItem("isAdmin", res2.returnObject.admin);
+                        window.localStorage.setItem("isReferee", res2.returnObject.referee);
                         this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
                     }
                 });
