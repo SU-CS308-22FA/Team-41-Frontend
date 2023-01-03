@@ -5,10 +5,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Error</h5>
+                <h5 class="modal-title">{{ modalTitle }}</h5>
             </div>
             <div class="modal-body">
-                <p>{{ errorMsg }}</p>
+                <p>{{ modalText }}</p>
             </div>
             <div class="modal-footer">
                 <button
@@ -29,22 +29,15 @@
 
     <div class="login-page">
         <form class="login-form" @submit.prevent="login">
-            <h2 class="title-login card-title" style="color: rgba(17, 73, 158, 0.818)"><b>Login</b></h2>
+            <h2 class="title-login card-title" style="color: rgba(17, 73, 158, 0.818)"><b>Reset Password</b></h2>
             <br>
             <br>
-            <input name="mail" v-model="mail" placeholder="Enter mail" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required autocomplete="current-username" on-error="Invalid email address">
+            <input name="email" v-model="email" placeholder="Enter email" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required autocomplete="current-username" on-error="Invalid email address">
             <br>
-            <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password">
-            <router-link class= "extra-links" to="/reset">Forget Password?</router-link>
             <br>
             <button class="but">
-                <a>Login</a>
+                <a>Reset</a>
             </button>
-            <br><br><br>
-            <p>
-                Don't have an account?&nbsp;
-                <router-link class= "extra-links" to="/signup">Sign Up</router-link>
-            </p>
         </form>
     </div>
 </template>
@@ -54,18 +47,17 @@
     import NavBar from './navbar.vue'
 
     export default {
-        path: '/login',
-        name: 'LogIn',
+        path: '/reset',
+        name: 'ResetPassword',
         components: {
             NavBar,
         },
         data() {
             return {
-                mail: "",
-                password: "",
-                isLoged: false,
-                userId: "",
-                errorMsg: "",
+                email: "",
+                modalTitle: "",
+                modalText: "",
+                done: false,
                 myModal: null,
             };
         },
@@ -75,10 +67,13 @@
         methods: {
             closeModal() {
                 this.myModal.hide();
+                if(this.done) {
+                    this.$router.replace("/login");
+                }
             },
 
             login() {
-                const { mail, password } = this;
+                const { email } = this;
 
                 this.errorMsg = "";
 
@@ -90,27 +85,21 @@
                 const requestOptions = {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ mail,  password})
+                    body: email
                 };
-                fetch("https://tfb308.herokuapp.com/api/v1/user/login", requestOptions).
+                fetch("https://tfb308.herokuapp.com/api/v1/user/reset", requestOptions).
                 then((res) => res.json()).
-                then((res2) => {
-                    if(res2.status !== "200") {
-                        if(res2.status === "400: USER NOT FOUND!") {
-                            this.errorMsg = "Email not found!";
-                        } else if (res2.status === "400: WRONG PASSWORD!"){
-                            this.errorMsg = "Wrong Password!";
-                        } else {
-                            this.errorMsg = res2.status;
-                        }
-                        this.myModal.show();
+                then((data) => {
+                    if(data.status === "200") {
+                        this.done = true;
+                        this.modalTitle = "Confirmation";
+                        this.modalText = "Please check your inbox for instructions!";
                     }
                     else {
-                        window.localStorage.setItem("isLogedIn", true);
-                        window.localStorage.setItem("userId", res2.returnObject.id);
-                        window.localStorage.setItem("isAdmin", res2.returnObject.admin);
-                        this.$router.push("/profilepage");// user profile sayfasina yonlendirilecek.
+                        this.modalTitle = "Error";
+                        this.modalText = data.returnObject;
                     }
+                    this.myModal.show();
                 });
             }
         },
