@@ -37,7 +37,7 @@
             <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password">
             <router-link class= "extra-links" to="/reset">Forget Password?</router-link>
             <br>
-            <button class="but">
+            <button class="but" id="login-button">
                 <a>Login</a>
             </button>
             <br><br><br>

@@ -1,26 +1,26 @@
 <template>
-        <div>
+    <div>
         <div id="myModal" ref="modal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Error</h5>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ errorMsg }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                            @click="closeModal()"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>{{ errorMsg }}</p>
-            </div>
-            <div class="modal-footer">
-                <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-                @click="closeModal()"
-                >
-                Close
-                </button>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
     <div class="greet">
@@ -30,85 +30,92 @@
         </div>
     </div>
     <body class="feed">
-       
+
         <div class="tw1">
             <Tweet
-    tweet-id="1610201415317868544"
-    
-    cards="visible"
-    conversation="all"
-    lang="en"
-    theme="light"
-    align="left"
-    :dnt="false"
-    @tweet-load-error="onTweetLoadError"
-    @tweet-load-success="onTweetLoadSuccess"
-  >
-    <template v-slot:loading>
-      <span>Loading...</span>
-    </template>
+                tweet-id="1610201415317868544"
+                
+                cards="visible"
+                conversation="all"
+                lang="en"
+                theme="light"
+                align="left"
+                :dnt="false"
+                @tweet-load-error="onTweetLoadError"
+                @tweet-load-success="onTweetLoadSuccess"
+            >
+                <template v-slot:loading>
+                <span>Loading...</span>
+                </template>
 
-    <template v-slot:error>
-      <span>Sorry, that tweet doesn’t exist!</span>
-    </template>
-  </Tweet>
+                <template v-slot:error>
+                <span>Sorry, that tweet doesn’t exist!</span>
+                </template>
+            </Tweet>
         </div>
         <div class="tw2">
             <Tweet
-    tweet-id="1610268292308168704"
-    cards="visible"
-    conversation="all"
-    lang="en"
-    theme="light"
-    align="left"
+                tweet-id="1610268292308168704"
+                cards="visible"
+                conversation="all"
+                lang="en"
+                theme="light"
+                align="left"
 
-    :dnt="false"
-    @tweet-load-error="onTweetLoadError"
-    @tweet-load-success="onTweetLoadSuccess"
-  >
-    <template v-slot:loading>
-      <span>Loading...</span>
-    </template>
+                :dnt="false"
+                @tweet-load-error="onTweetLoadError"
+                @tweet-load-success="onTweetLoadSuccess"
+            >
+                <template v-slot:loading>
+                    <span>Loading...</span>
+                </template>
 
-    <template v-slot:error>
-      <span>Sorry, that tweet doesn’t exist!</span>
-    </template>
-  </Tweet>
+                <template v-slot:error>
+                    <span>Sorry, that tweet doesn’t exist!</span>
+                </template>
+            </Tweet>
         </div>
         <div>
             <div v-if="isLoggedIn()" class="user">
                 <div class="feedback-page  d-flex justify-content-center">
-        <div class="feedback-form">
-            <h2 style="color: rgba(17, 73, 158, 0.818)">Info about Fan Team</h2>
-            <h1>SDFDSFSDF</h1>
-            <br>
-            <h1>sfsdsdgdsgdsg</h1>
-            
-        </div>
-    </div>
+                    <div class="feedback-form">
+                        <h2 class="d-flex justify-content-center" style="color: rgba(17, 73, 158, 0.818)">Fan Team</h2>
+                        <div class="col justify-content-center" style="margin: auto; text-align: center;">
+                            <h3>{{ fanTeamName }}</h3>
+                            <img class="img-thumbnail" :src='fanTeamLogo' style="margin-bottom: 20px;"/>
+                            <table>
+                                <tr v-for="match in fanTeamCloseMatches" :key="match.id">
+                                    <td v-if="match.finished" class="table-item"> {{ match.homeTeamName }} {{ match.goalHome }} - {{ match.goalAway }} {{ match.awayTeamName }}</td>
+                                    <td v-else class="table-item"> {{ match.homeTeamName }} vs. {{ match.awayTeamName }}</td>
+                                    <td class="table-item">{{ match.dateAndTime.replace('T', ' ') }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div v-else class="not_user">
                 <div class="login-page">
-        <form class="login-form" @submit.prevent="login">
-            <h2 class="title-login card-title" style="color: rgba(17, 73, 158, 0.818)"><b>Login</b></h2>
-            <br>
-            <br>
-            <input name="mail" v-model="mail" placeholder="Enter mail" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required autocomplete="current-username" on-error="Invalid email address">
-            <br>
-            <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password">
-            <router-link class= "extra-links" to="/reset">Forget Password?</router-link>
-            <br>
-            <button class="but">
-                <a>Login</a>
-            </button>
-            <br><br><br>
-            <p>
-                Don't have an account?&nbsp;
-                <router-link class= "extra-links" to="/signup">Sign Up</router-link>
-            </p>
-        </form>
-    </div>
+                    <form class="login-form" @submit.prevent="login">
+                        <h2 class="title-login card-title" style="color: rgba(17, 73, 158, 0.818)"><b>Login</b></h2>
+                        <br>
+                        <br>
+                        <input name="mail" v-model="mail" placeholder="Enter mail" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required autocomplete="current-username" on-error="Invalid email address">
+                        <br>
+                        <input name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password">
+                        <router-link class= "extra-links" to="/reset">Forget Password?</router-link>
+                        <br>
+                        <button class="but" id="login-button">
+                            <a>Login</a>
+                        </button>
+                        <br><br><br>
+                        <p>
+                            Don't have an account?&nbsp;
+                            <router-link class= "extra-links" to="/signup">Sign Up</router-link>
+                        </p>
+                    </form>
+                </div>
 
             </div>
         </div>
@@ -130,6 +137,10 @@ import Tweet from 'vue-tweet';
                 mail: "",
                 password: "",
                 isLoged: false,
+                fanTeamName: "-",
+                fanTeamId: "",
+                fanTeamLogo: "",
+                fanTeamCloseMatches: [],
                 userId: "",
                 errorMsg: "",
                 myModal: null,
@@ -147,6 +158,47 @@ import Tweet from 'vue-tweet';
                 .then(data => {
                     if(data.status === "200") {
                         this.name = data.returnObject.name; 
+                        this.fanTeamName = data.returnObject.fanTeam;
+
+                        fetch("https://tfb308.herokuapp.com/api/v1/team/all", requestOptions)
+                        .then(responseT => responseT.json())
+                        .then(dataT => {
+                            if(data.status === "200") {
+                                let teams = dataT.returnObject;
+                                for(let i = 0; i < teams.length; i++) {
+                                    if(teams.at(i).name === this.fanTeamName) {
+                                        this.fanTeamId = teams.at(i).id;
+                                        this.fanTeamLogo = teams.at(i).logoURL;
+                                        break;
+                                    }
+                                }
+
+                                fetch("https://tfb308.herokuapp.com/api/v1/match/all/" + this.fanTeamId, requestOptions)
+                                .then(responseT => responseT.json())
+                                .then(dataM => {
+                                    let list = dataM.returnObject;
+                                    
+                                    const today = new Date();
+
+                                    let closest = list.filter(item => new Date(item.dateAndTime) === today);
+
+                                    if(closest.length == 0) {
+                                        let closestDate = null;
+                                        let closestItem = null;
+                                        for (const item of list) {
+                                            if (new Date(item.dateAndTime) > today && (!closestDate || new Date(item.dateAndTime) < new Date(closestDate))) {
+                                                closestDate = item.dateAndTime;
+                                                closestItem = item;
+                                            }
+                                        }
+                                        closest = closestItem ? [closestItem] : [];
+                                    }
+
+                                    const idx = list.indexOf(closest[0])
+                                    this.fanTeamCloseMatches = list.slice(idx-2, idx+3);
+                                });
+                            }
+                        });
                     }
                    
                 })
@@ -214,37 +266,37 @@ import Tweet from 'vue-tweet';
 
 
 <style scoped>
-@keyframes bgcolor {
-    0% {
-        background-color: #45a3e5
-    }
+    @keyframes bgcolor {
+        0% {
+            background-color: #45a3e5
+        }
 
-    30% {
-        background-color: #66bf39
-    }
+        30% {
+            background-color: #66bf39
+        }
 
-    60% {
-        background-color: #eb670f
-    }
+        60% {
+            background-color: #eb670f
+        }
 
-    90% {
-        background-color: #f35
-    }
+        90% {
+            background-color: #f35
+        }
 
-    100% {
-        background-color: #864cbf
+        100% {
+            background-color: #864cbf
+        }
     }
-}
     .feed{
         display:flex;
         -webkit-animation: bgcolor 20s infinite;
         animation: bgcolor 10s infinite;
         -webkit-animation-direction: alternate;
         animation-direction: alternate;
-        
+        min-height: calc(100vh - 17.2vh);
     }
     .greet{
-        margin-top:4.5%;
+        margin-top: 70px;
         margin-bottom:-0.5%;
         -webkit-animation: bgcolor 20s infinite;
         animation: bgcolor 10s infinite;
@@ -362,6 +414,9 @@ import Tweet from 'vue-tweet';
         cursor: pointer;
         transform: scale(1.1);
     }
-
+    .table-item{
+        padding: 2px 5px 2px 5px;
+        margin: 2px 8px 2px 8px;
+    }
 
 </style>
