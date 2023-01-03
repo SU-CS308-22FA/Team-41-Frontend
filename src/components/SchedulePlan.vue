@@ -18,14 +18,7 @@
         <p>5. First 10 teams are "High" teams, rest are "Low" teams. Each team plays only 2 consequtive matches against High teams.</p>
     </div>
     <div class="column-fixture rightt">
-        <div v-if="genFix.length === 0 && finishedLoading === true">
-            No Matches Found!
-        </div>
-        <div v-else-if="genFix.length === 0 || finishedLoading === false">
-            <loadingPage></loadingPage>
-        </div>
-
-        <table v-else>
+        <table v-if="genFix.length > 0">
             <br>
             <div class="filter">
 
@@ -51,14 +44,11 @@
                     Date and Time
                 </td>
             </tr>
-            <div v-for="week in displayedFix" :key="week">
-                <tr class="fixture-match" v-for="match in week" :key="match">
-                    <td>{{ match.homeTeamName }} vs. {{ match.awayTeamName }}</td>
-                    <td>{{ match.stadiumName }}</td>
-                    <td>{{ match.dateAndTime }}</td>
-                   
-                </tr>
-            </div>
+            <tr class="fixture-match" v-for="match in displayedFix" :key="match">
+                <td>{{ match.homeTeamName }} vs. {{ match.awayTeamName }}</td>
+                <td>{{ match.stadiumName }}</td>
+                <td>{{ match.dateAndTime }}</td>
+            </tr>
         </table>
     </div>
     </div>
@@ -83,8 +73,8 @@
                 standings: null,
                 teams: null,
                 genFix: [],
+                mapFix: null,
                 ranks: [0, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19, 10],
-                start: new Date(2023, 7, 1),
                 weekNum: "All",
                 displayedFix: [],
             }
@@ -98,14 +88,16 @@
                     this.displayedFix = this.genFix;
                 }
                 else {
-                    this.displayedFix = [this.genFix[option]];
+                    this.displayedFix = this.mapFix.get(parseInt(option));
                 }
             },
             genFixture() {
                 this.standings = new Map();
                 this.teams = new Map();
+                this.genFix = [];
+                this.mapFix = new Map();
                 let fix = this.createFixture(this.ranks);
-                let seasonStart = new Date(this.start);
+                let seasonStart = new Date(2023, 6, 1, 0, 0, 0, 0);
 
                 fetch('https://tfb308.herokuapp.com/api/v1/standings')
                 .then(responsee => responsee.json())
@@ -123,27 +115,30 @@
                             this.teams.set(lstT[x].id, lstT[x]);
                         }
 
-                        let fixture = [];
+                        let fixture = new Map();
+                        let allMatches = [];
                         for(let i = 0; i < 38; i++) {
                             let week = [];
                             let weekStart = new Date(seasonStart);
                             for(let j = 0; j <= 3; j++) {
                                 weekStart.setHours(16)
                                 for(let k = 1; k <= 3; k++) {
-                                if(fix[i][j*k][0] !== 0 && fix[i][j*k][1] !== 0) {
-                                    var home = this.teams.get(this.standings.get(fix[i][j*k][0]).teamId);
-                                    var away = this.teams.get(this.standings.get(fix[i][j*k][1]).teamId);
-                                    week.push(this.matchTemplate(home, away, weekStart.toString()));
-                                    weekStart.setHours(weekStart.getHours()+2);
-                                }
+                                    if(fix[i][j*k][0] !== 0 && fix[i][j*k][1] !== 0) {
+                                        var home = this.teams.get(this.standings.get(fix[i][j*k][0]).teamId);
+                                        var away = this.teams.get(this.standings.get(fix[i][j*k][1]).teamId);
+                                        week.push(this.matchTemplate(home, away, weekStart.toLocaleString()));
+                                        allMatches.push(this.matchTemplate(home, away, weekStart.toLocaleString()));
+                                        weekStart.setHours(weekStart.getHours()+2);
+                                    }
                                 }
                                 weekStart.setDate(weekStart.getDate()+2);
                             }
                             seasonStart.setDate(seasonStart.getDate() + 7);
-                            fixture.push(week);
+                            fixture.set(i+1, week);
                         }
-                        this.genFix = fixture;
-                        this.displayedFix = fixture;
+                        this.genFix = allMatches;
+                        this.mapFix = fixture;
+                        this.getWeek(this.weekNum);
                     });
                 });
             },
