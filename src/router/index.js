@@ -24,6 +24,8 @@ import AddMatch from "../components/AddMatch.vue";
 import BootStrap from "../components/Bootstrap.vue";
 import SchedulePlan from "../components/SchedulePlan.vue";
 import RefereeAssignment from "../components/RefereeAssignment"
+import RefereeVoting from "../components/RefereeVoting"
+
 
 const routes = [
   {
@@ -153,6 +155,11 @@ const routes = [
     path: "/refereeAssignment",
     name: "RefereeAssignment",
     component: RefereeAssignment,
+  },
+  {
+    path: "/refereeVoting",
+    name: "RefereeVoting",
+    component: RefereeVoting,
   },
 ];
 

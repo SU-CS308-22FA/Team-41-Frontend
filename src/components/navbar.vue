@@ -54,6 +54,12 @@
                         Admin Tools
                     </a>
                 </li>
+                &nbsp;&nbsp;&nbsp;
+                <li class="nav-item active" v-if="showRefereeTools">
+                    <a id="refereeTools" class="nav-link active right-buts" style="font-weight: bolder; color: rgb(150, 175, 200);" @click="this.$router.replace('/refereeVoting')">
+                        Referee Tools
+                    </a>
+                </li>
             </ul>
 
             <a id="contact" class="nav-link active left-buts" @click="this.$router.replace('/feedback')">
@@ -82,11 +88,13 @@
         data() {
             return{
                 showAdminTools: false,
+                showRefereeTools: false,
                 dropdown: null,
             }
         },
         mounted() {
             if(localStorage.isAdmin) this.showAdminTools = localStorage.isAdmin === "true";
+            if(localStorage.isReferee) this.showRefereeTools = localStorage.isReferee === "true";
         },
         methods: {
             isLoggedIn(){
