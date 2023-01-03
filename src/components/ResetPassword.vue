@@ -32,12 +32,7 @@
             <h2 class="title-login card-title" style="color: rgba(17, 73, 158, 0.818)"><b>Reset Password</b></h2>
             <br>
             <br>
-            <br>
-            <br>
             <input name="email" v-model="email" placeholder="Enter email" type="text" pattern="[^@]+@[^\.]+\..+" title="Invalid email address" required autocomplete="current-username" on-error="Invalid email address">
-            <br>
-            <br>
-            <br>
             <br>
             <br>
             <button class="but">
