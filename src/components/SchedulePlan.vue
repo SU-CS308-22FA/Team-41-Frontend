@@ -9,8 +9,8 @@
         <div class="fix-gen-button">
             <button @click="genFixture()" :disabled="genFix.length !== 0"><h5> Generate Fixture</h5> </button>
         </div>
-        <br>
-        <h5>Rules</h5>
+        <br><br><br>
+        <h5>Rules</h5> 
         <p>1. Fixture for the next season is generated based on the standings of the current season.</p>
         <p>2. There will be 10 matches every week. There will be one team that does not play a match each week.</p>
         <p>3. Every team will face each other 2 times in a season, at each other's stadium.</p>
