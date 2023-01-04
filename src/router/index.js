@@ -5,26 +5,25 @@ import HomePage from "../components/Home.vue";
 import ProfilePage from "../components/ProfilePage.vue";
 import EditProfile from "../components/EditProfile.vue";
 import ChangePassword from "../components/ChangePassword.vue";
-import FeedBack from "../components/FeedBack";
-import MainFeed from "../components/MainFeed";
-import TodaysMatches from "../components/TodaysMatches";
-import AdminHome from "../components/AdminHome";
-import TeamsList from "../components/TeamsList";
-import TeamPage from "../components/TeamPage";
-import ShowFeedback from "../components/ShowFeedback";
-import ShowComments from "../components/ShowComments";
-import FavoriteTeams from "../components/FavoriteTeams";
-import FixturePage from "../components/FixturePage";
-import Referee from "../components/Referee";
-import RefereePage from "../components/RefereePage";
+import FeedBack from "../components/FeedBack.vue";
+import TodaysMatches from "../components/TodaysMatches.vue";
+import AdminHome from "../components/AdminHome.vue";
+import TeamsList from "../components/TeamsList.vue";
+import TeamPage from "../components/TeamPage.vue";
+import ShowFeedback from "../components/ShowFeedback.vue";
+import ShowComments from "../components/ShowComments.vue";
+import FavoriteTeams from "../components/FavoriteTeams.vue";
+import FixturePage from "../components/FixturePage.vue";
+import Referee from "../components/Referee.vue";
+import RefereePage from "../components/RefereePage.vue";
 import MatchPage from "../components/MatchPage.vue";
 import Standings from "../components/Standings.vue";
 import UsersList from "../components/usersList.vue";
 import AddMatch from "../components/AddMatch.vue";
 import BootStrap from "../components/Bootstrap.vue";
 import SchedulePlan from "../components/SchedulePlan.vue";
-import RefereeAssignment from "../components/RefereeAssignment"
-import RefereeVoting from "../components/RefereeVoting"
+import RefereeAssignment from "../components/RefereeAssignment.vue"
+import RefereeVoting from "../components/RefereeVoting.vue"
 import ResetPassword from "../components/ResetPassword.vue"
 
 const routes = [
@@ -62,11 +61,6 @@ const routes = [
     path: "/feedBack",
     name: "FeedBack",
     component: FeedBack,
-  },
-  {
-    path: "/mainFeed",
-    name: "MainFeed",
-    component: MainFeed,
   },
   {
     path: "/todaysMatches",
