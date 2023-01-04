@@ -28,7 +28,7 @@
 
     <NavBar></NavBar>
     <div class="home-page">
-        <div v-if="loaded">
+        <div v-if="loaded === true">
             <div class="row">
                 <div class="col">
                     <h1  v-if="isLoggedIn()">Welcome to TFP, {{ name }}</h1>
