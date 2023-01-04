@@ -6,7 +6,7 @@
         <br>
         <h2>Fixture Generator</h2>
         <br>
-        <div class="fix-gen-button">
+        <div class="fix-gen-button" name="fix-gen-button">
             <button @click="genFixture()" :disabled="genFix.length !== 0"><h5> Generate Fixture</h5> </button>
         </div>
         <br><br><br>
