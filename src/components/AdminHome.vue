@@ -80,8 +80,8 @@
                                     <td>{{report.comment.body}}</td>
                                     <td>{{report.type}}</td>
                                     <td>
-                                        <button class="btn btn-primary act-but">Delete Report</button>
-                                        <button class="btn btn-danger act-but">Ban User</button>
+                                        <button class="btn btn-primary act-but" @click="delRep(report.id)">Delete Report</button>
+                                        <button class="btn btn-danger act-but" @click="banUser(report.id, report.comment.userId)">Ban User</button>
                                     </td>
                                 </tr>
                             </table>
@@ -118,9 +118,12 @@
                 feedbacks: [],
                 matches: [],
                 finishedLoading: false,
+                userId: "",
             };
         },
         mounted() {
+            if(localStorage.userId) this.userId = localStorage.userId;
+
             const requestOptions = {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -171,6 +174,43 @@
         methods: {
             goToMatch(matchId) {
                 this.$router.push({ name: "MatchPage", params: {matchId: matchId}});
+            },
+
+            banUser(id, userId) {
+                const requestOptions = {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                };
+                fetch(
+                    "https://tfb308.herokuapp.com/api/v1/user/" +
+                    this.userId +
+                    "/ban/" +
+                    userId,
+                    requestOptions
+                )
+                .then((response) => response.json())
+                .then((data) => {
+                    this.finishedLoading = true;
+                    if (data.status === "200") {
+                        this.delRep(id)
+                    } else {
+                        alert(data.returnObject);
+                    }
+                });
+            },
+
+            delRep(id) {
+                const issuerId = parseInt(this.userId);
+                const requestOptions = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id, issuerId })
+                };
+                fetch("https://tfb308.herokuapp.com/api/v1/report/close", requestOptions)
+                .then((response) => response.json())
+                .then(() => {
+                    location.reload();
+                });
             },
         },
     };
