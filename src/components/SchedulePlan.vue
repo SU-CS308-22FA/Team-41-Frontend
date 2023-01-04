@@ -120,13 +120,15 @@
                         for(let i = 0; i < 38; i++) {
                             let week = [];
                             let times = this.getTimes(seasonStart);
+                            let xx = 0;
                             for(let j = 0; j <= 9; j++) {
                                 if(fix[i][j][0] !== 0 && fix[i][j][1] !== 0) {
                                     var home = this.teams.get(this.standings.get(fix[i][j][0]).teamId);
                                     var away = this.teams.get(this.standings.get(fix[i][j][1]).teamId);
-                                    week.push(this.matchTemplate(home, away, times[j%3].toLocaleString()));
-                                    allMatches.push(this.matchTemplate(home, away, times[j%3].toLocaleString()));
-                                    times[j%3].setHours(times[j%3].getHours()+2);
+                                    week.push(this.matchTemplate(home, away, times[xx%3].toLocaleString()));
+                                    allMatches.push(this.matchTemplate(home, away, times[xx%3].toLocaleString()));
+                                    times[xx%3].setDate(times[xx%3].getDate()+2);
+                                    xx++;
                                 }
                             }
                             seasonStart.setDate(seasonStart.getDate() + 7);
@@ -142,13 +144,13 @@
                 let res = [];
 
                 let date1 = new Date(start);
-                date1.setHours(16);
+                date1.setHours(14);
                 
                 let date2 = new Date(date1);
-                date2.setDate(date2.getDate()+2);
+                date2.setHours(17);
 
                 let date3 = new Date(date2);
-                date3.setDate(date3.getDate()+2);
+                date3.setHours(20);
 
                 res.push(date1, date2, date3);
 
