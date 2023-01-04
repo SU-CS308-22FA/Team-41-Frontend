@@ -80,9 +80,28 @@
                 <div class="feedback-page  d-flex justify-content-center">
                     <div class="feedback-form">
                         <h2 class="d-flex justify-content-center" style="color: rgba(17, 73, 158, 0.818)">Fan Team</h2>
-                        <div class="col justify-content-center" style="margin: auto; text-align: center;">
-                            <h3>{{ fanTeamName }}</h3>
-                            <img class="img-thumbnail" :src='fanTeamLogo' style="margin-bottom: 20px;"/>
+                        <div class="col justify-content-center" style=" text-align: center;">
+                            <div class="fan-team-info">
+                                
+                                <img class="img-thumbnail" :src='fanTeamLogo' style="margin-bottom: 20px;"/>
+                                <div class="fan-rank">
+        
+                                <h3>{{ fanTeamName }}</h3>
+                                <p>currently</p>
+                                <div v-for="item in standings" :key="item.teamId" >
+                                <div v-if="item.teamName === fanTeamName" class="rank">
+                                    <h1 v-if="item.rank === 1">{{ item.rank}}st</h1>
+                                    <h1 v-else-if="item.rank===2"> {{ item.rank}}nd</h1> 
+                                    <h1 v-else-if="item.rank===3"> {{ item.rank}}rd</h1>
+                                    <h1 v-else> {{ item.rank}}th</h1>
+                                    <p>in the league</p></div>
+                                
+                            </div>
+                                
+                            </div>
+
+                            </div>
+
                             <table>
                                 <tr v-for="match in fanTeamCloseMatches" :key="match.id">
                                     <td v-if="match.finished" class="table-item"> {{ match.homeTeamName }} {{ match.goalHome }} - {{ match.goalAway }} {{ match.awayTeamName }}</td>
@@ -144,6 +163,7 @@ import Tweet from 'vue-tweet';
                 userId: "",
                 errorMsg: "",
                 myModal: null,
+                standings:[],
             };
         },
         mounted(){
@@ -153,6 +173,15 @@ import Tweet from 'vue-tweet';
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
                 };
+                fetch("https://tfb308.herokuapp.com/api/v1/standings", requestOptions)
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status === "200") {
+                    this.standings = data.returnObject;
+                    }
+                    this.finishedLoading = true;
+                });
+
                 fetch("https://tfb308.herokuapp.com/api/v1/user/" + this.userId, requestOptions)
                 .then(response => response.json())
                 .then(data => {
@@ -306,6 +335,7 @@ import Tweet from 'vue-tweet';
     }
     .greet h1{
         padding:40px 10px 10px 10px;
+        color:rgb(43, 42, 42);
     }
     .tw1{
         margin-left:5%;
@@ -417,6 +447,20 @@ import Tweet from 'vue-tweet';
     .table-item{
         padding: 2px 5px 2px 5px;
         margin: 2px 8px 2px 8px;
+        font-size: 16px;
+        border-bottom: 2px solid black;
+    }
+    .fan-team-info{
+        display:flex;
+        margin-top:-10%;
+        padding-bottom:10%;
+
+    }
+    .fan-rank{
+        margin-left: 5%;
+    }
+    .fan-rank p{
+        margin:0;
     }
 
 </style>
