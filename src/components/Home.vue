@@ -120,7 +120,7 @@
                                 <br>
                                 <input class="form-input" name="password" v-model="password" placeholder="Enter password" type="password" minlength="8" required autocomplete="current-password">
                                 <br>
-                                <router-link class= "extra-links" to="/reset">Forget Password?</router-link>
+                                <router-link class= "extra-links" to="/reset" id="reset-home">Forget Password?</router-link>
                                 <br>
                                 <button class="but" id="login-button">
                                     <a>Login</a>
@@ -129,7 +129,7 @@
                                 <p>
                                     Don't have an account?
                                     &nbsp;
-                                    <router-link class= "extra-links" to="/signup">Sign Up</router-link>
+                                    <router-link class= "extra-links" to="/signup" id="signup-home">Sign Up</router-link>
                                 </p>
                             </form>
                         </div>

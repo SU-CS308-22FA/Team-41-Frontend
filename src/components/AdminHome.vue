@@ -5,14 +5,14 @@
             <div class="row">
                 <div class="col">
                     <div class="card panel-box panel-box-but">
-                        <div class="card-body" @click="this.$router.replace('/usersList')">
+                        <div class="card-body" @click="this.$router.replace('/usersList')" id="users-panel">
                             <h4 class="card-title">{{ userCount }}</h4>
                             <h4 class="card-title">Users</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card panel-box panel-box-but" @click="this.$router.replace('/teamsList')">
+                    <div class="card panel-box panel-box-but" @click="this.$router.replace('/teamsList')" id="teams-panel">
                         <div class="card-body">
                             <h4 class="card-title">{{ teams.length }}</h4>
                             <h4 class="card-title">Teams</h4>
@@ -20,7 +20,7 @@
                     </div>
                   </div>
                 <div class="col">
-                    <div class="card panel-box panel-box-but" @click="this.$router.replace('/showComments')">
+                    <div class="card panel-box panel-box-but" @click="this.$router.replace('/showComments')" id="reports-panel">
                         <div class="card-body">
                             <h4 class="card-title">{{ reports.length }}</h4>
                             <h4 class="card-title">Reports</h4>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card panel-box panel-box-but" @click="this.$router.replace('/showFeedback')">
+                    <div class="card panel-box panel-box-but" @click="this.$router.replace('/showFeedback')" id="feedbacks-panel">
                         <div class="card-body">
                             <h4 class="card-title">{{ feedbacks.length }}</h4>
                             <h4 class="card-title">Feedbacks</h4>
@@ -49,7 +49,7 @@
                                     <th>Stadium</th>
                                     <th>Date</th>
                                 </tr>
-                                <tr v-for="match in matches" :key="match.id" class="match-row" @click="goToMatch(match.id)">
+                                <tr v-for="match in matches" :key="match.id" class="match-row" @click="goToMatch(match.id)" :id='"match-panel-"+match.id'>
                                     <td>{{match.homeTeamName}} vs. {{match.awayTeamName}}</td>
                                     <td v-if="match.finished === true">{{match.goalHome}} vs. {{match.goalAway}}</td>
                                     <td v-else>Not Played</td>
@@ -80,8 +80,8 @@
                                     <td>{{report.comment.body}}</td>
                                     <td>{{report.type}}</td>
                                     <td>
-                                        <button class="btn btn-primary act-but" @click="delRep(report.id)">Delete Report</button>
-                                        <button class="btn btn-danger act-but" @click="banUser(report.id, report.comment.userId)">Ban User</button>
+                                        <button class="btn btn-primary act-but" @click="delRep(report.id)" :id='"delete-user-panel-"+report.id'>Delete Report</button>
+                                        <button class="btn btn-danger act-but" @click="banUser(report.id, report.comment.userId)" :id='"ban-user-panel-"+report.id'>Ban User</button>
                                     </td>
                                 </tr>
                             </table>
