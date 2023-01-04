@@ -120,12 +120,13 @@
                         for(let i = 0; i < 38; i++) {
                             let week = [];
                             let times = this.getTimes(seasonStart);
-                            for(let j = 0; j < 9; j++) {
+                            for(let j = 0; j <= 9; j++) {
                                 if(fix[i][j][0] !== 0 && fix[i][j][1] !== 0) {
                                     var home = this.teams.get(this.standings.get(fix[i][j][0]).teamId);
                                     var away = this.teams.get(this.standings.get(fix[i][j][1]).teamId);
-                                    week.push(this.matchTemplate(home, away, times[j].toLocaleString()));
-                                    allMatches.push(this.matchTemplate(home, away, times[j].toLocaleString()));
+                                    week.push(this.matchTemplate(home, away, times[j%3].toLocaleString()));
+                                    allMatches.push(this.matchTemplate(home, away, times[j%3].toLocaleString()));
+                                    times[j%3].setHours(times[j%3].getHours()+2);
                                 }
                             }
                             seasonStart.setDate(seasonStart.getDate() + 7);
@@ -139,27 +140,17 @@
             },
             getTimes(start) {
                 let res = [];
+
                 let date1 = new Date(start);
                 date1.setHours(16);
                 
-                let date2 = new Date(start);
+                let date2 = new Date(date1);
                 date2.setDate(date2.getDate()+2);
-                date2.setHours(16);
 
-                let date3 = new Date(start);
+                let date3 = new Date(date2);
                 date3.setDate(date3.getDate()+2);
-                date3.setHours(16);
 
-                for(let j = 0; j < 3; j++) {
-                    res.push(date1, date2, date3);
-                    date1.setHours(date1.getHours()+2);
-                    date2.setHours(date2.getHours()+2);
-                    date3.setHours(date3.getHours()+2);
-                }
-
-                res.sort(function(a, b) {
-                    return b - a;
-                });
+                res.push(date1, date2, date3);
 
                 return res;
             },
