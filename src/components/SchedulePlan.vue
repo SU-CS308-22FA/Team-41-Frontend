@@ -119,19 +119,14 @@
                         let allMatches = [];
                         for(let i = 0; i < 38; i++) {
                             let week = [];
-                            let weekStart = new Date(seasonStart);
-                            for(let j = 0; j <= 3; j++) {
-                                weekStart.setHours(16)
-                                for(let k = 1; k <= 3; k++) {
-                                    if(fix[i][j*k][0] !== 0 && fix[i][j*k][1] !== 0) {
-                                        var home = this.teams.get(this.standings.get(fix[i][j*k][0]).teamId);
-                                        var away = this.teams.get(this.standings.get(fix[i][j*k][1]).teamId);
-                                        week.push(this.matchTemplate(home, away, weekStart.toLocaleString()));
-                                        allMatches.push(this.matchTemplate(home, away, weekStart.toLocaleString()));
-                                        weekStart.setHours(weekStart.getHours()+2);
-                                    }
+                            let times = this.getTimes(seasonStart);
+                            for(let j = 0; j < 9; j++) {
+                                if(fix[i][j][0] !== 0 && fix[i][j][1] !== 0) {
+                                    var home = this.teams.get(this.standings.get(fix[i][j][0]).teamId);
+                                    var away = this.teams.get(this.standings.get(fix[i][j][1]).teamId);
+                                    week.push(this.matchTemplate(home, away, times[j].toLocaleString()));
+                                    allMatches.push(this.matchTemplate(home, away, times[j].toLocaleString()));
                                 }
-                                weekStart.setDate(weekStart.getDate()+2);
                             }
                             seasonStart.setDate(seasonStart.getDate() + 7);
                             fixture.set(i+1, week);
@@ -141,6 +136,32 @@
                         this.getWeek(this.weekNum);
                     });
                 });
+            },
+            getTimes(start) {
+                let res = [];
+                let date1 = new Date(start);
+                date1.setHours(16);
+                
+                let date2 = new Date(start);
+                date2.setDate(date2.getDate()+2);
+                date2.setHours(16);
+
+                let date3 = new Date(start);
+                date3.setDate(date3.getDate()+2);
+                date3.setHours(16);
+
+                for(let j = 0; j < 3; j++) {
+                    res.push(date1, date2, date3);
+                    date1.setHours(date1.getHours()+2);
+                    date2.setHours(date2.getHours()+2);
+                    date3.setHours(date3.getHours()+2);
+                }
+
+                res.sort(function(a, b) {
+                    return b - a;
+                });
+
+                return res;
             },
             createFixture(teams) {
                 const count = teams.length;
