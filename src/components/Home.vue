@@ -249,6 +249,9 @@
                     }
                 })
             }
+            else {
+                this.loaded = true;
+            }
         },
         methods:{
             isLoggedIn(){
