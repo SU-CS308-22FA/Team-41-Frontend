@@ -53,7 +53,7 @@
             </select>
           </td>
           <td>
-            <button @click="handleVote(match.id)">Vote</button>
+            <button type="button" class="btn btn-primary" @click="handleVote(match.id)">Vote</button>
           </td>
         </tr>
       </table>
@@ -145,75 +145,24 @@ export default {
 </script>
 
 <style scoped>
-.team-info-box {
-  margin-top: 100px;
-  padding: 25px 25px 25px 25px;
-  display: flex;
-  overflow: hidden;
-  border-radius: 10px;
-  background: rgba(185, 185, 185, 0.725);
+table {
+  padding: 50px;
+  border-radius: 15px;
+  border: solid 1px lightgrey;
+  background-color: lightgrey;
 }
-
-.card-title {
-  text-align: left;
-  padding-bottom: 7%;
-  font-size: 40px;
-}
-
-.card-text {
-  text-align: left;
-  font-size: 15px;
-  font-style: italic;
-}
-
-.fav-button {
-  align-items: right;
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  border-width: 0px;
-  font-size: 50px;
-  height: 30px;
-}
-
-.fav-button:hover {
-  transform: scale(1.5);
-  color: red;
-}
-
-.team-info-box-logo {
-  border-width: 0px;
-  max-height: 200px;
-  max-width: 200px;
-  display: inline;
-}
-
 td {
-  border: 1px solid black;
   padding: 25px;
-  max-width: 400px;
+  border-bottom: 1px solid lightgrey;
   height: 80px;
+  background-color: beige;
 }
 
-.team-info-but {
-  margin: 5px;
-}
-
-.team-info-but:hover {
-  transform: scale(1.1);
-}
-
-.player-box {
-  border: 1px solid black;
-  overflow-y: scroll;
-  height: 450px;
-  width: fit-content;
-  display: block;
+th {
+  padding-bottom: 25px;
 }
 
 .match-box {
-  border: 1px solid black;
-
   width: fit-content;
   display: block;
 }
@@ -224,5 +173,13 @@ td {
 }
 h1 {
   padding-top: 50px;
+}
+
+.refb {
+  cursor: pointer;
+}
+
+.refb:hover {
+  color: blue;
 }
 </style>
