@@ -59,7 +59,7 @@
             <h5 class="modal-title">Referee Ranking and Assignment Protocol</h5>
           </div>
           <div class="modal-body">
-            <div class="container">
+            <div class="row d-flex justify-content-center">
               <table class="match-box">
                 <tr>
                   <th>Referee</th>
@@ -97,9 +97,7 @@
                 </tr>
               </table>
               <h2>How suggestions work?</h2>
-              
-              
-
+              <img src="../assets/e.jpeg" />
             </div>
           </div>
           <div class="modal-footer">
