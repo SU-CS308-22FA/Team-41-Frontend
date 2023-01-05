@@ -45,9 +45,88 @@
       </div>
     </div>
   </div>
+  <div>
+    <div
+      id="myModal2"
+      ref="modal"
+      class="modal modal-xl"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Referee Ranking and Assignment Protocol</h5>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <table class="match-box">
+                <tr>
+                  <th>Referee</th>
+                  <th>Public Rating(/5)</th>
+                  <th>Official Rating (/40)</th>
+                  <th>Last Match</th>
+                  <th>Last Match Date</th>
+                </tr>
+                <tr v-for="ref in sortedReferees" :key="ref.id" class="matchx">
+                  <td>{{ ref.name }}</td>
+                  <td>{{ ref.rating.toFixed(2) }}</td>
+                  <td>{{ ref.refereeRating.toFixed(2) }}</td>
+                  <td>
+                    <container>
+                      <div class="row">
+                        {{ getLastMatch(ref).homeTeamName }}
+                        {{ getLastMatch(ref).goalHome }}
+                      </div>
+                      <div class="row">
+                        {{ getLastMatch(ref).awayTeamName }}
+                        {{ getLastMatch(ref).goalAway }}
+                      </div>
+                    </container>
+                  </td>
+                  <td>
+                    <container>
+                      <div class="row">
+                        {{ getLastMatch(ref).dateAndTime.split("T")[0] }}
+                      </div>
+                      <div class="row">
+                        {{ getLastMatch(ref).dateAndTime.split("T")[1] }}
+                      </div>
+                    </container>
+                  </td>
+                </tr>
+              </table>
+              <h2>How suggestions work?</h2>
+              
+              
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal2"
+              @click="closeModal2()"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <AdminNavBar></AdminNavBar>
   <div>
-    <h1>Referee Assignment System</h1>
+    <button @click="myModal2.show()" class="nodecor">
+      <span
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+      >
+        ?
+        <span class="visually-hidden">unread messages</span>
+      </span>
+      <h1>Referee Assignment System</h1>
+    </button>
     <div class="d-flex justify-content-center">
       <table class="match-box">
         <tr>
@@ -109,12 +188,16 @@ export default {
       ref2: null,
       ref3: null,
       myModal: null,
+      myModal2: null,
       currentMatchIndex: 0,
       currentAssignees: [null, null, null, null, null, null, null, null, null],
+      sortedReferees: [],
+      lastMatches: [],
     };
   },
   async mounted() {
     this.myModal = new Modal(document.getElementById("myModal"));
+    this.myModal2 = new Modal(document.getElementById("myModal2"));
     const requestOptions = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -137,11 +220,42 @@ export default {
           this.standings = data.returnObject;
         }
       });
+
+    fetch("https://tfb308.herokuapp.com/api/v1/referee/all", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "200") {
+          let sortedData = data.returnObject.sort((i1, i2) =>
+            i1.refereeRating < i2.refereeRating
+              ? 1
+              : i1.refereeRating > i2.refereeRating
+              ? -1
+              : 0
+          );
+          this.sortedReferees = sortedData;
+        }
+      });
+
+    fetch(
+      "https://tfb308.herokuapp.com/api/v1/referee/lastMatches",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "200") {
+          this.lastMatches = data.returnObject;
+          console.log(this.lastMatches[0]);
+        }
+      });
+
     this.calculateMatchImportance();
   },
   methods: {
     closeModal() {
       this.myModal.hide();
+    },
+    closeModal2() {
+      this.myModal2.hide();
     },
     calculateMatchImportance() {
       for (const match of this.matches) {
@@ -222,13 +336,19 @@ export default {
           }
         });
     },
+    getLastMatch(ref) {
+      const currentRef = this.lastMatches.filter(
+        (item) => item.referee === ref.name
+      );
+      return currentRef[0];
+    },
   },
 };
 </script>
 
 <style scoped>
 table {
-  padding: 50px;
+  padding: 25px;
   border-radius: 15px;
   border: solid 1px lightgrey;
   background-color: lightgrey;
@@ -253,9 +373,7 @@ th {
 .matchx:hover {
   color: red;
   background: rgb(208, 202, 202);
-}
-h1 {
-  padding-top: 50px;
+  cursor: pointer;
 }
 
 .refb {
@@ -264,5 +382,13 @@ h1 {
 
 .refb:hover {
   color: blue;
+}
+
+.nodecor {
+  margin-top: 5%;
+  padding: 0;
+  border: none;
+  background: none;
+  position: relative;
 }
 </style>
