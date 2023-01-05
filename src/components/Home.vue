@@ -37,6 +37,7 @@
             </div>
             <div class="row" style="padding: 20px;">
                 <div class="col-4 d-flex justify-content-center">
+                    <br>
                     <div class="tw1">
                         <Tweet
                             tweet-id="1610201415317868544"
@@ -62,6 +63,17 @@
                 </div>
                 <div class="col-4 d-flex justify-content-center">
                     <div class="tw2">
+                        <div class="message-home">
+                            <h3>TFP Team wishes you a happy new year!</h3>
+                            <div class="alt-metin">
+                                
+                                <img src="../assets/confetti.webp" alt="" class="c">
+                                <img src="../assets/2023.webp" alt="" class="y">
+                                <img src="../assets/confetti.webp" alt="" class="c">
+                            </div>
+                            
+                        </div>
+                        <br><br>
                         <Tweet
                             tweet-id="1610268292308168704"
                             cards="visible"
@@ -446,6 +458,29 @@
     }
     .draw{
         background: yellow;
+    }
+
+    .message-home{
+        background:white;
+        border: 1px solid;
+        box-shadow: 5px 10px 18px;
+        border-radius: 20px;
+    }
+    .alt-metin{
+        display:flex;
+    }
+    .alt-metin .c{
+        width:80px;
+        height:80px;
+        margin-left: 3%;
+        margin-bottom: 1%;
+    }
+    .alt-metin .y{
+        width:160px;
+        height:80px;
+        margin-left: 3%;
+        margin-bottom: 1%;
+ 
     }
 
 </style>
