@@ -100,18 +100,17 @@
                                         <h1 v-else-if="rank===3"> {{ rank }}rd</h1>
                                         <h1 v-else> {{ rank }}th</h1>
                                         <p>in the league</p>
-                                        <br>
                                         <div class="last-five">
-                                        <div v-for="match in lastFive" :key="match.id">
-                                            <div v-if="match.finished">
-                                                <div v-if="match.goalAway === match.goalHome" class="result-box draw"> B </div>
-                                                <div v-if="match.homeTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box win">W</div>
-                                                <div v-if="match.homeTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box loss">L</div>
-                                                <div v-if="match.awayTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box loss">L</div>
-                                                <div v-if="match.awayTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box win">W</div>
+                                            <div v-for="match in lastFive" :key="match.id">
+                                                <div v-if="match.finished">
+                                                    <div v-if="match.goalAway === match.goalHome" class="result-box draw">D</div>
+                                                    <div v-if="match.homeTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box win">W</div>
+                                                    <div v-if="match.homeTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box loss">L</div>
+                                                    <div v-if="match.awayTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box loss">L</div>
+                                                    <div v-if="match.awayTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box win">W</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                                 <br>
