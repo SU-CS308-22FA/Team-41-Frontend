@@ -9,6 +9,7 @@
           <div class="modal-body">
             <div class="container">
               <div
+                id="ref1"
                 v-if="ref1 !== null"
                 @click="selectRef(ref1)"
                 class="row refb"
@@ -16,6 +17,7 @@
                 1. {{ ref1.name }}
               </div>
               <div
+                id="ref2"
                 v-if="ref2 !== null"
                 @click="selectRef(ref2)"
                 class="row refb"
@@ -23,6 +25,7 @@
                 2. {{ ref2.name }}
               </div>
               <div
+                id="ref3"
                 v-if="ref3 !== null"
                 @click="selectRef(ref3)"
                 class="row refb"
@@ -102,6 +105,7 @@
           </div>
           <div class="modal-footer">
             <button
+              id="modal2Close"
               type="button"
               class="btn btn-secondary"
               data-dismiss="modal2"
@@ -116,7 +120,7 @@
   </div>
   <AdminNavBar></AdminNavBar>
   <div>
-    <button @click="myModal2.show()" class="nodecor">
+    <button id="refOpen" @click="myModal2.show()" class="nodecor">
       <span
         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
       >
@@ -146,6 +150,7 @@
           </td>
           <td>
             <button
+              :id="'suggest-' + indexFinder(match.id)"
               type="button"
               class="btn btn-primary"
               @click="getSuggestions(match.id)"
@@ -155,6 +160,7 @@
           </td>
           <td>
             <button
+              :id="'assign-' + indexFinder(match.id)"
               type="button"
               class="btn btn-primary"
               @click="assignment(match.id)"

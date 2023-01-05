@@ -22,6 +22,7 @@
           <td>{{ match.dateAndTime.replace("T", " ") }}</td>
           <td>
             <select
+              :id="'judge-' + match.id"
               v-model="voteHolder[indexFinder(match.id)][0]"
               @change="onChange"
             >
@@ -30,6 +31,7 @@
           </td>
           <td>
             <select
+              :id="'con-' + match.id"
               v-model="voteHolder[indexFinder(match.id)][1]"
               @change="onChange"
             >
@@ -38,6 +40,7 @@
           </td>
           <td>
             <select
+              :id="'know-' + match.id"
               v-model="voteHolder[indexFinder(match.id)][2]"
               @change="onChange"
             >
@@ -46,6 +49,7 @@
           </td>
           <td>
             <select
+              :id="'t-' + match.id"
               v-model="voteHolder[indexFinder(match.id)][3]"
               @change="onChange"
             >
@@ -53,7 +57,14 @@
             </select>
           </td>
           <td>
-            <button type="button" class="btn btn-primary" @click="handleVote(match.id)">Vote</button>
+            <button
+              :id="'but' + match.id"
+              type="button"
+              class="btn btn-primary"
+              @click="handleVote(match.id)"
+            >
+              Vote
+            </button>
           </td>
         </tr>
       </table>
