@@ -74,11 +74,11 @@
                   <td>{{ ref.refereeRating.toFixed(2) }}</td>
                   <td>
                     <container>
-                      <div class="row">
+                      <div v-if="getLastMatch(ref)" class="row">
                         {{ getLastMatch(ref).homeTeamName }}
                         {{ getLastMatch(ref).goalHome }}
                       </div>
-                      <div class="row">
+                      <div v-if="getLastMatch(ref)" class="row">
                         {{ getLastMatch(ref).awayTeamName }}
                         {{ getLastMatch(ref).goalAway }}
                       </div>
@@ -86,10 +86,10 @@
                   </td>
                   <td>
                     <container>
-                      <div class="row">
+                      <div v-if="getLastMatch(ref)" class="row">
                         {{ getLastMatch(ref).dateAndTime.split("T")[0] }}
                       </div>
-                      <div class="row">
+                      <div v-if="getLastMatch(ref)" class="row">
                         {{ getLastMatch(ref).dateAndTime.split("T")[1] }}
                       </div>
                     </container>
