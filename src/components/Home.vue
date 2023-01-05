@@ -103,13 +103,12 @@
                                         <br>
                                         <div class="last-five">
                                         <div v-for="match in lastFive" :key="match.id">
-                                            <div v-if="match.finished" class="l-f" >
-                                                <div v-if="match.goalAway === match.goalHome" class="draw"> B </div>
-                                                <div v-if="match.homeTeamName === fanTeamName && match.goalHome > match.goalAway " class="win">W</div>
-                                                <div v-if="match.homeTeamName === fanTeamName && match.goalHome < match.goalAway " class="loss">L</div>
-                                                <div v-if="match.awayTeamName === fanTeamName && match.goalHome > match.goalAway " class="loss">L</div>
-                                                <div v-if="match.awayTeamName === fanTeamName && match.goalHome < match.goalAway " class="win">W</div>
-                                               
+                                            <div v-if="match.finished">
+                                                <div v-if="match.goalAway === match.goalHome" class="result-box draw"> B </div>
+                                                <div v-if="match.homeTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box win">W</div>
+                                                <div v-if="match.homeTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box loss">L</div>
+                                                <div v-if="match.awayTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box loss">L</div>
+                                                <div v-if="match.awayTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box win">W</div>
                                             </div>
                                         </div>
                                     </div>
@@ -244,11 +243,6 @@
                                     this.fanTeamCloseMatches = list.slice(idx-2, idx+3);
                                     this.lastFive = list.slice(idx-5, idx);
 
-                                    
-                                    
-
-
-                                    
                                     fetch("https://tfb308.herokuapp.com/api/v1/standings", requestOptions)
                                     .then((response) => response.json())
                                     .then((data) => {
@@ -437,26 +431,21 @@
         display:flex;
     }
 
+    .result-box {
+        padding: 2px;
+        height: fit-content;
+        width: 40px;
+        border-right: 2px solid ghostwhite;
+    }
+
     .win{
         background: rgb(15, 167, 15);
-        padding: 3px 3px 3px 3px;
-        height:30px;
-        width:40px;
-        border-right: 2px solid ghostwhite;
     }
     .loss{
         background: red;
-        padding: 3px 3px 3px 3px;
-        height:30px;
-        width:40px;
-        border-right: 2px solid ghostwhite;
     }
     .draw{
         background: yellow;
-        padding: 3px 3px 3px 3px;
-        height:30px;
-        width:40px;
-        border-right: 2px solid ghostwhite;
     }
 
 </style>
