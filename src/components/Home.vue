@@ -428,6 +428,7 @@
 
     .last-five{
         display:flex;
+        margin-top: 9px;
     }
 
     .result-box {
