@@ -109,6 +109,7 @@
                                                     <div v-if="match.awayTeamName === fanTeamName && match.goalHome > match.goalAway " class="result-box loss">L</div>
                                                     <div v-if="match.awayTeamName === fanTeamName && match.goalHome < match.goalAway " class="result-box win">W</div>
                                                 </div>
+                                                <div v-else class="result-box play">P</div>
                                             </div>
                                         </div>
                                     </div>
@@ -446,6 +447,10 @@
     }
     .draw{
         background: yellow;
+    }
+
+    .play{
+        background: rgb(158, 156, 156);
     }
 
 </style>
